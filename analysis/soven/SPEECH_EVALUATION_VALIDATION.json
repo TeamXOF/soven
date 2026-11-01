@@ -23,5 +23,7 @@
     "open": 29
   },
   "next": "M2.2 deterministic evaluation runner and development reliability work; fresh human-reviewed evaluation data remains required",
-  "remote_ci": "Pending publication verification; outcome will be recorded in completion log"
+  "remote_ci": "completed: success; fresh Linux dependencies, all 100 backend tests, profile check, generated-language drift, frontend lint, TypeScript and production build",
+  "validated_code_commit": "866d8570543bdc401eb2e97ff2404f40f2e8e4ab",
+  "ci_url": "https://github.com/TeamXOF/soven/actions/runs/41331965581"
 }

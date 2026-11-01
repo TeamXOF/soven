@@ -1,10 +1,10 @@
-<p align="center"><img src="assets/brand/soven/soven-banner.png" alt="SOVEN — Reading practice, one word at a time" width="100%" /></p>
+<p align="center"><img src="assets/brand/soven/soven-logo.png" alt="SOVEN" width="100%" /></p>
 
 # SOVEN
 
-SOVEN is a reading-practice platform with English and Urdu support, word-level feedback, teacher tools, and a roadmap for accessible storybook learning.
+SOVEN is a reading-practice platform with word-level feedback and teacher tools, building toward accessible storybook learning and **70+ languages**. English and Urdu are the current working reading tracks; broader coverage is planned.
 
-**Current stage:** the repaired SpeakFlow baseline is imported under SOVEN branding. The new book UI, Spanish, introductory voice test and Meta runtime integration are planned; they are not active features yet.
+**Current stage:** the repaired SpeakFlow baseline is imported under SOVEN branding. The new book UI, 70+ language rollout, introductory voice test and Meta runtime integration are planned; they are not active features yet.
 
 [Start here](analysis/soven/00_START_HERE.md) · [Current state](analysis/soven/02_CURRENT_STATE.md) · [Setup](docs/SETUP.md) · [Roadmap](analysis/soven/07_IMPLEMENTATION_ROADMAP.md) · [Handoff documents](analysis/soven/DOCUMENT_MANIFEST.json)
 
@@ -67,7 +67,7 @@ Important limits remain: the prior child-speech holdout flagged 29/110 expert-ac
 
 ## SOVEN roadmap
 
-Planned: a simple landing/how-to flow, optional introductory sample, complete profiles, accessible responsive book pages, spoken coach turns, descriptive audio graphs, Spanish and optional language-learning tools. The [requirements](analysis/soven/04_PRODUCT_REQUIREMENTS.md), [source review](analysis/soven/05_SOURCE_REVIEW.md) and [Meta plan](analysis/soven/06_META_PROVIDER_PLAN.md) explain dependencies and open decisions.
+Planned: a simple landing/how-to flow, optional introductory sample, complete profiles, accessible responsive book pages, spoken coach turns, descriptive audio graphs, a staged 70+ language rollout including Spanish, and optional language-learning tools. The [requirements](analysis/soven/04_PRODUCT_REQUIREMENTS.md), [source review](analysis/soven/05_SOURCE_REVIEW.md) and [Meta plan](analysis/soven/06_META_PROVIDER_PLAN.md) explain dependencies and open decisions.
 
 ## Origin and license
 

@@ -32,6 +32,12 @@ C09 Schedule and demo. The October 30–November 4 schedule is superseded by dep
 
 C10 Evidence and credits. The embedded figure is a supplied illustration, not independent proof of an entitlement. Keep rubric figures, free-credit amounts, demographic statistics and adoption claims out of public assertions until supported by current primary sources and the actual participant account. Do not copy third-party articles as official rules.
 
+## Later owner decisions
+
+C11 Language scope. Source A proposes English, Urdu and Spanish, and Source B explicitly requests Spanish. Neither original specifies 70+ languages. The owner later confirmed 70+ languages as SOVEN's goal. This supersedes a trilingual product ceiling while retaining the distinction between current English/Urdu behavior and planned coverage.
+
+C12 Visual identity. The initial delivery selected concept A; the owner rejected it and selected concept C. Use its page-stroke S and teal centre, a white primary background and SOVEN only. No tagline, language names or feature list belongs in the logo.
+
 ## Provenance and public summaries
 
 Keep both original files unchanged locally, with full text available to the owner. Public documents contain reviewed requirements and corrections rather than verbatim private planning material. Historical evidence records and the source MIT notice are retained. Public SOURCE_PROVENANCE records hashes and extraction counts so later changes can be detected without publishing private notes.

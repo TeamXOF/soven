@@ -1,6 +1,6 @@
 # SOVEN project context
 
-SOVEN helps people practise reading aloud, review recognized words and choose further practice. Its immediate engineering base is an English and Urdu classroom reading app. The next product direction extends that base into a simple accessible storybook experience for children and adult language learners.
+SOVEN helps people practise reading aloud, review recognized words and choose further practice. Its immediate engineering base is an English and Urdu classroom reading app. The confirmed product direction extends that base into an accessible storybook and voice-coaching platform for children and adults worldwide, targeting 70+ languages. This is planned, not implemented by the current two-track app.
 
 ## Ownership and chronology
 
@@ -20,7 +20,7 @@ Do not turn this into a clinical or diagnostic promise. Dyslexia is not inferred
 
 ## This delivery and the next stage
 
-This delivery provides an attributed baseline, new brand, professional handoff pack, reproducible checks and clean publication. It preserves English and Urdu flows and accurate Google/Groq/local labels. Future work includes an introductory voice sample, profile completion, optional accessibility controls, a book UI, conversational coaching, Spanish, translations and richer audio statistics.
+This delivery provides an attributed baseline, new brand, professional handoff pack, reproducible checks and clean publication. It preserves English and Urdu flows and accurate Google/Groq/local labels. Future work includes an introductory voice sample, profile completion, optional accessibility controls, a book UI, conversational coaching, a scalable 70+ language system including Spanish, translations and richer audio statistics.
 
 The owner explicitly chose public visibility, clean Git history, reviewed public summaries rather than the original private source documents, and a minimal S/page/voice logo in indigo and teal. The old TeamXOF repository and the original local workspace are not replaced.
 
@@ -29,3 +29,7 @@ The owner explicitly chose public visibility, clean Git history, reviewed public
 The official event page lists submissions for 4 November 2026 at 9 PM Eastern, equivalent to 5 November at 7 AM Pakistan time. Check the live submission portal for changes and final requirements. A two-minute demo is a working recommendation, not an asserted official limit. Reuse of prior hackathon code must be disclosed and eligibility confirmed with the organizers; this handoff does not invent an organizer approval.
 
 Official event source checked on 1 November 2026: https://dev.meta.ai/events/global-hackathon. The owner has not authorized this delivery to send organizer messages, submit an entry or deploy publicly.
+
+## Owner clarification
+
+On 1 November 2026 the owner confirmed 70+ languages as the product goal and selected logo concept C on white, containing only the symbol and SOVEN. The source documents described English, Urdu and Spanish; this later owner direction expands that scope. The target language list and rollout order remain open.

@@ -53,17 +53,18 @@ def add_markdown(doc,text):
 
 manifest=[]
 for filename,title,sources in groups:
+    compact=filename.startswith(('01_', '02_'))
     doc=Document();sec=doc.sections[0]
     sec.page_width=Inches(8.5);sec.page_height=Inches(11)
     sec.top_margin=Inches(.7);sec.bottom_margin=Inches(.7);sec.left_margin=Inches(.8);sec.right_margin=Inches(.8)
     sec.header_distance=Inches(.25);sec.footer_distance=Inches(.3)
     for name in ['Normal','Title','Subtitle','Heading 1','Heading 2','Heading 3','List Bullet','List Number']:
         style=doc.styles[name];style.font.name='Aptos';style.font.color.rgb=RGBColor(0,0,0)
-        style.paragraph_format.space_after=Pt(5);style.paragraph_format.line_spacing=1.03
-    doc.styles['Normal'].font.size=Pt(11)
+        style.paragraph_format.space_after=Pt(4 if compact else 5);style.paragraph_format.line_spacing=1.0 if compact else 1.03
+    doc.styles['Normal'].font.size=Pt(10.5 if compact else 11)
     for name,size in [('Title',26),('Heading 1',17),('Heading 2',13),('Heading 3',11)]:
         doc.styles[name].font.size=Pt(size);doc.styles[name].font.bold=True
-        doc.styles[name].paragraph_format.space_before=Pt(12 if name!='Title' else 0)
+        doc.styles[name].paragraph_format.space_before=Pt((10 if compact else 12) if name!='Title' else 0)
         doc.styles[name].paragraph_format.keep_with_next=True
     h=sec.header.paragraphs[0];h.text='SOVEN   |   Project and engineering handoff';h.style=doc.styles['Normal']
     for r in h.runs:r.font.size=Pt(9);r.font.color.rgb=RGBColor(0,0,0)

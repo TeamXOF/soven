@@ -10,13 +10,15 @@ D02 Start with clean Git history while retaining the source project's MIT licens
 
 D03 This stage delivers repository, brand and handoff only. New onboarding, book UI, Spanish, coach conversation and Meta provider migration are next-stage work.
 
-D04 Use a minimal S symbol combining page and voice motifs, with refined indigo/teal identity. Generate three concepts and choose a production mark with editable vector assets and practical exports.
+D04 Owner-selected logo is concept C: page-stroke S, teal centre, white primary background and SOVEN only. This supersedes the first delivery's concept A. Remove all tagline and feature/language text from logo images.
 
 D05 Keep the original master-plan DOCX and meeting-minutes PDF local. Publish reviewed summaries, requirements, provenance hashes and corrections instead.
 
 D06 Intended users are worldwide; the team builds from Pakistan. The owner reports acceptance into Startup. These facts do not resolve hosted provider restrictions or prior-code eligibility.
 
 D07 Preserve child-first signup linking and the repaired quiet dashboard. No floating popups are wanted in the dashboard shell. Existing scores, history and classroom boundaries must survive future work.
+
+D08 The confirmed product goal is 70+ languages. English and Urdu remain current working tracks; Spanish is an addition within the wider goal, not its ceiling. Distinguish language capability/validation from translated menus.
 
 ## Decisions still needed
 
@@ -32,7 +34,7 @@ O05 Meta route: which separately permitted hosted or open-weight service is avai
 
 O06 Speech quality: which stronger recognizer and timestamp strategy should replace or complement the present model? Keep development and untouched evaluation speakers separate; include representative devices/noise.
 
-O07 Spanish and translations: which launch scope, language pairs and reviewed content fit the demo? Avoid advertising an unfinished language.
+O07 Multilingual rollout: agree the exact 70+ target languages, release order, language pairs, reviewers and quality thresholds. Which validated subset fits the demo? Do not advertise incomplete reading/TTS support.
 
 O08 Deployment: which host, domain, persistence, inference hardware and operating budget? Public repository publication does not settle hosting or classroom capacity.
 
@@ -48,4 +50,4 @@ For each completed task record the behavior changed, acceptance evidence, remain
 
 ## Delivery chronology
 
-The source project predates this Meta event. A local repair pass established authentication, analytics, speech decoding, persistence, enrollment and honest dashboard semantics. On 1 November 2026 the owner approved this repository/brand/handoff plan. The baseline commit captures repaired working files; later commits apply SOVEN identity, operational packaging and documentation. Exact commit IDs and publication checks are in DELIVERY_STATUS.json.
+The source project predates this Meta event. A local repair pass established authentication, analytics, speech decoding, persistence, enrollment and honest dashboard semantics. On 1 November 2026 the owner approved this repository/brand/handoff plan. The baseline commit captures repaired working files; later commits apply SOVEN identity, operational packaging and documentation. PUBLICATION_RECEIPT records the original launch; GitHub history and CI show later commits. The owner then selected concept C and expanded the direction to 70+ languages.

@@ -1,4 +1,5 @@
 {
+  "text_hash_format": "UTF-8 with CRLF normalized to LF; DOCX hashes use exact bytes",
   "maintained_format": "Markdown",
   "generated_format": "DOCX",
   "source_date": "2026-11-01",
@@ -9,14 +10,14 @@
       "sources": [
         {
           "path": "01_PROJECT_CONTEXT.md",
-          "sha256": "f557a37a5f16425a2d12f699aca4eca982b7df1fa181e95e9ba74c79b62208ee"
+          "sha256": "aed929e05594da00b36b10f1e3123814f599e25ad7fe8a9f5ebaa0857895a957"
         },
         {
           "path": "02_CURRENT_STATE.md",
-          "sha256": "e6884bb35b93a9cadcd36770c52cef3b3563e8e0bb5f50f4ab019ed5e4989d4f"
+          "sha256": "be595c7751f97a341ca9da5fb983b94902165b4203a74fb52dfa1f7bc04442c7"
         }
       ],
-      "sha256": "2fe8013fc824bd4d4254c28002c8891fe7113194b221cc8290e6789a191e9315",
+      "sha256": "78a6efb09559d5764f9d2087ee7a9d02e8d7105e9663cc8d42cd7cc72fe1ee54",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -25,10 +26,10 @@
       "sources": [
         {
           "path": "03_ARCHITECTURE.md",
-          "sha256": "cf01015253b6953451c28a5bcf0bfa3579c32498ed87b19966381334a313bd1e"
+          "sha256": "f8b4348748e4ff7e4cfc690b62e6db427f8fa381a7cfcf0896ed293a4311933e"
         }
       ],
-      "sha256": "6af4c565b779462fc16164ca01f7eea1bc208acbe60b8909001bb6a3378318ff",
+      "sha256": "0e3cea6079f31f5d2af0f8ac8a626f37474473736b416af4514ace46acec2736",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -37,14 +38,14 @@
       "sources": [
         {
           "path": "04_PRODUCT_REQUIREMENTS.md",
-          "sha256": "e0ad5995e6f886d58605ca77299db7a466db7af683e5dca749a83ea9e9b1d02f"
+          "sha256": "1df6bafeb1ec63ca55782b997bda47f84e028b7c16b7d24515df88ad2b53be71"
         },
         {
           "path": "05_SOURCE_REVIEW.md",
-          "sha256": "4d541d16cdf52d2e409f5c49776cdb82f0ad657d3b8deb026f4b934e26e38753"
+          "sha256": "81d77a951a595e163ecc5ed40ec665fbf5f8424c7c53d5e8721fbfdfecc59491"
         }
       ],
-      "sha256": "a02b1c915155a570de01d073462690a55542b5fa5bdebdb9cab4124af3149dc7",
+      "sha256": "57743f03f37b36871033b26713f689aec6df8d8207e5fd7623ad34fb45b7d67e",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -53,10 +54,10 @@
       "sources": [
         {
           "path": "06_META_PROVIDER_PLAN.md",
-          "sha256": "f28f908b5e58b11e564bed12cd7f7c9df5011264324b51101c54864e40c85626"
+          "sha256": "a60e55b44c08962e3aacb919b3e0aad1fd392071178f250cbc69f57be48e229f"
         }
       ],
-      "sha256": "d18850db519711daa508c562b11ac6b4244248ac7da6afea969f7a36dac1bc32",
+      "sha256": "c4e1c49ab6c93b6951da9c6af2a21d103b62c575c47b6fc9d20896997395f04c",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -65,14 +66,14 @@
       "sources": [
         {
           "path": "07_IMPLEMENTATION_ROADMAP.md",
-          "sha256": "269a7cdf242ffb414aeb275d34a5be30737f2a097c28f2849ec50cc43f3d543b"
+          "sha256": "f811b945667edb235a8f7607776c93fe5f12c540eafecbeaae4bf266b231c14a"
         },
         {
           "path": "10_DECISIONS_AND_HANDOFF.md",
-          "sha256": "6e82f55dd150b65f2f9fbe7601e7909783140758c25fc559f54e9374d638c01e"
+          "sha256": "f0fc9650073a667f70564b7ec5cb71e7483536f1e0802b8c15b686458c8ea323"
         }
       ],
-      "sha256": "d5c94ca7f35962884606792c5bfdbbb6b09c38bcd05d8b133a9045b2dc0d84c4",
+      "sha256": "95aa651236f36b11df0800a244598860d20a6c8389c98d46faf2832fb179d11c",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -81,11 +82,11 @@
       "sources": [
         {
           "path": "08_VALIDATION_AND_OPERATIONS.md",
-          "sha256": "ced85679c952757ab62ca8a04361b1630d045ff379d036fbfe1a0fa869ba9bd9"
+          "sha256": "c8a6b55b57d8ff20979c3d0dc8f448979b48a3dda84e04eec0230bcc4d9b7b8e"
         },
         {
           "path": "09_BRAND_AND_REPOSITORY.md",
-          "sha256": "7a13328d20d56d374318abaa5eb457907ef79001c5ae962e1c6b622707237aac"
+          "sha256": "9a6592daee8a91063814c79dfdcb19ac49c58ea7b4fe1c0ba88d05544cd6b38f"
         },
         {
           "path": "VALIDATION_RESULTS.json",
@@ -93,12 +94,11 @@
         },
         {
           "path": "DELIVERY_STATUS.json",
-          "sha256": "29a5e651da380acf0f5de4b82b15581108ddc7d2ca806dc69c4ef7d9d2ef95c2"
+          "sha256": "b73b9e91bb655e32406f27c03d4a0aa7361e0943b13d9c74325e5a9781fbfefb"
         }
       ],
-      "sha256": "0b26593a75d0a5abc25c5f274025aaf036e9ad61651a5091731fbff0b6c56095",
+      "sha256": "1718ca3c9b8dd05ffd52401da75c7f892e9f5b1c41b5ea7cc1ec9ade0bb8c1ae",
       "render_review": "see DOCUMENT_QA.json"
     }
-  ],
-  "text_hash_format": "UTF-8 with CRLF normalized to LF; DOCX hashes use exact bytes"
+  ]
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-01T08:07:40.275353+00:00",
+  "generated_at_utc": "2026-11-01T08:25:55.251535+00:00",
   "scope": "Active source and supported tooling; no runtime/private files",
   "text_hash_format": "UTF-8 with CRLF normalized to LF",
   "files": [
@@ -2880,8 +2880,8 @@
     },
     {
       "path": "tools/build_handoff.py",
-      "sha256": "8acf870725ace117c780b746d015f068bf6764215a3b63847a630aa5e6257264",
-      "lines": 98,
+      "sha256": "9bb9db6dd1e50413ec419661028424d31f3377b2147db7453a342bb379a4471e",
+      "lines": 99,
       "symbols": [
         {
           "name": "inline",

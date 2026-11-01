@@ -36,3 +36,7 @@ Do not place personal data in image prompts, repository fixtures, logs, screensh
 ## Acceptance gate for the next integration
 
 Record the permitted route and actual model ID, run one real invocation, test malformed output and provider failure, measure latency/cost per completed reading, verify supported languages and annotate missing timestamps. Freeze a candidate configuration on development data before evaluating untouched speakers. Credentials, credits, public deployment, provider service guarantees and prior-code eligibility remain unverified unless new evidence closes them.
+
+## Coverage for the 70+ language goal
+
+The 70+ language target is an owner requirement, not a verified capability of one Meta endpoint. Evaluate STT, word timing, TTS, content, coaching and translation separately per language. Text-model understanding does not establish spoken-word assessment or voice availability. Track provider, script, timing source, fallback, measured quality and rollout status in a coverage matrix. Promote only capabilities that pass their gate; show gaps as unavailable. Preserve current adapters until a permitted replacement covers the required behavior.

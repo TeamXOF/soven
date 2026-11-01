@@ -1,9 +1,7 @@
 {
-  "files_checked": 222,
+  "files_checked": 223,
   "findings": [],
   "scope": "Exact export file content and size; excludes dependencies, ignored QA/runtime directories and Git objects.",
   "review_date": "2026-11-01",
-  "text_and_docx_secret_scan": "passed",
-  "local_document_and_image_links": "passed",
-  "source_hashes": "LF-normalized; exact binary DOCX digests verified"
+  "revision": "Owner-selected concept C and 70+ language direction"
 }

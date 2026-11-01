@@ -41,3 +41,7 @@ Do not fix apparent accuracy by passing the expected sentence into STT or hiding
 ## Export validation repair
 
 The SOVEN rerun exposed open SQLite startup and backup connections during Windows teardown. Both now close explicitly. A connection-lifetime regression raises the supported suite from 41 to 42 passing tests; the isolated dashboard command completes with clean temporary-database cleanup. Windows HTTPS proxy logs can still include peer-reset callbacks during browser abort scenarios; browser runtime errors and scenario failures were zero. This repair follows the imported baseline and is included in the SOVEN branding/delivery commit.
+
+## Multilingual validation plan
+
+The target is 70+ languages; current evidence covers English workflows and limited Urdu UI/scoring, not broad speech quality. Track recognition, segmentation, content, coaching, TTS, translations, layout and reports independently per language. Test browser audio formats, RTL, long text and non-whitespace scripts where applicable. Agree representative speakers and language-specific thresholds before marking a language validated. Provider locale entries and translated menus are insufficient evidence.

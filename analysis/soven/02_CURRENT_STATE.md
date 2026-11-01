@@ -37,3 +37,7 @@ SOVEN branding does not implement future features or silently rewrite historical
 ## Export validation repair
 
 The SOVEN rerun exposed open SQLite startup and backup connections during Windows teardown. Both now close explicitly. A connection-lifetime regression raises the supported suite from 41 to 42 passing tests; the isolated dashboard command completes with clean temporary-database cleanup. Windows HTTPS proxy logs can still include peer-reset callbacks during browser abort scenarios; browser runtime errors and scenario failures were zero. This repair follows the imported baseline and is included in the SOVEN branding/delivery commit.
+
+## Multilingual direction
+
+The working reading languages remain English and Urdu. The owner confirmed a 70+ language goal on 1 November 2026. No additional language was implemented or validated by this brand/documentation revision. Spanish is a proposed addition within that wider goal. Provider language lists alone do not establish complete SOVEN support.

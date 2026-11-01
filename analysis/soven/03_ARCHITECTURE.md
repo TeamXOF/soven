@@ -44,3 +44,7 @@ AccessMiddleware and core/access.py enforce identity, role, classroom and record
 Deployments need same-origin /api and /pipeline proxy routes, /ws upgrades, HTTPS, appropriate origins and persistent private storage. Recording security depends on the browser context. Changing the language type from en/ur to include es later requires coordinated changes across STT, content, progression, UI, caches and tests.
 
 Required fonts are self-hosted in frontend/app/fonts. Generated branding is in assets/brand/soven and frontend/public/brand. Preserve third-party notices. SOURCE_CATALOG.json contains current file hashes and discovered symbols rather than stale line-number promises.
+
+## Planned multilingual foundation
+
+Replace two-track assumptions through an additive language registry before expanding to 70+ languages. Keep reading language, interface locale, native language and translation target distinct. Each language declares content, script/direction, recognition, timing, TTS, coaching, translations and validation status. Preserve existing en/ur APIs and stored records. Content, voices, tokenization, caches, progression, reports and preferences need coordinated changes. Whitespace tokenization cannot be assumed suitable for every script; define and test segmentation per language instead of silently applying the English path.

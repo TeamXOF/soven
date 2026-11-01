@@ -10,7 +10,7 @@ Import the repaired baseline, preserve attribution and evidence, apply SOVEN bra
 
 Resolve the model-access route and choose the central useful Meta capability. Decide standalone adult signup, teacher/guardian authority, introductory-test consent and retention, and turn-based versus interrupting coaching. Confirm submission constraints and disclosure of preexisting code. A pending decision stays visible rather than becoming an implementer's silent assumption.
 
-Proposed initial demo scope: one complete reading journey in English, with Urdu preserved and Spanish added only when its speech/content/voice path is checked. A quiet, optional turn-based coach is the lower-risk first implementation; the owner has not yet selected it. Preserve pause-without-penalty behavior.
+The confirmed product goal is 70+ languages. Choose demo languages from a tested coverage matrix; a demo subset does not reduce that goal. Preserve English/Urdu and evaluate Spanish as an early addition. The target list and rollout order remain open. A quiet, optional turn-based coach is the lower-risk first implementation; the owner has not yet selected it. Preserve pause-without-penalty behavior.
 
 ## Milestone two introduction and profiles
 
@@ -30,11 +30,13 @@ Implement the chosen coach-turn protocol, TTS boundary, mute/stop and retry life
 
 Completion: a reader can request help, hear a short demonstration, retry and continue without concurrent capture/playback or repeated interruptions. Provider failure leaves a usable reading flow.
 
-## Milestone five Spanish and optional language learning
+## Milestone five multilingual foundation and staged rollout
 
-Extend all language contracts consistently. Review Spanish passages, translations and pronunciation wording. Check voices and recognizers, preserve per-language progression/cache identity, and run separate held-out evaluations. Translate interface copy systematically rather than changing only the story text.
+Build the language registry and capability matrix for 70+ languages. Separate reading language, interface locale and native/translation language. Extend API contracts, storage, content, recognizers, voices, tokenization/scoring, coaching and reporting without breaking English/Urdu records. Spanish is an early candidate from the original plans, not the final scope.
 
-Completion: Spanish content, recognition, feedback, TTS, account preferences and teacher history work together. Optional translation should have a separate acceptance gate if it threatens the main demo's reliability.
+Review passages and translated feedback with competent speakers. Evaluate representative scripts, accents, children/adults, devices and noise. Test RTL, non-whitespace segmentation, voice availability, provider failures and independent language history. Gate optional language learning separately where necessary.
+
+Completion is staged: agree the target set and label each language capability planned, partial, validated or unavailable. Only languages passing end-to-end reading, feedback and playback checks are promoted as supported. Work toward 70+ end-to-end languages through tracked releases. A dropdown or provider-advertised count does not establish completion.
 
 ## Milestone six evidence deployment and submission
 

@@ -78,7 +78,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     { id: 'ur-1', student_id: studentId, student_name: 'Test child', timestamp: '2026-10-31 12:05:00', language: 'ur', accuracy: .8, wpm: 50 },
   ]) }));
   const login = async (username) => {
-    await page.goto(base + '/login');
+    await page.goto(base + '/login?next=/dashboard');
     await page.getByPlaceholder('your username').fill(username);
     await page.locator('input[type=password]').fill('synthetic-child-password');
     await page.getByRole('button', { name: 'Sign In', exact: true }).click();
@@ -156,7 +156,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     await page.getByRole('button', { name: 'Notifications', exact: true }).click();
     await page.getByRole('link', { name: 'Settings', exact: true }).click();
     await page.waitForURL('**/settings');
-    await page.getByRole('link', { name: 'Dashboard', exact: true }).click();
+    await page.getByRole('link', { name: 'Sentence practice', exact: true }).click();
     await page.waitForURL('**/dashboard');
     await page.getByRole('button', { name: 'Start Session', exact: true }).waitFor();
     assert.equal(await visible('Page notifications').getByRole('alert').count(), 0);

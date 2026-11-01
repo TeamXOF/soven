@@ -2,6 +2,8 @@
 
 import { useAuth } from "@/components/auth/AuthProvider";
 import { useSpeakFlow } from "@/context/SpeakFlowContext";
+import { useReaderActivity } from "@/components/soven/ReaderActivity";
+import { MobileReaderNav } from "@/components/layout/Sidebar";
 import { Bell,BookOpen,LineChart,LogOut,Search,Settings,Target,User } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -18,19 +20,20 @@ function formatDistanceToNow(date: Date) {
 export default function Topbar() {
   const { notifications, markNotificationsAsRead, language, setLanguage, controlsLocked } = useSpeakFlow();
   const { user, isTeacher, logout } = useAuth();
+  const readingActivity = useReaderActivity();
   const router = useRouter();
   const [search, setSearch] = useState("");
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const unreadCount = notifications.filter(n => !n.read).length;
 
-  // Wire the search box: teachers search the roster, students jump to Story Mode
+  // Wire the search box: teachers search the roster, students jump to My Books
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     const q = search.trim();
     if (!q) return;
     if (isTeacher) router.push(`/students?q=${encodeURIComponent(q)}`);
-    else router.push("/read");
+    else router.push("/books");
   };
 
   const notifRef = useRef<HTMLDivElement>(null);
@@ -54,7 +57,7 @@ export default function Topbar() {
   };
 
   return (
-    <><header className="bg-bg-card border-b border-border-dark h-16 flex items-center justify-between px-3 sm:px-6 flex-shrink-0 relative z-50">
+    <><header className="bg-[#fffdf9] border-b border-[#e9e5de] h-16 flex items-center justify-between px-3 sm:px-6 flex-shrink-0 relative z-20">
       {/* Search Bar */}
       <div className="hidden sm:block flex-1 min-w-0 max-w-md">
         <form onSubmit={handleSearch}>
@@ -67,7 +70,7 @@ export default function Topbar() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-lg text-sm placeholder-text-muted focus:outline-none focus:ring-1 focus:ring-accent-primary focus:border-accent-primary bg-gray-50"
-              placeholder={isTeacher ? "Search students… (Enter)" : "Jump to Story Mode…"}
+              placeholder={isTeacher ? "Search students… (Enter)" : "Find your next book…"}
             />
           </div>
         </form>
@@ -126,13 +129,13 @@ export default function Topbar() {
         {/* Reading language switch — drives sentences, STT, feedback and TTS */}
         <div className="flex items-center rounded-full border border-gray-200 bg-white p-0.5 mr-1 shrink-0" title="Reading language">
           <button
-            aria-label="Read in English" disabled={controlsLocked} onClick={() => setLanguage("en")}
+            aria-label="Read in English" disabled={controlsLocked || readingActivity.busy} onClick={() => setLanguage("en")}
             className={`px-2.5 py-1 rounded-full text-xs font-bold transition-colors ${language === "en" ? "bg-accent-primary-dark text-white" : "text-text-secondary hover:text-text-primary"}`}
           >
             EN
           </button>
           <button
-            aria-label="Read in Urdu" disabled={controlsLocked} onClick={() => setLanguage("ur")}
+            aria-label="Read in Urdu" disabled={controlsLocked || readingActivity.busy} onClick={() => setLanguage("ur")}
             className={`px-2.5 py-1 rounded-full text-sm font-bold font-urdu transition-colors leading-none ${language === "ur" ? "bg-accent-primary-dark text-white" : "text-text-secondary hover:text-text-primary"}`}
           >
             اردو
@@ -140,7 +143,7 @@ export default function Topbar() {
         </div>
 
         {/* Settings — teachers get the system console, students their own page */}
-        <Link href="/settings" className="p-2 text-text-secondary hover:text-text-primary transition-colors">
+        <Link href="/settings" aria-label="Settings" className="p-2 text-text-secondary hover:text-text-primary transition-colors">
           <Settings className="h-5 w-5" />
         </Link>
 
@@ -168,8 +171,8 @@ export default function Topbar() {
                     <Link href="/dashboard" className="w-full flex items-center px-4 py-2 text-sm text-text-secondary hover:bg-gray-50 transition-colors">
                       <BookOpen className="w-4 h-4 mr-2" /> Reading Dashboard
                     </Link>
-                    <Link href="/read" className="w-full flex items-center px-4 py-2 text-sm text-text-secondary hover:bg-gray-50 transition-colors">
-                      <BookOpen className="w-4 h-4 mr-2" /> Story Mode
+                    <Link href="/books" className="w-full flex items-center px-4 py-2 text-sm text-text-secondary hover:bg-gray-50 transition-colors">
+                      <BookOpen className="w-4 h-4 mr-2" /> My Books
                     </Link>
                     <Link
                       href={user?.student_id ? `/students/${user.student_id}` : "/dashboard"}
@@ -194,11 +197,6 @@ export default function Topbar() {
         </div>
       </div>
     </header>
-    <nav aria-label="Mobile navigation" className="md:hidden flex flex-wrap gap-3 border-b border-gray-200 bg-white p-3 text-sm">
-      <Link href={isTeacher ? "/teacher" : "/dashboard"}>Dashboard</Link>
-      <Link href={isTeacher ? "/students" : "/read"}>{isTeacher ? "Students" : "Story Mode"}</Link>
-      <Link href="/practice">Practice</Link>
-      <Link href="/settings">Settings</Link>
-    </nav></>
+    <MobileReaderNav /></>
   );
 }

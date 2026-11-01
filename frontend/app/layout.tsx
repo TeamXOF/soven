@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import "./soven.css";
 import ClientProviders from "@/components/layout/ClientProviders";
 
 // Self-hosted variable fonts (next/font/local) — no build-time dependency on

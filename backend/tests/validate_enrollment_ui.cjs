@@ -28,11 +28,11 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
   const signup = async (page, name, username) => {
     await page.goto(base + '/signup');
     await page.getByPlaceholder('Ask your teacher for the code').fill('enrollment-ui-code');
-    await page.getByPlaceholder('e.g. Ayaan Khan').fill(name);
+    await page.getByLabel('Your name', { exact:true }).fill(name);
     await page.getByPlaceholder('letters, numbers, . _ -').fill(username);
     await page.getByPlaceholder('at least 10 characters').fill(password);
     await page.getByRole('button', { name: 'Create My Account', exact: true }).click();
-    await page.getByRole('heading', { name: 'Account created! 🎉' }).waitFor();
+    await page.getByRole('heading', { name: 'Account created!', exact: true }).waitFor();
   };
   const approve = async (teacher, username, expectedId) => {
     // The wrapping label also contains the select's option text.
@@ -71,7 +71,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     const signedIn = await login(child, 'new-ui-child', password);
     assert.equal(signedIn.status, 200);
     assert.equal(signedIn.body.user.student_id, createdId);
-    await child.waitForURL('**/dashboard');
+    await child.waitForURL('**/profile');
     const existingChild = await makePage();
     await signup(existingChild, 'Existing child', 'existing-ui-child');
     await teacher.reload();
@@ -79,7 +79,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     const existingLogin = await login(existingChild, 'existing-ui-child', password);
     assert.equal(existingLogin.status, 200);
     assert.equal(existingLogin.body.user.student_id, 'existing-ui-profile');
-    await existingChild.waitForURL('**/dashboard');
+    await existingChild.waitForURL('**/profile');
     await teacher.goto(base + '/settings');
     await teacher.getByRole('heading', { name: 'Waiting for approval (0)', exact: true }).waitFor();
     assert.deepEqual(errors, []);

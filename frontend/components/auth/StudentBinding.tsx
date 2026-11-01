@@ -19,7 +19,7 @@ export default function StudentBinding() {
       setActiveStudent({
         id: user.student_id,
         name: user.name,
-        grade: "Grade 3",
+        grade: user.reader_mode === "adult" ? "Independent reader" : "Classroom reader",
         level: "Level 1",
       });
     }

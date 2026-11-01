@@ -1,160 +1,42 @@
 "use client";
-import BrandMark from "@/components/brand/BrandMark";
-import { toError } from "@/lib/errors";
-
-/**
- * Login — SpeakFlow-themed (cream background, lavender accents, card UI).
- * Teachers and students both sign in here; students must be approved first.
- */
-
-import { homeFor } from "@/components/auth/AuthGate";
-import { useAuth } from "@/components/auth/AuthProvider";
-import { Loader2,Lock,User } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import { useRouter,useSearchParams } from "next/navigation";
-import { Suspense,useState } from "react";
-
-function BrandPanel() {
-  return (
-    <div className="hidden md:flex flex-col justify-between bg-gradient-to-br from-accent-primary-bg to-accent-secondary-bg p-10 border-r border-gray-100">
-      <div className="flex items-center gap-3">
-        <span className="h-11 w-11 rounded-2xl bg-accent-primary flex items-center justify-center shadow">
-          <BrandMark />
-        </span>
-        <div>
-          <p className="text-xl font-extrabold text-text-primary">SOVEN</p>
-          <p className="text-[10px] font-mono uppercase tracking-wider text-text-muted">Every reader. Every day.</p>
-        </div>
-      </div>
-      <div>
-        <p className="text-2xl font-extrabold text-text-primary leading-snug">
-          Listen to how a child reads.<br />
-          Understand why they struggle.<br />
-          <span className="text-accent-primary-dark">Practice, every day.</span>
-        </p>
-        <div className="flex gap-2 mt-6">
-          <span className="h-3 w-3 rounded-full bg-accent-primary" />
-          <span className="h-3 w-3 rounded-full bg-accent-secondary" />
-          <span className="h-3 w-3 rounded-full bg-status-complete" />
-          <span className="h-3 w-3 rounded-full bg-status-anxious" />
-        </div>
-      </div>
-      <p className="text-xs text-text-muted">Acoustic evidence · AI feedback · Urdu &amp; English</p>
-    </div>
-  );
-}
-
+import { Suspense, useRef, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { ArrowRight } from "lucide-react";
+import Brand from "@/components/soven/Brand";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { homeFor } from "@/components/auth/AuthGate";
 function LoginForm() {
-  const router = useRouter();
-  const params = useSearchParams();
-  const { login } = useAuth();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [busy, setBusy] = useState(false);
-
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    setBusy(true);
-    try {
-      const user = await login(username, password);
-      const next = params.get("next");
-      router.replace(next && next !== "/" ? next : homeFor(user.role));
-    } catch ( caught) {
-      const err = toError(caught);
-      setError(err.message || "Login failed");
-    } finally {
-      setBusy(false);
+    const { login } = useAuth();
+    const router = useRouter();
+    const params = useSearchParams();
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const [busy, setBusy] = useState(false);
+    const lock = useRef(false);
+    async function submit(event: React.FormEvent) {
+        event.preventDefault();
+        if (lock.current)
+            return;
+        lock.current = true;
+        setBusy(true);
+        setError("");
+        try {
+            const user = await login(username, password);
+            const next = params.get("next");
+            const safe = next?.startsWith("/") && !next.startsWith("//") && !next.includes("\\") && !/^\/(login|signup)(?:[/?#]|$)/.test(next);
+            router.replace(safe ? next! : user.role !== "teacher" && user.profile_completed === false ? "/profile" : homeFor(user.role));
+        }
+        catch (error) {
+            setError(error instanceof Error ? error.message : "Could not sign in.");
+        }
+        finally {
+            setBusy(false);
+            lock.current = false;
+        }
     }
-  };
-
-  return (
-    <div className="min-h-screen bg-bg-base flex items-center justify-center p-4">
-      <div className="speakflow-card w-full max-w-3xl flex overflow-hidden shadow-xl">
-        <BrandPanel />
-
-        {/* Form side */}
-        <div className="flex-1 p-8 md:p-10 bg-white">
-          <div className="md:hidden flex items-center gap-2 mb-6">
-            <span className="h-9 w-9 rounded-xl bg-accent-primary flex items-center justify-center">
-              <BrandMark />
-            </span>
-            <p className="text-lg font-extrabold text-text-primary">SOVEN</p>
-          </div>
-
-          <h1 className="text-2xl font-extrabold text-text-primary">Welcome back!</h1>
-          <p className="text-sm text-text-secondary mt-1 mb-6">Sign in to continue your reading journey.</p>
-
-          {error && (
-            <div className="mb-4 px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm font-medium">
-              {error}
-            </div>
-          )}
-
-          <form onSubmit={submit} className="space-y-4">
-            <div>
-              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-text-muted mb-1.5">
-                Username
-              </label>
-              <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
-                <input
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                  autoFocus
-                  className="w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent-primary"
-                  placeholder="your username"
-                />
-              </div>
-            </div>
-            <div>
-              <label className="block text-xs font-mono font-bold uppercase tracking-wider text-text-muted mb-1.5">
-                Password
-              </label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent-primary"
-                  placeholder="••••••••"
-                />
-              </div>
-            </div>
-            <button
-              type="submit"
-              disabled={busy}
-              className="w-full py-3 rounded-xl bg-accent-primary-dark text-white text-sm font-bold shadow hover:bg-accent-primary transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
-            >
-              {busy && <Loader2 className="w-4 h-4 animate-spin" />}
-              Sign In
-            </button>
-          </form>
-
-          <p className="text-sm text-text-secondary mt-6 text-center">
-            New student?{" "}
-            <Link href="/signup" className="font-bold text-accent-primary-dark hover:underline">
-              Create an account
-            </Link>
-          </p>
-        </div>
-      </div>
-    </div>
-  );
+    return <div className="soven-auth-page"><header className="soven-public-nav"><Brand /><Link href="/signup">New here? <strong>Create an account</strong></Link></header><main className="soven-auth-grid"><aside className="soven-auth-art"><div><p className="soven-eyebrow">GOOD TO HAVE YOU BACK</p><h2>There’s always<br />another chapter.</h2><p>Pick up where your curiosity left off.</p></div><Image src="/illustrations/reading-nook.webp" alt="A quiet reading nook with a reader and a cat" width={960} height={640}/></aside><section className="soven-form-card"><p className="soven-eyebrow">YOUR READING SPACE</p><h1>Welcome back!</h1><p className="soven-muted">Sign in to continue your reading journey.</p><form onSubmit={submit} className="soven-form"><label>Username<input autoComplete="username" value={username} onChange={e => setUsername(e.target.value)} required placeholder="your username"/></label><label>Password<input autoComplete="current-password" type="password" value={password} onChange={e => setPassword(e.target.value)} required placeholder="Your password"/></label>{error && <p role="alert" className="soven-error">{error}</p>}<button type="submit" className="soven-button" disabled={busy}>{busy ? "Signing in…" : "Sign In"}<ArrowRight size={17}/></button></form><p className="soven-fine">Classroom readers need their teacher’s approval first.</p><Link href="/signup" className="soven-text-link">Create your reading account <ArrowRight size={15}/></Link></section></main></div>;
 }
-
-export default function LoginPage() {
-  return (
-    <Suspense fallback={
-      <div className="min-h-screen bg-bg-base flex items-center justify-center">
-        <Loader2 className="w-8 h-8 text-accent-primary-dark animate-spin" />
-      </div>
-    }>
-      <LoginForm />
-    </Suspense>
-  );
-}
+export default function Login() { return <Suspense fallback={<div className="soven-loading" role="status">Opening sign in…</div>}><LoginForm /></Suspense>; }

@@ -234,7 +234,9 @@ async def word_tip(word: str, lang: str = "en", mismatch: str = "",
 
 # ── Stories ──────────────────────────────────────────────────────────────────
 @api.get("/stories")
-def list_stories(student_id: Optional[str] = None):
+def list_stories(student_id: Optional[str] = None, language: Optional[str] = None):
+    if language is not None:
+        language = require_reading_language(language)
     out = []
     with get_db_connection() as conn:
         for story in STORIES.values():
@@ -247,8 +249,9 @@ def list_stories(student_id: Optional[str] = None):
                     FROM checkpoint_results cr
                     JOIN story_sessions ss ON ss.id = cr.session_id
                     WHERE ss.student_id = ? AND ss.story_id = ? AND cr.passed = 1
+                      AND (? IS NULL OR ss.language = ?)
                     """,
-                    (student_id, story["id"])).fetchone()
+                    (student_id, story["id"], language, language)).fetchone()
                 passed = int(row["n"]) if row else 0
             if passed >= total:
                 status = "completed"

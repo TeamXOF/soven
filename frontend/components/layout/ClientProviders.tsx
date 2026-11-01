@@ -3,6 +3,8 @@
 import { SpeakFlowProvider } from "@/context/SpeakFlowContext";
 import { SpeakFlowSessionProvider } from "@/context/SpeakFlowSessionContext";
 import { AuthProvider } from "@/components/auth/AuthProvider";
+import { ReaderActivityProvider } from "@/components/soven/ReaderActivity";
+import ReaderPreferences from "@/components/soven/ReaderPreferences";
 import StudentBinding from "@/components/auth/StudentBinding";
 
 /**
@@ -17,7 +19,8 @@ export default function ClientProviders({ children }: { children: React.ReactNod
     <AuthProvider>
       <SpeakFlowProvider>
         <StudentBinding />
-        <SpeakFlowSessionProvider>{children}</SpeakFlowSessionProvider>
+        <ReaderPreferences />
+        <ReaderActivityProvider><SpeakFlowSessionProvider>{children}</SpeakFlowSessionProvider></ReaderActivityProvider>
       </SpeakFlowProvider>
     </AuthProvider>
   );

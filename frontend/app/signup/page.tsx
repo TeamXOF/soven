@@ -1,141 +1,60 @@
 "use client";
-import BrandMark from "@/components/brand/BrandMark";
-import { toError } from "@/lib/errors";
-
-/**
- * Student signup — creates a PENDING account; a teacher approves it from the
- * Students or Settings page before login works (role-based access flow).
- */
-
-import { useAuth } from "@/components/auth/AuthProvider";
-import { CheckCircle2,Loader2 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-
+import { useRef, useState } from "react";
+import { ArrowRight, CheckCircle2, GraduationCap, UserRound } from "lucide-react";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { apiRegisterAdult } from "@/lib/api";
+import Brand from "@/components/soven/Brand";
 export default function SignupPage() {
-  const router = useRouter();
-  const { register } = useAuth();
-  const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [classroomCode, setClassroomCode] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [done, setDone] = useState(false);
-  const [busy, setBusy] = useState(false);
-
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    setBusy(true);
-    try {
-      const message = await register(name, username, password, classroomCode);
-      setDone(true);
-      setTimeout(() => router.replace("/login"), 2600);
-      void message;
-    } catch ( caught) {
-      const err = toError(caught);
-      setError(err.message || "Could not create the account");
-    } finally {
-      setBusy(false);
+    const { register } = useAuth();
+    const [mode, setMode] = useState<"child" | "adult">("child");
+    const [name, setName] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [classroomCode, setClassroomCode] = useState("");
+    const [busy, setBusy] = useState(false);
+    const [error, setError] = useState("");
+    const [done, setDone] = useState(false);
+    const locked = useRef(false);
+    async function submit(event: React.FormEvent) {
+        event.preventDefault();
+        if (locked.current)
+            return;
+        locked.current = true;
+        setBusy(true);
+        setError("");
+        try {
+            if (mode === "adult")
+                await apiRegisterAdult(name, username, password);
+            else
+                await register(name, username, password, classroomCode);
+            setDone(true);
+        }
+        catch (error) {
+            setError(error instanceof Error ? error.message : "Could not create your account. Please try again.");
+        }
+        finally {
+            setBusy(false);
+            locked.current = false;
+        }
     }
-  };
-
-  return (
-    <div className="min-h-screen bg-bg-base flex items-center justify-center p-4">
-      <div className="speakflow-card w-full max-w-md p-8 bg-white shadow-xl">
-        <div className="flex items-center gap-2.5 mb-6">
-          <span className="h-10 w-10 rounded-xl bg-accent-primary flex items-center justify-center shadow">
-            <BrandMark />
-          </span>
-          <p className="text-lg font-extrabold text-text-primary">SOVEN</p>
-        </div>
-
-        {done ? (
-          <div className="text-center py-6">
-            <CheckCircle2 className="w-14 h-14 text-status-complete mx-auto mb-4" />
-            <h1 className="text-xl font-extrabold text-text-primary mb-2">Account created! 🎉</h1>
-            <p className="text-sm text-text-secondary leading-relaxed">
-              Your teacher will approve it shortly. You&apos;ll be taken to the login page in a moment.
-            </p>
-          </div>
-        ) : (
-          <>
-            <h1 className="text-2xl font-extrabold text-text-primary">Join your class</h1>
-            <p className="text-sm text-text-secondary mt-1 mb-6">
-              Create your reader account. Your teacher approves new accounts before first login.
-            </p>
-
-            {error && (
-              <div className="mb-4 px-4 py-3 rounded-xl bg-red-50 border border-red-200 text-red-600 text-sm font-medium">
-                {error}
-              </div>
-            )}
-
-            <form onSubmit={submit} className="space-y-4">
-              <label className="block text-sm text-text-secondary">
-                Classroom code
-                <input value={classroomCode} onChange={(e) => setClassroomCode(e.target.value)} required
-                  className="mt-1 w-full px-3 py-2.5 border border-gray-200 rounded-xl" placeholder="Ask your teacher for the code" />
-              </label>
-              <div>
-                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-text-muted mb-1.5">
-                  Your name
-                </label>
-                <input
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                  autoFocus
-                  className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent-primary"
-                  placeholder="e.g. Ayaan Khan"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-text-muted mb-1.5">
-                  Username
-                </label>
-                <input
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                  className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent-primary"
-                  placeholder="letters, numbers, . _ -"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-mono font-bold uppercase tracking-wider text-text-muted mb-1.5">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  minLength={10}
-                  className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm bg-gray-50 focus:outline-none focus:ring-2 focus:ring-accent-primary"
-                  placeholder="at least 10 characters"
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={busy}
-                className="w-full py-3 rounded-xl bg-accent-primary-dark text-white text-sm font-bold shadow hover:bg-accent-primary transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
-              >
-                {busy && <Loader2 className="w-4 h-4 animate-spin" />}
-                Create My Account
-              </button>
-            </form>
-
-            <p className="text-sm text-text-secondary mt-6 text-center">
-              Already have an account?{" "}
-              <Link href="/login" className="font-bold text-accent-primary-dark hover:underline">
-                Sign in
-              </Link>
-            </p>
-          </>
-        )}
-      </div>
-    </div>
-  );
+    return <div className="soven-auth-page"><header className="soven-public-nav"><Brand /><Link href="/login">Already reading with us? <strong>Sign in</strong></Link></header>
+    <main className="soven-auth-grid"><aside className="soven-auth-art"><div><p className="soven-eyebrow">A CHAPTER JUST FOR YOU</p><h2>A little practice.<br />A little more possibility.</h2><p>There’s no rush. Start where you are.</p></div><Image src="/illustrations/reading-nook.webp" alt="A reader enjoying a book in a sunny room" width={960} height={640}/></aside>
+      <section className="soven-form-card">{done ? <div className="soven-success"><CheckCircle2 size={42}/><h1>Account created!</h1><p>{mode === "child" ? "Your teacher needs to approve and link your account before you can sign in. Ask them to check their Students page." : "Your personal reading space is ready. Sign in next to choose your languages and reading preferences."}</p><Link href="/login" className="soven-button">Go to sign in <ArrowRight size={17}/></Link></div> : <>
+        <p className="soven-eyebrow">LET’S GET TO KNOW YOU</p><h1>{mode === "child" ? "Join your class" : "Your reading journey starts here"}</h1><p className="soven-muted">Choose the reading space that’s right for you.</p>
+        <div className="soven-mode-switch" role="group" aria-label="Account type"><button disabled={busy} aria-pressed={mode === "child"} onClick={() => setMode("child")}><GraduationCap size={18}/>Classroom reader</button><button disabled={busy} aria-pressed={mode === "adult"} onClick={() => setMode("adult")}><UserRound size={18}/>Independent adult</button></div>
+        <form onSubmit={submit} className="soven-form">
+          {mode === "child" && <label>Classroom code<input value={classroomCode} onChange={e => setClassroomCode(e.target.value)} required maxLength={100} placeholder="Ask your teacher for the code"/><small>Your teacher approves new accounts before first login.</small></label>}
+          {mode === "adult" && <p className="soven-note">For adults reading independently. Your records belong to your own private reading space.</p>}
+          <label>Your name<input autoComplete="name" value={name} onChange={e => setName(e.target.value)} required maxLength={120} placeholder="What should we call you?"/></label>
+          <label>Username<input autoComplete="username" value={username} onChange={e => setUsername(e.target.value)} required maxLength={64} placeholder="letters, numbers, . _ -"/></label>
+          <label>Password<input autoComplete="new-password" type="password" value={password} onChange={e => setPassword(e.target.value)} required minLength={10} maxLength={256} placeholder="at least 10 characters"/></label>
+          <p className="soven-fine">Recordings in reading sessions go to the server for analysis. <Link href="/privacy">Read how data is used.</Link></p>
+          {error && <p role="alert" className="soven-error">{error}</p>}
+          <button disabled={busy} className="soven-button" type="submit">{busy ? "Creating your account…" : "Create My Account"}<ArrowRight size={17}/></button>
+        </form><p className="soven-fine">Want to check your microphone first? <Link href="/try">Try it here</Link></p>
+      </>}</section>
+    </main>
+  </div>;
 }

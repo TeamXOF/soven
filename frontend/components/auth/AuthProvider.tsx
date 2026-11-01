@@ -8,7 +8,7 @@ import { useDeferredEffect } from "@/hooks/useDeferredEffect";
 
 import {
 API_BASE_URL,
-AuthUser,Role,
+AuthUser,Role,ReaderProfile,
 apiLogout,
 clearSession,
 getStoredToken,getStoredUser,
@@ -22,6 +22,7 @@ type AuthContextType = {
   login: (username: string, password: string) => Promise<AuthUser>;
   register: (name: string, username: string, password: string, classroomCode: string) => Promise<string>;
   logout: () => Promise<void>;
+  setProfile: (profile: ReaderProfile) => void;
   isTeacher: boolean;
   hasRole: (role: Role) => boolean;
 };
@@ -83,11 +84,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(null);
   }, []);
 
+  const setProfile = useCallback((profile: ReaderProfile) => {
+    const token = getStoredToken();
+    const stored = getStoredUser();
+    if (!token || stored?.id !== profile.user_id) return;
+    const updated = { ...stored, profile, profile_completed: profile.profile_completed, reader_mode: profile.reader_mode };
+    storeSession(token, updated);
+    setUser(current => current?.id === profile.user_id ? updated : current);
+  }, []);
+
   const hasRole = useCallback((role: Role) => user?.role === role, [user]);
 
   return (
     <AuthContext.Provider
-      value={{ user, loading, login, register, logout, isTeacher: user?.role === "teacher", hasRole }}
+      value={{ user, loading, login, register, logout, setProfile, isTeacher: user?.role === "teacher", hasRole }}
     >
       {children}
     </AuthContext.Provider>

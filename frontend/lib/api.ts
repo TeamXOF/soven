@@ -685,11 +685,11 @@ export async function fetchV1Health(): Promise<V1Health> {
   return res.json();
 }
 
-export async function fetchStories(studentId?: string): Promise<StorySummary[]> {
+export async function fetchStories(studentId?: string, language?: ReadingLanguage): Promise<StorySummary[]> {
   const url = studentId
     ? `${API_ROOT}/api/v1/stories?student_id=${encodeURIComponent(studentId)}`
     : `${API_ROOT}/api/v1/stories`;
-  const res = await apiFetch(url);
+  const res = await apiFetch(url + (language ? `${studentId ? "&" : "?"}language=${language}` : ""));
   if (!res.ok) throw new Error("Failed to fetch stories");
   return res.json();
 }

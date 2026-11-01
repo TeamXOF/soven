@@ -1,4 +1,4 @@
-/* Real HTTP/profile storage plus the unchanged sign-in UI; synthetic data only. */
+/* Real HTTP/profile storage plus the existing sign-in flow; synthetic data only. */
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
@@ -22,7 +22,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     });
     assert.equal(response.status(), 201);
     checks.push('adult API registration succeeds without a classroom code');
-    await page.goto(base + '/login');
+    await page.goto(base + '/login?next=/dashboard');
     await page.getByPlaceholder('your username').fill('adult-ui-reader');
     await page.locator('input[type=password]').fill(password);
     const reply = page.waitForResponse(r => r.url().endsWith('/api/auth/login') && r.request().method() === 'POST');
@@ -35,7 +35,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     assert.equal(login.user.is_admin, 0);
     await page.waitForURL('**/dashboard');
     await page.getByRole('heading', { name: 'Reading Session Dashboard', exact: true }).waitFor();
-    checks.push('unchanged sign-in UI accepts the adult reader with no teacher privileges');
+    checks.push('existing sign-in flow accepts the adult reader with no teacher privileges');
     const headers = { Authorization: 'Bearer ' + login.token };
     response = await context.request.get(base + '/api/students/', { headers });
     const own = await response.json();
@@ -68,7 +68,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
     assert.equal(response.status(), 403);
     assert.deepEqual(errors, []);
     checks.push('teacher account management remains forbidden; no browser runtime errors');
-    const report = { success: true, scope: 'Isolated adult/profile API integration through real HTTP and unchanged login UI; no redesigned screens, real microphone or provider calls', checks, browser_runtime_errors: errors };
+    const report = { success: true, scope: 'Isolated adult/profile API integration through real HTTP and existing login flow; no physical microphone, live speech assessment or provider calls', checks, browser_runtime_errors: errors };
     fs.writeFileSync(path.join(process.env.VALIDATION_ENROLLMENT_OUT, 'accounts-results.json'), JSON.stringify(report, null, 2));
     process.stdout.write(JSON.stringify(report));
   } catch (error) {

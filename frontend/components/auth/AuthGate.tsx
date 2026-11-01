@@ -16,10 +16,10 @@ import { Loader2 } from "lucide-react";
 import { useAuth } from "./AuthProvider";
 
 const TEACHER_ONLY = ["/teacher", "/students", "/sessions", "/pipeline", "/reports", "/progress"];
-const STUDENT_ONLY = ["/dashboard"];
+const STUDENT_ONLY = ["/dashboard", "/home", "/books", "/book", "/my-progress", "/languages"];
 
 export function homeFor(role?: string | null): string {
-  return role === "teacher" ? "/teacher" : "/dashboard";
+  return role === "teacher" ? "/teacher" : "/home";
 }
 
 export default function AuthGate({ children }: { children: React.ReactNode }) {
@@ -33,6 +33,7 @@ export default function AuthGate({ children }: { children: React.ReactNode }) {
       router.replace(`/login?next=${encodeURIComponent(pathname || "/")}`);
       return;
     }
+    if (!isTeacher && user.profile_completed === false && ["/home", "/books", "/book", "/my-progress", "/languages"].some(p => pathname === p || pathname.startsWith(p + "/"))) { router.replace("/profile"); return; }
     const matches = (list: string[]) =>
       list.some((p) => pathname === p || pathname.startsWith(p + "/"));
 

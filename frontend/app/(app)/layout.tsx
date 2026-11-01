@@ -11,17 +11,17 @@ import AuthGate from "@/components/auth/AuthGate";
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <AuthGate>
-      <div className="flex h-screen overflow-hidden">
+      <div className="flex h-dvh overflow-hidden">
         {/* Sidebar */}
-        <div className="hidden md:block w-64 flex-shrink-0">
+        <div className="hidden md:block w-56 flex-shrink-0">
           <Sidebar />
         </div>
 
         {/* Main Content Area */}
-        <div className="flex-1 min-w-0 flex flex-col h-screen overflow-hidden">
+        <div className="flex-1 min-w-0 flex flex-col h-dvh overflow-hidden">
           <Topbar />
           <NotificationRegion />
-          <main className="flex-1 overflow-y-auto p-3 sm:p-6">{children}</main>
+          <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">{children}</main>
         </div>
 
       </div>

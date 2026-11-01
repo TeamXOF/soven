@@ -870,5 +870,25 @@ class AccountProfileRegressions(unittest.TestCase):
         self.assertEqual(self.client.get('/api/auth/profile?user_id=' + self.teacher, headers=headers).json()['profile']['user_id'], user['id'])
 
 
+    def test_book_catalogue_progress_is_language_specific_and_scoped(self):
+        user, headers = self.adult()
+        session = self.client.post('/api/v1/sessions', headers=headers,
+            json={'student_id': user['student_id'], 'story_id': 'story_forest_01', 'language':'en'}).json()
+        with get_db_connection() as conn:
+            for n in range(1, 6):
+                conn.execute("INSERT INTO checkpoint_results(id,session_id,checkpoint_id,target_text,transcript,wpm,accuracy,passed,stars) VALUES (?,?,?,?,?,60,100,1,3)",
+                    (uuid.uuid4().hex, session['session_id'], f'cp_{n}', 'target', 'target'))
+            conn.commit()
+        english = self.client.get('/api/v1/stories',headers=headers,params={'student_id':user['student_id'],'language':'en'})
+        urdu = self.client.get('/api/v1/stories',headers=headers,params={'student_id':user['student_id'],'language':'ur'})
+        self.assertEqual(english.status_code, 200)
+        self.assertEqual(english.json()[0]['passed_checkpoints'], 5)
+        self.assertFalse(english.json()[1]['locked'])
+        self.assertEqual(urdu.json()[0]['passed_checkpoints'], 0)
+        self.assertTrue(urdu.json()[1]['locked'])
+        self.assertEqual(self.client.get('/api/v1/stories',headers=headers,params={'language':'es'}).status_code,422)
+        self.assertEqual(self.client.get('/api/v1/stories',headers=headers,params={'student_id':self.child,'language':'en'}).status_code,403)
+
+
 if __name__=='__main__':
     unittest.main(verbosity=2)

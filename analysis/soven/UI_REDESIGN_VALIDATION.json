@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-01",
+  "verified_at_utc": "2026-11-01T15:15:49.190075+00:00",
+  "repository": "https://github.com/TeamXOF/soven",
+  "backend": "62 isolated regressions passed",
+  "frontend_lint": "passed, zero findings",
+  "typescript": "standalone check passed",
+  "production_build": "passed, 28 generated pages plus dynamic routes",
+  "browser_reports": {
+    "enrollment": {
+      "checks": 9,
+      "browser_runtime_errors": [],
+      "scope": "Isolated temporary database, real UI and HTTP, synthetic accounts only"
+    },
+    "dashboard": {
+      "checks": 12,
+      "browser_runtime_errors": [],
+      "scope": "UI scenarios: synthetic accounts, isolated real auth, fake microphone, controlled reading responses; no physical speech-quality claim"
+    },
+    "accounts": {
+      "checks": 6,
+      "browser_runtime_errors": [],
+      "scope": "Isolated adult/profile API integration through real HTTP and existing login flow; no physical microphone, live speech assessment or provider calls"
+    },
+    "soven-ui": {
+      "checks": 18,
+      "browser_runtime_errors": [],
+      "scope": "Real isolated HTTP auth/profile/catalogue, fake microphone, controlled book analysis responses; not a live speech assessment, physical-device or provider validation"
+    }
+  },
+  "total_browser_checks": 45,
+  "keyboard_checks": "Enter activates book opening and next-page controls",
+  "visual_review": "Desktop landing/home/library/reader and narrow English/Urdu screenshots inspected; final artwork decoded before capture",
+  "microphone": "Fake-device and denied/late-permission scenarios; not a new physical microphone/STT benchmark",
+  "privacy": "Public sample stays browser-local without upload; approved book analysis reaches the server",
+  "runtime_languages": "English/Urdu enabled; 89 candidates; 70+ goal remains planned",
+  "meta_runtime": "Not implemented; real permitted provider configuration still required",
+  "profile_rollout": "New-journey profile routing active; backend-wide enforcement remains opt-in for legacy compatibility",
+  "checklist": {
+    "done": 28,
+    "open": 30
+  },
+  "remote_ci": "completed: success; fresh Linux backend/frontend installation and all checks",
+  "limitations": [
+    "Anonymous sample AI analysis not implemented",
+    "No free-form conversational coach or new neural TTS service",
+    "No new child/Urdu speech-quality validation",
+    "No physical phone/iOS Safari or educator trial",
+    "No public deployment, consent/deletion administration or sustained classroom capacity claim"
+  ],
+  "scope": "Real isolated account/profile/catalogue/session HTTP; synthetic users, fake microphone, controlled analysis/word-tip responses; no production DB or hosted provider calls",
+  "validated_code_commit": "be43927230184c9e02c1ebbc8611202c79aa1399",
+  "ci_url": "https://github.com/TeamXOF/soven/actions/runs/41321003114"
+}

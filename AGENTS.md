@@ -13,4 +13,7 @@ The current public repository is TeamXOF/soven. Use the live checklist in analys
 
 shared/languages.json is the language inventory. Regenerate Python/TypeScript contracts with python tools/build_language_types.py and run --check. Candidate entries are not runtime support claims; enable a language only after its required content, speech, segmentation and feedback gates pass. Keep public capabilities metadata separate from protected inference and user records.
 
-The owner reserves UI design selection. Account/profile APIs are ready; read analysis/soven/14_ACCOUNT_PROFILE_API.md. Stop before UI redesign and obtain the owner's preferred design. Do not enable ENFORCE_PROFILE_COMPLETION before usable completion forms/routing exist. Storing language/accessibility preferences does not apply settings or enable candidate-language engines.
+The owner supplied two illustrated UI references and authorized implementation. Read analysis/soven/14_ACCOUNT_PROFILE_API.md and 15_UI_DESIGN_AND_IMPLEMENTATION.md. The connected forms/library/book reader apply optional settings; candidate-language preferences still do not enable reading engines. Strict backend profile enforcement remains opt-in for legacy compatibility.
+
+
+The owner has now supplied two cream/coral illustrated reading-platform references and explicitly authorized implementation without further permission. The UI design hold is resolved. Follow analysis/soven/15_UI_DESIGN_AND_IMPLEMENTATION.md, retain the approved SOVEN logo and accurate capability/privacy copy. Do not substitute sample statistics for user history.

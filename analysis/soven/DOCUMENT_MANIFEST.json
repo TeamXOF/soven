@@ -14,10 +14,10 @@
         },
         {
           "path": "02_CURRENT_STATE.md",
-          "sha256": "ed59fe3276bd4e54e202d57b440563434307fc390995ec26a0efd973d5d32349"
+          "sha256": "11041e7059f2966e4113324a2fe741ce6cce73820b004a005fc6b68bc3cbb7b6"
         }
       ],
-      "sha256": "437c45ddaef325bd94c8a35c492aa25e747853ad48a89e62a3233c398b0b9e4b",
+      "sha256": "41cb75703a578d2acf5ba43511532641a22999e9760f644dca8f0903a265d0c0",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -26,10 +26,10 @@
       "sources": [
         {
           "path": "03_ARCHITECTURE.md",
-          "sha256": "58753f5f6508d61bbc39eed728cbba77db7a064e58651a86b1ba93e743592740"
+          "sha256": "d5bd441c2ee44c9a9029fa4fff79efa07868ce801cbd8abe6d5bf05f170822fd"
         }
       ],
-      "sha256": "a51e511997a9bff4c4113ee991c4b9eddf5dc64c1362020ce551123f956a0618",
+      "sha256": "7b572e1690ba3efebd6c5b9911bf046923deb03ddec96b02361194aa53a2c896",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -38,14 +38,14 @@
       "sources": [
         {
           "path": "04_PRODUCT_REQUIREMENTS.md",
-          "sha256": "42ef600441962a5eb75f63da4f8a6e61c974ab13961bc7bfaf32662616483762"
+          "sha256": "7ebc1a310e270360703bda57aa0997fc4dd818d9af9e3cdf1d165fa3a80cd6d1"
         },
         {
           "path": "05_SOURCE_REVIEW.md",
           "sha256": "c39beb6148f3f06cbec39cf5332b4899012686cabfbbff07b4bb4d457664ff8e"
         }
       ],
-      "sha256": "da467aa683aeded89a41d0e8efab1ca97146564e1eab59106b1fea512ab1e402",
+      "sha256": "1734c31c8860e4e38395360c54db385d2f2b0bd780472e409a317e4a42065349",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -57,7 +57,7 @@
           "sha256": "85cb16b8f0dcbe8afb6f820a1da8e89ac9a50f661a198cdf5d77c4118bb63646"
         }
       ],
-      "sha256": "9c693442efb58617f097df847e3a4181ae26f26f40b1279169073e2a7c48a13e",
+      "sha256": "0a45182f4f50d295e7c9bd0b904c8c22c9cc9736f84cda91e01a14c724da574d",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -66,18 +66,18 @@
       "sources": [
         {
           "path": "07_IMPLEMENTATION_ROADMAP.md",
-          "sha256": "6b9583932b7590d53b16f22d37fca60336611fde74fb1d8d640edab5b8a7a2b0"
+          "sha256": "2a670b2bf5eecbfe534e793cc389438e1e755527dd878a8770c4f6af3409e8fc"
         },
         {
           "path": "10_DECISIONS_AND_HANDOFF.md",
-          "sha256": "dac4f3dc80b31ad02d0cfd4771b8cec0c97cc04dac4be596e2d441e5c058375a"
+          "sha256": "f863af983e2033d32f15aeeb306bb37cbf089282613396b731013a836a856b7e"
         },
         {
           "path": "11_PRODUCT_DEFAULTS.md",
-          "sha256": "4cea5ef183a60772f3e49c922b4231df74d1c8bb5bba6ec34d03dfaea03e181f"
+          "sha256": "c49c19912a2d47f7a57584e1d824ce5f3e8053a50df136f9959c25027b726ee5"
         }
       ],
-      "sha256": "e5a26de4ce6ce38aa8362e4073f6c92b70e39592e3aa0135954d21195cd58102",
+      "sha256": "7f99e39b7146eb7de0c2d13218ad2d027534dfded78a1b9f410bbfd19bc97ef9",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -86,7 +86,7 @@
       "sources": [
         {
           "path": "08_VALIDATION_AND_OPERATIONS.md",
-          "sha256": "476fb860e3e7fa14531503e747d86a4de31769533e2a12ab7e4de0bc966aa32e"
+          "sha256": "271d1fd44f794494132cbc03aae433e8c92237c187f0a88faf87ce03b1421773"
         },
         {
           "path": "09_BRAND_AND_REPOSITORY.md",
@@ -98,7 +98,7 @@
         },
         {
           "path": "DELIVERY_STATUS.json",
-          "sha256": "482fc71ca1c1976adbb8eec991eb5cf5f630c039528fa44fb6b6d18cad1f571b"
+          "sha256": "245eff4d020464dacfbfa20f82ab1bbd4fa2671fd5c7f9084b6e2dac2ea1cb95"
         },
         {
           "path": "FOUNDATION_VALIDATION.json",
@@ -107,9 +107,13 @@
         {
           "path": "ACCOUNT_PROFILE_VALIDATION.json",
           "sha256": "a1977acc9afcf2b88543973b3160fa779fa2e88cc149b93f25a743fb56cb8d5e"
+        },
+        {
+          "path": "UI_REDESIGN_VALIDATION.json",
+          "sha256": "a637bade66569f24ef1d91f5646efdc0b6d536f853dacbb65415882ed69e3f99"
         }
       ],
-      "sha256": "522ee5e2c3e4c13058841c0a228b02f9854fdaeeeb98bb50d798497959e8c792",
+      "sha256": "7b98d361d477b846309df4d4f9f6afd1b4b8ad1febb345349e7d0fe845fb5776",
       "render_review": "see DOCUMENT_QA.json"
     }
   ]

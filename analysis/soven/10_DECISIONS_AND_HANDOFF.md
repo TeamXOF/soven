@@ -61,3 +61,7 @@ The source project predates this Meta event. A local repair pass established aut
 ## Latest completion record
 
 TRANSFER_RECEIPT verifies the ownership move. 07_IMPLEMENTATION_ROADMAP.md is the live checklist; 12_EXECUTION_LOG.md contains completed work and next dependencies. Real provider access, available credits/budget and additional team identities remain external inputs; no paid provisioning or invitations are inferred.
+
+## Owner approved UI reference implementation
+
+D12 The owner supplied two illustrated reading-platform screenshots and explicitly asked implementation to continue without permission questions. The earlier D11 design hold is resolved. Adopt cream/coral/dark navigation, storybook illustrations, calm cards and responsive book pages while retaining SOVEN identity. Example statistics, clinical claims and inaccurate local-only promises in the images are not product facts. See 15_UI_DESIGN_AND_IMPLEMENTATION.md. Keep documenting completed tasks and evidence; provider/budget/physical validation dependencies remain open.

@@ -4,7 +4,7 @@
 
 SOVEN is a reading-practice platform with word-level feedback and teacher tools, building toward accessible storybook learning and **70+ languages**. English and Urdu are the current working reading tracks; broader coverage is planned.
 
-**Current stage:** the repaired SpeakFlow baseline, multilingual inventory and account/profile backend are established under SOVEN branding. Adult signup/profile APIs are ready; their screens await the owner-selected design. The new book UI, 70+ language rollout, introductory voice test and Meta runtime integration are planned; they are not active features yet.
+**Current stage:** a connected cream/coral illustrated interface with public landing, child/adult signup, saved profiles, a real-data reader home, bookshelf and checkpoint book reader. The introductory microphone check records and plays back in the browser without uploading audio. Meta integration, 70+ runtime language coverage and public deployment remain planned.
 
 [Start here](analysis/soven/00_START_HERE.md) · [Current state](analysis/soven/02_CURRENT_STATE.md) · [Setup](docs/SETUP.md) · [Roadmap](analysis/soven/07_IMPLEMENTATION_ROADMAP.md) · [Handoff documents](analysis/soven/DOCUMENT_MANIFEST.json)
 
@@ -13,16 +13,18 @@ SOVEN is a reading-practice platform with word-level feedback and teacher tools,
 - Recorded reading with word-match feedback, target/recognized word comparisons and focused practice.
 - English and Urdu reading paths, browser word/sentence playback and language-specific history.
 - Teacher-managed classrooms, child signup and approval, optional existing-profile linking, roster analytics and reports.
-- Independent adult account API, private reader scope, versioned profile settings and separate language preferences. Signup/profile UI is pending; completion enforcement defaults off.
+- Independent adult account API, private reader scope, versioned profile settings and separate language preferences. Connected signup/profile UI is implemented; strict backend completion enforcement remains opt-in for legacy compatibility.
 - Classic dashboard, fixed story checkpoints and dynamic reading levels sharing reporting and scoring.
 - Cached local Whisper support, explicit offline mode, bounded processing, persistent coaching and optional authenticated archival sync.
 - Quiet page-flow warnings/errors, clear fallback labels and guarded recording/account lifecycles.
 
 Hosted reasoning currently uses Google; online speech uses Groq with local Whisper fallback. No Meta integration is claimed by this branding delivery. Word match is transcript agreement, not validated pronunciation assessment or a dyslexia diagnosis.
 
-## Current dashboard
+## Illustrated reading experience
 
-![SOVEN reading dashboard](assets/screenshots/soven-dashboard-english.png)
+![SOVEN landing page](assets/screenshots/soven-landing.png)
+
+![SOVEN illustrated book reader](assets/screenshots/soven-book-reader.png)
 
 These screenshots use synthetic validation accounts and controlled results.
 
@@ -68,7 +70,7 @@ Important limits remain: the prior child-speech holdout flagged 29/110 expert-ac
 
 ## SOVEN roadmap
 
-Planned: a simple landing/how-to flow, optional introductory sample, complete profiles, accessible responsive book pages, spoken coach turns, descriptive audio graphs, a staged 70+ language rollout including Spanish, and optional language-learning tools. The [requirements](analysis/soven/04_PRODUCT_REQUIREMENTS.md), [source review](analysis/soven/05_SOURCE_REVIEW.md) and [Meta plan](analysis/soven/06_META_PROVIDER_PLAN.md) explain dependencies and open decisions.
+Implemented mechanics: landing/how-to, local microphone check, connected profiles and responsive illustrated book pages. Remaining: anonymous AI sample feedback, conversational coach turns, descriptive audio graphs, a staged 70+ language rollout including Spanish, and optional language-learning tools. The [requirements](analysis/soven/04_PRODUCT_REQUIREMENTS.md), [source review](analysis/soven/05_SOURCE_REVIEW.md) and [Meta plan](analysis/soven/06_META_PROVIDER_PLAN.md) explain dependencies and open decisions.
 
 ## Origin and license
 

@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "scope": "Real isolated HTTP auth/profile/catalogue, fake microphone, controlled book analysis responses; not a live speech assessment, physical-device or provider validation",
+  "checks": [
+    "illustrated public landing and navigation fit desktop and 390px mobile",
+    "intro microphone capture and playback stay browser-local with zero analysis uploads",
+    "late microphone permission after navigation closes tracks without retaining capture",
+    "microphone denial remains visible inline and leaves signup available",
+    "independent adult signup form uses real registration without classroom code",
+    "profile completion form saves distinct languages and accessibility then opens honest empty home",
+    "saved preferences and reader identity survive page reload",
+    "real three-book catalogue, search and sequential unlock states render",
+    "real book session opens stable target text with applied larger text and guarded next page",
+    "book recording submits once, locks controls, labels real source and controlled fallback feedback",
+    "tap-word guidance and user-requested spoken feedback keep template/source labels",
+    "next page clears prior result and uses the next real target sentence",
+    "analysis failure stays inline with a recording retry",
+    "Urdu target text uses Nastaliq, RTL and a single-page mobile layout",
+    "late book analysis cannot populate the bookshelf after navigation",
+    "planned languages are visible without a false runtime selection",
+    "Urdu interface preference and high contrast persist and apply in the new reader journey",
+    "offline notice explains the reachable-server requirement without claiming browser-local inference"
+  ],
+  "browser_runtime_errors": [],
+  "analysis_submissions": 3
+}

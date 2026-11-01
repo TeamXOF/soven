@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-01",
+  "generator": "Built-in image_gen",
+  "prompts": "15_UI_DESIGN_AND_IMPLEMENTATION.md artwork section",
+  "logo_changed": false,
+  "assets": [
+    {
+      "path": "frontend/public/illustrations/forest.webp",
+      "sha256": "294ffa431fcd64b272bb2f320cc5c1d1b447cede1db402dcff91ddb59c76398c",
+      "bytes": 427058,
+      "format": "WebP raster",
+      "origin": "Built-in image_gen, then responsive WebP encoding"
+    },
+    {
+      "path": "frontend/public/illustrations/ocean.webp",
+      "sha256": "8da2ddcc13670bcba08d185014c60d39d0b085057fc1f9c3edb9940a832c4347",
+      "bytes": 419756,
+      "format": "WebP raster",
+      "origin": "Built-in image_gen, then responsive WebP encoding"
+    },
+    {
+      "path": "frontend/public/illustrations/reading-nook.webp",
+      "sha256": "a891664806b72cfd4edcf85cc7a86329a493ec0e65d9d3168031242892c6dab7",
+      "bytes": 172316,
+      "format": "WebP raster",
+      "origin": "Built-in image_gen, then responsive WebP encoding"
+    },
+    {
+      "path": "frontend/public/illustrations/space.webp",
+      "sha256": "71b5e0343eb0d003d7d9f2e626446cf612d58d2a56f6d707b1867953b63739e2",
+      "bytes": 304536,
+      "format": "WebP raster",
+      "origin": "Built-in image_gen, then responsive WebP encoding"
+    }
+  ]
+}

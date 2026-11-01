@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "scope": "UI scenarios: synthetic accounts, isolated real auth, fake microphone, controlled reading responses; no physical speech-quality claim",
+  "checks": [
+    "clear idle panels without blur or diagnostic labels",
+    "chart filters two English readings from mixed-language history",
+    "recording and processing lock controls; duplicate stop submits once",
+    "completed word comparisons, fallback guidance and friendly progress text",
+    "exercise becomes next target and clears the previous result",
+    "failure visible inline; dismissal survives bell reads and navigation",
+    "new updates do not resurrect dismissed alerts; legacy sources remain unknown",
+    "repeating the same exercise also starts a clean session",
+    "missing and extra recognized words appear in review",
+    "late sentence response cannot overwrite a newer language selection",
+    "Urdu feedback and exercises use RTL; chart filters Urdu; narrow layout fits",
+    "late unauthorized response cannot populate or log out the next account"
+  ],
+  "browser_runtime_errors": []
+}

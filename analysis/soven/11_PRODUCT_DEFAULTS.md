@@ -30,4 +30,6 @@ Mark work complete only after its stated check passes and the evidence is record
 
 ## Implementation checkpoint before design
 
-The account/profile backend now stores separate language and accessibility preferences and exposes a versioned owner-only API. New child/adult accounts begin incomplete; migrated accounts remain complete. Completion enforcement is implemented but disabled by default until UI routing exists. Settings storage does not apply the redesigned presentation. The owner requested a design choice before UI changes; obtain that reference before implementing the new screens.
+The account/profile backend now stores separate language and accessibility preferences and exposes a versioned owner-only API. New child/adult accounts begin incomplete; migrated accounts remain complete. Completion enforcement is implemented but disabled by default until UI routing exists. Settings storage does not apply the redesigned presentation. The owner has since supplied the references and the illustrated UI is implemented; see 15_UI_DESIGN_AND_IMPLEMENTATION.md.
+
+The owner-selected UI references now supersede the prior design hold. The account/profile forms and illustrated reading journey implement those preferences. The introductory public sample is deliberately browser-local microphone recording/playback only; anonymous AI feedback remains a separate bounded-service task. New reader routes guide incomplete profiles to /profile, while backend-wide enforcement remains opt-in for legacy compatibility.

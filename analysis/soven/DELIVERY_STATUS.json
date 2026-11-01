@@ -8,12 +8,13 @@
   "original_source_documents": "kept local; not uploaded",
   "git_history": "clean import; prior source history not carried",
   "brand": "Owner-selected concept C; white primary logo with symbol and SOVEN only; no tagline or feature list",
-  "handoff": "15 maintained numbered guides and six DOCX companions; live checklist and account/profile API handoff",
-  "no_new_product_features": "Adult/profile APIs are implemented; UI forms, introductory sample, book UI, Spanish engine and real Meta adapter remain pending",
-  "updated_at_utc": "2026-11-01T11:12:15.544300+00:00",
+  "handoff": "16 numbered maintained guides and six DOCX companions, with UI route/artwork/validation handoff",
+  "no_new_product_features": "Illustrated entry/account/profile/library/book mechanics implemented; anonymous AI sample, free-form coach, 70+ runtime languages, Meta adapter and production deployment remain pending",
+  "updated_at_utc": "2026-11-01T15:15:49.191096+00:00",
   "language_goal": "70+ planned; English and Urdu currently implemented; Spanish is one future addition",
   "foundation": "89-candidate registry; en/ur enabled; shared generated types; read-only capabilities; explicit language gates",
   "transfer_receipt": "TRANSFER_RECEIPT.json",
-  "next_task": "Owner design selection before UI redesign; completion gate stays off until forms/routing exist",
-  "accounts": "Independent adult personal scopes; versioned owner profile API; four-language preferences; additive v3 migration"
+  "next_task": "Permitted provider configuration, stronger speech/content validation, anonymous sample service design and physical-device/rollout gates",
+  "accounts": "Independent adult personal scopes; versioned owner profile API; four-language preferences; additive v3 migration",
+  "ui": "Owner reference boards implemented with real account/profile/books APIs, browser-local sample and guarded checkpoint reader"
 }

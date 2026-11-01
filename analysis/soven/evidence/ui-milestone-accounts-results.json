@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "scope": "Isolated adult/profile API integration through real HTTP and existing login flow; no physical microphone, live speech assessment or provider calls",
+  "checks": [
+    "adult API registration succeeds without a classroom code",
+    "existing sign-in flow accepts the adult reader with no teacher privileges",
+    "adult roster contains only its reader; existing school data is inaccessible",
+    "four language preferences and completion persist through real HTTP and page reload",
+    "stale profile saves return a conflict",
+    "teacher account management remains forbidden; no browser runtime errors"
+  ],
+  "browser_runtime_errors": []
+}

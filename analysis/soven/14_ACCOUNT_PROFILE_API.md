@@ -1,6 +1,6 @@
 # SOVEN account and profile integration
 
-The account backend is ready for the next UI stage. This reference covers implemented API behavior and the remaining design integration. No redesigned signup, profile or book screen is delivered by these endpoints. The owner will choose the UI before those screens change.
+The account backend is ready for the next UI stage. This reference covers implemented API behavior and the remaining design integration. The later owner-approved UI now connects these endpoints through signup, profile and book screens. See 15_UI_DESIGN_AND_IMPLEMENTATION.md; the API contracts below remain authoritative.
 
 ## Adult registration and login
 
@@ -38,11 +38,11 @@ ENFORCE_PROFILE_COMPLETION defaults to 0 because completion forms do not exist y
 
 Migration v3 adds classroom kind/owner and user_profiles. It preserves historical scores, tokens and readers. Existing versioned v2 databases receive a before-profiles backup before changes; protect it privately. Repeated initialization preserves existing profile values and versions. A missing profile for an older direct integration receives legacy defaults on read; a later save materializes it transactionally. Never classify an old technical student record as adult without an explicit future migration decision.
 
-## Frontend integration remaining after design selection
+## Frontend integration checkpoint
 
-frontend/lib/api.ts exports apiRegisterAdult, fetchReaderProfile, saveReaderProfile and typed request/results. These helpers do not mutate auth state. The chosen UI still needs an adult signup option, profile form, completion routing, accessible conflict/error states, auth refresh and applied settings. Resolve reading/interface/native/translation independently. Deliberately reconcile existing browser preferences rather than silently resetting them on first login. Use request identity/version guards so a late response cannot affect another account. The existing AuthProvider cancellation rules remain in place.
+frontend/lib/api.ts exports apiRegisterAdult, fetchReaderProfile, saveReaderProfile and typed request/results. These helpers do not mutate auth state. The owner-selected UI now includes adult signup, a profile form, new-journey completion routing, accessible conflict/error states, guarded auth refresh and applied settings. Legacy routes retain compatibility and strict backend-wide enforcement stays opt-in. Resolve reading/interface/native/translation independently. Deliberately reconcile existing browser preferences rather than silently resetting them on first login. Use request identity/version guards so a late response cannot affect another account. The existing AuthProvider cancellation rules remain in place.
 
-Legacy StudentBinding still uses child-focused grade/level labels; remove these assumptions when the adult UI ships. Do not enable profile enforcement before the new completion route is usable. Test child/adult/teacher/migrated sessions, stale saves, logout during save, denied microphone and page navigation in the final design. No raw speech, real provider or physical-device quality claim follows from these API tests.
+StudentBinding now distinguishes independent and classroom readers rather than inventing a Grade 3 label for adult users. Do not enable profile enforcement before the new completion route is usable. Test child/adult/teacher/migrated sessions, stale saves, logout during save, denied microphone and page navigation in the final design. No raw speech, real provider or physical-device quality claim follows from these API tests.
 
 ## Acceptance evidence
 

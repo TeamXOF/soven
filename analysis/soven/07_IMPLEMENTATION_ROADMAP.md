@@ -33,30 +33,37 @@ The current code uses the repaired reading baseline. The target is a worldwide p
 
 ## Milestone three entry profiles and accounts
 
-- [ ] M3.1 Create the landing/how-to flow with one obvious reading action and a route for teachers.
-- [ ] M3.2 Add the skippable short introductory sample before signup with permission, retry, anonymous rate/cost limits and accurate data-flow copy.
+- [x] M3.1 Create the public landing/how-to flow, clear start action and teacher sign-in. Evidence: / and UI_REDESIGN_VALIDATION.json.
+- [x] M3.2a Add a skippable 20-second browser-local microphone check with actual playback, permission/error handling and retry. No audio upload or AI score.
+- [ ] M3.2b Add anonymous sample STT/feedback only after explicit server cost/rate/retention limits and consent are designed; keep the introductory sample non-diagnostic.
 - [x] M3.3a Add backend profile state, child/adult/teacher modes and optional accessibility preferences. Evidence: core/reader_profiles.py and authenticated GET/PATCH /api/auth/profile.
 - [x] M3.3b Add a tested completion enforcement gate with a recovery path. ENFORCE_PROFILE_COMPLETION defaults to 0 until the profile UI is usable; legacy accounts are grandfathered.
-- [ ] M3.3c Build profile forms, completion routing and applied accessibility settings after the owner chooses the UI design. Stored settings alone do not apply presentation changes.
+- [x] M3.3c Build connected versioned profile forms, new-journey completion routing and applied larger text/spacing/contrast/word/coach settings. Strict backend-wide enforcement remains opt-in for legacy compatibility.
 - [x] M3.4a Add independent adult registration with private owner-bound records; preserve classroom approval and child-first linking. Evidence: POST /api/auth/register-adult and isolation regressions.
-- [ ] M3.4b Expose the adult signup choice and forms in the owner-selected UI. The existing signup page remains the child/classroom flow.
+- [x] M3.4b Expose independent adult and classroom signup forms in the approved cream/coral design. Real HTTP registration and child approval/linking pass.
 - [x] M3.5a Persist separate language preferences and migration defaults, backup version-2 databases and preserve historical attempts. Evidence: migration/idempotency/concurrent-save tests.
-- [ ] M3.5b Connect server preferences to the new UI without overwriting existing browser choices or allowing stale account responses to apply settings.
+- [x] M3.5b Connect saved account preferences to the new UI, preserve unsaved legacy browser choices, and guard account/token identity on updates.
 - [x] M3.6a Verify account APIs, migration, concurrency, existing child linking and adult login/profile persistence with synthetic isolated tests. Evidence: ACCOUNT_PROFILE_VALIDATION.json.
-- [ ] M3.6b Verify the complete new onboarding forms, routing, expired identity and denied-microphone journeys after those screens exist.
+- [x] M3.6b Verify real adult forms/profile routing and browser denial/cancellation, plus preserved child approval and late-identity regressions. Evidence: isolated UI and compatibility scenarios.
+- [ ] M3.6c Validate the complete onboarding journey on physical target devices and agree public child consent/age handling; browser automation is not that validation.
 
 ## Milestone four accessible responsive book
 
-- [ ] M4.1 Build an illustrated desktop spread and single-page mobile sequence over shared reading state.
-- [ ] M4.2 Start with reviewed, age-appropriate passages; keep generated drafts separate until content checks pass.
-- [ ] M4.3 Add keyboard/touch navigation, stable target text, clear recording states and retry/next-page progression.
-- [ ] M4.4 Add optional typography, line-height/spacing, contrast and pace controls appropriate to each script.
-- [ ] M4.5 Pass an end-to-end book on desktop and a physical target phone, including RTL and long text.
+- [x] M4.1 Build an illustrated desktop spread and single-page mobile sequence using real checkpoint sessions; English/Urdu browser layouts pass.
+- [x] M4.2a Connect the existing authored three-story English/Urdu corpus and generate matching cover/hero artwork with provenance.
+- [ ] M4.2b Complete editorial, age-suitability and educator review of starter passages before learner release; do not treat existing content or artwork as validated review.
+- [x] M4.3 Add native accessible controls, stable targets, explicit recording/processing states, duplicate-submit protection, retry and guarded next-page progression. Physical touch validation remains M4.5.
+- [x] M4.4a Apply saved larger text, script-aware line spacing and high contrast to the new reader, with reduced-motion support.
+- [ ] M4.4b Add user-adjustable playback/pace controls and validate script-specific accessibility with intended users.
+- [x] M4.5a Pass desktop and narrow-browser book opening, capture, feedback, retry, next-page and Urdu RTL scenarios. Synthetic microphone/controlled analysis scope is explicit.
+- [ ] M4.5b Validate full-book completion, long text and audio interruption on physical target phones, including iOS Safari.
 
 ## Milestone five spoken coaching and statistics
 
-- [ ] M5.1 Add short user-requested/end-of-sentence coach turns as the default; automatic interruption stays optional future work.
-- [ ] M5.2 Add word/sentence demonstrations, TTS voice discovery, mute/stop and retry without simultaneous listening/playback.
+- [x] M5.1a Display existing post-reading guidance and add user-requested spoken playback with stop/unavailable-voice handling; capture stops speech first.
+- [ ] M5.1b Build actual conversational coach turns and validate timing/latency; do not call one-way guidance free-form conversation. Automatic interruption remains deferred.
+- [x] M5.2a Add word/page browser demonstrations, authenticated word tips, source labels, stop control and no simultaneous capture/playback.
+- [ ] M5.2b Validate target-device voice coverage and any new TTS/provider/cache strategy before promising offline spoken support.
 - [ ] M5.3 Reject stale coach turns and make uncertain recognition invite another attempt.
 - [ ] M5.4 Add interpretable pause/pitch/energy graphs and separately defined WCPM, without speed deductions or emotion/health claims.
 - [ ] M5.5 Test provider failure, unavailable voices, navigation, repeated attempts and real-device latency.
@@ -85,4 +92,4 @@ After each task: implement, verify, update its checkbox, add a dated execution-l
 
 ## Current design boundary
 
-The owner asked to choose the design before UI redesign starts. Account/profile APIs and storage are ready. Stop here for the owner's design reference before M3.1, M3.2, M3.3c, M3.4b, M3.5b or book UI work. Do not turn the completion gate on while the UI has no completion form. Provider and speech-quality work remains independently waiting on the dependencies above.
+The owner supplied the two illustrated references and explicitly authorized implementation. The hold is resolved. The connected cream/coral entry/account/library/book journey is implemented; see 15_UI_DESIGN_AND_IMPLEMENTATION.md and UI_REDESIGN_VALIDATION.json. The next dependencies are anonymous sample service design, permitted provider configuration, stronger speech/content validation and physical-device/public-rollout work. Strict backend completion enforcement remains opt-in for compatibility with legacy routes.

@@ -1,8 +1,8 @@
 {
-  "files_checked": 244,
+  "files_checked": 276,
   "findings": [],
   "scope": "Exact export file content and size; excludes dependencies, ignored QA/runtime directories and Git objects.",
   "review_date": "2026-11-01",
-  "revision": "Account/profile API and UI design handoff",
-  "public_language_inventory": "89 candidates; enabled en/ur; no provider credentials or learner records"
+  "revision": "Illustrated connected UI and handoff",
+  "public_language_inventory": "89 candidates; en/ur enabled; no private learner data or credentials"
 }

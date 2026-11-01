@@ -612,5 +612,263 @@ class EnrollmentRegressions(unittest.TestCase):
             self.assertEqual(conn.execute('SELECT student_id FROM users WHERE id=?',(child['id'],)).fetchone()[0],original)
 
 
+class AccountProfileRegressions(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        init_db()
+        cls.client = TestClient(app)
+
+    def setUp(self):
+        self.limiter = patch('core.middleware._limited', return_value=False)
+        self.limiter.start()
+        self.addCleanup(self.limiter.stop)
+        self.school = 'profile-school-' + uuid.uuid4().hex
+        self.teacher = 'teacher-' + uuid.uuid4().hex
+        self.child = 'child-' + uuid.uuid4().hex
+        with get_db_connection() as conn:
+            conn.execute('INSERT INTO classrooms(id,join_code) VALUES (?,?)', (self.school, self.school))
+            conn.execute('INSERT INTO students(id,name,grade,classroom_id) VALUES (?, ?,3,?)',
+                         (self.child, 'Classroom reader', self.school))
+            conn.execute("INSERT INTO users(id,username,name,password_hash,role,status,classroom_id) VALUES (?,?,?,?,'teacher','approved',?)",
+                         (self.teacher, self.teacher, 'Profile teacher', hash_password('profile-test-password'), self.school))
+            conn.execute("INSERT INTO auth_tokens(token,user_id,expires_at) VALUES (?,?,datetime('now','+1 day'))",
+                         (self.teacher, self.teacher))
+            conn.commit()
+        self.teacher_headers = {'Authorization': 'Bearer ' + self.teacher}
+
+    def adult(self, username=None):
+        username = username or 'adult-' + uuid.uuid4().hex
+        password = 'adult-test-password'
+        response = self.client.post('/api/auth/register-adult', json={
+            'name': 'Independent reader', 'username': username, 'password': password})
+        self.assertEqual(response.status_code, 201, response.text)
+        response = self.client.post('/api/auth/login', json={'username': username, 'password': password})
+        self.assertEqual(response.status_code, 200, response.text)
+        payload = response.json()
+        return payload['user'], {'Authorization': 'Bearer ' + payload['token']}
+
+    def profile(self, headers):
+        response = self.client.get('/api/auth/profile', headers=headers)
+        self.assertEqual(response.status_code, 200, response.text)
+        return response.json()['profile']
+
+    def test_adult_registration_creates_one_private_reader(self):
+        user, headers = self.adult()
+        self.assertEqual(user['role'], 'student')
+        self.assertEqual(user['reader_mode'], 'adult')
+        self.assertEqual(user['account_scope'], 'personal')
+        self.assertEqual(user['status'], 'approved')
+        self.assertFalse(user['is_admin'])
+        self.assertFalse(user['profile_completed'])
+        self.assertNotIn('classroom_code', user)
+        self.assertNotIn('password_hash', user)
+        self.assertEqual([r['id'] for r in self.client.get('/api/students/', headers=headers).json()], [user['student_id']])
+        with get_db_connection() as conn:
+            scope = conn.execute('SELECT * FROM classrooms WHERE id=?', (user['classroom_id'],)).fetchone()
+            self.assertEqual(scope['owner_user_id'], user['id'])
+            self.assertNotIn(scope['join_code'], json.dumps(user))
+            student = conn.execute('SELECT * FROM students WHERE id=?', (user['student_id'],)).fetchone()
+            self.assertEqual(student['parent_update_enabled'], 0)
+            self.assertEqual(student['grade'], 0)
+
+    def test_adult_school_and_other_adult_isolation(self):
+        first, headers = self.adult()
+        other, other_headers = self.adult()
+        for target in [self.child, other['student_id']]:
+            self.assertEqual(self.client.get('/api/students/' + target, headers=headers).status_code, 403)
+        self.assertEqual(self.client.get('/api/students/' + first['student_id'], headers=self.teacher_headers).status_code, 403)
+        self.assertEqual(self.client.get('/api/students/' + first['student_id'], headers=other_headers).status_code, 403)
+        users = self.client.get('/api/auth/users', headers=self.teacher_headers).json()
+        self.assertNotIn(first['id'], [u['id'] for u in users])
+        for path in ['/api/auth/users', '/api/v1/reports', '/api/v1/config/keys']:
+            self.assertEqual(self.client.get(path, headers=headers).status_code, 403, path)
+        response = self.client.patch('/api/auth/profile', headers=headers,
+            json={'expected_version': 1, 'user_id': other['id'], 'role': 'teacher'})
+        self.assertEqual(response.status_code, 422)
+        self.assertEqual(self.profile(other_headers)['version'], 1)
+
+    def test_profile_languages_persist_without_rewriting_history(self):
+        user, headers = self.adult()
+        with get_db_connection() as conn:
+            conn.execute("INSERT INTO sessions(id,student_id,target_sentence,accuracy,overall_score,language) VALUES (?,?,?,0.73,73,'en')",
+                         ('profile-history-' + user['id'], user['student_id'], 'Original reading'))
+            conn.commit()
+        response = self.client.patch('/api/auth/profile', headers=headers, json={
+            'expected_version': 1, 'reading_language': 'ur', 'interface_language': 'en',
+            'native_language': 'fr', 'translation_language': 'es',
+            'accessibility': {'larger_text': True, 'line_spacing': 'comfortable'}, 'complete_profile': True})
+        self.assertEqual(response.status_code, 200, response.text)
+        result = self.profile(headers)
+        self.assertEqual([result[k] for k in ['reading_language','interface_language','native_language','translation_language']], ['ur','en','fr','es'])
+        self.assertTrue(result['profile_completed'])
+        self.assertTrue(result['accessibility']['larger_text'])
+        init_db()
+        self.assertEqual(self.profile(headers), result)
+        with get_db_connection() as conn:
+            row = conn.execute('SELECT accuracy,overall_score,language FROM sessions WHERE id=?', ('profile-history-' + user['id'],)).fetchone()
+            self.assertEqual(tuple(row), (0.73, 73, 'en'))
+
+    def test_invalid_profile_updates_are_atomic_and_do_not_echo_inputs(self):
+        _, headers = self.adult()
+        for fields in [{'reading_language':'es'}, {'interface_language':'fr'}, {'native_language':'not-a-language'},
+                       {'reading_language':None}, {'accessibility':None}, {'accessibility':{'larger_text':'yes'}},
+                       {'profile_completed':True}, {'accessibility':{'medical_diagnosis':'private-sentinel'}}]:
+            response = self.client.patch('/api/auth/profile', headers=headers, json={'expected_version':1, **fields})
+            self.assertEqual(response.status_code, 422, response.text)
+            self.assertNotIn('private-sentinel', response.text)
+            self.assertEqual(self.profile(headers)['version'], 1)
+        response = self.client.post('/api/auth/register-adult', json={
+            'name':'Reader', 'username':'bad-' + uuid.uuid4().hex, 'password':'private-password-sentinel', 'role':'teacher'})
+        self.assertEqual(response.status_code, 422)
+        self.assertNotIn('private-password-sentinel', response.text)
+
+    def test_profile_version_prevents_stale_and_concurrent_overwrites(self):
+        _, headers = self.adult()
+        from concurrent.futures import ThreadPoolExecutor
+        def save(language):
+            return self.client.patch('/api/auth/profile', headers=headers,
+                json={'expected_version':1, 'native_language':language}).status_code
+        with ThreadPoolExecutor(2) as pool:
+            statuses = list(pool.map(save, ['fr','de']))
+        self.assertEqual(sorted(statuses), [200,409])
+        result = self.profile(headers)
+        self.assertEqual(result['version'], 2)
+        self.assertIn(result['native_language'], ['fr','de'])
+        response = self.client.patch('/api/auth/profile', headers=headers,
+            json={'expected_version':1, 'native_language':'es'})
+        self.assertEqual(response.status_code, 409)
+        self.assertEqual(self.profile(headers), result)
+
+    def test_completion_rollout_gate_allows_account_recovery(self):
+        _, headers = self.adult()
+        with patch.dict(os.environ, ENFORCE_PROFILE_COMPLETION='1'):
+            response = self.client.get('/pipeline/sentences', headers=headers)
+            self.assertEqual(response.status_code, 403)
+            self.assertEqual(response.json()['error']['code'], 'PROFILE_REQUIRED')
+            self.assertEqual(self.client.get('/api/auth/me', headers=headers).status_code, 200)
+            self.assertEqual(self.client.get('/api/auth/profile', headers=headers).status_code, 200)
+            response = self.client.patch('/api/auth/profile', headers=headers,
+                json={'expected_version':1, 'complete_profile':True})
+            self.assertEqual(response.status_code, 422)
+            response = self.client.patch('/api/auth/profile', headers=headers,
+                json={'expected_version':1, 'native_language':'en', 'complete_profile':True})
+            self.assertEqual(response.status_code, 200, response.text)
+            self.assertEqual(self.client.get('/api/v1/story/summary?track=en', headers=headers).status_code, 200)
+            response = self.client.patch('/api/auth/profile', headers=headers,
+                json={'expected_version':2, 'native_language':None})
+            self.assertEqual(response.status_code, 200)
+            self.assertFalse(response.json()['profile']['profile_completed'])
+            self.assertEqual(self.client.get('/api/v1/story/summary?track=en', headers=headers).status_code, 403)
+        with patch.dict(os.environ, ENFORCE_PROFILE_COMPLETION='0'):
+            self.assertEqual(self.client.get('/api/v1/story/summary?track=en', headers=headers).status_code, 200)
+
+    def test_personal_join_code_cannot_enroll_a_classroom_child(self):
+        user, _ = self.adult()
+        with get_db_connection() as conn:
+            code = conn.execute('SELECT join_code FROM classrooms WHERE id=?', (user['classroom_id'],)).fetchone()[0]
+        response = self.client.post('/api/auth/register', json={'name':'Child','username':'child-' + uuid.uuid4().hex,
+            'password':'child-test-password','classroom_code':code})
+        self.assertEqual(response.status_code, 422)
+
+    def test_existing_pending_child_cannot_switch_into_adult_approval(self):
+        username = 'pending-' + uuid.uuid4().hex
+        body = {'name':'Classroom child','username':username,'password':'child-test-password','classroom_code':self.school}
+        self.assertEqual(self.client.post('/api/auth/register', json=body).status_code, 200)
+        response = self.client.post('/api/auth/register-adult', json={k:v for k,v in body.items() if k!='classroom_code'})
+        self.assertEqual(response.status_code, 409)
+        with get_db_connection() as conn:
+            row = conn.execute('SELECT status,classroom_id FROM users WHERE username=?',(username,)).fetchone()
+            self.assertEqual(tuple(row), ('pending', self.school))
+
+    def test_adult_duplicate_registration_does_not_leave_orphan_scopes(self):
+        username = 'racing-adult-' + uuid.uuid4().hex
+        from concurrent.futures import ThreadPoolExecutor
+        with get_db_connection() as conn:
+            before = conn.execute("SELECT COUNT(*) FROM classrooms WHERE kind='personal'").fetchone()[0]
+        def register(_):
+            return self.client.post('/api/auth/register-adult', json={
+                'name':'Adult reader','username':username,'password':'adult-test-password'}).status_code
+        with ThreadPoolExecutor(2) as pool:
+            statuses = list(pool.map(register, range(2)))
+        self.assertEqual(sorted(statuses), [201,409])
+        with get_db_connection() as conn:
+            self.assertEqual(conn.execute("SELECT COUNT(*) FROM classrooms WHERE kind='personal'").fetchone()[0], before+1)
+            self.assertEqual(conn.execute('SELECT COUNT(*) FROM users WHERE username=?',(username,)).fetchone()[0], 1)
+
+    def test_profile_migration_backups_and_preserves_version_two_records(self):
+        import sqlite3
+        from contextlib import closing
+        from database import schema
+        with tempfile.TemporaryDirectory() as directory:
+            path = str(Path(directory)/'pre-profile.db')
+            with patch.object(schema,'DB_PATH',path):
+                schema.init_db()
+                with schema.get_db_connection() as conn:
+                    conn.execute("INSERT INTO users(id,username,name,password_hash,role,status,student_id) VALUES ('legacy','legacy','Legacy reader','hash','student','approved','student-1')")
+                    conn.execute("INSERT INTO auth_tokens(token,user_id,expires_at) VALUES ('legacy-token','legacy','2099-01-01')")
+                    conn.execute("INSERT INTO sessions(id,student_id,accuracy,overall_score,language) VALUES ('kept','student-1',0.81,81,'ur')")
+                    conn.execute('DROP TABLE user_profiles')
+                    conn.execute('ALTER TABLE classrooms DROP COLUMN kind')
+                    conn.execute('ALTER TABLE classrooms DROP COLUMN owner_user_id')
+                    conn.execute('DELETE FROM schema_migrations WHERE version=3')
+                    conn.commit()
+                schema.init_db()
+                schema.init_db()
+                with schema.get_db_connection() as conn:
+                    profile = dict(conn.execute("SELECT * FROM user_profiles WHERE user_id='legacy'").fetchone())
+                    self.assertEqual((profile['reader_mode'],profile['profile_completed']), ('child',1))
+                    self.assertEqual(tuple(conn.execute("SELECT accuracy,overall_score,language FROM sessions WHERE id='kept'").fetchone()), (0.81,81,'ur'))
+                    self.assertIsNotNone(conn.execute("SELECT 1 FROM auth_tokens WHERE token='legacy-token'").fetchone())
+                backup = Path(directory)/'.db_backup/pre-profile-before-profiles.db'
+                self.assertTrue(backup.exists())
+                with closing(sqlite3.connect(backup)) as conn:
+                    self.assertIsNone(conn.execute("SELECT 1 FROM sqlite_master WHERE name='user_profiles'").fetchone())
+                    self.assertEqual(conn.execute("SELECT overall_score FROM sessions WHERE id='kept'").fetchone()[0], 81)
+
+    def test_teacher_cannot_manage_a_personal_adult_account(self):
+        user, headers = self.adult()
+        for suffix in ['approve','reject']:
+            response = self.client.post('/api/auth/users/' + user['id'] + '/' + suffix,
+                                        headers=self.teacher_headers, json={})
+            self.assertEqual(response.status_code, 404)
+        self.assertEqual(self.client.delete('/api/auth/users/' + user['id'], headers=self.teacher_headers).status_code, 404)
+        self.assertEqual(self.client.get('/api/auth/me', headers=headers).status_code, 200)
+
+    def test_profile_endpoints_require_identity_and_registration_limit_is_shared(self):
+        _, headers = self.adult()
+        self.assertEqual(self.client.get('/api/auth/profile', headers=headers).headers.get('cache-control'), 'no-store')
+        self.assertEqual(self.client.get('/api/auth/profile').status_code, 401)
+        self.assertEqual(self.client.patch('/api/auth/profile', json={'expected_version':1}).status_code, 401)
+        with patch('core.middleware._limited', return_value=True) as limit:
+            for path in ['/api/auth/register','/api/auth/register-adult']:
+                response = self.client.post(path, json={})
+                self.assertEqual(response.status_code, 429)
+                self.assertEqual(limit.call_args.args[0][1], 'registration')
+
+    def test_personal_scope_owner_binding_is_checked_on_every_request(self):
+        user, headers = self.adult()
+        with get_db_connection() as conn:
+            conn.execute("UPDATE classrooms SET owner_user_id='different-owner' WHERE id=?", (user['classroom_id'],))
+            conn.commit()
+        self.assertEqual(self.client.get('/api/auth/me', headers=headers).status_code, 401)
+        self.assertEqual(self.client.get('/api/students/', headers=headers).status_code, 401)
+
+    def test_accessibility_merges_without_diagnosis_or_cross_account_updates(self):
+        user, headers = self.adult()
+        response = self.client.patch('/api/auth/profile', headers=headers,
+            json={'expected_version':1,'accessibility':{'larger_text':True,'line_spacing':'wide'}})
+        self.assertEqual(response.status_code, 200)
+        response = self.client.patch('/api/auth/profile', headers=headers,
+            json={'expected_version':2,'accessibility':{'high_contrast':True}})
+        self.assertEqual(response.status_code, 200)
+        result = self.profile(headers)
+        self.assertTrue(result['accessibility']['larger_text'])
+        self.assertTrue(result['accessibility']['high_contrast'])
+        self.assertEqual(result['accessibility']['line_spacing'], 'wide')
+        self.assertFalse(result['accessibility']['autoplay_coach'])
+        self.assertEqual(result['user_id'], user['id'])
+        self.assertEqual(self.client.get('/api/auth/profile?user_id=' + self.teacher, headers=headers).json()['profile']['user_id'], user['id'])
+
+
 if __name__=='__main__':
     unittest.main(verbosity=2)

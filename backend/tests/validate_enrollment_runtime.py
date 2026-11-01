@@ -81,6 +81,13 @@ async def main():
         headers = {k: v for k, v in request.headers.items() if k.lower() not in {'host', 'content-length', 'connection', 'accept-encoding'}}
         upstream = await proxy.state.client.request(request.method, base + '/' + path, params=request.query_params, headers=headers, content=await request.body())
         headers = {k: v for k, v in upstream.headers.items() if k.lower() not in {'content-length', 'transfer-encoding', 'connection', 'content-encoding'}}
+        # Keep FastAPI's slash redirects on the public TLS origin. Without this,
+        # browser fetch follows the private HTTP port and drops Authorization.
+        location = headers.get('location', '')
+        for private_origin in (api_url, front_url):
+            if location.startswith(private_origin + '/'):
+                headers['location'] = str(request.base_url).rstrip('/') + location[len(private_origin):]
+                break
         return Response(upstream.content, status_code=upstream.status_code, headers=headers)
 
     key = rsa.generate_private_key(public_exponent=65537, key_size=2048)

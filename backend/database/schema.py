@@ -32,10 +32,12 @@ def init_db():
     if os.path.isfile(DB_PATH):
         with closing(sqlite3.connect(DB_PATH)) as source:
             versioned = source.execute("SELECT 1 FROM sqlite_master WHERE name='schema_migrations'").fetchone()
-            if not versioned:
+            needs_profile_backup = bool(versioned) and not source.execute(
+                'SELECT 1 FROM schema_migrations WHERE version=3').fetchone()
+            if not versioned or needs_profile_backup:
                 backup_dir = Path(DB_PATH).parent / ".db_backup"
                 backup_dir.mkdir(exist_ok=True)
-                backup_path = backup_dir / (Path(DB_PATH).stem + "-before-hardening.db")
+                backup_path = backup_dir / (Path(DB_PATH).stem + ("-before-profiles.db" if needs_profile_backup else "-before-hardening.db"))
                 if not backup_path.exists():
                     with closing(sqlite3.connect(backup_path)) as destination:
                         source.backup(destination)
@@ -272,6 +274,29 @@ def init_db():
         if not cursor.execute("SELECT 1 FROM schema_migrations WHERE version=2").fetchone():
             cursor.execute("UPDATE story_sessions SET synced=0")
             cursor.execute("INSERT INTO schema_migrations(version) VALUES (2)")
+        # Account-profile migration: additive, idempotent and history-preserving.
+        classroom_columns = {r[1] for r in cursor.execute('PRAGMA table_info(classrooms)')}
+        if 'kind' not in classroom_columns:
+            cursor.execute("ALTER TABLE classrooms ADD COLUMN kind TEXT NOT NULL DEFAULT 'classroom'")
+        if 'owner_user_id' not in classroom_columns:
+            cursor.execute('ALTER TABLE classrooms ADD COLUMN owner_user_id TEXT')
+        cursor.execute('''CREATE TABLE IF NOT EXISTS user_profiles (
+            user_id TEXT PRIMARY KEY REFERENCES users(id),
+            reader_mode TEXT NOT NULL CHECK(reader_mode IN ('child','adult','teacher')),
+            reading_language TEXT NOT NULL DEFAULT 'en',
+            interface_language TEXT NOT NULL DEFAULT 'en',
+            native_language TEXT,
+            translation_language TEXT,
+            accessibility_json TEXT NOT NULL DEFAULT '{}',
+            profile_completed INTEGER NOT NULL DEFAULT 0 CHECK(profile_completed IN (0,1)),
+            version INTEGER NOT NULL DEFAULT 1,
+            updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+        )''')
+        # Existing users retain access; newly registered accounts explicitly start incomplete.
+        cursor.execute('''INSERT OR IGNORE INTO user_profiles(user_id,reader_mode,profile_completed)
+            SELECT id, CASE WHEN role='teacher' THEN 'teacher' ELSE 'child' END, 1 FROM users''')
+        cursor.execute('INSERT OR IGNORE INTO schema_migrations(version) VALUES (3)')
+
         # Compatibility read models feed dynamic attempts into existing reports.
         cursor.execute("DROP VIEW IF EXISTS report_sessions")
         cursor.execute("""CREATE VIEW report_sessions AS

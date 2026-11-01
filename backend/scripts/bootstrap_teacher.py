@@ -38,6 +38,10 @@ def main():
             conn.execute("DELETE FROM auth_tokens WHERE user_id=?", (old["id"],))
         else:
             conn.execute("INSERT INTO users(id,username,name,password_hash,role,status,classroom_id,is_admin) VALUES (?,?,?,?,'teacher','approved',?,1)", (uuid.uuid4().hex, args.username.lower(), args.username, hash_password(password), args.classroom))
+        teacher = conn.execute('SELECT id FROM users WHERE username=?', (args.username.lower(),)).fetchone()
+        from core.reader_profiles import create_profile
+        create_profile(conn, teacher['id'], 'teacher', completed=True)
+        conn.execute("UPDATE user_profiles SET reader_mode='teacher',profile_completed=1 WHERE user_id=?", (teacher['id'],))
         code = conn.execute("SELECT join_code FROM classrooms WHERE id=?", (args.classroom,)).fetchone()[0]
         conn.commit()
     print(f"Teacher configured. Classroom join code: {code}")

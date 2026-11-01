@@ -61,19 +61,26 @@ class AccessMiddleware(BaseHTTPMiddleware):
                     return error(413, "Recording or request is too large (maximum 16 MB)")
                 chunks.append(chunk)
             request._body = b"".join(chunks)
-        public = {"/health", "/api/v1/health", "/api/auth/login", "/api/auth/register", "/api/auth/logout", "/api/v1/sync/ingest"}
+        public = {"/health", "/api/v1/health", "/api/auth/login", "/api/auth/register", "/api/auth/register-adult", "/api/auth/logout", "/api/v1/sync/ingest"}
         if request.method == "GET" and path == "/api/v1/capabilities":
             public.add(path)
         protected = path.startswith(("/api/", "/pipeline")) or path == "/debug-ffmpeg"
-        if path in {"/api/auth/login", "/api/auth/register"}:
+        if path in {"/api/auth/login", "/api/auth/register", "/api/auth/register-adult"}:
             ip = request.client.host if request.client else "unknown"
-            if _limited((ip, path), 20):
+            if _limited((ip, "registration" if path.startswith("/api/auth/register") else path), 20):
                 return error(429, "Too many attempts. Please try again in a minute.")
         if protected and path not in public:
             user = get_current_user(request)
             if not user:
                 return error(401, "Please log in with an approved account")
             request.state.user = user
+            reading_request = (path.startswith('/pipeline') or path.startswith('/api/v1/story/')
+                               or path.endswith('/analyze') or path.endswith('/words/tip')
+                               or (path == '/api/v1/sessions' and request.method == 'POST'))
+            if (os.getenv('ENFORCE_PROFILE_COMPLETION', '0') == '1' and reading_request
+                    and user['role'] != 'teacher' and not user.get('profile_completed')):
+                return JSONResponse({'error': {'code': 'PROFILE_REQUIRED',
+                    'message': 'Complete your reader profile before starting a reading.', 'retryable': False}}, status_code=403)
             if (path.startswith("/api/v1/config/") or path in {"/api/v1/sync", "/api/v1/sync/status"}) and not user.get("is_admin"):
                 return error(403, "Server administrator access required")
             if ("analyze-mock" in path or path == "/debug-ffmpeg") and (

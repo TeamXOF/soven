@@ -19,6 +19,7 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 from database.schema import init_db
 from routers import pipeline, students, sessions
 from routers.capabilities import router as capabilities_router
+from routers.profiles import router as profiles_router
 from routers.auth import router as auth_router
 from routers.teacher import router as teacher_router
 from routers.v1 import api as v1_api, ws_router, ws_manager, ApiError
@@ -65,6 +66,7 @@ def startup_event():
 
 # Mount routers (Gen-1 untouched; v2 additive)
 app.include_router(capabilities_router)
+app.include_router(profiles_router)
 app.include_router(pipeline.router)
 app.include_router(students.router)
 app.include_router(sessions.router)
@@ -114,7 +116,7 @@ async def validation_error_handler(request: Request, exc: RequestValidationError
             for e in exc.errors())[:300]
         return JSONResponse(status_code=422, content={
             "error": {"code": "VALIDATION_ERROR", "message": msg, "retryable": False}})
-    return JSONResponse(status_code=422, content={"detail": exc.errors()})
+    return JSONResponse(status_code=422, content={"detail": [{"loc": e.get("loc"), "msg": e.get("msg"), "type": e.get("type")} for e in exc.errors()]})
 
 
 @app.exception_handler(StarletteHTTPException)

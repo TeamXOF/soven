@@ -305,6 +305,10 @@ export type V2SessionListItem = {
 
 export type Role = "teacher" | "student";
 export type AuthUser = {
+  account_scope?: "classroom" | "personal";
+  reader_mode?: ReaderMode;
+  profile_completed?: boolean;
+  profile?: ReaderProfile;
   classroom_code?: string;
   classroom_id?: string;
   is_admin?: number;
@@ -770,5 +774,61 @@ export async function fetchSyncStatus(): Promise<SyncStatus> {
 export async function fetchPlatformCapabilities(signal?: AbortSignal): Promise<PlatformCapabilities> {
   const response = await apiFetch(`${API_ROOT}/api/v1/capabilities`, { signal });
   if (!response.ok) throw new Error("Could not load language capabilities");
+  return response.json();
+}
+
+export type ReaderMode = "child" | "adult" | "teacher";
+export type ProfileAccessibility = {
+  larger_text: boolean;
+  word_tips: boolean;
+  high_contrast: boolean;
+  line_spacing: "normal" | "comfortable" | "wide";
+  coach_enabled: boolean;
+  autoplay_coach: boolean;
+};
+export type ReaderProfile = {
+  user_id: string;
+  reader_mode: ReaderMode;
+  reading_language: ReadingLanguage;
+  interface_language: ReadingLanguage;
+  native_language: import("./language-types").LanguageCode | null;
+  translation_language: import("./language-types").LanguageCode | null;
+  accessibility: ProfileAccessibility;
+  profile_completed: boolean;
+  version: number;
+  updated_at: string | null;
+};
+export type ReaderProfileUpdate = {
+  expected_version: number;
+  reading_language?: ReadingLanguage;
+  interface_language?: ReadingLanguage;
+  native_language?: import("./language-types").LanguageCode | null;
+  translation_language?: import("./language-types").LanguageCode | null;
+  accessibility?: Partial<ProfileAccessibility>;
+  complete_profile?: boolean;
+};
+
+export async function apiRegisterAdult(name: string, username: string, password: string): Promise<{
+  ok: boolean; status: "approved"; profile_required: boolean; message: string;
+}> {
+  const response = await apiFetch(`${API_ROOT}/api/auth/register-adult`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, username, password }),
+  });
+  if (!response.ok) throw new Error(await parseError(response, "Could not create your account"));
+  return response.json();
+}
+
+export async function fetchReaderProfile(signal?: AbortSignal): Promise<{ profile: ReaderProfile }> {
+  const response = await apiFetch(`${API_ROOT}/api/auth/profile`, { signal });
+  if (!response.ok) throw new Error(await parseError(response, "Could not load your profile"));
+  return response.json();
+}
+
+export async function saveReaderProfile(body: ReaderProfileUpdate): Promise<{ profile: ReaderProfile }> {
+  const response = await apiFetch(`${API_ROOT}/api/auth/profile`, {
+    method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body),
+  });
+  if (!response.ok) throw new Error(await parseError(response, "Could not save your profile"));
   return response.json();
 }

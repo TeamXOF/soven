@@ -7,6 +7,7 @@ sessions bind to the right student. Tokens are opaque random strings stored in
 SQLite (Authorization: Bearer <token>).
 """
 import uuid
+import sqlite3
 import logging
 
 from fastapi import APIRouter, Request, HTTPException
@@ -15,6 +16,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from core.security import hash_password, verify_password, new_token
 from database.schema import get_db_connection
+from core.reader_profiles import create_profile, read_profile
 
 log = logging.getLogger("speakflow.auth")
 
@@ -36,6 +38,12 @@ def _text(body, key, maximum=256):
 def _user_dict(row) -> dict:
     d = dict(row)
     d.pop("password_hash", None)
+    with get_db_connection() as conn:
+        scope = conn.execute('SELECT kind FROM classrooms WHERE id=?', (d.get('classroom_id'),)).fetchone()
+        d['account_scope'] = scope['kind'] if scope else 'classroom'
+        d['profile'] = read_profile(conn, d)
+    d['reader_mode'] = d['profile']['reader_mode']
+    d['profile_completed'] = d['profile']['profile_completed']
     if d.get("role") == "teacher":
         with get_db_connection() as conn:
             classroom = conn.execute("SELECT join_code FROM classrooms WHERE id=?", (d.get("classroom_id"),)).fetchone()
@@ -58,6 +66,8 @@ def get_current_user(request: Request) -> dict | None:
             """SELECT u.* FROM auth_tokens t
                JOIN users u ON u.id = t.user_id
                WHERE t.token = ? AND t.expires_at > datetime('now') AND u.status='approved'
+               AND EXISTS (SELECT 1 FROM classrooms c WHERE c.id=u.classroom_id
+                   AND (c.kind='classroom' OR (c.kind='personal' AND c.owner_user_id=u.id AND u.role='student')))
                AND (u.role='teacher' OR EXISTS (
                    SELECT 1 FROM students s WHERE s.id=u.student_id AND s.archived=0 AND s.classroom_id=u.classroom_id))""",
             (token,)).fetchone()
@@ -78,36 +88,74 @@ def _json_error(message: str, status: int = 400) -> JSONResponse:
         "error": {"code": "VALIDATION_ERROR", "message": message, "retryable": False}})
 
 
-@router.post("/register")
-async def register(body: dict):
-    name = _text(body, "name", 120).strip()
-    username = _text(body, "username", 64).strip().lower()
-    password = _text(body, "password")
-    classroom_code = _text(body, "classroom_code", 128).strip()
+def _registration_values(body):
+    name = _text(body, 'name', 120).strip()
+    username = _text(body, 'username', 64).strip().lower()
+    password = _text(body, 'password')
     if not name or not username or len(password) < 10:
-        return _json_error("Name, username and a password of at least 10 characters are required.")
-    if not all(c.isalnum() or c in "._-" for c in username):
-        return _json_error("Usernames can only contain letters, numbers, dots, dashes and underscores.")
+        raise HTTPException(422, 'Name, username and a password of at least 10 characters are required')
+    if not all(c.isalnum() or c in '._-' for c in username):
+        raise HTTPException(422, 'Usernames can only contain letters, numbers, dots, dashes and underscores')
+    return name, username, hash_password(password)
 
-    with get_db_connection() as conn:
-        classroom = conn.execute("SELECT id FROM classrooms WHERE join_code=?", (classroom_code,)).fetchone()
-        if not classroom:
-            return _json_error("A valid classroom code from your teacher is required.", 422)
-        existing = conn.execute("SELECT id FROM users WHERE username = ?", (username,)).fetchone()
-        if existing:
-            return _json_error("That username is already taken.", 409)
-        user_id = f"user-{uuid.uuid4().hex[:8]}"
-        conn.execute(
-            """INSERT INTO users (id, username, name, password_hash, role, status, classroom_id)
-               VALUES (?, ?, ?, ?, 'student', 'pending', ?)""",
-            (user_id, username, name, hash_password(password), classroom["id"]))
-        conn.commit()
 
-    return {
-        "ok": True,
-        "message": "Account created! Your teacher will approve it shortly — then you can log in.",
-        "status": "pending",
-    }
+@router.post('/register')
+async def register(body: dict):
+    name, username, password_hash = _registration_values(body)
+    classroom_code = _text(body, 'classroom_code', 128).strip()
+    try:
+        with get_db_connection() as conn:
+            conn.execute('BEGIN IMMEDIATE')
+            classroom = conn.execute("SELECT id FROM classrooms WHERE join_code=? AND kind='classroom'",
+                                     (classroom_code,)).fetchone()
+            if not classroom:
+                return _json_error('A valid classroom code from your teacher is required.', 422)
+            if conn.execute('SELECT 1 FROM users WHERE username=?', (username,)).fetchone():
+                return _json_error('That username is already taken.', 409)
+            user_id = 'user-' + uuid.uuid4().hex
+            conn.execute('''INSERT INTO users(id,username,name,password_hash,role,status,classroom_id)
+                VALUES (?,?,?,?,'student','pending',?)''',
+                (user_id, username, name, password_hash, classroom['id']))
+            create_profile(conn, user_id, 'child')
+            conn.commit()
+    except sqlite3.IntegrityError:
+        return _json_error('That username is already taken.', 409)
+    return {'ok': True, 'message': 'Account created! Your teacher will approve it shortly — then you can log in.',
+            'status': 'pending', 'profile_required': True}
+
+
+class AdultRegistration(BaseModel):
+    model_config = ConfigDict(extra='forbid', strict=True)
+    name: str = Field(min_length=1, max_length=120)
+    username: str = Field(min_length=1, max_length=64)
+    password: str = Field(min_length=10, max_length=256)
+
+
+@router.post('/register-adult', status_code=201)
+async def register_adult(body: AdultRegistration):
+    name, username, password_hash = _registration_values(body.model_dump())
+    try:
+        with get_db_connection() as conn:
+            conn.execute('BEGIN IMMEDIATE')
+            if conn.execute('SELECT 1 FROM users WHERE username=?', (username,)).fetchone():
+                return _json_error('That username is already taken.', 409)
+            user_id, student_id = 'user-' + uuid.uuid4().hex, 'reader-' + uuid.uuid4().hex
+            scope_id = 'personal-' + uuid.uuid4().hex
+            conn.execute('''INSERT INTO classrooms(id,join_code,kind,owner_user_id)
+                VALUES (?,?,'personal',?)''', (scope_id, new_token(), user_id))
+            # Grade zero is an explicit non-school placeholder, never a placement result.
+            conn.execute('''INSERT INTO students(id,name,grade,level,classroom_id,parent_update_enabled)
+                VALUES (?,?,0,'Level 1',?,0)''', (student_id, name, scope_id))
+            # The existing reader role preserves ownership rules in every reading engine.
+            conn.execute('''INSERT INTO users(id,username,name,password_hash,role,status,student_id,classroom_id,is_admin)
+                VALUES (?,?,?,?,'student','approved',?,?,0)''',
+                (user_id, username, name, password_hash, student_id, scope_id))
+            create_profile(conn, user_id, 'adult')
+            conn.commit()
+    except sqlite3.IntegrityError:
+        return _json_error('That username is already taken.', 409)
+    return {'ok': True, 'status': 'approved', 'profile_required': True,
+            'message': 'Account created. Sign in to complete your reader profile.'}
 
 
 @router.post("/login")

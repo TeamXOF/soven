@@ -20,7 +20,7 @@ The current code uses the repaired reading baseline. The target is a worldwide p
 - [x] M1.5 Connect existing frontend language types/preferences and add provider metadata that distinguishes current adapters from planned Meta adapters. Evidence: frontend/lib/languages.ts and backend/core/provider_capabilities.py.
 - [ ] M1.6 Implement the configured reasoning-provider boundary and one permitted Meta/open-weight adapter with structured output, timeout and fallback tests. Live access requires actual provider details; do not invent credits or route around geographic restrictions.
 - [ ] M1.7 Verify one real permitted Meta invocation, record model/source/cost/latency and test its failure path. Waiting for verified account/access configuration.
-- [ ] M1.8 Persist separate reading, interface, native and translation language preferences with additive migrations during profile work. The current foundation defines these roles but does not add account fields.
+- [x] M1.8 Persist separate reading, interface, native and translation language preferences with additive migrations. Evidence: user_profiles migration v3, profile API and ACCOUNT_PROFILE_VALIDATION.json. Enabling a stored candidate preference does not enable a reading engine.
 
 ## Milestone two speech reliability and coverage
 
@@ -35,10 +35,15 @@ The current code uses the repaired reading baseline. The target is a worldwide p
 
 - [ ] M3.1 Create the landing/how-to flow with one obvious reading action and a route for teachers.
 - [ ] M3.2 Add the skippable short introductory sample before signup with permission, retry, anonymous rate/cost limits and accurate data-flow copy.
-- [ ] M3.3 Add required profile completion, child/adult reader modes and optional presentation/accessibility preferences.
-- [ ] M3.4 Add independently registered adult accounts scoped to their own records; preserve classroom approval and child-first linking for children.
-- [ ] M3.5 Add the separate language preferences and migration defaults; keep old accounts and historical attempts intact.
-- [ ] M3.6 Verify new child, adult, teacher and migrated-user journeys, including expired identity and denied microphone cases.
+- [x] M3.3a Add backend profile state, child/adult/teacher modes and optional accessibility preferences. Evidence: core/reader_profiles.py and authenticated GET/PATCH /api/auth/profile.
+- [x] M3.3b Add a tested completion enforcement gate with a recovery path. ENFORCE_PROFILE_COMPLETION defaults to 0 until the profile UI is usable; legacy accounts are grandfathered.
+- [ ] M3.3c Build profile forms, completion routing and applied accessibility settings after the owner chooses the UI design. Stored settings alone do not apply presentation changes.
+- [x] M3.4a Add independent adult registration with private owner-bound records; preserve classroom approval and child-first linking. Evidence: POST /api/auth/register-adult and isolation regressions.
+- [ ] M3.4b Expose the adult signup choice and forms in the owner-selected UI. The existing signup page remains the child/classroom flow.
+- [x] M3.5a Persist separate language preferences and migration defaults, backup version-2 databases and preserve historical attempts. Evidence: migration/idempotency/concurrent-save tests.
+- [ ] M3.5b Connect server preferences to the new UI without overwriting existing browser choices or allowing stale account responses to apply settings.
+- [x] M3.6a Verify account APIs, migration, concurrency, existing child linking and adult login/profile persistence with synthetic isolated tests. Evidence: ACCOUNT_PROFILE_VALIDATION.json.
+- [ ] M3.6b Verify the complete new onboarding forms, routing, expired identity and denied-microphone journeys after those screens exist.
 
 ## Milestone four accessible responsive book
 
@@ -77,3 +82,7 @@ The current code uses the repaired reading baseline. The target is a worldwide p
 ## Execution rule
 
 After each task: implement, verify, update its checkbox, add a dated execution-log entry, refresh affected manifests/documents and move to the next unblocked item. Record the dependency when skipping a waiting item. Do not purchase services, invite unidentified collaborators or infer provider access from the defaults. Owner corrections supersede these defaults.
+
+## Current design boundary
+
+The owner asked to choose the design before UI redesign starts. Account/profile APIs and storage are ready. Stop here for the owner's design reference before M3.1, M3.2, M3.3c, M3.4b, M3.5b or book UI work. Do not turn the completion gate on while the UI has no completion form. Provider and speech-quality work remains independently waiting on the dependencies above.

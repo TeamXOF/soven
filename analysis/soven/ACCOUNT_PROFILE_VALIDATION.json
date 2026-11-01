@@ -1,0 +1,21 @@
+{
+  "verified_at_utc": "2026-11-01T12:12:24.778471+00:00",
+  "repository": "https://github.com/TeamXOF/soven",
+  "backend_regressions": "61 passed locally; 14 added account/profile cases",
+  "profile_cache_headers": "Focused auth/rate/profile-header regression passed after no-store addition",
+  "frontend_lint": "passed",
+  "typescript": "standalone check passed",
+  "production_build": "passed",
+  "adult_profile_browser": "Six isolated checks passed through real HTTP and unchanged login UI; clean exit; no runtime errors",
+  "signup_browser": "Nine isolated checks passed through final corrected proxy; clean command exit",
+  "dashboard_browser": "Twelve isolated checks passed through final corrected proxy; clean command exit; no browser runtime errors",
+  "migration": "Additive v3; versioned v2 backup; idempotency; history/tokens preserved",
+  "completion_enforcement": "Implemented and tested, default OFF until UI forms exist",
+  "ui_redesign": "Not started; owner chooses design before screens change",
+  "test_proxy_repair": "Slash redirects rewritten to TLS origin so browser Authorization is preserved; no change to production app UI",
+  "remote_ci": "completed: success; fresh Linux installs, all 61 regressions and frontend checks",
+  "scope": "Synthetic data and controlled services; no production DB, real provider, age verification, physical speech quality or new language support",
+  "proxy_log_note": "Windows Proactor peer-reset callback traces remain during browser navigation/abort; scenario assertions pass and temporary-server cleanup exits successfully",
+  "validated_code_commit": "d909f34781e418070d5bffc7f30c92a8acc02edc",
+  "ci_url": "https://github.com/TeamXOF/soven/actions/runs/41301125811"
+}

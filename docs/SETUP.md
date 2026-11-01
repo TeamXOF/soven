@@ -106,3 +106,12 @@ Obsolete live-test scripts were excluded from the SOVEN export. Use the supporte
 Before a public demo, test actual microphones, local/online STT, HTTPS on the intended devices, provider failures and realistic concurrent use. Synthetic audio checks verify processing mechanics, not accuracy on children's voices. Educator evaluation, learning improvement, global language coverage, Meta access and hackathon prior-code eligibility remain separate validation tasks.
 
 See [measured runtime validation](../analysis/soven/evidence/LIVE_VALIDATION.md): cached local STT, browser recording over local TLS, a physical microphone request, and burst load tests have run. A small public child-speech holdout exposed substantial recognition/assessment disagreement; do not present the current recognizer as validated child-pronunciation assessment. Public HTTPS deployment and educator trials remain outstanding.
+
+
+## Account profile rollout
+
+Adult registration is available through `POST /api/auth/register-adult`; it creates a private reader without school access. Its signup screen is not implemented yet. Authenticated `GET/PATCH /api/auth/profile` stores independent language and optional accessibility settings with version conflict checks. See [account and profile API](../analysis/soven/14_ACCOUNT_PROFILE_API.md).
+
+Keep `ENFORCE_PROFILE_COMPLETION=0` until the completion UI ships. New child/adult profiles start incomplete; existing users are grandfathered. Reading/interface currently accept only English/Urdu. Native/translation preference codes do not enable new engines or translation services. Migration v3 makes a private before-profiles backup of an existing versioned database; test restoration on a copy and never publish databases/backups.
+
+Run the adult/profile integration scenario with `VALIDATION_BROWSER_SCRIPT=validate_accounts_ui.cjs` using the same isolated runtime harness. The harness rewrites upstream slash redirects to its public TLS origin, preserving browser authentication. Production proxies must also preserve the correct public scheme/host for redirects. No UI redesign starts until the owner supplies the preferred design.

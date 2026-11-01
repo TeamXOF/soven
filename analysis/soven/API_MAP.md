@@ -5,6 +5,7 @@ Generated from literal router prefixes and decorators. Check source models for e
 | Source | Method | Route | Handler |
 |---|---|---|---|
 | backend/routers/auth.py | POST | /api/auth/register | register |
+| backend/routers/auth.py | POST | /api/auth/register-adult | register_adult |
 | backend/routers/auth.py | POST | /api/auth/login | login |
 | backend/routers/auth.py | POST | /api/auth/logout | logout |
 | backend/routers/auth.py | GET | /api/auth/me | me |
@@ -16,6 +17,8 @@ Generated from literal router prefixes and decorators. Check source models for e
 | backend/routers/capabilities.py | GET | /api/v1/capabilities | capabilities |
 | backend/routers/pipeline.py | GET | /pipeline/sentences | generate_sentences |
 | backend/routers/pipeline.py | POST | /pipeline/run | execute_pipeline |
+| backend/routers/profiles.py | GET | /api/auth/profile | profile |
+| backend/routers/profiles.py | PATCH | /api/auth/profile | update_profile |
 | backend/routers/sessions.py | GET | /api/sessions/ | get_sessions |
 | backend/routers/sessions.py | GET | /api/sessions/{session_id}/diagnosis | get_session_diagnosis |
 | backend/routers/story_mode.py | GET | /api/v1/story/map | story_map |

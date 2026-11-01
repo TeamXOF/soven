@@ -1,8 +1,8 @@
 {
-  "files_checked": 236,
+  "files_checked": 244,
   "findings": [],
   "scope": "Exact export file content and size; excludes dependencies, ignored QA/runtime directories and Git objects.",
   "review_date": "2026-11-01",
-  "revision": "TeamXOF transfer and language/provider foundation",
+  "revision": "Account/profile API and UI design handoff",
   "public_language_inventory": "89 candidates; enabled en/ur; no provider credentials or learner records"
 }

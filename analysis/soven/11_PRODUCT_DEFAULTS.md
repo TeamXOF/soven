@@ -4,7 +4,7 @@ On 1 November 2026 the owner explicitly approved transferring SOVEN to TeamXOF, 
 
 ## Audience accounts and onboarding
 
-The first release serves children and adult/language learners, with teachers retaining classroom tools. Prioritize a calm reader journey while preserving teacher access. Children retain classroom-code signup, approval and explicit linking to existing profiles. Standalone adults will register independently into a personal record scope; this is planned and must not create access to school records. A separate guardian administration role is deferred rather than invented during signup work.
+The first release serves children and adult/language learners, with teachers retaining classroom tools. Prioritize a calm reader journey while preserving teacher access. Children retain classroom-code signup, approval and explicit linking to existing profiles. Standalone adult registration now exists as an API with a private personal record scope and no school-record access. Its signup screen remains planned. This self-declared mode is not verified age. A separate guardian administration role is deferred rather than invented during signup work.
 
 Use a short, skippable introductory reading sample before signup, with microphone consent and retry. Twenty seconds is an experience target, not an assessment standard. Keep anonymous sampling separately rate/cost bounded. Do not promise grade placement or infer a reading condition. Require profile completion after signup for the chosen reader mode and language preferences. Make accessibility preferences optional and editable without a required medical disclosure.
 
@@ -27,3 +27,7 @@ No additional team usernames were supplied. Preserve owner/admin access and exis
 ## Definition of complete
 
 Mark work complete only after its stated check passes and the evidence is recorded. Keep planned functionality, implemented mechanics and validated quality distinct. Maintain 07_IMPLEMENTATION_ROADMAP.md and 12_EXECUTION_LOG.md after each finished task. Update affected Markdown, DOCX snapshots, source/API catalogues and validation records, and mirror the handoff to the original workspace.
+
+## Implementation checkpoint before design
+
+The account/profile backend now stores separate language and accessibility preferences and exposes a versioned owner-only API. New child/adult accounts begin incomplete; migrated accounts remain complete. Completion enforcement is implemented but disabled by default until UI routing exists. Settings storage does not apply the redesigned presentation. The owner requested a design choice before UI changes; obtain that reference before implementing the new screens.

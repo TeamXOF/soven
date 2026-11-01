@@ -4,7 +4,7 @@ The baseline has functioning local reading and teacher workflows. It is not a fi
 
 ## Working application behavior
 
-- Account registration requires a classroom code. A student remains pending until teacher approval. Approval creates one reading profile or explicitly links an existing unoccupied profile, retaining its history. Same-name profiles require a choice; concurrent and repeated approvals are guarded.
+- Child account registration requires a classroom code. A student remains pending until teacher approval. Approval creates one reading profile or explicitly links an existing unoccupied profile, retaining its history. Same-name profiles require a choice; concurrent and repeated approvals are guarded.
 - Teachers can copy the classroom code from Students or Settings. Add roster profile creates no credentials; it is optional teacher-led preparation.
 - Authentication, record ownership and classroom boundaries cover HTTP and WebSocket paths. Tokens expire after 24 hours. Password changes and rejection revoke access. Global provider configuration and sync controls require server-administrator privileges.
 - Three reading paths share scoring and reporting: the classic recording dashboard, fixed story checkpoints, and dynamically generated level attempts.
@@ -50,4 +50,14 @@ shared/languages.json now inventories 89 candidate languages with script/directi
 
 Classic sentence generation and dynamic story routes reject planned/unknown language requests instead of silently substituting English. Existing session, scoring and ownership contracts are preserved. The frontend consumes generated reading-language types and rejects unsupported cached story-language preferences.
 
-The current local regression count is 47, including five new capability/gating/drift checks. Lint, standalone TypeScript and production build pass. Fresh-install CI and isolated browser reruns are recorded in FOUNDATION_VALIDATION.json. Adopted defaults remain implementation targets until their checklist acceptance gates pass.
+The foundation snapshot had 47 regressions, including five capability/gating/drift checks; the later account/profile suite has 61. Lint, standalone TypeScript and production build pass. Earlier foundation checks are in FOUNDATION_VALIDATION.json; current account/profile checks are in ACCOUNT_PROFILE_VALIDATION.json. Adopted defaults remain implementation targets until their checklist acceptance gates pass.
+
+## Account and profile backend completion
+
+POST /api/auth/register-adult now creates an approved independent reader, a private owner-bound personal scope and an incomplete profile, without a classroom code or teacher privileges. The technical role remains student for compatibility; reader_mode distinguishes adult. The adult declaration is self-reported, not verified age. Its internal grade 0 is an unset sentinel, not assessed placement. No personal join code is exposed, and child signup cannot use one.
+
+Authenticated GET/PATCH /api/auth/profile stores separate reading/interface/native/translation preferences, optional accessibility choices and completion state. Reading/interface remain en/ur; native/translation can store candidate codes without enabling translation or new engines. Versioned saves reject stale updates. Schema v3 is additive, backs up existing v2 databases and preserves attempts, scores and tokens. Existing accounts are grandfathered complete; newly registered child/adult profiles are incomplete. Completion requires a native language; clearing it marks the profile incomplete.
+
+ENFORCE_PROFILE_COMPLETION defaults to 0. Its tested opt-in gate blocks reading for incomplete readers while retaining profile and account recovery access. Leave it off until completion forms exist. Typed frontend API methods are ready, but adult signup/profile screens, server-to-browser preference hydration and presentation application are not implemented. No UI screens changed in this milestone; legacy child-focused labels are still present. The owner will choose the redesign before that work begins.
+
+ACCOUNT_PROFILE_VALIDATION.json records 61 backend regressions, frontend checks and isolated child/dashboard/adult browser checks. These synthetic checks do not validate age, speech quality, provider access, physical devices or production capacity.

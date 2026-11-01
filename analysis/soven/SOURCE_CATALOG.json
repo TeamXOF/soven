@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-01T09:43:37.481551+00:00",
+  "generated_at_utc": "2026-11-01T12:23:32.272051+00:00",
   "scope": "Active source and supported tooling; no runtime/private files",
   "text_hash_format": "UTF-8 with CRLF normalized to LF",
   "files": [
@@ -172,8 +172,8 @@
     },
     {
       "path": "backend/core/middleware.py",
-      "sha256": "3b247589e184ca77e2d1d5d7ee57b89f0b3b7556cfc4d02f46d246d90cedfba1",
-      "lines": 112,
+      "sha256": "f50c47edef5858890f800c0e8679c2053d3a08db9c270108829b7507271575ce",
+      "lines": 119,
       "symbols": [
         {
           "name": "_limited",
@@ -205,6 +205,33 @@
         {
           "name": "provider_inventory",
           "line": 23,
+          "kind": "FunctionDef"
+        }
+      ]
+    },
+    {
+      "path": "backend/core/reader_profiles.py",
+      "sha256": "76b0abbb5b75578d9081d6ceb6e995ccd16863328f363b4d386541f1756c9141",
+      "lines": 50,
+      "symbols": [
+        {
+          "name": "AccessibilitySettings",
+          "line": 8,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "ProfileUpdate",
+          "line": 18,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "create_profile",
+          "line": 29,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "read_profile",
+          "line": 35,
           "kind": "FunctionDef"
         }
       ]
@@ -273,8 +300,8 @@
     },
     {
       "path": "backend/database/schema.py",
-      "sha256": "f3731e1b0366fdb4f8374a41bdcc6d6a7fe5e563fc7873a51800e5d30e056db7",
-      "lines": 302,
+      "sha256": "e6276eb523d83f7ea0b4e564812f5f9d02ef32f446bd5aa82ef4f231caf098b5",
+      "lines": 327,
       "symbols": [
         {
           "name": "get_db_connection",
@@ -290,42 +317,42 @@
     },
     {
       "path": "backend/main.py",
-      "sha256": "0de6d359e6ab50ea5d159310cb95e8d7be9d5c041acb3ec637975bd8efb12d8d",
-      "lines": 155,
+      "sha256": "d15fda6147324b2737dacf26ed4bf0d8aa07df51b90542dd2d5979f4edd344b5",
+      "lines": 157,
       "symbols": [
         {
           "name": "startup_event",
-          "line": 54,
+          "line": 55,
           "kind": "FunctionDef"
         },
         {
           "name": "shutdown_event",
-          "line": 80,
+          "line": 82,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "api_error_handler",
-          "line": 102,
+          "line": 104,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "validation_error_handler",
-          "line": 110,
+          "line": 112,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "http_exception_handler",
-          "line": 121,
+          "line": 123,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "health_check",
-          "line": 143,
+          "line": 145,
           "kind": "FunctionDef"
         },
         {
           "name": "debug_ffmpeg",
-          "line": 149,
+          "line": 151,
           "kind": "FunctionDef"
         }
       ]
@@ -338,82 +365,97 @@
     },
     {
       "path": "backend/routers/auth.py",
-      "sha256": "8355f47570377dd426b19a6e1ca478ba929dd285740772b2eb64112184c51250",
-      "lines": 274,
+      "sha256": "2b652c78486e62b2b5923b6ff144313542f760b927e808d0493d1bdf69592639",
+      "lines": 322,
       "symbols": [
         {
           "name": "StudentApproval",
-          "line": 24,
+          "line": 26,
           "kind": "ClassDef"
         },
         {
           "name": "_text",
-          "line": 29,
+          "line": 31,
           "kind": "FunctionDef"
         },
         {
           "name": "_user_dict",
-          "line": 36,
+          "line": 38,
           "kind": "FunctionDef"
         },
         {
           "name": "get_current_user",
-          "line": 46,
+          "line": 54,
           "kind": "FunctionDef"
         },
         {
           "name": "require_teacher",
-          "line": 67,
+          "line": 77,
           "kind": "FunctionDef"
         },
         {
           "name": "_json_error",
-          "line": 76,
+          "line": 86,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_registration_values",
+          "line": 91,
           "kind": "FunctionDef"
         },
         {
           "name": "register",
-          "line": 82,
+          "line": 103,
+          "kind": "AsyncFunctionDef"
+        },
+        {
+          "name": "AdultRegistration",
+          "line": 127,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "register_adult",
+          "line": 135,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "login",
-          "line": 114,
-          "kind": "AsyncFunctionDef"
-        },
-        {
-          "name": "logout",
-          "line": 141,
-          "kind": "AsyncFunctionDef"
-        },
-        {
-          "name": "me",
-          "line": 154,
-          "kind": "AsyncFunctionDef"
-        },
-        {
-          "name": "change_password",
           "line": 162,
           "kind": "AsyncFunctionDef"
         },
         {
+          "name": "logout",
+          "line": 189,
+          "kind": "AsyncFunctionDef"
+        },
+        {
+          "name": "me",
+          "line": 202,
+          "kind": "AsyncFunctionDef"
+        },
+        {
+          "name": "change_password",
+          "line": 210,
+          "kind": "AsyncFunctionDef"
+        },
+        {
           "name": "list_users",
-          "line": 184,
+          "line": 232,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "approve_user",
-          "line": 196,
+          "line": 244,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "reject_user",
-          "line": 241,
+          "line": 289,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "delete_user",
-          "line": 258,
+          "line": 306,
           "kind": "AsyncFunctionDef"
         }
       ]
@@ -454,6 +496,23 @@
           "name": "execute_pipeline",
           "line": 156,
           "kind": "AsyncFunctionDef"
+        }
+      ]
+    },
+    {
+      "path": "backend/routers/profiles.py",
+      "sha256": "0f2a4c5d2f81e396670cbba62c8868dfa78cd7e2d9a439f282a7d14bc3ee65df",
+      "lines": 59,
+      "symbols": [
+        {
+          "name": "profile",
+          "line": 12,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "update_profile",
+          "line": 22,
+          "kind": "FunctionDef"
         }
       ]
     },
@@ -871,8 +930,8 @@
     },
     {
       "path": "backend/scripts/bootstrap_teacher.py",
-      "sha256": "66b32379ac1b68c19166f1bca4d2f94c7bd780ebed2096d721caa42c8bc66888",
-      "lines": 47,
+      "sha256": "8ab94e38945e66c15d4a519d69c178a2c680043f657b2623c0c3a4e1c7949d60",
+      "lines": 51,
       "symbols": [
         {
           "name": "main",
@@ -1340,8 +1399,8 @@
     },
     {
       "path": "backend/tests/test_regressions.py",
-      "sha256": "2bace378f88dfb3c51339f1d3fd694f595dc3584a5719c5d410e5329149f2a12",
-      "lines": 616,
+      "sha256": "f15463c70cffa09c44fa59e04d8bb713027e5aac9a8318d8e71f5082a876677f",
+      "lines": 874,
       "symbols": [
         {
           "name": "Regressions",
@@ -1356,6 +1415,11 @@
         {
           "name": "EnrollmentRegressions",
           "line": 503,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "AccountProfileRegressions",
+          "line": 615,
           "kind": "ClassDef"
         },
         {
@@ -1634,8 +1698,108 @@
           "kind": "FunctionDef"
         },
         {
+          "name": "setUpClass",
+          "line": 617,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "setUp",
+          "line": 621,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "adult",
+          "line": 639,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "profile",
+          "line": 650,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_adult_registration_creates_one_private_reader",
+          "line": 655,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_adult_school_and_other_adult_isolation",
+          "line": 674,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_profile_languages_persist_without_rewriting_history",
+          "line": 690,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_invalid_profile_updates_are_atomic_and_do_not_echo_inputs",
+          "line": 711,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_profile_version_prevents_stale_and_concurrent_overwrites",
+          "line": 725,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_completion_rollout_gate_allows_account_recovery",
+          "line": 742,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_personal_join_code_cannot_enroll_a_classroom_child",
+          "line": 765,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_existing_pending_child_cannot_switch_into_adult_approval",
+          "line": 773,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_adult_duplicate_registration_does_not_leave_orphan_scopes",
+          "line": 783,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_profile_migration_backups_and_preserves_version_two_records",
+          "line": 798,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_teacher_cannot_manage_a_personal_adult_account",
+          "line": 828,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_profile_endpoints_require_identity_and_registration_limit_is_shared",
+          "line": 837,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_personal_scope_owner_binding_is_checked_on_every_request",
+          "line": 848,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_accessibility_merges_without_diagnosis_or_cross_account_updates",
+          "line": 856,
+          "kind": "FunctionDef"
+        },
+        {
           "name": "approve",
           "line": 596,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "save",
+          "line": 728,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "register",
+          "line": 788,
           "kind": "FunctionDef"
         },
         {
@@ -1644,6 +1808,12 @@
           "kind": "FunctionDef"
         }
       ]
+    },
+    {
+      "path": "backend/tests/validate_accounts_ui.cjs",
+      "sha256": "ee720cd3f416547531c80662462fd358fcd2432d3fb18b63b85758bdfaf23227",
+      "lines": 81,
+      "symbols": []
     },
     {
       "path": "backend/tests/validate_child_corpus.py",
@@ -1670,8 +1840,8 @@
     },
     {
       "path": "backend/tests/validate_enrollment_runtime.py",
-      "sha256": "a6861e04d7635719e53b5b1abcf2740efa47216a776dfb8a8ef11e079c4d6c87",
-      "lines": 136,
+      "sha256": "6e54c4a13cb6266cc65cab338dc4af49b0a143f227f495a1a21f4e0b0d2e3e1d",
+      "lines": 143,
       "symbols": [
         {
           "name": "free_port",
@@ -2488,8 +2658,8 @@
     },
     {
       "path": "frontend/lib/api.ts",
-      "sha256": "4ed2a265532412f98fe5ef92ca90f456a061412dca01ff72e3a8c1eeda396400",
-      "lines": 774,
+      "sha256": "69e7b0a8ce72e9ce131a48a03d3ae1f3ef0eafc9f68a2741e6ef719af467f646",
+      "lines": 834,
       "symbols": [
         {
           "name": "apiFetch",
@@ -2617,231 +2787,259 @@
         },
         {
           "name": "getStoredToken",
-          "line": 323
+          "line": 327
         },
         {
           "name": "getStoredUser",
-          "line": 328
+          "line": 332
         },
         {
           "name": "storeSession",
-          "line": 338
+          "line": 342
         },
         {
           "name": "clearSession",
-          "line": 343
+          "line": 347
         },
         {
           "name": "authHeaders",
-          "line": 348
+          "line": 352
         },
         {
           "name": "apiLogin",
-          "line": 353
+          "line": 357
         },
         {
           "name": "apiRegister",
-          "line": 363
+          "line": 367
         },
         {
           "name": "apiLogout",
-          "line": 373
+          "line": 377
         },
         {
           "name": "ManagedUser",
-          "line": 383
+          "line": 387
         },
         {
           "name": "fetchUsers",
-          "line": 385
+          "line": 389
         },
         {
           "name": "approveUser",
-          "line": 391
+          "line": 395
         },
         {
           "name": "rejectUser",
-          "line": 400
+          "line": 404
         },
         {
           "name": "deleteUserAccount",
-          "line": 407
+          "line": 411
         },
         {
           "name": "RosterEntry",
-          "line": 416
+          "line": 420
         },
         {
           "name": "fetchRoster",
-          "line": 431
+          "line": 435
         },
         {
           "name": "toggleParentUpdates",
-          "line": 437
+          "line": 441
         },
         {
           "name": "ParentUpdate",
-          "line": 446
+          "line": 450
         },
         {
           "name": "fetchParentMessage",
-          "line": 448
+          "line": 452
         },
         {
           "name": "StudentReport",
-          "line": 456
+          "line": 460
         },
         {
           "name": "fetchReports",
-          "line": 472
+          "line": 476
         },
         {
           "name": "PracticeLibrary",
-          "line": 478
+          "line": 482
         },
         {
           "name": "fetchPracticeLibrary",
-          "line": 495
+          "line": 499
         },
         {
           "name": "changePassword",
-          "line": 501
+          "line": 505
         },
         {
           "name": "SttMode",
-          "line": 511
+          "line": 515
         },
         {
           "name": "AgentModel",
-          "line": 512
+          "line": 516
         },
         {
           "name": "KeysStatus",
-          "line": 514
+          "line": 518
         },
         {
           "name": "fetchKeysStatus",
-          "line": 524
+          "line": 528
         },
         {
           "name": "saveKeys",
-          "line": 530
+          "line": 534
         },
         {
           "name": "parseError",
-          "line": 549
+          "line": 553
         },
         {
           "name": "resolveApiBase",
-          "line": 560
+          "line": 564
         },
         {
           "name": "WordTip",
-          "line": 576
+          "line": 580
         },
         {
           "name": "fetchWordTip",
-          "line": 584
+          "line": 588
         },
         {
           "name": "StoryTrack",
-          "line": 593
+          "line": 597
         },
         {
           "name": "StoryMapLevel",
-          "line": 595
+          "line": 599
         },
         {
           "name": "StoryMap",
-          "line": 601
+          "line": 605
         },
         {
           "name": "StoryPlay",
-          "line": 607
+          "line": 611
         },
         {
           "name": "StoryWord",
-          "line": 612
+          "line": 616
         },
         {
           "name": "StoryAttemptResult",
-          "line": 617
+          "line": 621
         },
         {
           "name": "StoryTrackSummary",
-          "line": 624
+          "line": 628
         },
         {
           "name": "fetchStoryMap",
-          "line": 629
+          "line": 633
         },
         {
           "name": "fetchStorySummary",
-          "line": 637
+          "line": 641
         },
         {
           "name": "fetchStoryPlay",
-          "line": 643
+          "line": 647
         },
         {
           "name": "storyAnalyze",
-          "line": 649
+          "line": 653
         },
         {
           "name": "storyAnalyzeMock",
-          "line": 661
+          "line": 665
         },
         {
           "name": "fetchStoryFeedback",
-          "line": 671
+          "line": 675
         },
         {
           "name": "fetchV1Health",
-          "line": 678
+          "line": 682
         },
         {
           "name": "fetchStories",
-          "line": 684
+          "line": 688
         },
         {
           "name": "createSession",
-          "line": 693
+          "line": 697
         },
         {
           "name": "fetchV2Sessions",
-          "line": 705
+          "line": 709
         },
         {
           "name": "analyzeCheckpoint",
-          "line": 711
+          "line": 715
         },
         {
           "name": "fetchFeedback",
-          "line": 725
+          "line": 729
         },
         {
           "name": "fetchSessionDetail",
-          "line": 735
+          "line": 739
         },
         {
           "name": "fetchStudentDashboard",
-          "line": 741
+          "line": 745
         },
         {
           "name": "fetchClassroomOverview",
-          "line": 750
+          "line": 754
         },
         {
           "name": "triggerSync",
-          "line": 756
+          "line": 760
         },
         {
           "name": "fetchSyncStatus",
-          "line": 762
+          "line": 766
         },
         {
           "name": "fetchPlatformCapabilities",
-          "line": 770
+          "line": 774
+        },
+        {
+          "name": "ReaderMode",
+          "line": 780
+        },
+        {
+          "name": "ProfileAccessibility",
+          "line": 781
+        },
+        {
+          "name": "ReaderProfile",
+          "line": 789
+        },
+        {
+          "name": "ReaderProfileUpdate",
+          "line": 801
+        },
+        {
+          "name": "apiRegisterAdult",
+          "line": 811
+        },
+        {
+          "name": "fetchReaderProfile",
+          "line": 822
+        },
+        {
+          "name": "saveReaderProfile",
+          "line": 828
         }
       ]
     },
@@ -3007,7 +3205,7 @@
     },
     {
       "path": "tools/build_handoff.py",
-      "sha256": "a39444ca173b4c66c58f6a04f100f92c76c0b8067bb66e908aa3b2d8f9ce1213",
+      "sha256": "81d2ffb2ed8cfd5446b0602e49f292945b3c7e8b266462c69ce84a4d4679f8ec",
       "lines": 104,
       "symbols": [
         {

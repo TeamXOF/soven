@@ -36,4 +36,4 @@ On 1 November 2026 the owner confirmed 70+ languages as the product goal and sel
 
 ## Implementation defaults
 
-The adopted product choices are in 11_PRODUCT_DEFAULTS.md. They guide future work without pretending that adult accounts, the introductory sample or the new book already exist. Work completed and tested is logged in 12_EXECUTION_LOG.md.
+The adopted product choices are in 11_PRODUCT_DEFAULTS.md. Adult/profile APIs are now implemented; their screens, the introductory sample and the new book remain planned. Work completed and tested is logged in 12_EXECUTION_LOG.md.

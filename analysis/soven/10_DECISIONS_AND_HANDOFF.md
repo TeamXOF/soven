@@ -22,11 +22,13 @@ D08 The confirmed product goal is 70+ languages. English and Urdu remain current
 
 D09 Recommended defaults are adopted under the owner's explicit authorization. See 11_PRODUCT_DEFAULTS.md; adopted behaviour is distinct from implemented behaviour.
 
+D11 The owner explicitly reserves UI design selection. Stop before redesigning landing, signup, profiles, navigation or book screens; request their preferred design. Backend account/profile work can finish first. Keep completion enforcement off until a usable form ships.
+
 D10 Maintain the checklist and execution log after each completed task, record acceptance evidence, then continue the next unblocked item. Do not mark waiting external validation complete.
 
 ## Adopted choices and remaining inputs
 
-O01 Resolved as a target: standalone adult signup with personal record scope; classroom children retain teacher approval/linking. Guardian administration is deferred. Implementation and migrations remain pending.
+O01 Resolved as a target: standalone adult signup with personal record scope; classroom children retain teacher approval/linking. Guardian administration is deferred. Adult isolation, profile APIs and additive migrations are implemented; forms and routing await the owner-selected design.
 
 O02 Adopt optional text/line-spacing, contrast and pace controls without required medical disclosure. Script-specific usability validation remains pending.
 

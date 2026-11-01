@@ -80,11 +80,11 @@ for filename,title,sources in groups:
     for source in sources:add_markdown(doc,(PACK/source).read_text(encoding='utf-8'))
     if filename.startswith('02_'):
         for paragraph in doc.paragraphs:
-            if paragraph.text == 'Implemented multilingual foundation and next work':
+            if paragraph.text in {'Implemented multilingual foundation and next work', 'Account profiles and personal scopes'}:
                 paragraph.paragraph_format.page_break_before=True
     # An exact delivery record is appended when available, without altering source assertions.
     if filename.startswith('06_'):
-        for record_name in ['VALIDATION_RESULTS.json','DELIVERY_STATUS.json','FOUNDATION_VALIDATION.json']:
+        for record_name in ['VALIDATION_RESULTS.json','DELIVERY_STATUS.json','FOUNDATION_VALIDATION.json','ACCOUNT_PROFILE_VALIDATION.json']:
             if (PACK/record_name).exists():
                 record=json.loads((PACK/record_name).read_text(encoding='utf-8'))
                 doc.add_heading(record_name.replace('_',' ').replace('.json',''),level=1)
@@ -98,7 +98,7 @@ for filename,title,sources in groups:
     for root in [doc.styles.element,doc.element]:
         for border in list(root.iter(qn('w:pBdr'))):border.getparent().remove(border)
     doc.save(OUT/filename)
-    manifest.append({'document':'documents/'+filename,'title':title,'sources':[{'path':s,'sha256':hashlib.sha256((PACK/s).read_bytes().replace(b'\r\n',b'\n')).hexdigest()} for s in (sources + ([n for n in ['VALIDATION_RESULTS.json','DELIVERY_STATUS.json','FOUNDATION_VALIDATION.json'] if (PACK/n).exists()] if filename.startswith('06_') else []))],
+    manifest.append({'document':'documents/'+filename,'title':title,'sources':[{'path':s,'sha256':hashlib.sha256((PACK/s).read_bytes().replace(b'\r\n',b'\n')).hexdigest()} for s in (sources + ([n for n in ['VALIDATION_RESULTS.json','DELIVERY_STATUS.json','FOUNDATION_VALIDATION.json','ACCOUNT_PROFILE_VALIDATION.json'] if (PACK/n).exists()] if filename.startswith('06_') else []))],
                      'sha256':hashlib.sha256((OUT/filename).read_bytes()).hexdigest(),'render_review':'see DOCUMENT_QA.json'})
 (PACK/'DOCUMENT_MANIFEST.json').write_text(json.dumps({'text_hash_format':'UTF-8 with CRLF normalized to LF; DOCX hashes use exact bytes','maintained_format':'Markdown','generated_format':'DOCX','source_date':'2026-11-01','documents':manifest},indent=2),encoding='utf-8')
 print(json.dumps({'generated_documents':len(manifest),'output':str(OUT)}))

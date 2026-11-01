@@ -64,4 +64,14 @@ Edit the shared registry, run python tools/build_language_types.py, then run its
 
 ### Acceptance evidence and next adapter work
 
-Five new regressions verify inventory claims, unsupported-language rejection before inference, identifier normalization, public-GET isolation and generated-type drift. The supported suite now has 47 cases. The provider inventory is descriptive foundation code; a configured reasoning adapter, permitted real invocation and measured language quality are still explicit next tasks in the checklist.
+Five new regressions verify inventory claims, unsupported-language rejection before inference, identifier normalization, public-GET isolation and generated-type drift. The foundation had 47 cases; account/profile work raises the current suite to 61. The provider inventory is descriptive foundation code; a configured reasoning adapter, permitted real invocation and measured language quality are still explicit next tasks in the checklist.
+
+## Account profiles and personal scopes
+
+Migration v3 adds classrooms.kind and owner_user_id plus user_profiles keyed to users. Existing classroom rows retain kind classroom; existing accounts receive safe legacy completion defaults. Versioned databases receive a before-profiles backup before schema changes. Attempts, scores and token records are not rewritten.
+
+Adult signup atomically creates a personal classroom, its owner account, a single reader row and an incomplete adult profile. It keeps technical role student and is_admin 0. Authentication verifies the personal owner binding on every request. Existing student/record authorization then limits reads to that reader; school teachers cannot manage another scope. Children still use pending classroom signup and explicit approval/linking. Teacher bootstrap creates a completed teacher profile.
+
+core/reader_profiles.py defines strict profile input and defaults; routers/profiles.py exposes authenticated owner-only GET/PATCH /api/auth/profile with no-store responses. Updates require expected_version, merge optional accessibility fields and return 409 on concurrent or stale edits. reading_language and interface_language accept enabled en/ur; native_language and translation_language accept canonical candidate codes, independently nullable. Completion requires native_language. No role, mode, admin or classroom changes are accepted through this route.
+
+AccessMiddleware includes adult signup in the shared IP registration bucket and provides the optional ENFORCE_PROFILE_COMPLETION gate. Leave that flag off until UI completion routing ships. frontend/lib/api.ts includes apiRegisterAdult, fetchReaderProfile, saveReaderProfile and typed contracts; these do not mutate the active auth store automatically. The future UI must reject stale profile responses after account changes and deliberately reconcile legacy browser preferences. See 14_ACCOUNT_PROFILE_API.md for payloads, recovery and rollout details.

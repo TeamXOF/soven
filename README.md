@@ -4,7 +4,7 @@
 
 SOVEN is a reading-practice platform with word-level feedback and teacher tools, building toward accessible storybook learning and **70+ languages**. English and Urdu are the current working reading tracks; broader coverage is planned.
 
-**Current stage:** the repaired SpeakFlow baseline is imported under SOVEN branding. The new book UI, 70+ language rollout, introductory voice test and Meta runtime integration are planned; they are not active features yet.
+**Current stage:** the repaired SpeakFlow baseline, multilingual inventory and account/profile backend are established under SOVEN branding. Adult signup/profile APIs are ready; their screens await the owner-selected design. The new book UI, 70+ language rollout, introductory voice test and Meta runtime integration are planned; they are not active features yet.
 
 [Start here](analysis/soven/00_START_HERE.md) · [Current state](analysis/soven/02_CURRENT_STATE.md) · [Setup](docs/SETUP.md) · [Roadmap](analysis/soven/07_IMPLEMENTATION_ROADMAP.md) · [Handoff documents](analysis/soven/DOCUMENT_MANIFEST.json)
 
@@ -13,6 +13,7 @@ SOVEN is a reading-practice platform with word-level feedback and teacher tools,
 - Recorded reading with word-match feedback, target/recognized word comparisons and focused practice.
 - English and Urdu reading paths, browser word/sentence playback and language-specific history.
 - Teacher-managed classrooms, child signup and approval, optional existing-profile linking, roster analytics and reports.
+- Independent adult account API, private reader scope, versioned profile settings and separate language preferences. Signup/profile UI is pending; completion enforcement defaults off.
 - Classic dashboard, fixed story checkpoints and dynamic reading levels sharing reporting and scoring.
 - Cached local Whisper support, explicit offline mode, bounded processing, persistent coaching and optional authenticated archival sync.
 - Quiet page-flow warnings/errors, clear fallback labels and guarded recording/account lifecycles.
@@ -61,7 +62,7 @@ npx tsc --noEmit --incremental false
 npm run build -- --webpack
 ```
 
-[Validation and operations](analysis/soven/08_VALIDATION_AND_OPERATIONS.md) documents isolated browser checks, measured evidence and failures. [Latest exported-checkout results](analysis/soven/VALIDATION_RESULTS.json) and [CI](https://github.com/TeamXOF/soven/actions) distinguish completed checks from planned work.
+[Validation and operations](analysis/soven/08_VALIDATION_AND_OPERATIONS.md) documents isolated browser checks, measured evidence and failures. [Latest account/profile checks](analysis/soven/ACCOUNT_PROFILE_VALIDATION.json) and [CI](https://github.com/TeamXOF/soven/actions) distinguish completed checks from planned work.
 
 Important limits remain: the prior child-speech holdout flagged 29/110 expert-acceptable words; a thirty-recording burst returned eight successes and twenty-two busy responses; Urdu speech quality, educator outcomes and public deployment remain unverified. The successful physical microphone take proves one tested workflow, not general accuracy. Do not repeat historical claims of solved autocorrection, phoneme diagnosis, emotion detection or universal offline operation.
 

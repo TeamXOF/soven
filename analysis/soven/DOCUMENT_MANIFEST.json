@@ -10,14 +10,14 @@
       "sources": [
         {
           "path": "01_PROJECT_CONTEXT.md",
-          "sha256": "48ea390a7a42f6ef8f0815c74d824388e3e5999a47ddc43700f67f17de4dca68"
+          "sha256": "daf58e028e2bde9ef175865823a1545d75401d07e00330cb51b62e60895c6ddf"
         },
         {
           "path": "02_CURRENT_STATE.md",
-          "sha256": "9589870b383cca0a9ffc4160a9be65d27d2467005cb2b63b9a6ebbb837c2192d"
+          "sha256": "ed59fe3276bd4e54e202d57b440563434307fc390995ec26a0efd973d5d32349"
         }
       ],
-      "sha256": "ea995294d893ac2d67444a0ce4dc1e73d2f8a9894f30d9662f6f6bfe4f1be45c",
+      "sha256": "437c45ddaef325bd94c8a35c492aa25e747853ad48a89e62a3233c398b0b9e4b",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -26,10 +26,10 @@
       "sources": [
         {
           "path": "03_ARCHITECTURE.md",
-          "sha256": "a6cd44aa1f1ce73caed0e2c86968639a3a555acb46ad7340b710fcd133527615"
+          "sha256": "58753f5f6508d61bbc39eed728cbba77db7a064e58651a86b1ba93e743592740"
         }
       ],
-      "sha256": "7a8b394cf856ab3a85dc70bb6c8392ecc428d73b3fe9c519e74de8cd9328bea0",
+      "sha256": "a51e511997a9bff4c4113ee991c4b9eddf5dc64c1362020ce551123f956a0618",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -38,14 +38,14 @@
       "sources": [
         {
           "path": "04_PRODUCT_REQUIREMENTS.md",
-          "sha256": "25ef9c59b40a6bd33e1bf95f59ae0a4d8024533e125e5af6c7d9f59e4412fff3"
+          "sha256": "42ef600441962a5eb75f63da4f8a6e61c974ab13961bc7bfaf32662616483762"
         },
         {
           "path": "05_SOURCE_REVIEW.md",
           "sha256": "c39beb6148f3f06cbec39cf5332b4899012686cabfbbff07b4bb4d457664ff8e"
         }
       ],
-      "sha256": "54c9f88722001a3414d1dfc5fadf99db2d969a2f41ca0b1ff4514e6bba302629",
+      "sha256": "da467aa683aeded89a41d0e8efab1ca97146564e1eab59106b1fea512ab1e402",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -57,7 +57,7 @@
           "sha256": "85cb16b8f0dcbe8afb6f820a1da8e89ac9a50f661a198cdf5d77c4118bb63646"
         }
       ],
-      "sha256": "2e5f955abf4062ac03e46ab9e3c84c39b657c018d4183fd43a8a5844e6f34d69",
+      "sha256": "9c693442efb58617f097df847e3a4181ae26f26f40b1279169073e2a7c48a13e",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -66,18 +66,18 @@
       "sources": [
         {
           "path": "07_IMPLEMENTATION_ROADMAP.md",
-          "sha256": "acb253d3d2b890a6d403d06422a96d1a2d030086308c6a940956812b3940c098"
+          "sha256": "6b9583932b7590d53b16f22d37fca60336611fde74fb1d8d640edab5b8a7a2b0"
         },
         {
           "path": "10_DECISIONS_AND_HANDOFF.md",
-          "sha256": "91d14919181734dc39e45adb768364ab5afda1b94ce0c530adfd9a9e51701676"
+          "sha256": "dac4f3dc80b31ad02d0cfd4771b8cec0c97cc04dac4be596e2d441e5c058375a"
         },
         {
           "path": "11_PRODUCT_DEFAULTS.md",
-          "sha256": "040ba10ec3557d25d0bf74891a148c13afb6aace1ace21ace9644c2e767bc1c2"
+          "sha256": "4cea5ef183a60772f3e49c922b4231df74d1c8bb5bba6ec34d03dfaea03e181f"
         }
       ],
-      "sha256": "15459e9469ac232a82753bf6fe251dc545f3b2eb8c926fa82f297566c21b9ba1",
+      "sha256": "e5a26de4ce6ce38aa8362e4073f6c92b70e39592e3aa0135954d21195cd58102",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -86,7 +86,7 @@
       "sources": [
         {
           "path": "08_VALIDATION_AND_OPERATIONS.md",
-          "sha256": "bfe67108950e5a7413dd774e593f2f7618f47c254a2155a4deb78783dfa0f048"
+          "sha256": "476fb860e3e7fa14531503e747d86a4de31769533e2a12ab7e4de0bc966aa32e"
         },
         {
           "path": "09_BRAND_AND_REPOSITORY.md",
@@ -98,14 +98,18 @@
         },
         {
           "path": "DELIVERY_STATUS.json",
-          "sha256": "7dd206e31ed432c16653ef9a177ecb21e56630d3ff0932383cfe980df392831f"
+          "sha256": "482fc71ca1c1976adbb8eec991eb5cf5f630c039528fa44fb6b6d18cad1f571b"
         },
         {
           "path": "FOUNDATION_VALIDATION.json",
           "sha256": "34aa2af994c040e83e208075e2a3922079aa4a731617b97784285f900026488f"
+        },
+        {
+          "path": "ACCOUNT_PROFILE_VALIDATION.json",
+          "sha256": "a1977acc9afcf2b88543973b3160fa779fa2e88cc149b93f25a743fb56cb8d5e"
         }
       ],
-      "sha256": "2dd24b5d409872f85cb08f849537ae6f6022be93773d2f365b8d9b1ea6c72260",
+      "sha256": "522ee5e2c3e4c13058841c0a228b02f9854fdaeeeb98bb50d798497959e8c792",
       "render_review": "see DOCUMENT_QA.json"
     }
   ]

@@ -12,7 +12,7 @@ Prepare local speech dependencies and model weights before offline use. Set WHIS
 
 From the repository root, run python backend/tests/test_regressions.py. From frontend run npm run lint, npx tsc --noEmit --incremental false and npm run build -- --webpack. Tests use temporary databases and substituted providers, plus a real synthetic acoustic/decoder check. They never use the production classroom database.
 
-For browser checks install Playwright and Chromium outside committed source, build the frontend, then run python backend/tests/validate_enrollment_runtime.py. The default exercises child signup, approval and existing-profile linking. Set VALIDATION_BROWSER_SCRIPT=validate_dashboard_ui.cjs for the twelve dashboard cases. VALIDATION_NODE and PLAYWRIGHT_MODULE support nonstandard runtime locations. Outputs go to .qa/runtime-validation. Tests use isolated real authentication, fake microphones and controlled analysis responses; they are not live speech-quality tests.
+For browser checks install Playwright and Chromium outside committed source, build the frontend, then run python backend/tests/validate_enrollment_runtime.py. The default exercises child signup, approval and existing-profile linking. Set VALIDATION_BROWSER_SCRIPT=validate_dashboard_ui.cjs for the twelve dashboard cases or validate_accounts_ui.cjs for adult/profile API integration through the unchanged login UI. VALIDATION_NODE and PLAYWRIGHT_MODULE support nonstandard runtime locations. Outputs go to .qa/runtime-validation. Tests use isolated real authentication, fake microphones and controlled analysis responses; they are not live speech-quality tests.
 
 ## Validation evidence and limits
 
@@ -49,3 +49,11 @@ The target is 70+ languages; current evidence covers English workflows and limit
 ## Latest foundation checks
 
 The language/provider foundation passes 47 isolated backend regressions, frontend lint, standalone TypeScript and a production build. Run python tools/build_language_types.py --check from the root to detect contract drift; it is also in CI. The new public metadata GET is regression-tested separately from protected inference/account routes. FOUNDATION_VALIDATION.json records post-transfer browser/CI evidence; older counts remain dated baseline history.
+
+## Account profile validation and rollout
+
+The supported suite now passes 61 backend regressions. Fourteen account/profile cases exercise adult isolation, teacher boundaries, profile field validation, shared signup throttling, owner rebinding, atomic registration, version conflicts, partial settings, completion gating and v2 migration backups. A focused rerun verifies no-store profile responses. Lint, TypeScript and production build pass. Isolated browser evidence covers nine enrollment checks, twelve dashboard checks and six adult/profile integration checks; see ACCOUNT_PROFILE_VALIDATION.json for measured scope and limitations.
+
+Profile migration is additive. Before deploying, back up the private database and test the v2-to-v3 path on a copy. The migration creates a before-profiles backup for an existing versioned database before changes; protect it like the source database. Repeated startup preserves profile versions, preferences, old tokens and stored scores. Never publish these backups.
+
+Leave ENFORCE_PROFILE_COMPLETION=0 while the legacy UI is deployed. Enabling it without a completion form would strand new readers at a 403; the authenticated profile endpoint remains accessible for recovery. New child/adult profiles begin incomplete; migrated accounts retain access. The later UI rollout must cover forms, error/conflict handling, auth refresh, browser-preference reconciliation and applied accessibility before enabling the gate. Adult content and legacy child-focused labels also remain UI work. Native/translation preference storage is not a new translation service or evidence of 89-language runtime support.

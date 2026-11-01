@@ -12,7 +12,7 @@ Keep reference proportions and clear margins. Use the standalone symbol at small
 
 ## Repository and attribution
 
-The public repository is https://github.com/Waleed-Khalid-dev/soven, independent of TeamXOF. It began with a repaired-baseline import and separate branding/documentation commit. Later commits record publication evidence and owner revisions. Preserve the MIT copyright and SpeakFlow Mesh / TeamXOF attribution. The source repository remains intact.
+The public repository is https://github.com/TeamXOF/soven, transferred from the personal profile with explicit authorization. It is separate from TeamXOF/speakflow-mesh. It began with a repaired-baseline import and separate branding/documentation commit. Later commits record publication evidence and owner revisions. Preserve the MIT copyright and SpeakFlow Mesh / TeamXOF attribution. The source repository remains intact.
 
 Include active code, required data/fonts, tests, CI, setup tools and reviewed documentation. Exclude credentials, private environments, databases/backups, recordings, weights, dependencies, builds, logs, private telemetry and original planning files. Preserve real provider names and compatible technical identifiers until their integrations change.
 
@@ -22,4 +22,4 @@ SOVEN targets 70+ languages. English and Urdu are current working tracks; Spanis
 
 ## Maintenance and publication evidence
 
-DELIVERY_STATUS records this documentation delivery; PUBLICATION_RECEIPT preserves the original verified launch. GitHub history and CI show later revisions. Refresh source catalogues/document hashes and mirror the pack after changes. The README logo is separate from GitHub's optional social-preview setting. Source publication does not imply deployment.
+DELIVERY_STATUS records current delivery; PUBLICATION_RECEIPT preserves the original personal-profile launch; TRANSFER_RECEIPT verifies TeamXOF ownership. GitHub history and CI show later revisions. Refresh source catalogues/document hashes and mirror the pack after changes. The README logo is separate from GitHub's optional social-preview setting. Source publication does not imply deployment.

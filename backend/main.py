@@ -18,6 +18,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from database.schema import init_db
 from routers import pipeline, students, sessions
+from routers.capabilities import router as capabilities_router
 from routers.auth import router as auth_router
 from routers.teacher import router as teacher_router
 from routers.v1 import api as v1_api, ws_router, ws_manager, ApiError
@@ -63,6 +64,7 @@ def startup_event():
         print(f"[STARTUP WARNING] sync watcher not started: {e}")
 
 # Mount routers (Gen-1 untouched; v2 additive)
+app.include_router(capabilities_router)
 app.include_router(pipeline.router)
 app.include_router(students.router)
 app.include_router(sessions.router)

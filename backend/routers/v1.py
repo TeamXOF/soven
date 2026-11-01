@@ -1,4 +1,5 @@
 from core.workload import run_audio
+from core.languages import require_reading_language
 """
 SpeakFlow v2 API — the roadmap Part 1.2 contract, implemented additively
 alongside the untouched Gen-1 pipeline.
@@ -200,8 +201,7 @@ async def word_tip(word: str, lang: str = "en", mismatch: str = "",
     word = (word or "").strip()[:40]
     if not word:
         raise ApiError("VALIDATION_ERROR", "word is required", 422)
-    if lang not in ("en", "ur"):
-        raise ApiError("VALIDATION_ERROR", "lang must be 'en' or 'ur'", 422)
+    lang = require_reading_language(lang)
 
     import hashlib
     cache_key = hashlib.sha256(json.dumps([word, lang, mismatch[:100], spoken[:100]], ensure_ascii=False).encode()).hexdigest()
@@ -333,8 +333,7 @@ def create_session(body: dict, request: Request = None):
             raise ApiError("VALIDATION_ERROR", "Account not approved.", 403)
         student_id = user.get("student_id")
 
-    if language not in ("en", "ur"):
-        raise ApiError("VALIDATION_ERROR", "language must be 'en' or 'ur'", 422)
+    language = require_reading_language(language)
 
     with get_db_connection() as conn:
         student = conn.execute("SELECT * FROM students WHERE id = ?",

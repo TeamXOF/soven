@@ -41,3 +41,7 @@ C12 Visual identity. The initial delivery selected concept A; the owner rejected
 ## Provenance and public summaries
 
 Keep both original files unchanged locally, with full text available to the owner. Public documents contain reviewed requirements and corrections rather than verbatim private planning material. Historical evidence records and the source MIT notice are retained. Public SOURCE_PROVENANCE records hashes and extraction counts so later changes can be detected without publishing private notes.
+
+## Owner authorization after planning
+
+The owner subsequently authorized transfer to TeamXOF, public visibility, recommended defaults for unspecified choices and a checklist that advances after verified completion. These direct instructions supersede earlier personal-ownership and undecided-default statements. Source A/B remain local, unchanged planning inputs. Implemented mechanics and selected future behaviour remain distinguished in CURRENT_STATE and the execution log.

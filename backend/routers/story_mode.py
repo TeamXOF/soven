@@ -1,4 +1,5 @@
 from core.workload import run_audio
+from core.languages import require_reading_language
 """
 Dynamic Story Mode — endless dual-track (English / اردو) level engine.
 
@@ -222,7 +223,7 @@ def story_map(request: Request, world: int = 0, track: str = "en", student_id: s
     user = get_current_user(request)
     if not user:
         raise ApiError("VALIDATION_ERROR", "Please log in.", 401)
-    track = track if track in ("en", "ur") else "en"
+    track = require_reading_language(track)
     if user["role"] == "teacher":
         if not student_id:
             raise ApiError("VALIDATION_ERROR", "student_id required", 422)
@@ -267,7 +268,7 @@ def play_level(request: Request, level: int, track: str = "en"):
     user = get_current_user(request)
     if not user:
         raise ApiError("VALIDATION_ERROR", "Please log in.", 401)
-    track = track if track in ("en", "ur") else "en"
+    track = require_reading_language(track)
     if level < 1 or level > 9999:
         raise ApiError("VALIDATION_ERROR", "level out of range", 422)
     info = get_or_create_level(track, level)
@@ -326,7 +327,7 @@ async def story_analyze(request: Request, background_tasks: BackgroundTasks,
         raise ApiError("VALIDATION_ERROR", "Story Mode is for students — use a student account.", 403)
     if not student_id:
         raise ApiError("VALIDATION_ERROR", "Your account is not linked to a reader profile.", 403)
-    track = track if track in ("en", "ur") else "en"
+    track = require_reading_language(track)
     if level < 1 or level > 9999:
         raise ApiError("VALIDATION_ERROR", "level out of range", 422)
 
@@ -438,7 +439,7 @@ async def story_analyze_mock(request: Request, background_tasks: BackgroundTasks
         raise ApiError("VALIDATION_ERROR", "Student account required.", 403)
     student_id = user["student_id"]
     track = body.get("track", "en")
-    track = track if track in ("en", "ur") else "en"
+    track = require_reading_language(track)
     level = int(body.get("level") or 1)
     info = await asyncio.to_thread(get_or_create_level, track, level)
     sentence = info["sentence"]
@@ -500,7 +501,7 @@ def story_summary(request: Request, track: str = "en"):
     user = get_current_user(request)
     if not user:
         raise ApiError("VALIDATION_ERROR", "Please log in.", 401)
-    track = track if track in ("en", "ur") else "en"
+    track = require_reading_language(track)
     student_id = user.get("student_id") or ""
     progress = _progress_rows(student_id, track)
     unlocked, next_level, total_stars = _unlocked_and_next(progress)

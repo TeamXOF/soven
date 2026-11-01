@@ -45,3 +45,7 @@ The SOVEN rerun exposed open SQLite startup and backup connections during Window
 ## Multilingual validation plan
 
 The target is 70+ languages; current evidence covers English workflows and limited Urdu UI/scoring, not broad speech quality. Track recognition, segmentation, content, coaching, TTS, translations, layout and reports independently per language. Test browser audio formats, RTL, long text and non-whitespace scripts where applicable. Agree representative speakers and language-specific thresholds before marking a language validated. Provider locale entries and translated menus are insufficient evidence.
+
+## Latest foundation checks
+
+The language/provider foundation passes 47 isolated backend regressions, frontend lint, standalone TypeScript and a production build. Run python tools/build_language_types.py --check from the root to detect contract drift; it is also in CI. The new public metadata GET is regression-tested separately from protected inference/account routes. FOUNDATION_VALIDATION.json records post-transfer browser/CI evidence; older counts remain dated baseline history.

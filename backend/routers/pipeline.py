@@ -1,4 +1,5 @@
 from core.workload import run_audio
+from core.languages import require_reading_language
 import json
 import uuid
 import base64
@@ -97,7 +98,7 @@ async def generate_sentences(difficulty: str = "medium", count: int = 5, languag
     the same five stock sentences."""
     difficulty = difficulty if difficulty in ("easy", "medium", "hard") else "medium"
     count = max(1, min(count, 8))
-    language = language if language in ("en", "ur") else "en"
+    language = require_reading_language(language)
     try:
         from agents.orchestrator import call_agent
         data = await asyncio.wait_for(

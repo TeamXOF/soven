@@ -62,6 +62,8 @@ class AccessMiddleware(BaseHTTPMiddleware):
                 chunks.append(chunk)
             request._body = b"".join(chunks)
         public = {"/health", "/api/v1/health", "/api/auth/login", "/api/auth/register", "/api/auth/logout", "/api/v1/sync/ingest"}
+        if request.method == "GET" and path == "/api/v1/capabilities":
+            public.add(path)
         protected = path.startswith(("/api/", "/pipeline")) or path == "/debug-ffmpeg"
         if path in {"/api/auth/login", "/api/auth/register"}:
             ip = request.client.host if request.client else "unknown"

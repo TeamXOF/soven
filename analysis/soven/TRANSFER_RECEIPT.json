@@ -1,0 +1,13 @@
+{
+  "transferred_at_utc": "2026-11-01T09:05:44.498381+00:00",
+  "from": "Waleed-Khalid-dev/soven",
+  "to": "TeamXOF/soven",
+  "repository_id_preserved": 1441605840,
+  "visibility": "public",
+  "head_preserved_at_transfer": "5f36be5819f2e4127f679024380c6f82059f01e1",
+  "old_url_resolves_to_same_repository": true,
+  "authenticated_owner_admin_access": true,
+  "local_remote": "https://github.com/TeamXOF/soven.git",
+  "original_speakflow_repository": "unchanged",
+  "access_policy": "Existing organization defaults retained; no unnamed team members invited or granted privileges"
+}

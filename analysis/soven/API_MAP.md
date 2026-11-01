@@ -13,6 +13,7 @@ Generated from literal router prefixes and decorators. Check source models for e
 | backend/routers/auth.py | POST | /api/auth/users/{user_id}/approve | approve_user |
 | backend/routers/auth.py | POST | /api/auth/users/{user_id}/reject | reject_user |
 | backend/routers/auth.py | DELETE | /api/auth/users/{user_id} | delete_user |
+| backend/routers/capabilities.py | GET | /api/v1/capabilities | capabilities |
 | backend/routers/pipeline.py | GET | /pipeline/sentences | generate_sentences |
 | backend/routers/pipeline.py | POST | /pipeline/run | execute_pipeline |
 | backend/routers/sessions.py | GET | /api/sessions/ | get_sessions |

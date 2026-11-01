@@ -1,12 +1,12 @@
 {
-  "generated_at_utc": "2026-11-01T08:25:55.251535+00:00",
+  "generated_at_utc": "2026-11-01T09:43:37.481551+00:00",
   "scope": "Active source and supported tooling; no runtime/private files",
   "text_hash_format": "UTF-8 with CRLF normalized to LF",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
-      "sha256": "0d53b6fae6422249f0f21b60640a499bc2c2e0ba821ff3f88f3da10c8b5024f1",
-      "lines": 30,
+      "sha256": "ce7dec4a2882a34dc4a9a32676831565313b1b92dde2701d461c97cd3767757e",
+      "lines": 31,
       "symbols": []
     },
     {
@@ -143,9 +143,37 @@
       ]
     },
     {
+      "path": "backend/core/language_types.py",
+      "sha256": "e5e073314fabeb01398f49fb1dfaf721afc0f8ff74659fa88fc1549daac6ab1a",
+      "lines": 5,
+      "symbols": []
+    },
+    {
+      "path": "backend/core/languages.py",
+      "sha256": "5413ad8c3976b6401dc0bc3ca51ab31d367167a6d2a66ebc5d15a94ec39e99e9",
+      "lines": 36,
+      "symbols": [
+        {
+          "name": "canonical_language",
+          "line": 14,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "require_reading_language",
+          "line": 24,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "language_catalog",
+          "line": 34,
+          "kind": "FunctionDef"
+        }
+      ]
+    },
+    {
       "path": "backend/core/middleware.py",
-      "sha256": "1d8a4a598bb3c3c8901483a47eef7083cf36af7930317a43396653969f3a25fa",
-      "lines": 110,
+      "sha256": "3b247589e184ca77e2d1d5d7ee57b89f0b3b7556cfc4d02f46d246d90cedfba1",
+      "lines": 112,
       "symbols": [
         {
           "name": "_limited",
@@ -166,6 +194,18 @@
           "name": "dispatch",
           "line": 38,
           "kind": "AsyncFunctionDef"
+        }
+      ]
+    },
+    {
+      "path": "backend/core/provider_capabilities.py",
+      "sha256": "7bfbb533192a47eedaec5251caa3657733223e148ac0f98514035c9566ebcecb",
+      "lines": 24,
+      "symbols": [
+        {
+          "name": "provider_inventory",
+          "line": 23,
+          "kind": "FunctionDef"
         }
       ]
     },
@@ -211,22 +251,22 @@
     },
     {
       "path": "backend/database/models.py",
-      "sha256": "dfc2d8a2f6b40b36556c3f727b9c74e4360e5604cfb701cdf3b5a8a93feee742",
-      "lines": 17,
+      "sha256": "f97428282651e212ace50d921eb1f2df560c0d9bc976c9da9246b54970935411",
+      "lines": 18,
       "symbols": [
         {
           "name": "StudentCreate",
-          "line": 4,
+          "line": 5,
           "kind": "ClassDef"
         },
         {
           "name": "PipelineRunRequest",
-          "line": 8,
+          "line": 9,
           "kind": "ClassDef"
         },
         {
           "name": "HealthResponse",
-          "line": 16,
+          "line": 17,
           "kind": "ClassDef"
         }
       ]
@@ -250,42 +290,42 @@
     },
     {
       "path": "backend/main.py",
-      "sha256": "9e36d1b0f28d2495fc6ef7469b94c0337090c1440a5b7f2c14101712422e6580",
-      "lines": 153,
+      "sha256": "0de6d359e6ab50ea5d159310cb95e8d7be9d5c041acb3ec637975bd8efb12d8d",
+      "lines": 155,
       "symbols": [
         {
           "name": "startup_event",
-          "line": 53,
+          "line": 54,
           "kind": "FunctionDef"
         },
         {
           "name": "shutdown_event",
-          "line": 78,
+          "line": 80,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "api_error_handler",
-          "line": 100,
+          "line": 102,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "validation_error_handler",
-          "line": 108,
+          "line": 110,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "http_exception_handler",
-          "line": 119,
+          "line": 121,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "health_check",
-          "line": 141,
+          "line": 143,
           "kind": "FunctionDef"
         },
         {
           "name": "debug_ffmpeg",
-          "line": 147,
+          "line": 149,
           "kind": "FunctionDef"
         }
       ]
@@ -379,28 +419,40 @@
       ]
     },
     {
+      "path": "backend/routers/capabilities.py",
+      "sha256": "27d1e24743f7defa07cb6132feda175a6acc78f1cd35aeb0bdf97799e1ca884a",
+      "lines": 13,
+      "symbols": [
+        {
+          "name": "capabilities",
+          "line": 10,
+          "kind": "FunctionDef"
+        }
+      ]
+    },
+    {
       "path": "backend/routers/pipeline.py",
-      "sha256": "fe830a06af5030600ed1c542e936d774df9b6526d2d421ef3fca59c6432b8a11",
-      "lines": 317,
+      "sha256": "74d1a8ae044916a8da2d44a5d24d6194bae985df16a316151f07f0e81a0667f0",
+      "lines": 318,
       "symbols": [
         {
           "name": "_SimulationOnly",
-          "line": 16,
+          "line": 17,
           "kind": "ClassDef"
         },
         {
           "name": "generate_sentences",
-          "line": 93,
+          "line": 94,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "_process_audio",
-          "line": 124,
+          "line": 125,
           "kind": "FunctionDef"
         },
         {
           "name": "execute_pipeline",
-          "line": 155,
+          "line": 156,
           "kind": "AsyncFunctionDef"
         }
       ]
@@ -429,102 +481,102 @@
     },
     {
       "path": "backend/routers/story_mode.py",
-      "sha256": "1e7060f69e27ece09b1b041d01dd1a282bbeb183037c903d0fb3938def0a783d",
-      "lines": 509,
+      "sha256": "d6c089db9ee877485ce10aff8ae1901e76d80118083c54e278d6a2c9e9ee3fdd",
+      "lines": 510,
       "symbols": [
         {
           "name": "_band",
-          "line": 101,
+          "line": 102,
           "kind": "FunctionDef"
         },
         {
           "name": "level_difficulty",
-          "line": 109,
+          "line": 110,
           "kind": "FunctionDef"
         },
         {
           "name": "level_theme",
-          "line": 113,
+          "line": 114,
           "kind": "FunctionDef"
         },
         {
           "name": "world_name",
-          "line": 118,
+          "line": 119,
           "kind": "FunctionDef"
         },
         {
           "name": "language_name",
-          "line": 123,
+          "line": 124,
           "kind": "FunctionDef"
         },
         {
           "name": "stars_for",
-          "line": 127,
+          "line": 128,
           "kind": "FunctionDef"
         },
         {
           "name": "get_or_create_level",
-          "line": 135,
+          "line": 136,
           "kind": "FunctionDef"
         },
         {
           "name": "_student_id_or_403",
-          "line": 184,
+          "line": 185,
           "kind": "FunctionDef"
         },
         {
           "name": "_progress_rows",
-          "line": 197,
+          "line": 198,
           "kind": "FunctionDef"
         },
         {
           "name": "_unlocked_and_next",
-          "line": 206,
+          "line": 207,
           "kind": "FunctionDef"
         },
         {
           "name": "story_map",
-          "line": 219,
+          "line": 220,
           "kind": "FunctionDef"
         },
         {
           "name": "play_level",
-          "line": 265,
+          "line": 266,
           "kind": "FunctionDef"
         },
         {
           "name": "_audio_ext",
-          "line": 285,
+          "line": 286,
           "kind": "FunctionDef"
         },
         {
           "name": "_run_phase2",
-          "line": 293,
+          "line": 294,
           "kind": "FunctionDef"
         },
         {
           "name": "story_analyze",
-          "line": 313,
+          "line": 314,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "story_analyze_mock",
-          "line": 432,
+          "line": 433,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "story_feedback",
-          "line": 486,
+          "line": 487,
           "kind": "FunctionDef"
         },
         {
           "name": "story_summary",
-          "line": 499,
+          "line": 500,
           "kind": "FunctionDef"
         },
         {
           "name": "_call",
-          "line": 153,
+          "line": 154,
           "kind": "AsyncFunctionDef"
         }
       ]
@@ -652,52 +704,52 @@
     },
     {
       "path": "backend/routers/v1.py",
-      "sha256": "51be4c56bc1b4c10de657ccbee4578065a2646e87aee76c09c36d531f429c7f1",
-      "lines": 812,
+      "sha256": "75d406c115ef5dd05e8239e57f23b1c1c63e15d08d959952addf76c8107e791b",
+      "lines": 811,
       "symbols": [
         {
           "name": "recorded_activity",
-          "line": 46,
+          "line": 47,
           "kind": "FunctionDef"
         },
         {
           "name": "ApiError",
-          "line": 69,
+          "line": 70,
           "kind": "ClassDef"
         },
         {
           "name": "SessionSocketManager",
-          "line": 88,
+          "line": 89,
           "kind": "ClassDef"
         },
         {
           "name": "_audio_ext",
-          "line": 129,
+          "line": 130,
           "kind": "FunctionDef"
         },
         {
           "name": "_get_session_or_404",
-          "line": 141,
+          "line": 142,
           "kind": "FunctionDef"
         },
         {
           "name": "_story_checkpoints",
-          "line": 150,
+          "line": 151,
           "kind": "FunctionDef"
         },
         {
           "name": "_warning_for",
-          "line": 164,
+          "line": 165,
           "kind": "FunctionDef"
         },
         {
           "name": "v1_health",
-          "line": 173,
+          "line": 174,
           "kind": "FunctionDef"
         },
         {
           "name": "word_tip",
-          "line": 188,
+          "line": 189,
           "kind": "AsyncFunctionDef"
         },
         {
@@ -717,102 +769,102 @@
         },
         {
           "name": "_run_phase2",
-          "line": 373,
+          "line": 372,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "_persist_phase1",
-          "line": 454,
+          "line": 453,
           "kind": "FunctionDef"
         },
         {
           "name": "_phase1_response",
-          "line": 487,
+          "line": 486,
           "kind": "FunctionDef"
         },
         {
           "name": "_analyze_flow",
-          "line": 508,
+          "line": 507,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "_mock_acoustics",
-          "line": 574,
+          "line": 573,
           "kind": "FunctionDef"
         },
         {
           "name": "analyze_checkpoint",
-          "line": 586,
+          "line": 585,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "analyze_checkpoint_mock",
-          "line": 614,
+          "line": 613,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "get_session",
-          "line": 628,
+          "line": 627,
           "kind": "FunctionDef"
         },
         {
           "name": "get_feedback",
-          "line": 719,
+          "line": 718,
           "kind": "FunctionDef"
         },
         {
           "name": "student_dashboard",
-          "line": 748,
+          "line": 747,
           "kind": "FunctionDef"
         },
         {
           "name": "classroom_overview",
-          "line": 759,
+          "line": 758,
           "kind": "FunctionDef"
         },
         {
           "name": "trigger_sync",
-          "line": 770,
+          "line": 769,
           "kind": "FunctionDef"
         },
         {
           "name": "sync_status",
-          "line": 775,
+          "line": 774,
           "kind": "FunctionDef"
         },
         {
           "name": "session_ws",
-          "line": 785,
+          "line": 784,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "__init__",
-          "line": 73,
+          "line": 74,
           "kind": "FunctionDef"
         },
         {
           "name": "__init__",
-          "line": 89,
+          "line": 90,
           "kind": "FunctionDef"
         },
         {
           "name": "connect",
-          "line": 93,
+          "line": 94,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "disconnect",
-          "line": 98,
+          "line": 99,
           "kind": "FunctionDef"
         },
         {
           "name": "broadcast",
-          "line": 101,
+          "line": 102,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "deliver",
-          "line": 110,
+          "line": 111,
           "kind": "AsyncFunctionDef"
         }
       ]
@@ -1288,8 +1340,8 @@
     },
     {
       "path": "backend/tests/test_regressions.py",
-      "sha256": "2af2eac24c34d09088cfa7d2f584839829cb06fd621bb37e8117f8c7f96eafce",
-      "lines": 551,
+      "sha256": "2bace378f88dfb3c51339f1d3fd694f595dc3584a5719c5d410e5329149f2a12",
+      "lines": 616,
       "symbols": [
         {
           "name": "Regressions",
@@ -1298,12 +1350,12 @@
         },
         {
           "name": "DashboardFeedbackRegressions",
-          "line": 331,
+          "line": 396,
           "kind": "ClassDef"
         },
         {
           "name": "EnrollmentRegressions",
-          "line": 438,
+          "line": 503,
           "kind": "ClassDef"
         },
         {
@@ -1317,253 +1369,278 @@
           "kind": "FunctionDef"
         },
         {
-          "name": "test_alignment_insertion_positions",
+          "name": "test_public_language_inventory_is_not_a_support_claim",
           "line": 44,
           "kind": "FunctionDef"
         },
         {
-          "name": "test_missing_confidence_stays_unknown",
-          "line": 51,
+          "name": "test_planned_languages_cannot_silently_fall_back_to_english",
+          "line": 61,
           "kind": "FunctionDef"
         },
         {
-          "name": "test_asr_doubt_and_pitch_do_not_become_reading_errors",
-          "line": 57,
+          "name": "test_language_normalization_and_reading_gate",
+          "line": 81,
           "kind": "FunctionDef"
         },
         {
-          "name": "test_fresh_dashboard",
-          "line": 65,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_authentication_required",
-          "line": 70,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_teacher_isolation_and_student_ownership",
-          "line": 74,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_dynamic_attempt_enters_teacher_reports",
-          "line": 80,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_mock_disabled",
+          "name": "test_language_inventory_isolation_and_public_get_only",
           "line": 93,
           "kind": "FunctionDef"
         },
         {
-          "name": "test_registration_requires_class_code",
-          "line": 97,
+          "name": "test_shared_language_types_are_current",
+          "line": 102,
           "kind": "FunctionDef"
         },
         {
-          "name": "test_token_expiry",
-          "line": 103,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_migrations_repeat_without_loss",
+          "name": "test_alignment_insertion_positions",
           "line": 109,
           "kind": "FunctionDef"
         },
         {
+          "name": "test_missing_confidence_stays_unknown",
+          "line": 116,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_asr_doubt_and_pitch_do_not_become_reading_errors",
+          "line": 122,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_fresh_dashboard",
+          "line": 130,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_authentication_required",
+          "line": 135,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_teacher_isolation_and_student_ownership",
+          "line": 139,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_dynamic_attempt_enters_teacher_reports",
+          "line": 145,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_mock_disabled",
+          "line": 158,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_registration_requires_class_code",
+          "line": 162,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_token_expiry",
+          "line": 168,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_migrations_repeat_without_loss",
+          "line": 174,
+          "kind": "FunctionDef"
+        },
+        {
           "name": "test_startup_check_and_backup_connections_are_closed",
-          "line": 114,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_dynamic_detail_link",
-          "line": 138,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_mock_enabled_does_not_persist_progress",
-          "line": 146,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_non_admin_cannot_change_server_keys",
-          "line": 156,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_invalid_auth_input_is_validation_error",
-          "line": 160,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_actual_dynamic_request_saves_and_reports",
-          "line": 164,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_archive_keeps_history",
           "line": 179,
           "kind": "FunctionDef"
         },
         {
-          "name": "test_sync_requires_ack_and_persists_retry",
-          "line": 189,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_sync_receiver_is_authenticated_and_idempotent",
+          "name": "test_dynamic_detail_link",
           "line": 203,
           "kind": "FunctionDef"
         },
         {
+          "name": "test_mock_enabled_does_not_persist_progress",
+          "line": 211,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_non_admin_cannot_change_server_keys",
+          "line": 221,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_invalid_auth_input_is_validation_error",
+          "line": 225,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_actual_dynamic_request_saves_and_reports",
+          "line": 229,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_archive_keeps_history",
+          "line": 244,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_sync_requires_ack_and_persists_retry",
+          "line": 254,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_sync_receiver_is_authenticated_and_idempotent",
+          "line": 268,
+          "kind": "FunctionDef"
+        },
+        {
           "name": "test_cloud_reasoning_has_a_local_fallback",
-          "line": 217,
+          "line": 282,
           "kind": "FunctionDef"
         },
         {
           "name": "test_real_acoustic_extraction_on_synthetic_wav",
-          "line": 226,
+          "line": 291,
           "kind": "FunctionDef"
         },
         {
           "name": "test_whisper_decoder_api_is_compatible",
-          "line": 239,
+          "line": 304,
           "kind": "FunctionDef"
         },
         {
           "name": "test_unheard_recording_is_not_saved_as_failure",
-          "line": 251,
+          "line": 316,
           "kind": "FunctionDef"
         },
         {
           "name": "test_persistent_coaching_job_recovers",
-          "line": 262,
+          "line": 327,
           "kind": "FunctionDef"
         },
         {
           "name": "test_socket_requires_auth_and_ownership",
-          "line": 276,
+          "line": 341,
           "kind": "FunctionDef"
         },
         {
           "name": "test_classic_recording_uses_word_accuracy",
-          "line": 290,
+          "line": 355,
           "kind": "FunctionDef"
         },
         {
           "name": "test_checkpoint_reread_generates_fresh_coaching",
-          "line": 310,
+          "line": 375,
           "kind": "FunctionDef"
         },
         {
           "name": "signal",
-          "line": 332,
+          "line": 397,
           "kind": "FunctionDef"
         },
         {
           "name": "run_feedback",
-          "line": 339,
+          "line": 404,
           "kind": "FunctionDef"
         },
         {
           "name": "test_urdu_punctuation_never_changes_word_match",
-          "line": 346,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_unicode_words_preserve_letters_and_marks",
-          "line": 354,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_flagged_words_and_current_score_share_observations",
-          "line": 360,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_current_low_score_overrides_strong_history",
-          "line": 368,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_practice_difficulty_boundaries",
-          "line": 376,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_generated_exercises_require_word_language_and_tier",
-          "line": 384,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_all_fallback_results_have_explicit_availability",
-          "line": 401,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "test_estimated_timing_does_not_claim_zero_observed_pauses",
           "line": 411,
           "kind": "FunctionDef"
         },
         {
+          "name": "test_unicode_words_preserve_letters_and_marks",
+          "line": 419,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_flagged_words_and_current_score_share_observations",
+          "line": 425,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_current_low_score_overrides_strong_history",
+          "line": 433,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_practice_difficulty_boundaries",
+          "line": 441,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_generated_exercises_require_word_language_and_tier",
+          "line": 449,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_all_fallback_results_have_explicit_availability",
+          "line": 466,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_estimated_timing_does_not_claim_zero_observed_pauses",
+          "line": 476,
+          "kind": "FunctionDef"
+        },
+        {
           "name": "test_progress_uses_latest_same_sentence_and_language",
-          "line": 418,
+          "line": 483,
           "kind": "FunctionDef"
         },
         {
           "name": "setUpClass",
-          "line": 440,
+          "line": 505,
           "kind": "FunctionDef"
         },
         {
           "name": "setUp",
-          "line": 444,
+          "line": 509,
           "kind": "FunctionDef"
         },
         {
           "name": "signup",
-          "line": 456,
+          "line": 521,
           "kind": "FunctionDef"
         },
         {
           "name": "profile",
-          "line": 465,
+          "line": 530,
           "kind": "FunctionDef"
         },
         {
           "name": "test_child_first_approval_creates_one_linked_profile",
-          "line": 470,
+          "line": 535,
           "kind": "FunctionDef"
         },
         {
           "name": "test_existing_profile_is_linked_without_losing_history",
-          "line": 490,
+          "line": 555,
           "kind": "FunctionDef"
         },
         {
           "name": "test_linking_rejects_occupied_archived_and_foreign_profiles",
-          "line": 506,
+          "line": 571,
           "kind": "FunctionDef"
         },
         {
           "name": "test_two_signups_cannot_claim_one_profile_concurrently",
-          "line": 527,
+          "line": 592,
           "kind": "FunctionDef"
         },
         {
           "name": "test_approved_account_cannot_be_reassigned",
-          "line": 539,
+          "line": 604,
           "kind": "FunctionDef"
         },
         {
           "name": "approve",
-          "line": 531,
+          "line": 596,
           "kind": "FunctionDef"
         },
         {
           "name": "track_connection",
-          "line": 125,
+          "line": 190,
           "kind": "FunctionDef"
         }
       ]
@@ -2411,356 +2488,360 @@
     },
     {
       "path": "frontend/lib/api.ts",
-      "sha256": "6cabdcd64dcda026e665a20034c7e7e684c90704c7ba6e6645f48bfed401a0e9",
-      "lines": 765,
+      "sha256": "4ed2a265532412f98fe5ef92ca90f456a061412dca01ff72e3a8c1eeda396400",
+      "lines": 774,
       "symbols": [
         {
           "name": "apiFetch",
-          "line": 16
+          "line": 17
         },
         {
           "name": "fetchStudents",
-          "line": 30
+          "line": 31
         },
         {
           "name": "createStudent",
-          "line": 36
+          "line": 37
         },
         {
           "name": "updateStudent",
-          "line": 46
+          "line": 47
         },
         {
           "name": "deleteStudent",
-          "line": 56
+          "line": 57
         },
         {
           "name": "ClassicSession",
-          "line": 64
+          "line": 65
         },
         {
           "name": "fetchSessions",
-          "line": 69
+          "line": 70
         },
         {
           "name": "fetchSessionDiagnosis",
-          "line": 78
+          "line": 79
         },
         {
           "name": "runPipeline",
-          "line": 84
+          "line": 85
         },
         {
           "name": "SttSource",
-          "line": 111
-        },
-        {
-          "name": "FeedbackSource",
           "line": 112
         },
         {
-          "name": "EngagementState",
+          "name": "FeedbackSource",
           "line": 113
         },
         {
-          "name": "Language",
+          "name": "EngagementState",
           "line": 114
         },
         {
+          "name": "Language",
+          "line": 115
+        },
+        {
           "name": "Phase1Word",
-          "line": 116
+          "line": 117
         },
         {
           "name": "Hesitation",
-          "line": 123
+          "line": 124
         },
         {
           "name": "Phase1Response",
-          "line": 129
+          "line": 130
         },
         {
           "name": "Phase2Response",
-          "line": 145
+          "line": 146
         },
         {
           "name": "StoryCheckpoint",
-          "line": 159
+          "line": 160
         },
         {
           "name": "StorySummary",
-          "line": 161
+          "line": 162
         },
         {
           "name": "CreatedSession",
-          "line": 173
+          "line": 174
         },
         {
           "name": "SessionCheckpointDetail",
-          "line": 183
+          "line": 184
         },
         {
           "name": "SessionDetail",
-          "line": 200
+          "line": 201
         },
         {
           "name": "StudentDashboard",
-          "line": 223
+          "line": 224
         },
         {
           "name": "ClassroomOverview",
-          "line": 246
+          "line": 247
         },
         {
           "name": "V1Health",
-          "line": 264
+          "line": 265
         },
         {
           "name": "RecordedActivity",
-          "line": 273
+          "line": 274
         },
         {
           "name": "fetchRecordedActivity",
-          "line": 278
+          "line": 279
         },
         {
           "name": "SyncStatus",
-          "line": 284
+          "line": 285
         },
         {
           "name": "V2SessionListItem",
-          "line": 286
+          "line": 287
         },
         {
           "name": "Role",
-          "line": 305
-        },
-        {
-          "name": "AuthUser",
           "line": 306
         },
         {
+          "name": "AuthUser",
+          "line": 307
+        },
+        {
           "name": "getStoredToken",
-          "line": 322
+          "line": 323
         },
         {
           "name": "getStoredUser",
-          "line": 327
+          "line": 328
         },
         {
           "name": "storeSession",
-          "line": 337
+          "line": 338
         },
         {
           "name": "clearSession",
-          "line": 342
+          "line": 343
         },
         {
           "name": "authHeaders",
-          "line": 347
+          "line": 348
         },
         {
           "name": "apiLogin",
-          "line": 352
+          "line": 353
         },
         {
           "name": "apiRegister",
-          "line": 362
+          "line": 363
         },
         {
           "name": "apiLogout",
-          "line": 372
+          "line": 373
         },
         {
           "name": "ManagedUser",
-          "line": 382
+          "line": 383
         },
         {
           "name": "fetchUsers",
-          "line": 384
+          "line": 385
         },
         {
           "name": "approveUser",
-          "line": 390
+          "line": 391
         },
         {
           "name": "rejectUser",
-          "line": 399
+          "line": 400
         },
         {
           "name": "deleteUserAccount",
-          "line": 406
+          "line": 407
         },
         {
           "name": "RosterEntry",
-          "line": 415
+          "line": 416
         },
         {
           "name": "fetchRoster",
-          "line": 430
+          "line": 431
         },
         {
           "name": "toggleParentUpdates",
-          "line": 436
+          "line": 437
         },
         {
           "name": "ParentUpdate",
-          "line": 445
+          "line": 446
         },
         {
           "name": "fetchParentMessage",
-          "line": 447
+          "line": 448
         },
         {
           "name": "StudentReport",
-          "line": 455
+          "line": 456
         },
         {
           "name": "fetchReports",
-          "line": 471
+          "line": 472
         },
         {
           "name": "PracticeLibrary",
-          "line": 477
+          "line": 478
         },
         {
           "name": "fetchPracticeLibrary",
-          "line": 494
+          "line": 495
         },
         {
           "name": "changePassword",
-          "line": 500
+          "line": 501
         },
         {
           "name": "SttMode",
-          "line": 510
-        },
-        {
-          "name": "AgentModel",
           "line": 511
         },
         {
+          "name": "AgentModel",
+          "line": 512
+        },
+        {
           "name": "KeysStatus",
-          "line": 513
+          "line": 514
         },
         {
           "name": "fetchKeysStatus",
-          "line": 523
+          "line": 524
         },
         {
           "name": "saveKeys",
-          "line": 529
+          "line": 530
         },
         {
           "name": "parseError",
-          "line": 548
+          "line": 549
         },
         {
           "name": "resolveApiBase",
-          "line": 559
+          "line": 560
         },
         {
           "name": "WordTip",
-          "line": 575
+          "line": 576
         },
         {
           "name": "fetchWordTip",
-          "line": 583
+          "line": 584
         },
         {
           "name": "StoryTrack",
-          "line": 592
+          "line": 593
         },
         {
           "name": "StoryMapLevel",
-          "line": 594
+          "line": 595
         },
         {
           "name": "StoryMap",
-          "line": 600
+          "line": 601
         },
         {
           "name": "StoryPlay",
-          "line": 606
+          "line": 607
         },
         {
           "name": "StoryWord",
-          "line": 611
+          "line": 612
         },
         {
           "name": "StoryAttemptResult",
-          "line": 616
+          "line": 617
         },
         {
           "name": "StoryTrackSummary",
-          "line": 623
+          "line": 624
         },
         {
           "name": "fetchStoryMap",
-          "line": 628
+          "line": 629
         },
         {
           "name": "fetchStorySummary",
-          "line": 636
+          "line": 637
         },
         {
           "name": "fetchStoryPlay",
-          "line": 642
+          "line": 643
         },
         {
           "name": "storyAnalyze",
-          "line": 648
+          "line": 649
         },
         {
           "name": "storyAnalyzeMock",
-          "line": 660
+          "line": 661
         },
         {
           "name": "fetchStoryFeedback",
-          "line": 670
+          "line": 671
         },
         {
           "name": "fetchV1Health",
-          "line": 677
+          "line": 678
         },
         {
           "name": "fetchStories",
-          "line": 683
+          "line": 684
         },
         {
           "name": "createSession",
-          "line": 692
+          "line": 693
         },
         {
           "name": "fetchV2Sessions",
-          "line": 704
+          "line": 705
         },
         {
           "name": "analyzeCheckpoint",
-          "line": 710
+          "line": 711
         },
         {
           "name": "fetchFeedback",
-          "line": 724
+          "line": 725
         },
         {
           "name": "fetchSessionDetail",
-          "line": 734
+          "line": 735
         },
         {
           "name": "fetchStudentDashboard",
-          "line": 740
+          "line": 741
         },
         {
           "name": "fetchClassroomOverview",
-          "line": 749
+          "line": 750
         },
         {
           "name": "triggerSync",
-          "line": 755
+          "line": 756
         },
         {
           "name": "fetchSyncStatus",
-          "line": 761
+          "line": 762
+        },
+        {
+          "name": "fetchPlatformCapabilities",
+          "line": 770
         }
       ]
     },
@@ -2772,6 +2853,52 @@
         {
           "name": "toError",
           "line": 1
+        }
+      ]
+    },
+    {
+      "path": "frontend/lib/language-types.ts",
+      "sha256": "e1c92cf4805447e25e29032ffef7de9d149a07d0c9ae6e8e9b94fa06b31b0277",
+      "lines": 4,
+      "symbols": [
+        {
+          "name": "LanguageCode",
+          "line": 2
+        },
+        {
+          "name": "ReadingLanguage",
+          "line": 3
+        }
+      ]
+    },
+    {
+      "path": "frontend/lib/languages.ts",
+      "sha256": "6dc8f8e5b176bfec5e6670a43f5de9c0f5681ea1b034c8be3161feeedd419469",
+      "lines": 41,
+      "symbols": [
+        {
+          "name": "LanguageDefinition",
+          "line": 6
+        },
+        {
+          "name": "isReadingLanguage",
+          "line": 9
+        },
+        {
+          "name": "isLanguageCode",
+          "line": 13
+        },
+        {
+          "name": "ReaderLanguagePreferences",
+          "line": 18
+        },
+        {
+          "name": "ProviderCapability",
+          "line": 25
+        },
+        {
+          "name": "PlatformCapabilities",
+          "line": 36
         }
       ]
     },
@@ -2822,20 +2949,20 @@
     },
     {
       "path": "frontend/lib/prefs.ts",
-      "sha256": "93e9b6d810501fe1595aa175b1737dfb5f22c2e2f70bd43f6c209cc40db00ed4",
-      "lines": 46,
+      "sha256": "167adef9d7088772c16f3318f4ee6dbf712bed95358aa6d0a3a44cb873e04e26",
+      "lines": 52,
       "symbols": [
         {
           "name": "StudentPrefs",
-          "line": 12
+          "line": 15
         },
         {
           "name": "loadPrefs",
-          "line": 28
+          "line": 31
         },
         {
           "name": "savePrefs",
-          "line": 38
+          "line": 43
         }
       ]
     },
@@ -2880,8 +3007,8 @@
     },
     {
       "path": "tools/build_handoff.py",
-      "sha256": "9bb9db6dd1e50413ec419661028424d31f3377b2147db7453a342bb379a4471e",
-      "lines": 99,
+      "sha256": "a39444ca173b4c66c58f6a04f100f92c76c0b8067bb66e908aa3b2d8f9ce1213",
+      "lines": 104,
       "symbols": [
         {
           "name": "inline",
@@ -2896,6 +3023,23 @@
         {
           "name": "flush",
           "line": 36,
+          "kind": "FunctionDef"
+        }
+      ]
+    },
+    {
+      "path": "tools/build_language_types.py",
+      "sha256": "b92edcbe5602ab2cf960857670c232047533cf11ea7874df452c070141db46b9",
+      "lines": 46,
+      "symbols": [
+        {
+          "name": "outputs",
+          "line": 9,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "main",
+          "line": 28,
           "kind": "FunctionDef"
         }
       ]

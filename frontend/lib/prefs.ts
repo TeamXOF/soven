@@ -1,5 +1,8 @@
 "use client";
 
+import { isReadingLanguage } from "./languages";
+import type { ReadingLanguage } from "./languages";
+
 /**
  * Student reading preferences — client-side only (localStorage), no account
  * changes. Applied by the Story Mode pages and the mic capture context:
@@ -11,7 +14,7 @@
 
 export type StudentPrefs = {
   preferredMic: string | null;
-  storyLanguage: "en" | "ur";
+  storyLanguage: ReadingLanguage;
   wordTips: boolean;
   biggerText: boolean;
 };
@@ -29,7 +32,9 @@ export function loadPrefs(): StudentPrefs {
   if (typeof window === "undefined") return DEFAULTS;
   try {
     const raw = window.localStorage.getItem(KEY);
-    return raw ? { ...DEFAULTS, ...JSON.parse(raw) } : DEFAULTS;
+    const merged = raw ? { ...DEFAULTS, ...JSON.parse(raw) } : { ...DEFAULTS };
+    if (!isReadingLanguage(merged.storyLanguage)) merged.storyLanguage = DEFAULTS.storyLanguage;
+    return merged;
   } catch {
     return DEFAULTS;
   }
@@ -37,6 +42,7 @@ export function loadPrefs(): StudentPrefs {
 
 export function savePrefs(prefs: Partial<StudentPrefs>): StudentPrefs {
   const merged = { ...loadPrefs(), ...prefs };
+  if (!isReadingLanguage(merged.storyLanguage)) merged.storyLanguage = DEFAULTS.storyLanguage;
   try {
     window.localStorage.setItem(KEY, JSON.stringify(merged));
   } catch {

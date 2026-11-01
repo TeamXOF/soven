@@ -10,14 +10,14 @@
       "sources": [
         {
           "path": "01_PROJECT_CONTEXT.md",
-          "sha256": "aed929e05594da00b36b10f1e3123814f599e25ad7fe8a9f5ebaa0857895a957"
+          "sha256": "48ea390a7a42f6ef8f0815c74d824388e3e5999a47ddc43700f67f17de4dca68"
         },
         {
           "path": "02_CURRENT_STATE.md",
-          "sha256": "be595c7751f97a341ca9da5fb983b94902165b4203a74fb52dfa1f7bc04442c7"
+          "sha256": "9589870b383cca0a9ffc4160a9be65d27d2467005cb2b63b9a6ebbb837c2192d"
         }
       ],
-      "sha256": "78a6efb09559d5764f9d2087ee7a9d02e8d7105e9663cc8d42cd7cc72fe1ee54",
+      "sha256": "35858b3296ef0130fdc872c83e3f7a02af2e3805cbaf09edcaf62ea40aeb8045",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -26,10 +26,10 @@
       "sources": [
         {
           "path": "03_ARCHITECTURE.md",
-          "sha256": "f8b4348748e4ff7e4cfc690b62e6db427f8fa381a7cfcf0896ed293a4311933e"
+          "sha256": "a6cd44aa1f1ce73caed0e2c86968639a3a555acb46ad7340b710fcd133527615"
         }
       ],
-      "sha256": "0e3cea6079f31f5d2af0f8ac8a626f37474473736b416af4514ace46acec2736",
+      "sha256": "d5a996eb881b497dcf97175056149ec2a2ee84f5c4c4502c0c3f85cfab373659",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -38,14 +38,14 @@
       "sources": [
         {
           "path": "04_PRODUCT_REQUIREMENTS.md",
-          "sha256": "1df6bafeb1ec63ca55782b997bda47f84e028b7c16b7d24515df88ad2b53be71"
+          "sha256": "25ef9c59b40a6bd33e1bf95f59ae0a4d8024533e125e5af6c7d9f59e4412fff3"
         },
         {
           "path": "05_SOURCE_REVIEW.md",
-          "sha256": "81d77a951a595e163ecc5ed40ec665fbf5f8424c7c53d5e8721fbfdfecc59491"
+          "sha256": "c39beb6148f3f06cbec39cf5332b4899012686cabfbbff07b4bb4d457664ff8e"
         }
       ],
-      "sha256": "57743f03f37b36871033b26713f689aec6df8d8207e5fd7623ad34fb45b7d67e",
+      "sha256": "ee5d13888b775ade0cf201f762348eb87ff91a373845894985271d3a1a2602c4",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -54,10 +54,10 @@
       "sources": [
         {
           "path": "06_META_PROVIDER_PLAN.md",
-          "sha256": "a60e55b44c08962e3aacb919b3e0aad1fd392071178f250cbc69f57be48e229f"
+          "sha256": "85cb16b8f0dcbe8afb6f820a1da8e89ac9a50f661a198cdf5d77c4118bb63646"
         }
       ],
-      "sha256": "c4e1c49ab6c93b6951da9c6af2a21d103b62c575c47b6fc9d20896997395f04c",
+      "sha256": "860570594375f0d598912934bb99cd446e9ce3c2467cfcc84afda6a5663024a6",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -66,14 +66,18 @@
       "sources": [
         {
           "path": "07_IMPLEMENTATION_ROADMAP.md",
-          "sha256": "f811b945667edb235a8f7607776c93fe5f12c540eafecbeaae4bf266b231c14a"
+          "sha256": "71f6ad15a49731fddc965c6a7536b40f24e6623cfedc68b735edbdf783f6ad36"
         },
         {
           "path": "10_DECISIONS_AND_HANDOFF.md",
-          "sha256": "f0fc9650073a667f70564b7ec5cb71e7483536f1e0802b8c15b686458c8ea323"
+          "sha256": "91d14919181734dc39e45adb768364ab5afda1b94ce0c530adfd9a9e51701676"
+        },
+        {
+          "path": "11_PRODUCT_DEFAULTS.md",
+          "sha256": "040ba10ec3557d25d0bf74891a148c13afb6aace1ace21ace9644c2e767bc1c2"
         }
       ],
-      "sha256": "95aa651236f36b11df0800a244598860d20a6c8389c98d46faf2832fb179d11c",
+      "sha256": "13fa67001cca6e80223cc3c0080b504da37181ab8d5bed760297cb33daf24f4c",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -82,11 +86,11 @@
       "sources": [
         {
           "path": "08_VALIDATION_AND_OPERATIONS.md",
-          "sha256": "c8a6b55b57d8ff20979c3d0dc8f448979b48a3dda84e04eec0230bcc4d9b7b8e"
+          "sha256": "bfe67108950e5a7413dd774e593f2f7618f47c254a2155a4deb78783dfa0f048"
         },
         {
           "path": "09_BRAND_AND_REPOSITORY.md",
-          "sha256": "9a6592daee8a91063814c79dfdcb19ac49c58ea7b4fe1c0ba88d05544cd6b38f"
+          "sha256": "2b48cd5c28724c606e861488818bf588f61e28e0af29e1cb5a55fd2aacdd8c6f"
         },
         {
           "path": "VALIDATION_RESULTS.json",
@@ -94,10 +98,14 @@
         },
         {
           "path": "DELIVERY_STATUS.json",
-          "sha256": "b73b9e91bb655e32406f27c03d4a0aa7361e0943b13d9c74325e5a9781fbfefb"
+          "sha256": "7dd206e31ed432c16653ef9a177ecb21e56630d3ff0932383cfe980df392831f"
+        },
+        {
+          "path": "FOUNDATION_VALIDATION.json",
+          "sha256": "51e9e55694789c04629d62b0ef3b8d2a70699b906cb98d607173e636521c331b"
         }
       ],
-      "sha256": "1718ca3c9b8dd05ffd52401da75c7f892e9f5b1c41b5ea7cc1ec9ade0bb8c1ae",
+      "sha256": "423f0c1a6fce90e15d53653a9e0a132b98ec40c8ead27a3dead02dfc70021754",
       "render_review": "see DOCUMENT_QA.json"
     }
   ]

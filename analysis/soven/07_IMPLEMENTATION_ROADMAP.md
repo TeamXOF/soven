@@ -1,49 +1,79 @@
-# SOVEN implementation roadmap
+# SOVEN implementation checklist
 
-This roadmap replaces the source playbook's expired calendar. Complete a small reliable user journey before adding breadth. The owner approved repository, identity and handoff as this stage; the product transformation below is planned work.
+Work from this checklist in dependency order. A checked item means the implementation and its acceptance evidence exist. An unchecked item is planned or waiting; it is never implied complete by a screenshot, provider language list or chosen product default. Record every finished task in 12_EXECUTION_LOG.md with files changed, checks, limitations and the next item. Keep historical evidence intact.
 
-## Milestone zero repository and handoff
+The current code uses the repaired reading baseline. The target is a worldwide platform with 70+ end-to-end reading languages. The shared inventory contains 89 candidate languages; only English and Urdu are enabled today. This is the catalogue foundation, not 89-language support.
 
-Import the repaired baseline, preserve attribution and evidence, apply SOVEN branding, generate the document pack, check exact public contents and publish with CI. Completion requires the new checkout to pass its supported checks and public content to exclude private source documents and runtime data. See delivery records for outcomes.
+## Milestone zero team ownership and working agreement
 
-## Milestone one access and experience decisions
+- [x] M0.1 Transfer the public repository to TeamXOF/soven and preserve repository identity, current commit, redirect and owner admin access. Evidence: TRANSFER_RECEIPT.json.
+- [x] M0.2 Update the local remote and current repository links; preserve historical launch receipts and the original SpeakFlow repository.
+- [x] M0.3 Record the owner's authorization to use recommended defaults. Evidence: 11_PRODUCT_DEFAULTS.md and decision register.
+- [ ] M0.4 Verify a successful GitHub CI run after the transfer and publish the updated handoff pack. Evidence will be in FOUNDATION_VALIDATION.json.
 
-Resolve the model-access route and choose the central useful Meta capability. Decide standalone adult signup, teacher/guardian authority, introductory-test consent and retention, and turn-based versus interrupting coaching. Confirm submission constraints and disclosure of preexisting code. A pending decision stays visible rather than becoming an implementer's silent assumption.
+## Milestone one multilingual and provider foundation
 
-The confirmed product goal is 70+ languages. Choose demo languages from a tested coverage matrix; a demo subset does not reduce that goal. Preserve English/Urdu and evaluate Spanish as an early addition. The target list and rollout order remain open. A quiet, optional turn-based coach is the lower-risk first implementation; the owner has not yet selected it. Preserve pause-without-penalty behavior.
+- [x] M1.1 Create a shared candidate-language inventory with identifiers, names, script/direction, priorities and capability status. Evidence: shared/languages.json.
+- [x] M1.2 Generate frontend and backend types from that inventory and check drift in CI. Evidence: tools/build_language_types.py and regression test.
+- [x] M1.3 Gate existing reading routes on implemented languages; reject planned/unknown input instead of silently substituting English. Evidence: backend language-gate regressions.
+- [x] M1.4 Expose a read-only public capabilities response without credentials, user data or inference. Evidence: GET /api/v1/capabilities and access-boundary regression.
+- [x] M1.5 Connect existing frontend language types/preferences and add provider metadata that distinguishes current adapters from planned Meta adapters. Evidence: frontend/lib/languages.ts and backend/core/provider_capabilities.py.
+- [ ] M1.6 Implement the configured reasoning-provider boundary and one permitted Meta/open-weight adapter with structured output, timeout and fallback tests. Live access requires actual provider details; do not invent credits or route around geographic restrictions.
+- [ ] M1.7 Verify one real permitted Meta invocation, record model/source/cost/latency and test its failure path. Waiting for verified account/access configuration.
+- [ ] M1.8 Persist separate reading, interface, native and translation language preferences with additive migrations during profile work. The current foundation defines these roles but does not add account fields.
 
-## Milestone two introduction and profiles
+## Milestone two speech reliability and coverage
 
-Build the landing/how-to experience, optional introductory voice sample and profile-completion flow. Keep introductory data separate from validated assessment claims. Implement an explicit anonymous inference budget and abuse boundary before exposing recording analysis publicly. Add account/profile fields through additive migrations, retain existing classroom-linked users and define safe defaults for migrated accounts.
+- [ ] M2.1 Freeze a recognizer configuration and define language-specific release thresholds before evaluating untouched speakers.
+- [ ] M2.2 Reproduce and improve the recorded child-speech disagreement; retain failed and uncertain observations rather than hiding them.
+- [ ] M2.3 Validate Urdu on representative speakers, devices and noise; establish reviewed Spanish evaluation/content fixtures.
+- [ ] M2.4 Implement explicit STT/TTS/timing capability selection and fallbacks per language. No timestamp or confidence fabrication.
+- [ ] M2.5 Validate script-specific segmentation beyond the current English/Urdu aligner, including non-whitespace scripts where offered.
+- [ ] M2.6 Publish the measured coverage matrix and enable each new language only after its end-to-end gate passes.
 
-Completion: new and existing users can finish the intended flow, skip/retry a microphone sample, revisit preferences and retain their correct identity/history. Adult signup must not accidentally bypass classroom permissions for children.
+## Milestone three entry profiles and accounts
 
-## Milestone three the accessible book
+- [ ] M3.1 Create the landing/how-to flow with one obvious reading action and a route for teachers.
+- [ ] M3.2 Add the skippable short introductory sample before signup with permission, retry, anonymous rate/cost limits and accurate data-flow copy.
+- [ ] M3.3 Add required profile completion, child/adult reader modes and optional presentation/accessibility preferences.
+- [ ] M3.4 Add independently registered adult accounts scoped to their own records; preserve classroom approval and child-first linking for children.
+- [ ] M3.5 Add the separate language preferences and migration defaults; keep old accounts and historical attempts intact.
+- [ ] M3.6 Verify new child, adult, teacher and migrated-user journeys, including expired identity and denied microphone cases.
 
-Build desktop spread and mobile page layouts over the existing reading state. Add illustrations through the selected permitted source, keyboard/touch page navigation and optional presentation controls. Keep the active sentence stable during capture, stop audio on navigation and preserve clear error recovery. Test Urdu shaping/RTL and long text before celebrating a screenshot.
+## Milestone four accessible responsive book
 
-Completion: one book works end to end with record, review, retry and next-page progression on desktop and an actual target phone. No hidden score changes are introduced by accessibility settings.
+- [ ] M4.1 Build an illustrated desktop spread and single-page mobile sequence over shared reading state.
+- [ ] M4.2 Start with reviewed, age-appropriate passages; keep generated drafts separate until content checks pass.
+- [ ] M4.3 Add keyboard/touch navigation, stable target text, clear recording states and retry/next-page progression.
+- [ ] M4.4 Add optional typography, line-height/spacing, contrast and pace controls appropriate to each script.
+- [ ] M4.5 Pass an end-to-end book on desktop and a physical target phone, including RTL and long text.
 
-## Milestone four spoken guidance and statistics
+## Milestone five spoken coaching and statistics
 
-Implement the chosen coach-turn protocol, TTS boundary, mute/stop and retry lifecycle. Measure latency and guard feedback from stale attempts. Add supported audio statistics with interpretable units and unavailable states. Define WCPM as a descriptive statistic before building a graph. Do not infer emotion or exact phonemes from transcript mismatches.
+- [ ] M5.1 Add short user-requested/end-of-sentence coach turns as the default; automatic interruption stays optional future work.
+- [ ] M5.2 Add word/sentence demonstrations, TTS voice discovery, mute/stop and retry without simultaneous listening/playback.
+- [ ] M5.3 Reject stale coach turns and make uncertain recognition invite another attempt.
+- [ ] M5.4 Add interpretable pause/pitch/energy graphs and separately defined WCPM, without speed deductions or emotion/health claims.
+- [ ] M5.5 Test provider failure, unavailable voices, navigation, repeated attempts and real-device latency.
 
-Completion: a reader can request help, hear a short demonstration, retry and continue without concurrent capture/playback or repeated interruptions. Provider failure leaves a usable reading flow.
+## Milestone six language learning and rollout
 
-## Milestone five multilingual foundation and staged rollout
+- [ ] M6.1 Expand the candidate inventory through reviewed stories, recognition, feedback and spoken-playback validation.
+- [ ] M6.2 Validate English/Urdu/Spanish as the initial demonstration priorities; this subset does not reduce the 70+ product goal.
+- [ ] M6.3 Add optional meanings, native-language translation and listen/repeat after the core reading journey is reliable.
+- [ ] M6.4 Preserve separate language/task history, preferences, caches and teacher reports.
+- [ ] M6.5 Reach 70+ end-to-end reading languages with recorded evidence. Provider-advertised coverage or translated menus alone cannot complete this item.
 
-Build the language registry and capability matrix for 70+ languages. Separate reading language, interface locale and native/translation language. Extend API contracts, storage, content, recognizers, voices, tokenization/scoring, coaching and reporting without breaking English/Urdu records. Spanish is an early candidate from the original plans, not the final scope.
+## Milestone seven deployment operations and submission
 
-Review passages and translated feedback with competent speakers. Evaluate representative scripts, accents, children/adults, devices and noise. Test RTL, non-whitespace segmentation, voice availability, provider failures and independent language history. Gate optional language learning separately where necessary.
+- [ ] M7.1 Choose hosting, domain, persistence and inference hardware after available accounts/credits/budget are known; no paid provision is authorized by a blank budget.
+- [ ] M7.2 Deploy publicly trusted HTTPS, working API/WebSocket routing, persistent private storage and tested recovery.
+- [ ] M7.3 Define and implement consent, retention/deletion and minimum stored reading data; preserve temporary-audio cleanup.
+- [ ] M7.4 Measure sustained classroom load, bounded queues and busy/retry behaviour instead of assuming a class-size guarantee.
+- [ ] M7.5 Run educator and target-user trials and physical mobile/browser checks; keep outcomes and limitations visible.
+- [ ] M7.6 Verify submission requirements, prior-code disclosure, team roles and deadline in the actual participant portal.
+- [ ] M7.7 Produce the demonstration and submission from features and Meta calls that actually work.
 
-Completion is staged: agree the target set and label each language capability planned, partial, validated or unavailable. Only languages passing end-to-end reading, feedback and playback checks are promoted as supported. Work toward 70+ end-to-end languages through tracked releases. A dropdown or provider-advertised count does not establish completion.
+## Execution rule
 
-## Milestone six evidence deployment and submission
-
-Improve child-speech evidence on a larger untouched sample and include Urdu if it remains a promoted track. Run educator product trials without inventing benefits. Select hosting, publicly trusted HTTPS, private persistent storage and capacity budgets. Measure sustained mixed-duration load and busy/retry behavior. Verify public and local/offline stories separately.
-
-Build the final demo from features that actually work, using synthetic or consented data. Recheck portal fields and deadline; disclose inherited code and event-window contributions. Record provider identity and fallback visibly. No publication of source code is a substitute for a working hosted demo or confirmed contest eligibility.
-
-## Change discipline
-
-Each milestone updates requirements, tests and CURRENT_STATE before its completion claim. Avoid parallel redesigns of every reading engine while interfaces are unsettled. Use source metadata and measurement definitions consistently across UI, API and pitch. The event deadline is a delivery constraint, not permission to manufacture validation or hide remaining limitations.
+After each task: implement, verify, update its checkbox, add a dated execution-log entry, refresh affected manifests/documents and move to the next unblocked item. Record the dependency when skipping a waiting item. Do not purchase services, invite unidentified collaborators or infer provider access from the defaults. Owner corrections supersede these defaults.

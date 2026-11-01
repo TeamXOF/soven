@@ -21,7 +21,7 @@ SpeakFlowContext owns classic recording state, sentence/language selection, resu
 - /api/v1/teacher and classroom/report routes expose scoped roster, summaries and reports. /api/students and /api/sessions preserve classic CRUD/list contracts.
 - /api/v1/sync/ingest receives authenticated archival snapshots. Configuration and sync administration are restricted to server administrators.
 
-API_MAP.md is generated from router decorators and supplements this overview. Use the source model and endpoint implementation for exact body/response validation; no new product endpoint is introduced merely by this branding delivery.
+API_MAP.md is generated from router decorators and supplements this overview. Use the source model and endpoint implementation for exact body/response validation; the initial branding delivery introduced no product endpoint; the later foundation adds the read-only capabilities endpoint described below.
 
 ## Speech and coaching data flow
 
@@ -45,6 +45,23 @@ Deployments need same-origin /api and /pipeline proxy routes, /ws upgrades, HTTP
 
 Required fonts are self-hosted in frontend/app/fonts. Generated branding is in assets/brand/soven and frontend/public/brand. Preserve third-party notices. SOURCE_CATALOG.json contains current file hashes and discovered symbols rather than stale line-number promises.
 
-## Planned multilingual foundation
+## Implemented multilingual foundation and next work
 
-Replace two-track assumptions through an additive language registry before expanding to 70+ languages. Keep reading language, interface locale, native language and translation target distinct. Each language declares content, script/direction, recognition, timing, TTS, coaching, translations and validation status. Preserve existing en/ur APIs and stored records. Content, voices, tokenization, caches, progression, reports and preferences need coordinated changes. Whitespace tokenization cannot be assumed suitable for every script; define and test segmentation per language instead of silently applying the English path.
+shared/languages.json is the additive planning inventory. core/languages.py owns canonical identifiers and runtime guards; tools/build_language_types.py generates Python and frontend unions; routers/capabilities.py exposes the public read-only inventory. core/provider_capabilities.py distinguishes current services from planned Meta adapters. This boundary does not yet replace the existing provider implementations. Keep reading language, interface locale, native language and translation target distinct. Each language declares content, script/direction, recognition, timing, TTS, coaching, translations and validation status. Preserve existing en/ur APIs and stored records. Content, voices, tokenization, caches, progression, reports and preferences need coordinated changes. Whitespace tokenization cannot be assumed suitable for every script; define and test segmentation per language instead of silently applying the English path.
+
+Runtime-enabled languages remain en/ur. Existing content engines still need language-specific content/segmentation work before any new language is enabled. frontend/lib/languages.ts defines language roles and typed capability responses; lib/api.ts exposes fetchPlatformCapabilities. Public access is limited to GET /api/v1/capabilities; inference and account records remain protected. Regenerate types after registry edits and run the drift check.
+
+
+### Contract and access boundaries
+
+The catalogue returns schema_version, target_minimum_languages and language rows. Each row separates content, recognition, word timing, coaching, speech playback, interface and translation status. enabled_for_reading is intentionally stricter than being listed. The capability response also describes current Google/Groq/local/browser services and explicitly unimplemented Meta candidates; it makes no network calls or credential checks.
+
+Only the exact public metadata GET is exempted from AccessMiddleware authentication. POSTs to that path, neighbouring private paths and learner/inference endpoints still require approved identity. The backend returns copied metadata so a caller cannot mutate the process inventory. Existing record ownership, classroom scopes and generated-type validation remain in place.
+
+### Changing language coverage
+
+Edit the shared registry, run python tools/build_language_types.py, then run its --check mode and the backend/frontend checks. Regenerated Literal/union types keep canonical reading identifiers consistent without enabling every candidate. A real language addition also needs its content engine, STT/voice route, segmentation, coaching, history/reporting and evaluation. Do not enable it by configuration alone while the existing content paths still assume en/ur.
+
+### Acceptance evidence and next adapter work
+
+Five new regressions verify inventory claims, unsupported-language rejection before inference, identifier normalization, public-GET isolation and generated-type drift. The supported suite now has 47 cases. The provider inventory is descriptive foundation code; a configured reasoning adapter, permitted real invocation and measured language quality are still explicit next tasks in the checklist.

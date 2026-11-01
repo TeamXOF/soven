@@ -1,44 +1,43 @@
 {
   "review_date": "2026-11-01",
-  "revision": "Owner-selected concept C and 70+ language roadmap",
-  "preferred_renderer": "Packaged renderer unavailable because LibreOffice is not installed",
-  "fallback": "Microsoft Word hidden PDF export followed by PDFium rasterization",
+  "revision": "TeamXOF transfer, adopted defaults and multilingual/provider foundation",
+  "renderer": "Microsoft Word hidden PDF export; PDFium rasterization; LibreOffice unavailable",
   "documents": [
     {
       "document": "01_SOVEN_Project_Context_and_Current_State.docx",
-      "pages": 3,
+      "pages": 4,
       "renderer": "Microsoft Word native PDF export, then PDFium PNG rasterization",
-      "review": "Every page visually inspected after concept-C and 70+ language revision; no clipping or overlap. Total 19 pages."
+      "review": "Every page visually inspected; architecture section deliberately starts on its own page; no clipping or overlap. Total 24 pages."
     },
     {
       "document": "02_SOVEN_Architecture_and_Engineering_Handoff.docx",
-      "pages": 2,
+      "pages": 3,
       "renderer": "Microsoft Word native PDF export, then PDFium PNG rasterization",
-      "review": "Every page visually inspected after concept-C and 70+ language revision; no clipping or overlap. Total 19 pages."
+      "review": "Every page visually inspected; architecture section deliberately starts on its own page; no clipping or overlap. Total 24 pages."
     },
     {
       "document": "03_SOVEN_Product_Requirements_and_Source_Review.docx",
       "pages": 4,
       "renderer": "Microsoft Word native PDF export, then PDFium PNG rasterization",
-      "review": "Every page visually inspected after concept-C and 70+ language revision; no clipping or overlap. Total 19 pages."
+      "review": "Every page visually inspected; architecture section deliberately starts on its own page; no clipping or overlap. Total 24 pages."
     },
     {
       "document": "04_SOVEN_Meta_Integration_and_Privacy.docx",
       "pages": 2,
       "renderer": "Microsoft Word native PDF export, then PDFium PNG rasterization",
-      "review": "Every page visually inspected after concept-C and 70+ language revision; no clipping or overlap. Total 19 pages."
+      "review": "Every page visually inspected; architecture section deliberately starts on its own page; no clipping or overlap. Total 24 pages."
     },
     {
       "document": "05_SOVEN_Roadmap_and_Decisions.docx",
-      "pages": 4,
+      "pages": 6,
       "renderer": "Microsoft Word native PDF export, then PDFium PNG rasterization",
-      "review": "Every page visually inspected after concept-C and 70+ language revision; no clipping or overlap. Total 19 pages."
+      "review": "Every page visually inspected; architecture section deliberately starts on its own page; no clipping or overlap. Total 24 pages."
     },
     {
       "document": "06_SOVEN_Validation_Operations_and_Brand.docx",
-      "pages": 4,
+      "pages": 5,
       "renderer": "Microsoft Word native PDF export, then PDFium PNG rasterization",
-      "review": "Every page visually inspected after concept-C and 70+ language revision; no clipping or overlap. Total 19 pages."
+      "review": "Every page visually inspected; architecture section deliberately starts on its own page; no clipping or overlap. Total 24 pages."
     }
   ]
 }

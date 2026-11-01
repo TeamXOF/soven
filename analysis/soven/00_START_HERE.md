@@ -4,9 +4,9 @@ SOVEN is the successor to SpeakFlow Mesh. This pack gives a new engineer the pro
 
 ## Current milestone
 
-This delivery establishes the personal public repository, SOVEN identity and documentation. It imports the repaired working baseline. The confirmed product goal is a worldwide reading platform supporting 70+ languages. English and Urdu are the current working tracks; Spanish is one proposed addition, not the limit. This stage does not implement the new book experience, 70+ language support, introductory voice test or Meta runtime integration.
+The public repository is now TeamXOF/soven. The repaired baseline, concept-C identity and handoff are established. The first multilingual/provider inventory foundation is implemented; profile and book work remains next. The confirmed product goal is a worldwide reading platform supporting 70+ languages. English and Urdu are the current working tracks; Spanish is one proposed addition, not the limit. This stage does not implement the new book experience, 70+ language support, introductory voice test or Meta runtime integration.
 
-Read PROJECT_CONTEXT and CURRENT_STATE first, then ARCHITECTURE and PRODUCT_REQUIREMENTS. Use SOURCE_REVIEW to understand corrections to the supplied plans. Read META_PROVIDER_PLAN before changing providers. IMPLEMENTATION_ROADMAP gives the order of work; VALIDATION_AND_OPERATIONS explains how to verify it. BRAND_AND_REPOSITORY and DECISIONS_AND_HANDOFF finish the handoff.
+Read PROJECT_CONTEXT and CURRENT_STATE first, then the live checklist in 07_IMPLEMENTATION_ROADMAP.md, adopted choices in 11_PRODUCT_DEFAULTS.md and completed work in 12_EXECUTION_LOG.md. Read ARCHITECTURE and PRODUCT_REQUIREMENTS before implementation. Use SOURCE_REVIEW to understand corrections to the supplied plans. Read META_PROVIDER_PLAN before changing providers. IMPLEMENTATION_ROADMAP gives the order of work; VALIDATION_AND_OPERATIONS explains how to verify it. BRAND_AND_REPOSITORY and DECISIONS_AND_HANDOFF finish the handoff.
 
 ## Authority and evidence
 
@@ -18,8 +18,8 @@ The evidence directory preserves dated measurements. Its older test counts and w
 
 1. Read 10_DECISIONS_AND_HANDOFF.md and inspect the repository status before editing.
 2. Run the supported regression and frontend checks from 08_VALIDATION_AND_OPERATIONS.md.
-3. Choose the next milestone with the owner. Provider access and child-speech reliability are open dependencies.
+3. Continue the next unblocked checklist item using the adopted defaults; do not ask for the same permission again. Provider access, budget and actual team identities remain external inputs.
 4. Update the decision log, current state, source catalogue and validation record as work changes.
 5. Keep implemented, proposed and externally unverified claims distinct in code, UI and pitch.
 
-Publication and validation results are recorded in DELIVERY_STATUS.json, VALIDATION_RESULTS.json and PUBLICATION_RECEIPT.json. DELIVERY_STATUS records the current documentation delivery. PUBLICATION_RECEIPT records the original launch; GitHub history and CI show later revisions. BRAND_AND_LANGUAGE_UPDATE records the owner-selected concept C and 70+ language direction. Do not infer success from a planned checkbox. The six DOCX files and their exact Markdown inputs are listed in DOCUMENT_MANIFEST.json.
+Publication and validation results are recorded in DELIVERY_STATUS.json, VALIDATION_RESULTS.json and PUBLICATION_RECEIPT.json. DELIVERY_STATUS records the current documentation delivery. PUBLICATION_RECEIPT records the original launch; GitHub history and CI show later revisions. BRAND_AND_LANGUAGE_UPDATE records the owner-selected concept C and 70+ language direction. Do not infer success from a planned checkbox. TRANSFER_RECEIPT records ownership preservation. FOUNDATION_VALIDATION records the latest checks. Language inventory status is in 13_LANGUAGE_COVERAGE.md. The six DOCX files and exact Markdown inputs are in DOCUMENT_MANIFEST.json.

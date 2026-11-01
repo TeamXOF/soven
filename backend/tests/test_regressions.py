@@ -41,6 +41,71 @@ class Regressions(unittest.TestCase):
     def headers(self, role='teacher', classroom='a'):
         return {'Authorization':'Bearer '+role+'-'+classroom}
 
+    def test_public_language_inventory_is_not_a_support_claim(self):
+        with patch.dict(os.environ, GOOGLE_API_KEY='private-sentinel-never-return'):
+            response = self.client.get('/api/v1/capabilities')
+        self.assertEqual(response.status_code, 200, response.text)
+        self.assertNotIn('private-sentinel-never-return', response.text)
+        data = response.json()
+        rows = data['language_catalog']['languages']
+        self.assertGreaterEqual(len(rows), 70)
+        self.assertEqual(len(rows), len({row['code'] for row in rows}))
+        self.assertEqual({row['code'] for row in rows if row['enabled_for_reading']}, {'en', 'ur'})
+        self.assertFalse(next(row for row in rows if row['code'] == 'es')['enabled_for_reading'])
+        self.assertTrue(all(row['assessment_validation'] == 'not_validated' for row in rows))
+        voice = next(provider for provider in data['providers'] if provider['id'] == 'meta_voice')
+        self.assertEqual(voice['implementation'], 'planned')
+        self.assertEqual(voice['word_timing'], 'not_provided')
+        self.assertEqual(voice['confidence'], 'not_provided')
+
+    def test_planned_languages_cannot_silently_fall_back_to_english(self):
+        headers = self.headers('student')
+        from agents import orchestrator
+        with patch.object(orchestrator, 'call_agent') as model:
+            for path in ['/pipeline/sentences?language=es', '/api/v1/story/map?track=es',
+                         '/api/v1/story/play?level=1&track=es', '/api/v1/story/summary?track=es',
+                         '/api/v1/words/tip?word=hola&lang=es']:
+                response = self.client.get(path, headers=headers)
+                self.assertEqual(response.status_code, 422, (path, response.text))
+            response = self.client.post('/pipeline/run', headers=headers,
+                json={'student_id': 's-a', 'target_sentence': 'Hola.', 'language': 'es', 'audio_base64': 'unused'})
+            self.assertEqual(response.status_code, 422, response.text)
+            response = self.client.post('/api/v1/sessions', headers=headers,
+                json={'student_id': 's-a', 'story_id': 'unused', 'language': 'es'})
+            self.assertEqual(response.status_code, 422, response.text)
+            response = self.client.post('/api/v1/story/analyze', headers=headers,
+                data={'level': '1', 'track': 'es'}, files={'audio': ('clip.webm', b'x' * 1200, 'audio/webm')})
+            self.assertEqual(response.status_code, 422, response.text)
+            model.assert_not_called()
+
+    def test_language_normalization_and_reading_gate(self):
+        from core.languages import canonical_language, require_reading_language
+        from fastapi import HTTPException
+        self.assertEqual(canonical_language(' EN_us '), 'en')
+        self.assertEqual(canonical_language('iw-IL'), 'he')
+        self.assertEqual(canonical_language('tl'), 'fil')
+        self.assertEqual(require_reading_language('ur-PK'), 'ur')
+        for value in ['es', 'unknown', '../en', '', None]:
+            with self.assertRaises(HTTPException) as result:
+                require_reading_language(value)
+            self.assertEqual(result.exception.status_code, 422)
+
+    def test_language_inventory_isolation_and_public_get_only(self):
+        from core.languages import language_catalog
+        catalog = language_catalog()
+        catalog['languages'][0]['enabled_for_reading'] = False
+        self.assertTrue(language_catalog()['languages'][0]['enabled_for_reading'])
+        self.assertEqual(self.client.post('/api/v1/capabilities', json={}).status_code, 401)
+        self.assertEqual(self.client.get('/api/v1/capabilities/private').status_code, 401)
+        self.assertEqual(self.client.get('/api/v1/sessions').status_code, 401)
+
+    def test_shared_language_types_are_current(self):
+        import subprocess
+        result = subprocess.run([sys.executable, str(ROOT / 'tools/build_language_types.py'), '--check'],
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+
+
     def test_alignment_insertion_positions(self):
         for text in ['hello the cat sat','the cat hello sat','the cat sat hello']:
             words=[{'word':w,'start':i*.3,'end':(i+1)*.3,'probability':.95} for i,w in enumerate(text.split())]

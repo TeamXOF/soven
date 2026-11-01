@@ -4,11 +4,11 @@ This register prevents a new agent from confusing an owner's decision with a sug
 
 ## Confirmed owner decisions
 
-D01 The name is SOVEN. The personal repository is Waleed-Khalid-dev/soven, public and independent of the existing team repository.
+D01 The name is SOVEN. Its public repository is TeamXOF/soven, transferred from Waleed-Khalid-dev/soven at the owner's explicit request. It remains separate from the existing SpeakFlow repository.
 
 D02 Start with clean Git history while retaining the source project's MIT license, TeamXOF attribution and a manifest of the imported repaired files.
 
-D03 This stage delivers repository, brand and handoff only. New onboarding, book UI, Spanish, coach conversation and Meta provider migration are next-stage work.
+D03 The initial repository/brand/handoff stage is complete. The owner authorized development using recommended defaults. The first language/provider inventory foundation is implemented; onboarding, book UI, new language engines and real Meta adapters remain unchecked work.
 
 D04 Owner-selected logo is concept C: page-stroke S, teal centre, white primary background and SOVEN only. This supersedes the first delivery's concept A. Remove all tagline and feature/language text from logo images.
 
@@ -20,21 +20,25 @@ D07 Preserve child-first signup linking and the repaired quiet dashboard. No flo
 
 D08 The confirmed product goal is 70+ languages. English and Urdu remain current working tracks; Spanish is an addition within the wider goal, not its ceiling. Distinguish language capability/validation from translated menus.
 
-## Decisions still needed
+D09 Recommended defaults are adopted under the owner's explicit authorization. See 11_PRODUCT_DEFAULTS.md; adopted behaviour is distinct from implemented behaviour.
 
-O01 Account experience: may standalone adults self-approve, and how are children, teachers and guardians connected? Define a migration for current classroom users before changing registration.
+D10 Maintain the checklist and execution log after each completed task, record acceptance evidence, then continue the next unblocked item. Do not mark waiting external validation complete.
 
-O02 Accessibility: which optional controls and vocabulary should be offered without forcing a medical disclosure? Evaluate Urdu typography separately from Latin spacing.
+## Adopted choices and remaining inputs
 
-O03 Coach timing: user-requested turns, end-of-sentence suggestions or automatic interruption? Proposed first implementation is opt-in turns, but this is not yet an approved product decision.
+O01 Resolved as a target: standalone adult signup with personal record scope; classroom children retain teacher approval/linking. Guardian administration is deferred. Implementation and migrations remain pending.
 
-O04 Introductory test: can it be skipped, what minimal summary is retained, where is it stored and how does it attach to a later account? Define anonymous cost/abuse limits and consent before exposing inference.
+O02 Adopt optional text/line-spacing, contrast and pace controls without required medical disclosure. Script-specific usability validation remains pending.
+
+O03 Adopt user-requested/end-of-sentence turns first; automatic interruption is deferred until timing/recognition evidence supports it.
+
+O04 Adopt a skippable short pre-signup sample with consent/retry and minimum retained summary. Anonymous cost/rate limits and later account attachment require implementation.
 
 O05 Meta route: which separately permitted hosted or open-weight service is available to this team and intended users? Confirm real credentials, capacity and language coverage without bypassing restrictions.
 
 O06 Speech quality: which stronger recognizer and timestamp strategy should replace or complement the present model? Keep development and untouched evaluation speakers separate; include representative devices/noise.
 
-O07 Multilingual rollout: agree the exact 70+ target languages, release order, language pairs, reviewers and quality thresholds. Which validated subset fits the demo? Do not advertise incomplete reading/TTS support.
+O07 Use the 89-language candidate inventory and English/Urdu/Spanish demo priorities. Per-language reviewers, release thresholds and completed coverage remain evidence gaps; planned entries are not promoted as supported.
 
 O08 Deployment: which host, domain, persistence, inference hardware and operating budget? Public repository publication does not settle hosting or classroom capacity.
 
@@ -51,3 +55,7 @@ For each completed task record the behavior changed, acceptance evidence, remain
 ## Delivery chronology
 
 The source project predates this Meta event. A local repair pass established authentication, analytics, speech decoding, persistence, enrollment and honest dashboard semantics. On 1 November 2026 the owner approved this repository/brand/handoff plan. The baseline commit captures repaired working files; later commits apply SOVEN identity, operational packaging and documentation. PUBLICATION_RECEIPT records the original launch; GitHub history and CI show later commits. The owner then selected concept C and expanded the direction to 70+ languages.
+
+## Latest completion record
+
+TRANSFER_RECEIPT verifies the ownership move. 07_IMPLEMENTATION_ROADMAP.md is the live checklist; 12_EXECUTION_LOG.md contains completed work and next dependencies. Real provider access, available credits/budget and additional team identities remain external inputs; no paid provisioning or invitations are inferred.

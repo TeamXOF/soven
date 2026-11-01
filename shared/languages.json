@@ -1,0 +1,1698 @@
+{
+  "schema_version": 1,
+  "target_minimum_languages": 70,
+  "metadata_source": "Language labels, default script and direction from bundled Node Intl/ICU. This is a product planning inventory, not provider coverage or language-quality certification.",
+  "languages": [
+    {
+      "code": "en",
+      "name": "English",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "baseline",
+      "enabled_for_reading": true,
+      "segmentation": "existing_unicode_alignment",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "implemented",
+        "recognition": "needs_validation",
+        "word_timing": "needs_validation",
+        "coaching": "implemented",
+        "speech_playback": "device_dependent",
+        "interface": "implemented",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ur",
+      "name": "Urdu",
+      "direction": "rtl",
+      "default_script": "Arab",
+      "priority": "baseline",
+      "enabled_for_reading": true,
+      "segmentation": "existing_unicode_alignment",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "implemented",
+        "recognition": "needs_validation",
+        "word_timing": "needs_validation",
+        "coaching": "implemented",
+        "speech_playback": "device_dependent",
+        "interface": "partial",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "es",
+      "name": "Spanish",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "demo_candidate",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ar",
+      "name": "Arabic",
+      "direction": "rtl",
+      "default_script": "Arab",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "fr",
+      "name": "French",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "de",
+      "name": "German",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "pt",
+      "name": "Portuguese",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "it",
+      "name": "Italian",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "hi",
+      "name": "Hindi",
+      "direction": "ltr",
+      "default_script": "Deva",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "bn",
+      "name": "Bangla",
+      "direction": "ltr",
+      "default_script": "Beng",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "pa",
+      "name": "Punjabi",
+      "direction": "ltr",
+      "default_script": "Guru",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "gu",
+      "name": "Gujarati",
+      "direction": "ltr",
+      "default_script": "Gujr",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "mr",
+      "name": "Marathi",
+      "direction": "ltr",
+      "default_script": "Deva",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ta",
+      "name": "Tamil",
+      "direction": "ltr",
+      "default_script": "Taml",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "te",
+      "name": "Telugu",
+      "direction": "ltr",
+      "default_script": "Telu",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "kn",
+      "name": "Kannada",
+      "direction": "ltr",
+      "default_script": "Knda",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ml",
+      "name": "Malayalam",
+      "direction": "ltr",
+      "default_script": "Mlym",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ne",
+      "name": "Nepali",
+      "direction": "ltr",
+      "default_script": "Deva",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "si",
+      "name": "Sinhala",
+      "direction": "ltr",
+      "default_script": "Sinh",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "fa",
+      "name": "Persian",
+      "direction": "rtl",
+      "default_script": "Arab",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ps",
+      "name": "Pashto",
+      "direction": "rtl",
+      "default_script": "Arab",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "sd",
+      "name": "Sindhi",
+      "direction": "rtl",
+      "default_script": "Arab",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "he",
+      "name": "Hebrew",
+      "direction": "rtl",
+      "default_script": "Hebr",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "tr",
+      "name": "Turkish",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ru",
+      "name": "Russian",
+      "direction": "ltr",
+      "default_script": "Cyrl",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "uk",
+      "name": "Ukrainian",
+      "direction": "ltr",
+      "default_script": "Cyrl",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "pl",
+      "name": "Polish",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "cs",
+      "name": "Czech",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "sk",
+      "name": "Slovak",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ro",
+      "name": "Romanian",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "hu",
+      "name": "Hungarian",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "bg",
+      "name": "Bulgarian",
+      "direction": "ltr",
+      "default_script": "Cyrl",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "hr",
+      "name": "Croatian",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "sr",
+      "name": "Serbian",
+      "direction": "ltr",
+      "default_script": "Cyrl",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "sl",
+      "name": "Slovenian",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "bs",
+      "name": "Bosnian",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "mk",
+      "name": "Macedonian",
+      "direction": "ltr",
+      "default_script": "Cyrl",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "sq",
+      "name": "Albanian",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "el",
+      "name": "Greek",
+      "direction": "ltr",
+      "default_script": "Grek",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "lt",
+      "name": "Lithuanian",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "lv",
+      "name": "Latvian",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "et",
+      "name": "Estonian",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "fi",
+      "name": "Finnish",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "sv",
+      "name": "Swedish",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "da",
+      "name": "Danish",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "nb",
+      "name": "Norwegian Bokmål",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "is",
+      "name": "Icelandic",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "nl",
+      "name": "Dutch",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "af",
+      "name": "Afrikaans",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "sw",
+      "name": "Swahili",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "am",
+      "name": "Amharic",
+      "direction": "ltr",
+      "default_script": "Ethi",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ha",
+      "name": "Hausa",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "yo",
+      "name": "Yoruba",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ig",
+      "name": "Igbo",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "so",
+      "name": "Somali",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "zu",
+      "name": "Zulu",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "xh",
+      "name": "Xhosa",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "st",
+      "name": "Southern Sotho",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "tn",
+      "name": "Tswana",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ts",
+      "name": "Tsonga",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ss",
+      "name": "Swati",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ve",
+      "name": "Venda",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ny",
+      "name": "Nyanja",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "rw",
+      "name": "Kinyarwanda",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "sn",
+      "name": "Shona",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "mg",
+      "name": "Malagasy",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "id",
+      "name": "Indonesian",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ms",
+      "name": "Malay",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "fil",
+      "name": "Filipino",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "vi",
+      "name": "Vietnamese",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "th",
+      "name": "Thai",
+      "direction": "ltr",
+      "default_script": "Thai",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "lo",
+      "name": "Lao",
+      "direction": "ltr",
+      "default_script": "Laoo",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "km",
+      "name": "Khmer",
+      "direction": "ltr",
+      "default_script": "Khmr",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "my",
+      "name": "Burmese",
+      "direction": "ltr",
+      "default_script": "Mymr",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "zh",
+      "name": "Chinese",
+      "direction": "ltr",
+      "default_script": "Hans",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ja",
+      "name": "Japanese",
+      "direction": "ltr",
+      "default_script": "Jpan",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ko",
+      "name": "Korean",
+      "direction": "ltr",
+      "default_script": "Kore",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "mn",
+      "name": "Mongolian",
+      "direction": "ltr",
+      "default_script": "Cyrl",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "kk",
+      "name": "Kazakh",
+      "direction": "ltr",
+      "default_script": "Cyrl",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "uz",
+      "name": "Uzbek",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "az",
+      "name": "Azerbaijani",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "hy",
+      "name": "Armenian",
+      "direction": "ltr",
+      "default_script": "Armn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ka",
+      "name": "Georgian",
+      "direction": "ltr",
+      "default_script": "Geor",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "eu",
+      "name": "Basque",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ca",
+      "name": "Catalan",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "gl",
+      "name": "Galician",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "cy",
+      "name": "Welsh",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "ga",
+      "name": "Irish",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    },
+    {
+      "code": "mt",
+      "name": "Maltese",
+      "direction": "ltr",
+      "default_script": "Latn",
+      "priority": "roadmap",
+      "enabled_for_reading": false,
+      "segmentation": "requires_validation",
+      "assessment_validation": "not_validated",
+      "capabilities": {
+        "content": "planned",
+        "recognition": "planned",
+        "word_timing": "planned",
+        "coaching": "planned",
+        "speech_playback": "planned",
+        "interface": "planned",
+        "translations": "planned"
+      }
+    }
+  ]
+}

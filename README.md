@@ -61,7 +61,7 @@ npx tsc --noEmit --incremental false
 npm run build -- --webpack
 ```
 
-[Validation and operations](analysis/soven/08_VALIDATION_AND_OPERATIONS.md) documents isolated browser checks, measured evidence and failures. [Latest exported-checkout results](analysis/soven/VALIDATION_RESULTS.json) and [CI](https://github.com/Waleed-Khalid-dev/soven/actions) distinguish completed checks from planned work.
+[Validation and operations](analysis/soven/08_VALIDATION_AND_OPERATIONS.md) documents isolated browser checks, measured evidence and failures. [Latest exported-checkout results](analysis/soven/VALIDATION_RESULTS.json) and [CI](https://github.com/TeamXOF/soven/actions) distinguish completed checks from planned work.
 
 Important limits remain: the prior child-speech holdout flagged 29/110 expert-acceptable words; a thirty-recording burst returned eight successes and twenty-two busy responses; Urdu speech quality, educator outcomes and public deployment remain unverified. The successful physical microphone take proves one tested workflow, not general accuracy. Do not repeat historical claims of solved autocorrection, phoneme diagnosis, emotion detection or universal offline operation.
 
@@ -72,3 +72,7 @@ Planned: a simple landing/how-to flow, optional introductory sample, complete pr
 ## Origin and license
 
 SOVEN is derived from [TeamXOF/SpeakFlow Mesh](https://github.com/TeamXOF/speakflow-mesh), previously used in Alibaba and Build with Gemma hackathons. Waleed Khalid and TeamXOF retain attribution under the [MIT license](LICENSE). This independent repository starts with the repaired working baseline; [IMPORT_MANIFEST](analysis/soven/IMPORT_MANIFEST.json) records its source and file hashes. The earlier team repository is unchanged. This repository does not imply Meta endorsement, prior-code eligibility approval or a completed public deployment.
+
+## Team development
+
+The public repository is TeamXOF/soven. Follow the [live checklist](analysis/soven/07_IMPLEMENTATION_ROADMAP.md), [adopted defaults](analysis/soven/11_PRODUCT_DEFAULTS.md) and [execution log](analysis/soven/12_EXECUTION_LOG.md). The shared inventory contains 89 candidate languages; only English/Urdu reading is enabled. GET /api/v1/capabilities returns read-only language/provider status. Regenerate shared types with `python tools/build_language_types.py` and verify with `--check`.

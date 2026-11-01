@@ -11,6 +11,7 @@ jobs:
           cache: pip
           cache-dependency-path: backend/requirements*.txt
       - run: python -m pip install -r backend/requirements-dev.txt
+      - run: python tools/build_language_types.py --check
       - run: python backend/tests/test_regressions.py
   frontend:
     runs-on: ubuntu-latest

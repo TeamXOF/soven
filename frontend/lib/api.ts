@@ -1,4 +1,5 @@
 // API Client for FastAPI Backend
+import type { ReadingLanguage, PlatformCapabilities } from "./languages";
 // ── Gen-1 (5-agent pipeline) functions kept as-is ───────────────────────────
 // ── v2 (checkpoint/two-phase contract) added per the roadmap ────────────────
 
@@ -64,7 +65,7 @@ export async function deleteStudent(id: string) {
 export type ClassicSession = {
   id: string; student_id: string; student_name: string; target_sentence: string | null;
   transcript: string | null; wpm: number | null; accuracy: number | null;
-  overall_score: number | null; timestamp: string; language: "en" | "ur";
+  overall_score: number | null; timestamp: string; language: ReadingLanguage;
 };
 export async function fetchSessions(studentId?: string): Promise<ClassicSession[]> {
   const url = studentId
@@ -81,7 +82,7 @@ export async function fetchSessionDiagnosis(sessionId: string) {
   return res.json();
 }
 
-export async function runPipeline(studentId: string, audioBase64: string, targetSentence: string, language: "en" | "ur" = "en") {
+export async function runPipeline(studentId: string, audioBase64: string, targetSentence: string, language: ReadingLanguage = "en") {
   // Construct the payload expected by the FastAPI PipelineRunRequest
   const payload = {
     student_id: studentId,
@@ -111,7 +112,7 @@ export async function runPipeline(studentId: string, audioBase64: string, target
 export type SttSource = "groq" | "local_fallback";
 export type FeedbackSource = "gemini" | "template_fallback";
 export type EngagementState = "confident" | "anxious" | "frustrated" | "unknown" | "pauses_detected" | "steady_reading" | "practice_recommended";
-export type Language = "en" | "ur";
+export type Language = ReadingLanguage;
 
 export type Phase1Word = {
   word: string;
@@ -589,7 +590,7 @@ export async function fetchWordTip(word: string, lang: Language, mismatch = "", 
 
 
 // ── Dynamic Story Mode (dual-track endless levels) ──────────────────────────
-export type StoryTrack = "en" | "ur";
+export type StoryTrack = ReadingLanguage;
 
 export type StoryMapLevel = {
   level: number; theme: string; difficulty: string; boss: boolean;
@@ -762,4 +763,12 @@ export async function fetchSyncStatus(): Promise<SyncStatus> {
   const res = await apiFetch(`${API_ROOT}/api/v1/sync/status`);
   if (!res.ok) throw new Error("Failed to fetch sync status");
   return res.json();
+}
+
+
+// Read-only inventory for future onboarding. Planned languages remain disabled.
+export async function fetchPlatformCapabilities(signal?: AbortSignal): Promise<PlatformCapabilities> {
+  const response = await apiFetch(`${API_ROOT}/api/v1/capabilities`, { signal });
+  if (!response.ok) throw new Error("Could not load language capabilities");
+  return response.json();
 }

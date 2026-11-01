@@ -41,3 +41,13 @@ The SOVEN rerun exposed open SQLite startup and backup connections during Window
 ## Multilingual direction
 
 The working reading languages remain English and Urdu. The owner confirmed a 70+ language goal on 1 November 2026. No additional language was implemented or validated by this brand/documentation revision. Spanish is a proposed addition within that wider goal. Provider language lists alone do not establish complete SOVEN support.
+
+## Team ownership and first foundation
+
+SOVEN is public at https://github.com/TeamXOF/soven. TRANSFER_RECEIPT.json verifies preserved repository identity, source head, redirect and admin access. The local origin points to TeamXOF. Existing organization defaults remain; no unidentified collaborators were added.
+
+shared/languages.json now inventories 89 candidate languages with script/direction and separate capability status. Only English/Urdu are runtime-enabled. Generated Python/TypeScript types are checked for drift. GET /api/v1/capabilities publicly returns static language/provider metadata, without credentials, user data or inference. Provider presence in that inventory does not establish configuration or availability; Meta adapters remain planned.
+
+Classic sentence generation and dynamic story routes reject planned/unknown language requests instead of silently substituting English. Existing session, scoring and ownership contracts are preserved. The frontend consumes generated reading-language types and rejects unsupported cached story-language preferences.
+
+The current local regression count is 47, including five new capability/gating/drift checks. Lint, standalone TypeScript and production build pass. Fresh-install CI and isolated browser reruns are recorded in FOUNDATION_VALIDATION.json. Adopted defaults remain implementation targets until their checklist acceptance gates pass.

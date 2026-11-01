@@ -40,3 +40,7 @@ Record the permitted route and actual model ID, run one real invocation, test ma
 ## Coverage for the 70+ language goal
 
 The 70+ language target is an owner requirement, not a verified capability of one Meta endpoint. Evaluate STT, word timing, TTS, content, coaching and translation separately per language. Text-model understanding does not establish spoken-word assessment or voice availability. Track provider, script, timing source, fallback, measured quality and rollout status in a coverage matrix. Promote only capabilities that pass their gate; show gaps as unavailable. Preserve current adapters until a permitted replacement covers the required behavior.
+
+## Foundation implementation status
+
+The public provider capability inventory is implemented, along with language gates and generated shared types. It makes no external calls and does not report credential values or infer account availability. Current Google/Groq/local/browser pathways remain accurately named. Meta reasoning/speech entries are explicitly planned; no live Meta adapter or successful invocation is claimed. Actual permitted account/provider configuration and a budget remain unspecified.

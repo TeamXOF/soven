@@ -1,0 +1,17 @@
+{
+  "verified_at_utc": "2026-11-01T09:31:50.334985+00:00",
+  "repository": "https://github.com/TeamXOF/soven",
+  "backend_regressions": "47 passed, including five new language/capability/drift checks",
+  "local_backend_environment": "Python 3.12.14 with prepared dependencies; fresh installation verified separately by remote CI",
+  "frontend_lint": "passed",
+  "typescript": "standalone check passed",
+  "production_build": "passed",
+  "signup_browser": "nine isolated checks passed; clean command exit",
+  "dashboard_browser": "twelve isolated scenarios passed; no browser runtime errors; clean command exit",
+  "public_capabilities": "GET-only metadata; no credentials/user data/inference",
+  "language_inventory": "89 candidates; only en/ur runtime-enabled; no new language quality claimed",
+  "provider_integration": "Meta adapter and real invocation still pending permitted provider configuration",
+  "ci_status": "awaiting post-transfer remote run",
+  "ci_url": "https://github.com/TeamXOF/soven/actions",
+  "scope": "Synthetic accounts and controlled responses; no production database or hosted inference; not a new physical speech-quality validation"
+}

@@ -4,7 +4,7 @@ SOVEN helps people practise reading aloud, review recognized words and choose fu
 
 ## Ownership and chronology
 
-The product owner is Waleed Khalid. SpeakFlow Mesh was developed by TeamXOF and used in the Alibaba and Build with Gemma hackathons. The source repository is https://github.com/TeamXOF/speakflow-mesh. SOVEN is an independent repository on the owner's profile, not an attempt to erase the earlier team's contribution. The MIT copyright notice for Waleed Khalid and TeamXOF is retained.
+The product owner is Waleed Khalid. SpeakFlow Mesh was developed by TeamXOF and used in the Alibaba and Build with Gemma hackathons. The source repository is https://github.com/TeamXOF/speakflow-mesh. SOVEN was created on the owner's profile and then transferred, with explicit authorization, to TeamXOF/soven. It remains a separate repository with clean import history. The MIT copyright notice for Waleed Khalid and TeamXOF is retained.
 
 The imported source commit is recorded in IMPORT_MANIFEST.json. The export uses the current repaired working files, including previously untracked modules, rather than just the public repository's older commit. Authentication, analytics, persistence, recording, speech decoding, enrollment and dashboard repairs occurred before the SOVEN brand import. Preserve that chronology when describing hackathon work.
 
@@ -20,7 +20,7 @@ Do not turn this into a clinical or diagnostic promise. Dyslexia is not inferred
 
 ## This delivery and the next stage
 
-This delivery provides an attributed baseline, new brand, professional handoff pack, reproducible checks and clean publication. It preserves English and Urdu flows and accurate Google/Groq/local labels. Future work includes an introductory voice sample, profile completion, optional accessibility controls, a book UI, conversational coaching, a scalable 70+ language system including Spanish, translations and richer audio statistics.
+The initial delivery established an attributed baseline, brand, handoff pack and publication. The owner then approved TeamXOF ownership, recommended defaults and checklist-driven implementation; the first language/provider inventory foundation is now implemented. It preserves English and Urdu flows and accurate Google/Groq/local labels. Future work includes an introductory voice sample, profile completion, optional accessibility controls, a book UI, conversational coaching, a scalable 70+ language system including Spanish, translations and richer audio statistics.
 
 The owner explicitly chose public visibility, clean Git history, reviewed public summaries rather than the original private source documents, and a minimal S/page/voice logo in indigo and teal. The old TeamXOF repository and the original local workspace are not replaced.
 
@@ -32,4 +32,8 @@ Official event source checked on 1 November 2026: https://dev.meta.ai/events/glo
 
 ## Owner clarification
 
-On 1 November 2026 the owner confirmed 70+ languages as the product goal and selected logo concept C on white, containing only the symbol and SOVEN. The source documents described English, Urdu and Spanish; this later owner direction expands that scope. The target language list and rollout order remain open.
+On 1 November 2026 the owner confirmed 70+ languages as the product goal and selected logo concept C on white, containing only the symbol and SOVEN. The source documents described English, Urdu and Spanish; this later owner direction expands that scope. The candidate inventory and initial demo priorities are now recorded in the adopted defaults; language-specific release evidence remains pending.
+
+## Implementation defaults
+
+The adopted product choices are in 11_PRODUCT_DEFAULTS.md. They guide future work without pretending that adult accounts, the introductory sample or the new book already exist. Work completed and tested is logged in 12_EXECUTION_LOG.md.

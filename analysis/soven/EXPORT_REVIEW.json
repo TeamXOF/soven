@@ -1,8 +1,7 @@
 {
-  "files_checked": 276,
+  "files_checked": 279,
   "findings": [],
   "scope": "Exact export file content and size; excludes dependencies, ignored QA/runtime directories and Git objects.",
   "review_date": "2026-11-01",
-  "revision": "Illustrated connected UI and handoff",
-  "public_language_inventory": "89 candidates; en/ur enabled; no private learner data or credentials"
+  "revision": "Configured reasoning adapters with mocked contracts and current handoff"
 }

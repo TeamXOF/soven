@@ -4,7 +4,7 @@
 
 SOVEN is a reading-practice platform with word-level feedback and teacher tools, building toward accessible storybook learning and **70+ languages**. English and Urdu are the current working reading tracks; broader coverage is planned.
 
-**Current stage:** a connected cream/coral illustrated interface with public landing, child/adult signup, saved profiles, a real-data reader home, bookshelf and checkpoint book reader. The introductory microphone check records and plays back in the browser without uploading audio. Meta integration, 70+ runtime language coverage and public deployment remain planned.
+**Current stage:** a connected cream/coral illustrated interface with public landing, child/adult signup, saved profiles, a real-data reader home, bookshelf and checkpoint book reader. The introductory microphone check records and plays back in the browser without uploading audio. Configured reasoning adapters are mock-tested; live permitted Meta use, 70+ runtime language coverage and public deployment remain unverified.
 
 [Start here](analysis/soven/00_START_HERE.md) · [Current state](analysis/soven/02_CURRENT_STATE.md) · [Setup](docs/SETUP.md) · [Roadmap](analysis/soven/07_IMPLEMENTATION_ROADMAP.md) · [Handoff documents](analysis/soven/DOCUMENT_MANIFEST.json)
 
@@ -18,7 +18,7 @@ SOVEN is a reading-practice platform with word-level feedback and teacher tools,
 - Cached local Whisper support, explicit offline mode, bounded processing, persistent coaching and optional authenticated archival sync.
 - Quiet page-flow warnings/errors, clear fallback labels and guarded recording/account lifecycles.
 
-Hosted reasoning currently uses Google; online speech uses Groq with local Whisper fallback. No Meta integration is claimed by this branding delivery. Word match is transcript agreement, not validated pronunciation assessment or a dyslexia diagnosis.
+Reasoning defaults to Google; opt-in Meta and compatible-endpoint adapters are mock-tested, with [configuration and access gates](analysis/soven/16_REASONING_PROVIDER_INTEGRATION.md). No live Meta invocation is claimed. Online speech uses Groq with local Whisper fallback. Word match is transcript agreement, not validated pronunciation assessment or a dyslexia diagnosis.
 
 ## Illustrated reading experience
 
@@ -58,13 +58,14 @@ For offline reading, cache the selected Whisper model first and set OFFLINE_MODE
 
 ```powershell
 python backend/tests/test_regressions.py
+python backend/tests/test_reasoning_providers.py
 cd frontend
 npm run lint
 npx tsc --noEmit --incremental false
 npm run build -- --webpack
 ```
 
-[Validation and operations](analysis/soven/08_VALIDATION_AND_OPERATIONS.md) documents isolated browser checks, measured evidence and failures. [Latest account/profile checks](analysis/soven/ACCOUNT_PROFILE_VALIDATION.json) and [CI](https://github.com/TeamXOF/soven/actions) distinguish completed checks from planned work.
+[Validation and operations](analysis/soven/08_VALIDATION_AND_OPERATIONS.md) documents isolated browser checks, measured evidence and failures. [Provider adapter checks](analysis/soven/REASONING_PROVIDER_VALIDATION.json) and [CI](https://github.com/TeamXOF/soven/actions) distinguish completed checks from planned work.
 
 Important limits remain: the prior child-speech holdout flagged 29/110 expert-acceptable words; a thirty-recording burst returned eight successes and twenty-two busy responses; Urdu speech quality, educator outcomes and public deployment remain unverified. The successful physical microphone take proves one tested workflow, not general accuracy. Do not repeat historical claims of solved autocorrection, phoneme diagnosis, emotion detection or universal offline operation.
 

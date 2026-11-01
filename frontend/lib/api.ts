@@ -110,7 +110,7 @@ export async function runPipeline(studentId: string, audioBase64: string, target
 // ═══════════════════════════ v2 CONTRACT TYPES ═══════════════════════════════
 
 export type SttSource = "groq" | "local_fallback";
-export type FeedbackSource = "gemini" | "template_fallback";
+export type FeedbackSource = "gemini" | "meta" | "chat_completions" | "model_unknown" | "template_fallback";
 export type EngagementState = "confident" | "anxious" | "frustrated" | "unknown" | "pauses_detected" | "steady_reading" | "practice_recommended";
 export type Language = ReadingLanguage;
 
@@ -582,7 +582,7 @@ export type WordTip = {
   letters: string[];
   syllables: string[];
   tip: string;
-  tip_source: "gemini" | "template" | "cache";
+  tip_source: "gemini" | "meta" | "chat_completions" | "model_unknown" | "template" | "cache";
 };
 
 export async function fetchWordTip(word: string, lang: Language, mismatch = "", spoken = ""): Promise<WordTip> {

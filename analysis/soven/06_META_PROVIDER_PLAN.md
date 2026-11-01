@@ -1,6 +1,6 @@
 # SOVEN Meta integration and privacy plan
 
-No Meta model is active in this imported runtime. This document records candidate capabilities and the decisions needed before a provider migration. Product quality, permitted access and honest data handling determine the route; branding alone does not establish a meaningful integration.
+No Meta model has been invoked live in this delivery. Opt-in reasoning adapters are implemented and mock-tested; Google remains the default. This document records candidate capabilities and the decisions needed before a provider migration. Product quality, permitted access and honest data handling determine the route; branding alone does not establish a meaningful integration.
 
 ## Access and service boundaries
 
@@ -18,9 +18,9 @@ Muse Glimmer is a 30B text/image-input, text-output open-weight candidate. The o
 
 Muse Image is a possible illustration provider, subject to applicable access and image-specific restrictions. Cache and moderate illustrations, record source/model/license terms and show failure alternatives. No story-art service has been implemented here. Select one useful, verifiable Meta capability before adding multiple integrations.
 
-## Proposed adapter approach
+## Implemented reasoning adapter and pending speech work
 
-Retain an application-level JSON generation boundary rather than coupling prompts to one SDK. A future adapter should accept model/provider configuration, system instructions, task input and a validated output schema; return content, source, model, timings and fallback reason. Keep keys server-side and redact provider bodies from logs. Model calls must be bounded and fail to basic guidance, not invented results.
+Retain an application-level JSON generation boundary rather than coupling prompts to one SDK. The implemented boundary accepts provider/model configuration, instructions, task data and a schema, with separate provider/model provenance and explicit fallback sources. Guide 16 documents its exact limits; new-provider timing/cost still require a real permitted call. Keep keys server-side and redact provider bodies from logs. Model calls must be bounded and fail to basic guidance, not invented results.
 
 Speech adapters should declare language coverage, transcript, timestamp granularity and confidence availability. Align and score only using evidence they actually return. Raw-audio decoding, word timing, scoring and coaching remain independently testable. Keep the current offline pathway until the new route passes representative tests.
 
@@ -43,4 +43,4 @@ The 70+ language target is an owner requirement, not a verified capability of on
 
 ## Foundation implementation status
 
-The public provider capability inventory is implemented, along with language gates and generated shared types. It makes no external calls and does not report credential values or infer account availability. Current Google/Groq/local/browser pathways remain accurately named. Meta reasoning/speech entries are explicitly planned; no live Meta adapter or successful invocation is claimed. Actual permitted account/provider configuration and a budget remain unspecified.
+The public provider capability inventory is implemented, along with language gates and generated shared types. It makes no external calls and does not report credential values or infer account availability. Current Google/Groq/local/browser pathways remain accurately named. Meta reasoning adapter mechanics are implemented and marked live_validation=not_performed; speech remains planned. No successful live invocation is claimed. Actual permitted account/provider configuration and a budget remain unspecified.

@@ -17,3 +17,5 @@ The owner supplied two illustrated UI references and authorized implementation. 
 
 
 The owner has now supplied two cream/coral illustrated reading-platform references and explicitly authorized implementation without further permission. The UI design hold is resolved. Follow analysis/soven/15_UI_DESIGN_AND_IMPLEMENTATION.md, retain the approved SOVEN logo and accurate capability/privacy copy. Do not substitute sample statistics for user history.
+
+Read analysis/soven/16_REASONING_PROVIDER_INTEGRATION.md before changing providers. Adapter contracts are implemented and mock-tested; Google is default, live permitted access remains open, and hosted Meta must not be enabled from this Pakistan environment. Run both backend test files; no silent cross-provider fallback is allowed.

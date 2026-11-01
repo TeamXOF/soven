@@ -25,7 +25,7 @@ import { useEffect,useState } from "react";
 
 function SourceBadge({ source }: { source: string | null }) {
   if (!source) return null;
-  const isOnline = source === "groq" || source === "gemini";
+  const isOnline = ["groq", "gemini", "meta", "chat_completions", "model_unknown"].includes(source);
   return (
     <span
       className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider border ${
@@ -33,10 +33,10 @@ function SourceBadge({ source }: { source: string | null }) {
           ? "bg-sky-50 border-sky-200 text-sky-600"
           : "bg-amber-50 border-amber-200 text-amber-600"
       }`}
-      title={isOnline ? "Cloud service used" : "Offline/fallback path used"}
+      title={isOnline ? "Configured provider result; hosting depends on configuration" : "Server-local or fallback result"}
     >
       {isOnline ? <Wifi className="w-3 h-3" /> : <WifiOff className="w-3 h-3" />}
-      {source === "groq" ? "Groq STT" : source === "local_fallback" ? "Offline STT" : source === "gemini" ? "Gemini" : "Template"}
+      {source === "groq" ? "Groq STT" : source === "local_fallback" ? "Offline STT" : source === "gemini" ? "Gemini" : source === "meta" ? "Meta" : source === "chat_completions" ? "Configured provider" : source === "model_unknown" ? "Model origin unknown" : "Template"}
     </span>
   );
 }

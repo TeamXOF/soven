@@ -8,13 +8,14 @@
   "original_source_documents": "kept local; not uploaded",
   "git_history": "clean import; prior source history not carried",
   "brand": "Owner-selected concept C; white primary logo with symbol and SOVEN only; no tagline or feature list",
-  "handoff": "16 numbered maintained guides and six DOCX companions, with UI route/artwork/validation handoff",
-  "no_new_product_features": "Illustrated entry/account/profile/library/book mechanics implemented; anonymous AI sample, free-form coach, 70+ runtime languages, Meta adapter and production deployment remain pending",
-  "updated_at_utc": "2026-11-01T15:15:49.191096+00:00",
+  "handoff": "17 numbered maintained guides and six DOCX companions, including configured reasoning integration",
+  "no_new_product_features": "Illustrated journey and mock-tested reasoning adapters implemented; anonymous AI sample, conversation, 70+ runtime languages, live permitted Meta use and public deployment remain pending",
+  "updated_at_utc": "2026-11-01T16:27:45.627322+00:00",
   "language_goal": "70+ planned; English and Urdu currently implemented; Spanish is one future addition",
   "foundation": "89-candidate registry; en/ur enabled; shared generated types; read-only capabilities; explicit language gates",
   "transfer_receipt": "TRANSFER_RECEIPT.json",
-  "next_task": "Permitted provider configuration, stronger speech/content validation, anonymous sample service design and physical-device/rollout gates",
+  "next_task": "Freeze speech evaluation protocol/configuration; real provider access and physical/public rollout gates remain open",
   "accounts": "Independent adult personal scopes; versioned owner profile API; four-language preferences; additive v3 migration",
-  "ui": "Owner reference boards implemented with real account/profile/books APIs, browser-local sample and guarded checkpoint reader"
+  "ui": "Owner reference boards implemented with real account/profile/books APIs, browser-local sample and guarded checkpoint reader",
+  "reasoning": "Google default; opt-in Meta/compatible adapters mock-tested; no live new-provider invocation"
 }

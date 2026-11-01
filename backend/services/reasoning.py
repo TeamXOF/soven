@@ -1,6 +1,6 @@
 """
-Reasoning layer (roadmap Feature 3): Gemini turns structured error data into
-encouraging, age-appropriate feedback — plus the multimodal hesitation judgment.
+Configured reasoning turns structured reading observations into
+encouraging guidance with strict output validation and timing-only pause observations.
 Both have defined non-LLM fallbacks (template bank / heuristic), per roadmap
 Part 2.5. Fallbacks degrade the feedback *language*, never the correctness
 judgment itself.
@@ -12,7 +12,7 @@ import logging
 import asyncio
 from pydantic import BaseModel, ConfigDict, Field
 
-from services.model_client import generate_json
+from services.model_client import generate_json, model_candidates, result_source
 
 from core.config import settings
 
@@ -78,20 +78,21 @@ def split_syllables(word: str) -> list:
 
 async def generate_word_tip(word: str, language: str = "en",
                             mismatch: str = "", spoken: str = "") -> dict:
-    """A short per-word pronunciation tip. Gemini first (short timeout), then an
+    """A short per-word hint from the configured provider (short timeout), then an
     honest local template so the tooltip always shows something useful offline."""
     payload = {"word": word, "recognized_text": spoken or "", "transcript_difference": mismatch or ""}
     try:
         prompt = WORD_TIP_PROMPT.replace(
             "{language_name}", _LANGUAGE_NAMES.get(language, "English"))
-        data = WordCoaching.model_validate(await _call_gemini_json(prompt, payload, 6.0)).model_dump()
+        result = await _call_gemini_json(prompt, payload, 6.0, WordCoaching.model_json_schema())
+        data = WordCoaching.model_validate(result).model_dump()
         tip = str(data.get("tip") or "").strip()
         syllables = [str(s).strip() for s in (data.get("syllables") or []) if str(s).strip()]
         if tip:
             return {"tip": tip, "syllables": syllables or split_syllables(word),
-                    "source": "gemini"}
+                    "source": result_source(result)}
     except Exception as e:
-        log.warning("word tip gemini failed: %s", e)
+        log.warning("word_tip_fallback: %s", type(e).__name__)
 
     syllables = split_syllables(word) if language == "en" else [word]
     if mismatch and "_vs_" in mismatch:
@@ -128,13 +129,26 @@ def _extract_json(text: str) -> dict:
     return json.loads(text)
 
 
-async def _call_gemini_json(system_prompt: str, payload: dict, timeout_s: float) -> dict:
-    """One Gemini JSON call with a soft timeout. Raises on failure/timeout so the
-    caller can fall back (roadmap Part 2.5: never block past the timeout)."""
+def _closed_schema(schema):
+    # Pydantic remains the local validator. Closed objects/all-required fields are
+    # sent to providers; nullable fields preserve optional content explicitly.
+    if isinstance(schema, dict):
+        schema = {key: _closed_schema(value) for key, value in schema.items()}
+        if schema.get('type') == 'object':
+            schema['additionalProperties'] = False
+            schema['required'] = list(schema.get('properties', {}))
+        return schema
+    if isinstance(schema, list):
+        return [_closed_schema(item) for item in schema]
+    return schema
+
+
+async def _call_gemini_json(system_prompt: str, payload: dict, timeout_s: float, schema=None) -> dict:
+    """Compatibility name for configured JSON reasoning with a template fallback."""
     last_error = RuntimeError("Reasoning unavailable")
-    for model in dict.fromkeys([settings.FEEDBACK_MODEL, settings.FEEDBACK_MODEL_FALLBACK]):
+    for model in model_candidates(settings.FEEDBACK_MODEL, settings.FEEDBACK_MODEL_FALLBACK):
         try:
-            return await generate_json(system_prompt, payload, model, timeout_s)
+            return await generate_json(system_prompt, payload, model, timeout_s, schema=_closed_schema(schema))
         except Exception as error:
             last_error = error
             if not settings.active_gemini_key or os.getenv("OFFLINE_MODE") == "1":
@@ -171,7 +185,7 @@ def classify_category(signal: dict) -> str:
 
 
 async def generate_feedback(signal: dict, checkpoint_hint: dict) -> dict:
-    """Phase-2 feedback. Tries Gemini; falls back to the template bank.
+    """Phase-2 feedback. Tries the configured provider, then the template bank.
     Returns the Phase-2 payload dict (without phase/session fields)."""
     category = classify_category(signal)
     language = checkpoint_hint.get("language", "en")
@@ -194,7 +208,8 @@ async def generate_feedback(signal: dict, checkpoint_hint: dict) -> dict:
     try:
         prompt = FEEDBACK_SYSTEM_PROMPT.replace(
             "{language_name}", _LANGUAGE_NAMES.get(language, "English"))
-        data = CoachingFeedback.model_validate(await _call_gemini_json(prompt, payload, settings.FEEDBACK_TIMEOUT_S)).model_dump()
+        result = await _call_gemini_json(prompt, payload, settings.FEEDBACK_TIMEOUT_S, CoachingFeedback.model_json_schema())
+        data = CoachingFeedback.model_validate(result).model_dump()
         if not isinstance(data.get("feedback_text"), str) or not data["feedback_text"].strip():
             raise ValueError("Feedback text is required")
         if not isinstance(data.get("comprehension_question"), str):
@@ -204,11 +219,11 @@ async def generate_feedback(signal: dict, checkpoint_hint: dict) -> dict:
             "comprehension_question": str(data.get("comprehension_question", "")).strip(),
             "practice_recommendation": (str(data.get("practice_recommendation")).strip()
                                         if data.get("practice_recommendation") else None),
-            "teacher_note": str(data.get("teacher_note", "")).strip() or None,
-            "feedback_source": "gemini",
+            "teacher_note": str(data.get("teacher_note") or "").strip() or None,
+            "feedback_source": result_source(result),
         }
     except Exception as e:
-        log.warning("gemini_fallback: %s", e)
+        log.warning("reasoning_fallback: %s", type(e).__name__)
         tpl = _pick_template(category, language, word, phoneme)
         if not tpl.get("comprehension_question"):
             tpl["comprehension_question"] = checkpoint_hint.get("comprehension_hint") or None

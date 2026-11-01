@@ -1,43 +1,45 @@
 {
   "review_date": "2026-11-01",
-  "revision": "Connected illustrated UI with verified CI and owner continuation authorization",
+  "revision": "Configured reasoning adapters and completed illustrated UI handoff",
   "renderer": "Microsoft Word hidden PDF export with PDFium; LibreOffice unavailable",
+  "total_pages": 33,
+  "unchanged_prior_reviewed_pages": 4,
   "documents": [
     {
       "document": "01_SOVEN_Project_Context_and_Current_State.docx",
       "pages": 4,
       "renderer": "Microsoft Word native PDF export, then PDFium PNG rasterization",
-      "review": "All final page images reviewed; previously unchanged pages matched reviewed hashes. No clipping, overlap or missing glyphs."
+      "review": "Final rendered pages reviewed; unchanged prior pages matched reviewed hashes. No clipping, overlap or missing glyphs."
     },
     {
       "document": "02_SOVEN_Architecture_and_Engineering_Handoff.docx",
       "pages": 4,
       "renderer": "Microsoft Word native PDF export, then PDFium PNG rasterization",
-      "review": "All final page images reviewed; previously unchanged pages matched reviewed hashes. No clipping, overlap or missing glyphs."
+      "review": "Final rendered pages reviewed; unchanged prior pages matched reviewed hashes. No clipping, overlap or missing glyphs."
     },
     {
       "document": "03_SOVEN_Product_Requirements_and_Source_Review.docx",
       "pages": 5,
       "renderer": "Microsoft Word native PDF export, then PDFium PNG rasterization",
-      "review": "All final page images reviewed; previously unchanged pages matched reviewed hashes. No clipping, overlap or missing glyphs."
+      "review": "Final rendered pages reviewed; unchanged prior pages matched reviewed hashes. No clipping, overlap or missing glyphs."
     },
     {
       "document": "04_SOVEN_Meta_Integration_and_Privacy.docx",
-      "pages": 2,
+      "pages": 4,
       "renderer": "Microsoft Word native PDF export, then PDFium PNG rasterization",
-      "review": "All final page images reviewed; previously unchanged pages matched reviewed hashes. No clipping, overlap or missing glyphs."
+      "review": "Final rendered pages reviewed; unchanged prior pages matched reviewed hashes. No clipping, overlap or missing glyphs."
     },
     {
       "document": "05_SOVEN_Roadmap_and_Decisions.docx",
       "pages": 8,
       "renderer": "Microsoft Word native PDF export, then PDFium PNG rasterization",
-      "review": "All final page images reviewed; previously unchanged pages matched reviewed hashes. No clipping, overlap or missing glyphs."
+      "review": "Final rendered pages reviewed; unchanged prior pages matched reviewed hashes. No clipping, overlap or missing glyphs."
     },
     {
       "document": "06_SOVEN_Validation_Operations_and_Brand.docx",
       "pages": 8,
       "renderer": "Microsoft Word native PDF export, then PDFium PNG rasterization",
-      "review": "All final page images reviewed; previously unchanged pages matched reviewed hashes. No clipping, overlap or missing glyphs."
+      "review": "Final rendered pages reviewed; unchanged prior pages matched reviewed hashes. No clipping, overlap or missing glyphs."
     }
   ]
 }

@@ -44,13 +44,9 @@ The working reading languages remain English and Urdu. The owner confirmed a 70+
 
 ## Team ownership and first foundation
 
-SOVEN is public at https://github.com/TeamXOF/soven. TRANSFER_RECEIPT.json verifies preserved repository identity, source head, redirect and admin access. The local origin points to TeamXOF. Existing organization defaults remain; no unidentified collaborators were added.
+SOVEN is public at https://github.com/TeamXOF/soven; TRANSFER_RECEIPT.json verifies repository identity, redirect and owner access. No unidentified collaborators were added.
 
-shared/languages.json now inventories 89 candidate languages with script/direction and separate capability status. Only English/Urdu are runtime-enabled. Generated Python/TypeScript types are checked for drift. GET /api/v1/capabilities publicly returns static language/provider metadata, without credentials, user data or inference. Provider presence in that inventory does not establish configuration or availability; Meta adapters remain planned.
-
-Classic sentence generation and dynamic story routes reject planned/unknown language requests instead of silently substituting English. Existing session, scoring and ownership contracts are preserved. The frontend consumes generated reading-language types and rejects unsupported cached story-language preferences.
-
-The foundation snapshot had 47 regressions, including five capability/gating/drift checks; the later account/profile suite has 61. Lint, standalone TypeScript and production build pass. Earlier foundation checks are in FOUNDATION_VALIDATION.json; current account/profile checks are in ACCOUNT_PROFILE_VALIDATION.json. Adopted defaults remain implementation targets until their checklist acceptance gates pass.
+The shared registry contains 89 candidate languages; only English/Urdu are enabled. Generated contracts, explicit language gates and the read-only public capabilities API reject unsupported reading instead of silently substituting English. Metadata exposes no credentials, learner data or inference. Provider implementation does not establish availability. Dated foundation/account evidence is retained in FOUNDATION_VALIDATION.json and ACCOUNT_PROFILE_VALIDATION.json.
 
 ## Account and profile backend completion
 
@@ -64,4 +60,8 @@ Schema v3 backs up versioned databases and preserves scores, attempts and tokens
 
 The owner has now supplied the preferred design. New public landing, browser-local microphone check, child/adult signup, connected profile form, reader home, illustrated library, checkpoint book reader, language catalogue and data-use explanation are implemented. Real account/profile/catalogue/session APIs drive the journey. Optional larger text, spacing, contrast and word/coach guidance apply in the new reader. Teacher/classic/dynamic routes retain their underlying behavior. The earlier design-hold notes describe the preceding milestone, not the current authorization.
 
-New accounts see honest empty history. Book progress and unlock presentation can be filtered by reading language; English does not unlock Urdu books. The recording hook handles delayed microphone permission and route teardown. Word-help and spoken guidance reuse existing providers/browser voices, with explicit source/unavailable labels. See 15_UI_DESIGN_AND_IMPLEMENTATION.md and UI_REDESIGN_VALIDATION.json. Anonymous AI sample analysis, free-form coaching, new languages/providers, physical-device/educator validation and public production safeguards remain unfinished.
+New accounts see honest empty history. Book progress and unlock presentation can be filtered by reading language; English does not unlock Urdu books. The recording hook handles delayed microphone permission and route teardown. Word-help and spoken guidance reuse existing providers/browser voices, with explicit source/unavailable labels. See 15_UI_DESIGN_AND_IMPLEMENTATION.md and UI_REDESIGN_VALIDATION.json. Anonymous AI sample analysis, free-form coaching, new language engines/live providers, physical-device/educator validation and public production safeguards remain unfinished.
+
+## Configurable reasoning milestone
+
+The coaching boundary now supports default Google, opt-in Meta Chat Completions and an explicit compatible endpoint. Structured output, local validation, source metadata, output limits, redacted errors and template fallbacks pass 18 mocked provider contracts, alongside the 62 existing backend regressions. The illustrated browser journey passes 19 scenarios, including a controlled provider-source display. Lint, TypeScript and production build pass. No live new-provider call, permitted account, measured cost or new speech-quality claim is established. See guide 16 and REASONING_PROVIDER_VALIDATION.json.

@@ -14,10 +14,10 @@
         },
         {
           "path": "02_CURRENT_STATE.md",
-          "sha256": "11041e7059f2966e4113324a2fe741ce6cce73820b004a005fc6b68bc3cbb7b6"
+          "sha256": "7a63ed572d1a51900495bac3a56a1915ff49c7641b67297e494fe328885aeb01"
         }
       ],
-      "sha256": "41cb75703a578d2acf5ba43511532641a22999e9760f644dca8f0903a265d0c0",
+      "sha256": "1a1ce2a022cb91c58564bcb8eba26728cebacd61a9eb211dcfbc7f85f0440c2b",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -26,10 +26,10 @@
       "sources": [
         {
           "path": "03_ARCHITECTURE.md",
-          "sha256": "d5bd441c2ee44c9a9029fa4fff79efa07868ce801cbd8abe6d5bf05f170822fd"
+          "sha256": "d56f893dda85f597bf0406ed9392aa91382336e6b17173697fa432aa8a84aa1c"
         }
       ],
-      "sha256": "7b572e1690ba3efebd6c5b9911bf046923deb03ddec96b02361194aa53a2c896",
+      "sha256": "d75f44c329a737a86488bb98c5f7272fb8e4e9b32566ace1594ecc6b37d4981a",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -38,14 +38,14 @@
       "sources": [
         {
           "path": "04_PRODUCT_REQUIREMENTS.md",
-          "sha256": "7ebc1a310e270360703bda57aa0997fc4dd818d9af9e3cdf1d165fa3a80cd6d1"
+          "sha256": "e51dcf992745c795c3119c5c3114621f326e2db33eab20c4f65fb4f4c368194d"
         },
         {
           "path": "05_SOURCE_REVIEW.md",
           "sha256": "c39beb6148f3f06cbec39cf5332b4899012686cabfbbff07b4bb4d457664ff8e"
         }
       ],
-      "sha256": "1734c31c8860e4e38395360c54db385d2f2b0bd780472e409a317e4a42065349",
+      "sha256": "7ceede60813508cf68e3bd31cc2054c529358726478af525d2deb3d96556d7df",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -54,10 +54,14 @@
       "sources": [
         {
           "path": "06_META_PROVIDER_PLAN.md",
-          "sha256": "85cb16b8f0dcbe8afb6f820a1da8e89ac9a50f661a198cdf5d77c4118bb63646"
+          "sha256": "c038c4e5437e8d0ee190a1b84958c625ee0038f032e641c283b68b6a711c7c56"
+        },
+        {
+          "path": "16_REASONING_PROVIDER_INTEGRATION.md",
+          "sha256": "a85940cfc71bfac896cb65784c2a435ea757982cfd4ce624e795fd19252b866b"
         }
       ],
-      "sha256": "0a45182f4f50d295e7c9bd0b904c8c22c9cc9736f84cda91e01a14c724da574d",
+      "sha256": "5440ec42a84e88b359bd0fc920c6e4ab01ac8d78de71d4455e647eb8ebbed342",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -66,18 +70,18 @@
       "sources": [
         {
           "path": "07_IMPLEMENTATION_ROADMAP.md",
-          "sha256": "2a670b2bf5eecbfe534e793cc389438e1e755527dd878a8770c4f6af3409e8fc"
+          "sha256": "16612dd2b19de9a2a4be0f48a49b8c161d84b06717043521614aa285b2e4286d"
         },
         {
           "path": "10_DECISIONS_AND_HANDOFF.md",
-          "sha256": "f863af983e2033d32f15aeeb306bb37cbf089282613396b731013a836a856b7e"
+          "sha256": "10123f391ce764d1661786ff34a27f4b04bfc1c4a7ef0cfd7d4d8653bacbc648"
         },
         {
           "path": "11_PRODUCT_DEFAULTS.md",
-          "sha256": "c49c19912a2d47f7a57584e1d824ce5f3e8053a50df136f9959c25027b726ee5"
+          "sha256": "4a629b7f82f9bf67392c73ce8909501f05dddfd899214f327b7c9c6b521b978a"
         }
       ],
-      "sha256": "7f99e39b7146eb7de0c2d13218ad2d027534dfded78a1b9f410bbfd19bc97ef9",
+      "sha256": "fbefc17b1d153e12b0677cc05ed9367b5885c2070d755ce42a60aeb1174f13ff",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -86,7 +90,7 @@
       "sources": [
         {
           "path": "08_VALIDATION_AND_OPERATIONS.md",
-          "sha256": "271d1fd44f794494132cbc03aae433e8c92237c187f0a88faf87ce03b1421773"
+          "sha256": "67caa056e71d199265cd4668c99368902ddd1142cf8f9529e7c82ca39b48e525"
         },
         {
           "path": "09_BRAND_AND_REPOSITORY.md",
@@ -98,7 +102,7 @@
         },
         {
           "path": "DELIVERY_STATUS.json",
-          "sha256": "245eff4d020464dacfbfa20f82ab1bbd4fa2671fd5c7f9084b6e2dac2ea1cb95"
+          "sha256": "9688da957db9e945ace4dce52e31e437b5bb15480228695b2449e83790ea14bd"
         },
         {
           "path": "FOUNDATION_VALIDATION.json",
@@ -113,7 +117,7 @@
           "sha256": "a637bade66569f24ef1d91f5646efdc0b6d536f853dacbb65415882ed69e3f99"
         }
       ],
-      "sha256": "7b98d361d477b846309df4d4f9f6afd1b4b8ad1febb345349e7d0fe845fb5776",
+      "sha256": "d8168e8fd86e94073c307c63148ea462b062c7c7e1966eba1fbf9c70c7035a70",
       "render_review": "see DOCUMENT_QA.json"
     }
   ]

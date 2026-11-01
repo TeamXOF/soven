@@ -32,9 +32,9 @@ R11 Device support — Partly implemented and needs broader testing. Responsive 
 
 R12 Privacy — Partly implemented and needs a product policy. Temporary raw audio cleanup and offline controls exist, while results remain server-side. Acceptance: show exactly where microphone data goes in each mode, define consent/retention/deletion, protect identifiers, keep keys server-side and verify provider settings. No guarantee that all processing stays on the device or that every provider has zero retention.
 
-R13 Simple navigation — Partly implemented; redesigned book navigation planned. Keep the core actions few and clearly named. Acceptance: Read Book, Voice Stats and Language/Mode do not strand teachers or hide failure/recovery. The current app still contains teacher and legacy reading routes.
+R13 Simple navigation — Working mechanics: the redesigned home, library and guarded book navigation are implemented; first-time-user and physical-device validation remain pending. Keep the core actions few and clearly named. Acceptance: Read Book, Voice Stats and Language/Mode do not strand teachers or hide failure/recovery. The current app still contains teacher and legacy reading routes.
 
-R14 Meaningful Meta capability — Planned and blocked on a verified access route. Proposed uses are coaching, content and illustrations. Acceptance: a real permitted model invocation, schema validation, explicit source/fallback metadata, failure/cost tests and a visible user benefit. Retain the current provider adapters until replacements are proven; never relabel Google/Groq output as Meta output.
+R14 Meaningful Meta capability — Partly implemented: configured reasoning adapters and mocked schema/failure/source tests work. Real permitted access, an actual invocation and measured quality/cost remain unverified. Proposed uses are coaching, content and illustrations. Acceptance: a real permitted model invocation, schema validation, explicit source/fallback metadata, failure/cost tests and a visible user benefit. Retain the current provider adapters until replacements are proven; never relabel Google/Groq output as Meta output.
 
 ## Requirements that remain invariant
 
@@ -44,7 +44,7 @@ Owner-adopted defaults and their implementation status are recorded in 11_PRODUC
 
 ## Current design and delivery boundary
 
-The owner supplied the references and authorized the implemented landing, onboarding, profile, navigation and book interface. A self-declared adult mode is not age verification or guardian consent; public child onboarding still needs the privacy/consent decisions in R12. Full 70+ reading coverage, new providers and conversational spoken coaching remain planned.
+The owner supplied the references and authorized the implemented landing, onboarding, profile, navigation and book interface. A self-declared adult mode is not age verification or guardian consent; public child onboarding still needs the privacy/consent decisions in R12. Full 70+ reading coverage, live permitted provider validation and conversational spoken coaching remain planned.
 
 ## Later implementation checkpoint
 

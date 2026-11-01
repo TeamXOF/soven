@@ -47,14 +47,14 @@ Required fonts are self-hosted in frontend/app/fonts. Generated branding is in a
 
 ## Implemented multilingual foundation and next work
 
-shared/languages.json is the additive planning inventory. core/languages.py owns canonical identifiers and runtime guards; tools/build_language_types.py generates Python and frontend unions; routers/capabilities.py exposes the public read-only inventory. core/provider_capabilities.py distinguishes current services from planned Meta adapters. This boundary does not yet replace the existing provider implementations. Keep reading language, interface locale, native language and translation target distinct. Each language declares content, script/direction, recognition, timing, TTS, coaching, translations and validation status. Preserve existing en/ur APIs and stored records. Content, voices, tokenization, caches, progression, reports and preferences need coordinated changes. Whitespace tokenization cannot be assumed suitable for every script; define and test segmentation per language instead of silently applying the English path.
+shared/languages.json is the additive planning inventory. core/languages.py owns canonical identifiers and runtime guards; tools/build_language_types.py generates Python and frontend unions; routers/capabilities.py exposes the public read-only inventory. core/provider_capabilities.py separates adapter implementation from verified live availability. This boundary does not yet replace the existing provider implementations. Keep reading language, interface locale, native language and translation target distinct. Each language declares content, script/direction, recognition, timing, TTS, coaching, translations and validation status. Preserve existing en/ur APIs and stored records. Content, voices, tokenization, caches, progression, reports and preferences need coordinated changes. Whitespace tokenization cannot be assumed suitable for every script; define and test segmentation per language instead of silently applying the English path.
 
 Runtime-enabled languages remain en/ur. Existing content engines still need language-specific content/segmentation work before any new language is enabled. frontend/lib/languages.ts defines language roles and typed capability responses; lib/api.ts exposes fetchPlatformCapabilities. Public access is limited to GET /api/v1/capabilities; inference and account records remain protected. Regenerate types after registry edits and run the drift check.
 
 
 ### Contract and access boundaries
 
-The catalogue returns schema_version, target_minimum_languages and language rows. Each row separates content, recognition, word timing, coaching, speech playback, interface and translation status. enabled_for_reading is intentionally stricter than being listed. The capability response also describes current Google/Groq/local/browser services and explicitly unimplemented Meta candidates; it makes no network calls or credential checks.
+The catalogue returns schema_version, target_minimum_languages and language rows. Each row separates content, recognition, word timing, coaching, speech playback, interface and translation status. enabled_for_reading is intentionally stricter than being listed. The capability response also describes Google/Groq/local/browser services, mock-tested reasoning adapters and planned Meta speech; it makes no network calls or credential checks.
 
 Only the exact public metadata GET is exempted from AccessMiddleware authentication. POSTs to that path, neighbouring private paths and learner/inference endpoints still require approved identity. The backend returns copied metadata so a caller cannot mutate the process inventory. Existing record ownership, classroom scopes and generated-type validation remain in place.
 
@@ -64,7 +64,7 @@ Edit the shared registry, run python tools/build_language_types.py, then run its
 
 ### Acceptance evidence and next adapter work
 
-Five new regressions verify inventory claims, unsupported-language rejection before inference, identifier normalization, public-GET isolation and generated-type drift. The foundation had 47 cases; account/profile work raises the current suite to 61. The provider inventory is descriptive foundation code; a configured reasoning adapter, permitted real invocation and measured language quality are still explicit next tasks in the checklist.
+Five new regressions verify inventory claims, unsupported-language rejection before inference, identifier normalization, public-GET isolation and generated-type drift. The foundation had 47 cases; the account/profile snapshot had 61 cases. The provider inventory is descriptive foundation code; configured reasoning adapters now have mocked contracts; a permitted real invocation and measured language quality remain explicit next tasks.
 
 ## Account profiles and personal scopes
 
@@ -81,3 +81,7 @@ AccessMiddleware includes adult signup in the shared IP registration bucket and 
 New client components under components/soven and routes /home, /books, /book/[storyId], /my-progress, /languages and /profile reuse existing auth, catalogue, session and feedback APIs. The public landing is rendered at /; /try uses browser-local capture/playback only. useRecorder now guards late permission and cancellation and exposes a completed Blob for bounded analysis. ReaderPreferences hydrates an explicitly saved account profile without replacing legacy browser defaults merely because a v1 profile exists. AuthProvider.setProfile updates only the current matching user.
 
 BookReader ties results and word tips to token/route/attempt generation; phase-two polling is bounded. /api/v1/stories accepts an optional validated language query for checkpoint progress and unlock presentation. Existing callers that omit it retain the legacy aggregate contract. See 15_UI_DESIGN_AND_IMPLEMENTATION.md for route behavior, compatibility limits and recording lifecycle.
+
+## Configured reasoning boundary
+
+services/model_client.py selects one server-configured provider per call. Google keeps its existing model retry. Meta and explicit compatible endpoints use Chat Completions with closed schemas and no cross-provider fallback. ModelResult carries provenance outside generated fields; reasoning.py validates its existing Pydantic output and returns accurate source labels, while orchestrator.py preserves measured scoring and validated practice. Existing database source text fields accept new values without rewriting old records. Public inventory reports adapter implementation separately from live validation. See 16_REASONING_PROVIDER_INTEGRATION.md for configuration, bounds and retained cache/latency compatibility.

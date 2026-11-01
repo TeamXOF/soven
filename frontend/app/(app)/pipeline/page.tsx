@@ -62,11 +62,11 @@ export default function PipelineMonitorPage() {
     },
     {
       key: "feedback" as const,
-      name: "Gemini Feedback",
+      name: "Reading Feedback",
       icon: MessageSquareText,
       detail: pipelineState.feedback === "done"
-        ? `via ${phase2Result?.feedback_source === "gemini" ? "Gemini 3.5 Flash-Lite" : "template fallback"}`
-        : "Gemini 3.5 Flash-Lite · template fallback",
+        ? `via ${phase2Result?.feedback_source || "unavailable"}`
+        : "Configured provider · basic fallback",
       latency: p2?.gemini_feedback ? `${p2.gemini_feedback}ms` : null,
     },
     {

@@ -12,3 +12,5 @@ The current remote is https://github.com/TeamXOF/soven.git. Continue the first u
 Current boundary: the owner supplied the UI references and the connected redesign is implemented. Read [account API integration](analysis/soven/14_ACCOUNT_PROFILE_API.md); keep completion enforcement off until forms and routing are usable.
 
 See [UI implementation](analysis/soven/15_UI_DESIGN_AND_IMPLEMENTATION.md) and the live checklist for remaining release gates.
+
+Read analysis/soven/16_REASONING_PROVIDER_INTEGRATION.md before changing providers. Adapter contracts are implemented and mock-tested; Google is default, live permitted access remains open, and hosted Meta must not be enabled from this Pakistan environment. Run both backend test files; no silent cross-provider fallback is allowed.

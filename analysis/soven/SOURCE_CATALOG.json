@@ -1,12 +1,12 @@
 {
-  "generated_at_utc": "2026-11-01T15:23:35.459612+00:00",
+  "generated_at_utc": "2026-11-01T16:42:26.650783+00:00",
   "scope": "Active source and supported tooling; no runtime/private files",
   "text_hash_format": "UTF-8 with CRLF normalized to LF",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
-      "sha256": "ce7dec4a2882a34dc4a9a32676831565313b1b92dde2701d461c97cd3767757e",
-      "lines": 31,
+      "sha256": "8970b659cc6b9f8b7a429a02a276e25a4a727319b2f6faae86f16450e8fdeba6",
+      "lines": 32,
       "symbols": []
     },
     {
@@ -29,42 +29,42 @@
     },
     {
       "path": "backend/agents/orchestrator.py",
-      "sha256": "2bd47dfce2bce9d7666786cc414a0fbcb84d92722764655ccac48a1799d21aee",
-      "lines": 146,
+      "sha256": "48118a9aa65d2ec21e208324a9278e80880ec692c94613dfa2b96a47d4971b13",
+      "lines": 160,
       "symbols": [
         {
           "name": "_resolve_model",
-          "line": 13,
+          "line": 24,
           "kind": "FunctionDef"
         },
         {
           "name": "call_agent",
-          "line": 18,
+          "line": 29,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "_in_language",
-          "line": 28,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "_sentence_key",
-          "line": 36,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "progress_comparison",
           "line": 40,
           "kind": "FunctionDef"
         },
         {
+          "name": "_sentence_key",
+          "line": 48,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "progress_comparison",
+          "line": 52,
+          "kind": "FunctionDef"
+        },
+        {
           "name": "_fallback_sentences",
-          "line": 66,
+          "line": 78,
           "kind": "FunctionDef"
         },
         {
           "name": "run_pipeline",
-          "line": 77,
+          "line": 89,
           "kind": "AsyncFunctionDef"
         }
       ]
@@ -199,12 +199,12 @@
     },
     {
       "path": "backend/core/provider_capabilities.py",
-      "sha256": "7bfbb533192a47eedaec5251caa3657733223e148ac0f98514035c9566ebcecb",
-      "lines": 24,
+      "sha256": "5dd0716fa984862fe8403d1240a2c6e59488bca57c15dfad367bd2486017dd90",
+      "lines": 28,
       "symbols": [
         {
           "name": "provider_inventory",
-          "line": 23,
+          "line": 27,
           "kind": "FunctionDef"
         }
       ]
@@ -1192,25 +1192,60 @@
     },
     {
       "path": "backend/services/model_client.py",
-      "sha256": "552a5f8acde9759c59c9ff8fde0950ae7f1ec29067c6608616887b59fe7bd903",
-      "lines": 38,
+      "sha256": "3714de71dc53ad5877b925f51905c8b286c84281306a42b4cf80ccbd86131589",
+      "lines": 152,
       "symbols": [
         {
+          "name": "ModelResult",
+          "line": 17,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "selected_provider",
+          "line": 25,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "model_candidates",
+          "line": 32,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "result_source",
+          "line": 38,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_endpoint",
+          "line": 43,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_post_json",
+          "line": 57,
+          "kind": "FunctionDef"
+        },
+        {
           "name": "generate_json_sync",
-          "line": 11,
+          "line": 87,
           "kind": "FunctionDef"
         },
         {
           "name": "generate_json",
-          "line": 37,
+          "line": 147,
           "kind": "AsyncFunctionDef"
+        },
+        {
+          "name": "__init__",
+          "line": 19,
+          "kind": "FunctionDef"
         }
       ]
     },
     {
       "path": "backend/services/reasoning.py",
-      "sha256": "8858b89c93a9497b810deffb145a2309e781c9a910097a22373ccf07e8ee2da0",
-      "lines": 225,
+      "sha256": "12937c1143b575c28d963069df3a9a41e7b0af3e3b06c226c02a14fa292ce907",
+      "lines": 240,
       "symbols": [
         {
           "name": "CoachingFeedback",
@@ -1234,37 +1269,42 @@
         },
         {
           "name": "_configure_key",
-          "line": 117,
+          "line": 118,
           "kind": "FunctionDef"
         },
         {
           "name": "_extract_json",
-          "line": 122,
+          "line": 123,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_closed_schema",
+          "line": 132,
           "kind": "FunctionDef"
         },
         {
           "name": "_call_gemini_json",
-          "line": 131,
+          "line": 146,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "_pick_template",
-          "line": 145,
-          "kind": "FunctionDef"
-        },
-        {
-          "name": "classify_category",
           "line": 159,
           "kind": "FunctionDef"
         },
         {
-          "name": "generate_feedback",
+          "name": "classify_category",
           "line": 173,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "generate_feedback",
+          "line": 187,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "judge_hesitation",
-          "line": 223,
+          "line": 238,
           "kind": "AsyncFunctionDef"
         }
       ]
@@ -1394,6 +1434,158 @@
           "name": "fast_pitch",
           "line": 20,
           "kind": "FunctionDef"
+        }
+      ]
+    },
+    {
+      "path": "backend/tests/test_reasoning_providers.py",
+      "sha256": "aaba8c1d2bc7496381619122e7582c8056c909b3bcbe7e17241fa2ff6a296709",
+      "lines": 237,
+      "symbols": [
+        {
+          "name": "Response",
+          "line": 16,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "chat",
+          "line": 33,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "ProviderContracts",
+          "line": 42,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "__init__",
+          "line": 17,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "__enter__",
+          "line": 22,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "__exit__",
+          "line": 25,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "iter_content",
+          "line": 28,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "setUp",
+          "line": 43,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "generate",
+          "line": 55,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "body",
+          "line": 58,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_meta_protocol_schema_and_provenance",
+          "line": 61,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_default_google_keeps_existing_contract",
+          "line": 77,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_per_call_credentials_do_not_leak_between_calls",
+          "line": 88,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_custom_https_endpoint_and_local_loopback",
+          "line": 95,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_unreviewed_missing_and_offline_configuration_make_no_call",
+          "line": 105,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_remote_insecure_credentials_and_redirect_urls_are_rejected",
+          "line": 113,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_http_errors_and_redirects_do_not_expose_provider_body",
+          "line": 123,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_transport_errors_are_redacted",
+          "line": 131,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_bad_json_truncated_refused_and_empty_responses_fail",
+          "line": 137,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_request_response_and_deadline_bounds",
+          "line": 148,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_provider_cannot_spoof_source_metadata",
+          "line": 163,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_closed_nullable_schema_and_local_validation",
+          "line": 171,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_word_tip_uses_selected_provider_source",
+          "line": 181,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_feedback_source_and_template_failure_are_explicit",
+          "line": 186,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_no_google_retry_for_selected_provider_failure",
+          "line": 199,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_unknown_provider_reaches_template_not_pipeline_failure",
+          "line": 210,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_async_timeout_does_not_claim_thread_cancellation",
+          "line": 216,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_inventory_adapters_are_not_live_validation",
+          "line": 224,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "slow",
+          "line": 217,
+          "kind": "AsyncFunctionDef"
         }
       ]
     },
@@ -1878,12 +2070,12 @@
     },
     {
       "path": "backend/tests/validate_soven_ui.cjs",
-      "sha256": "701d9de460e606af054447f954628372812f039ec8bfa73206b4f647e343b0f1",
-      "lines": 45,
+      "sha256": "5ba5c767393152a6da6a5a0d46c74b3787169f7a851bc6d4d1a1b71eb6ba3113",
+      "lines": 46,
       "symbols": [
         {
           "name": "preference",
-          "line": 41
+          "line": 42
         }
       ]
     },
@@ -2036,7 +2228,7 @@
     },
     {
       "path": "frontend/app/(app)/pipeline/page.tsx",
-      "sha256": "4b1be0954fc1775401ed3030a63b44076cab03da893fbe739edeeb819647c2a2",
+      "sha256": "ef581d6d98ce58fa9cfe447b93ac9e0a250efb331a6ea516993a0d1e4d6cf4a4",
       "lines": 211,
       "symbols": [
         {
@@ -2104,7 +2296,7 @@
     },
     {
       "path": "frontend/app/(app)/sessions/[id]/page.tsx",
-      "sha256": "a1762dbee0f8251252f9572f04883a9048b9f2deca0fb448b356ee91f7199b6a",
+      "sha256": "4b1256a23b1450d98b0837f29c2d80b6c093220fbf6139aea00d3e57409e22db",
       "lines": 333,
       "symbols": [
         {
@@ -2281,7 +2473,7 @@
     },
     {
       "path": "frontend/app/privacy/page.tsx",
-      "sha256": "d80056f6b6d1d85ce0efbe2de7a8903d995e5c5415016d883b7d5784d46f5480",
+      "sha256": "fd88b99ea5c2d198883972dfdaeee8da093159fa08e596773ffca3759a2a9e0e",
       "lines": 3,
       "symbols": [
         {
@@ -2930,7 +3122,7 @@
     },
     {
       "path": "frontend/lib/api.ts",
-      "sha256": "368beca436715b0a715e7f257f7ce982cff173be53da9b785ea4ae249cafdea8",
+      "sha256": "d6ebaf2e6ec62ecff7757f00590ef2b056708617b3af8ebbf8e8feaae2fcf970",
       "lines": 834,
       "symbols": [
         {
@@ -3488,7 +3680,7 @@
     },
     {
       "path": "tools/build_handoff.py",
-      "sha256": "157f5f75d4987e8a630c19822306edd1fed99a0b8b3f7bd8b9c92350673b1300",
+      "sha256": "5ab2a28e9e91e7f5f14c3b7592106bec7f32218c21ba4530088dbee7e29de285",
       "lines": 104,
       "symbols": [
         {

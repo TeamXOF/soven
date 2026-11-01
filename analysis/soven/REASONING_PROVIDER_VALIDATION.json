@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-01",
+  "scope": "Configured reasoning mechanics; synthetic text and mocked transport only",
+  "existing_backend_regressions": 62,
+  "provider_contract_tests": 18,
+  "backend_total": 80,
+  "lint": "passed, zero findings",
+  "typescript": "standalone passed",
+  "production_build": "passed",
+  "browser": {
+    "script": "validate_soven_ui.cjs",
+    "checks": 19,
+    "runtime_errors": [],
+    "scope": "Real isolated auth/profile/catalogue, fake capture, controlled analysis and Meta-source feedback; no live provider call"
+  },
+  "earlier_browser_evidence": "UI_REDESIGN_VALIDATION.json preserves 45 prior-stage checks; enrollment/dashboard/account were not rerun in this provider stage",
+  "default_provider": "google",
+  "new_adapters": [
+    "meta",
+    "chat_completions"
+  ],
+  "live_new_provider_calls": 0,
+  "source_history": "Preserved; no old scores or source records rewritten",
+  "checklist": {
+    "done": 29,
+    "open": 30
+  },
+  "remaining": [
+    "M1.6b permitted account/endpoint/privacy checks",
+    "M1.7 real invocation and latency/cost",
+    "Speech/content/target-device quality",
+    "Public consent/retention/deletion and sustained deployment validation"
+  ],
+  "remote_ci": "CI includes both backend suites; exact published outcome is linked from GitHub Actions and the completion log"
+}

@@ -18,7 +18,8 @@ The current code uses the repaired reading baseline. The target is a worldwide p
 - [x] M1.3 Gate existing reading routes on implemented languages; reject planned/unknown input instead of silently substituting English. Evidence: backend language-gate regressions.
 - [x] M1.4 Expose a read-only public capabilities response without credentials, user data or inference. Evidence: GET /api/v1/capabilities and access-boundary regression.
 - [x] M1.5 Connect existing frontend language types/preferences and add provider metadata that distinguishes current adapters from planned Meta adapters. Evidence: frontend/lib/languages.ts and backend/core/provider_capabilities.py.
-- [ ] M1.6 Implement the configured reasoning-provider boundary and one permitted Meta/open-weight adapter with structured output, timeout and fallback tests. Live access requires actual provider details; do not invent credits or route around geographic restrictions.
+- [x] M1.6a Implement configured Google/Meta/compatible reasoning adapters, structured-output requests, local validation, timeout/size bounds, accurate sources and failure tests. Evidence: guide 16 and REASONING_PROVIDER_VALIDATION.json; 18 mocked contracts, no live calls.
+- [ ] M1.6b Verify a permitted account/endpoint, model license, regional availability and privacy configuration before enabling a new provider. Mocked adapter success does not establish this gate.
 - [ ] M1.7 Verify one real permitted Meta invocation, record model/source/cost/latency and test its failure path. Waiting for verified account/access configuration.
 - [x] M1.8 Persist separate reading, interface, native and translation language preferences with additive migrations. Evidence: user_profiles migration v3, profile API and ACCOUNT_PROFILE_VALIDATION.json. Enabling a stored candidate preference does not enable a reading engine.
 

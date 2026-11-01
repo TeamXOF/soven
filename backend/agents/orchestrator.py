@@ -1,6 +1,6 @@
 """Measured observations, bounded coaching and explicit fallback availability."""
 import os
-from services.model_client import generate_json
+from services.model_client import generate_json, model_candidates
 from services.acoustic import align_words, score_word, tokenize, _norm
 from core.config import settings
 from .difficulty_agent import DIFFICULTY_SYSTEM_PROMPT
@@ -8,6 +8,17 @@ from .practice_agent import PRACTICE_SYSTEM_PROMPT
 
 _FLASH = 'gemini-3.5-flash-lite'
 MODEL_FALLBACK = 'gemini-flash-lite-latest'
+DIFFICULTY_SCHEMA = {'type': 'object', 'properties': {
+    'category': {'type': 'string', 'enum': ['WORD_READING', 'PACING', 'MIXED', 'NO_OBVIOUS_ERROR']},
+    'primary_issue': {'type': 'string'}, 'secondary_issue': {'type': ['string', 'null']},
+    'reasoning': {'type': 'string'}},
+    'required': ['category', 'primary_issue', 'secondary_issue', 'reasoning'], 'additionalProperties': False}
+PRACTICE_SCHEMA = {'type': 'object', 'properties': {'sentences': {'type': 'array', 'minItems': 1,
+    'maxItems': 5, 'items': {'type': 'object', 'properties': {
+        'text': {'type': 'string'}, 'target_word': {'type': 'string'},
+        'difficulty': {'type': 'string', 'enum': ['easy', 'medium', 'hard']}},
+        'required': ['text', 'target_word', 'difficulty'], 'additionalProperties': False}}},
+    'required': ['sentences'], 'additionalProperties': False}
 
 
 def _resolve_model():
@@ -16,9 +27,10 @@ def _resolve_model():
 
 
 async def call_agent(system_prompt: str, user_data: dict) -> dict:
-    for model in dict.fromkeys([_resolve_model(), MODEL_FALLBACK]):
+    for model in model_candidates(_resolve_model(), MODEL_FALLBACK):
         try:
-            return await generate_json(system_prompt, user_data, model, timeout=8)
+            schema = DIFFICULTY_SCHEMA if system_prompt == DIFFICULTY_SYSTEM_PROMPT else PRACTICE_SCHEMA
+            return await generate_json(system_prompt, user_data, model, timeout=8, schema=schema)
         except Exception:
             if not settings.active_gemini_key or os.getenv('OFFLINE_MODE') == '1':
                 break
@@ -103,7 +115,8 @@ async def run_pipeline(signal_data: dict, session_history: list) -> dict:
                       'secondary_issue': None, 'reasoning': phonetic['reasoning'],
                       'source': 'template_fallback', 'status': 'fallback'}
     else:
-        difficulty.update(source='model', status='available')
+        difficulty.update(source='model', status='available',
+                          provider=getattr(difficulty, 'provider', 'unknown'), model=getattr(difficulty, 'model', None))
     pause_count = signal_data.get('pause_count', len(signal_data.get('pauses') or []))
     engagement = {'emotional_state': 'not_assessed', 'frustration_signal': None, 'engagement_level': None,
                   'suggested_tone': 'encouraging', 'source': 'measured_alignment', 'status': 'available',
@@ -139,7 +152,8 @@ async def run_pipeline(signal_data: dict, session_history: list) -> dict:
         practice = {'sentences': _fallback_sentences(bad, signal_data, tier),
                     'source': 'template_fallback', 'status': 'fallback'}
     else:
-        practice.update(sentences=cleaned, source='model', status='available')
+        practice.update(sentences=cleaned, source='model', status='available',
+                        provider=getattr(practice, 'provider', 'unknown'), model=getattr(practice, 'model', None))
     practice.update(focus_area='دوبارہ پڑھنے کی مشق' if ur else 'Read and try again', difficulty_note=tier,
                     encouraging_note='ہر لفظ آرام سے پڑھیں۔ آپ کر سکتے ہیں!' if ur else 'Take your time with each word. You can do this!')
     return {'phonetic': phonetic, 'difficulty': difficulty, 'engagement': engagement,

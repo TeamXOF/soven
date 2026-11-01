@@ -8,7 +8,7 @@ D01 The name is SOVEN. Its public repository is TeamXOF/soven, transferred from 
 
 D02 Start with clean Git history while retaining the source project's MIT license, TeamXOF attribution and a manifest of the imported repaired files.
 
-D03 The initial repository/brand/handoff stage is complete. The owner authorized development using recommended defaults. The first language/provider inventory foundation is implemented; onboarding, book UI, new language engines and real Meta adapters remain unchecked work.
+D03 The initial repository/brand/handoff stage is complete. The owner authorized development using recommended defaults. The first language/provider inventory foundation is implemented; connected onboarding/book mechanics are implemented. New language engines and real permitted provider validation remain open.
 
 D04 Owner-selected logo is concept C: page-stroke S, teal centre, white primary background and SOVEN only. This supersedes the first delivery's concept A. Remove all tagline and feature/language text from logo images.
 
@@ -22,13 +22,13 @@ D08 The confirmed product goal is 70+ languages. English and Urdu remain current
 
 D09 Recommended defaults are adopted under the owner's explicit authorization. See 11_PRODUCT_DEFAULTS.md; adopted behaviour is distinct from implemented behaviour.
 
-D11 The owner explicitly reserves UI design selection. Stop before redesigning landing, signup, profiles, navigation or book screens; request their preferred design. Backend account/profile work can finish first. Keep completion enforcement off until a usable form ships.
+D11 Historical design hold, superseded by D12: the owner supplied the references and authorized implementation. Connected forms and the book interface are implemented. Backend-wide completion enforcement remains opt-in for legacy compatibility.
 
 D10 Maintain the checklist and execution log after each completed task, record acceptance evidence, then continue the next unblocked item. Do not mark waiting external validation complete.
 
 ## Adopted choices and remaining inputs
 
-O01 Resolved as a target: standalone adult signup with personal record scope; classroom children retain teacher approval/linking. Guardian administration is deferred. Adult isolation, profile APIs and additive migrations are implemented; forms and routing await the owner-selected design.
+O01 Resolved as a target: standalone adult signup with personal record scope; classroom children retain teacher approval/linking. Guardian administration is deferred. Adult isolation, profile APIs and additive migrations are implemented; connected forms and new-journey routing are implemented in the owner-selected design.
 
 O02 Adopt optional text/line-spacing, contrast and pace controls without required medical disclosure. Script-specific usability validation remains pending.
 
@@ -65,3 +65,5 @@ TRANSFER_RECEIPT verifies the ownership move. 07_IMPLEMENTATION_ROADMAP.md is th
 ## Owner approved UI reference implementation
 
 D12 The owner supplied two illustrated reading-platform screenshots and explicitly asked implementation to continue without permission questions. The earlier D11 design hold is resolved. Adopt cream/coral/dark navigation, storybook illustrations, calm cards and responsive book pages while retaining SOVEN identity. Example statistics, clinical claims and inaccurate local-only promises in the images are not product facts. See 15_UI_DESIGN_AND_IMPLEMENTATION.md. Keep documenting completed tasks and evidence; provider/budget/physical validation dependencies remain open.
+
+D13 Keep Google as the reasoning default. New Meta/compatible adapters are opt-in, require explicit server configuration and access review, and fail to templates rather than silently changing provider. Adapter implementation and mocked tests close M1.6a; permitted access and live validation remain M1.6b/M1.7. See guide 16.

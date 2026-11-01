@@ -11,7 +11,9 @@
   "public_capabilities": "GET-only metadata; no credentials/user data/inference",
   "language_inventory": "89 candidates; only en/ur runtime-enabled; no new language quality claimed",
   "provider_integration": "Meta adapter and real invocation still pending permitted provider configuration",
-  "ci_status": "awaiting post-transfer remote run",
-  "ci_url": "https://github.com/TeamXOF/soven/actions",
-  "scope": "Synthetic accounts and controlled responses; no production database or hosted inference; not a new physical speech-quality validation"
+  "ci_status": "completed: success",
+  "ci_url": "https://github.com/TeamXOF/soven/actions/runs/41294373171",
+  "scope": "Synthetic accounts and controlled responses; no production database or hosted inference; not a new physical speech-quality validation",
+  "validated_code_commit": "38e912cb3153d9b40a8ff97df7f082523106042d",
+  "remote_installation": "Fresh Linux backend installation, generated-type drift check and all 47 regressions passed; frontend fresh install, lint, TypeScript and build passed"
 }

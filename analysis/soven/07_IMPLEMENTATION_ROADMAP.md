@@ -9,7 +9,7 @@ The current code uses the repaired reading baseline. The target is a worldwide p
 - [x] M0.1 Transfer the public repository to TeamXOF/soven and preserve repository identity, current commit, redirect and owner admin access. Evidence: TRANSFER_RECEIPT.json.
 - [x] M0.2 Update the local remote and current repository links; preserve historical launch receipts and the original SpeakFlow repository.
 - [x] M0.3 Record the owner's authorization to use recommended defaults. Evidence: 11_PRODUCT_DEFAULTS.md and decision register.
-- [ ] M0.4 Verify a successful GitHub CI run after the transfer and publish the updated handoff pack. Evidence will be in FOUNDATION_VALIDATION.json.
+- [x] M0.4 Verify a successful GitHub CI run after the transfer and publish the updated handoff pack. Evidence: FOUNDATION_VALIDATION.json.
 
 ## Milestone one multilingual and provider foundation
 

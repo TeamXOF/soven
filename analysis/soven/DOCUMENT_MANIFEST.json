@@ -17,7 +17,7 @@
           "sha256": "9589870b383cca0a9ffc4160a9be65d27d2467005cb2b63b9a6ebbb837c2192d"
         }
       ],
-      "sha256": "35858b3296ef0130fdc872c83e3f7a02af2e3805cbaf09edcaf62ea40aeb8045",
+      "sha256": "ea995294d893ac2d67444a0ce4dc1e73d2f8a9894f30d9662f6f6bfe4f1be45c",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -29,7 +29,7 @@
           "sha256": "a6cd44aa1f1ce73caed0e2c86968639a3a555acb46ad7340b710fcd133527615"
         }
       ],
-      "sha256": "d5a996eb881b497dcf97175056149ec2a2ee84f5c4c4502c0c3f85cfab373659",
+      "sha256": "7a8b394cf856ab3a85dc70bb6c8392ecc428d73b3fe9c519e74de8cd9328bea0",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -45,7 +45,7 @@
           "sha256": "c39beb6148f3f06cbec39cf5332b4899012686cabfbbff07b4bb4d457664ff8e"
         }
       ],
-      "sha256": "ee5d13888b775ade0cf201f762348eb87ff91a373845894985271d3a1a2602c4",
+      "sha256": "54c9f88722001a3414d1dfc5fadf99db2d969a2f41ca0b1ff4514e6bba302629",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -57,7 +57,7 @@
           "sha256": "85cb16b8f0dcbe8afb6f820a1da8e89ac9a50f661a198cdf5d77c4118bb63646"
         }
       ],
-      "sha256": "860570594375f0d598912934bb99cd446e9ce3c2467cfcc84afda6a5663024a6",
+      "sha256": "2e5f955abf4062ac03e46ab9e3c84c39b657c018d4183fd43a8a5844e6f34d69",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -66,7 +66,7 @@
       "sources": [
         {
           "path": "07_IMPLEMENTATION_ROADMAP.md",
-          "sha256": "71f6ad15a49731fddc965c6a7536b40f24e6623cfedc68b735edbdf783f6ad36"
+          "sha256": "acb253d3d2b890a6d403d06422a96d1a2d030086308c6a940956812b3940c098"
         },
         {
           "path": "10_DECISIONS_AND_HANDOFF.md",
@@ -77,7 +77,7 @@
           "sha256": "040ba10ec3557d25d0bf74891a148c13afb6aace1ace21ace9644c2e767bc1c2"
         }
       ],
-      "sha256": "13fa67001cca6e80223cc3c0080b504da37181ab8d5bed760297cb33daf24f4c",
+      "sha256": "15459e9469ac232a82753bf6fe251dc545f3b2eb8c926fa82f297566c21b9ba1",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -102,10 +102,10 @@
         },
         {
           "path": "FOUNDATION_VALIDATION.json",
-          "sha256": "51e9e55694789c04629d62b0ef3b8d2a70699b906cb98d607173e636521c331b"
+          "sha256": "34aa2af994c040e83e208075e2a3922079aa4a731617b97784285f900026488f"
         }
       ],
-      "sha256": "423f0c1a6fce90e15d53653a9e0a132b98ec40c8ead27a3dead02dfc70021754",
+      "sha256": "2dd24b5d409872f85cb08f849537ae6f6022be93773d2f365b8d9b1ea6c72260",
       "render_review": "see DOCUMENT_QA.json"
     }
   ]

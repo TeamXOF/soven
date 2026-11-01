@@ -19,3 +19,7 @@ Repaired a real boundary issue in classic sentence generation and dynamic story 
 Verification: 47 backend regressions passed locally. Frontend lint, standalone TypeScript and production build passed. Local backend checks use the prepared dependency environment; fresh installation and post-transfer Actions execution require remote CI. Browser/signup rerun evidence and the final CI receipt are recorded in FOUNDATION_VALIDATION.json when completed.
 
 Remaining: no new language engine or Meta adapter was enabled; real provider credentials, permitted access, budget and team identities remain unspecified. Next independent work is account/profile and language-preference persistence; real-model validation remains waiting on provider configuration. Checklist items for these are still unchecked.
+
+## Post-transfer CI and handoff publication
+
+Completed M0.4: the exact TeamXOF tree matches the published code commit 38e912cb3153d9b40a8ff97df7f082523106042d. Fresh Linux dependency installation, generated-language drift check and all 47 regressions passed. Frontend installation, lint, TypeScript and optimized build passed. CI: https://github.com/TeamXOF/soven/actions/runs/41294373171. All six Word companions were regenerated and all 24 pages inspected. The following documentation-only completion commit records this evidence; its own SHA cannot be embedded in its contents.

@@ -92,7 +92,7 @@ for filename,title,sources in groups:
     for root in [doc.styles.element,doc.element]:
         for border in list(root.iter(qn('w:pBdr'))):border.getparent().remove(border)
     doc.save(OUT/filename)
-    manifest.append({'document':'documents/'+filename,'title':title,'sources':[{'path':s,'sha256':hashlib.sha256((PACK/s).read_bytes()).hexdigest()} for s in (sources + ([n for n in ['VALIDATION_RESULTS.json','DELIVERY_STATUS.json'] if (PACK/n).exists()] if filename.startswith('06_') else []))],
+    manifest.append({'document':'documents/'+filename,'title':title,'sources':[{'path':s,'sha256':hashlib.sha256((PACK/s).read_bytes().replace(b'\r\n',b'\n')).hexdigest()} for s in (sources + ([n for n in ['VALIDATION_RESULTS.json','DELIVERY_STATUS.json'] if (PACK/n).exists()] if filename.startswith('06_') else []))],
                      'sha256':hashlib.sha256((OUT/filename).read_bytes()).hexdigest(),'render_review':'see DOCUMENT_QA.json'})
-(PACK/'DOCUMENT_MANIFEST.json').write_text(json.dumps({'maintained_format':'Markdown','generated_format':'DOCX','source_date':'2026-11-01','documents':manifest},indent=2),encoding='utf-8')
+(PACK/'DOCUMENT_MANIFEST.json').write_text(json.dumps({'text_hash_format':'UTF-8 with CRLF normalized to LF; DOCX hashes use exact bytes','maintained_format':'Markdown','generated_format':'DOCX','source_date':'2026-11-01','documents':manifest},indent=2),encoding='utf-8')
 print(json.dumps({'generated_documents':len(manifest),'output':str(OUT)}))

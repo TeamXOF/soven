@@ -9,11 +9,11 @@
       "sources": [
         {
           "path": "01_PROJECT_CONTEXT.md",
-          "sha256": "4746acaa794bd9f32f6550c141b70fc10e3434127461e32bf76072330ad8cd2a"
+          "sha256": "f557a37a5f16425a2d12f699aca4eca982b7df1fa181e95e9ba74c79b62208ee"
         },
         {
           "path": "02_CURRENT_STATE.md",
-          "sha256": "e61504de279da2e8107d04e12717b909dc34079474902d87be41376d4a179c57"
+          "sha256": "e6884bb35b93a9cadcd36770c52cef3b3563e8e0bb5f50f4ab019ed5e4989d4f"
         }
       ],
       "sha256": "2fe8013fc824bd4d4254c28002c8891fe7113194b221cc8290e6789a191e9315",
@@ -25,7 +25,7 @@
       "sources": [
         {
           "path": "03_ARCHITECTURE.md",
-          "sha256": "502ae52f1ab547689bdb1c43476860f75e1ef03e9ba5075cbb716e2bca244451"
+          "sha256": "cf01015253b6953451c28a5bcf0bfa3579c32498ed87b19966381334a313bd1e"
         }
       ],
       "sha256": "6af4c565b779462fc16164ca01f7eea1bc208acbe60b8909001bb6a3378318ff",
@@ -37,11 +37,11 @@
       "sources": [
         {
           "path": "04_PRODUCT_REQUIREMENTS.md",
-          "sha256": "4319e8fefe1575a943a6017e093d1671e32f77e4278700fbd29d3b3b8c2f8c11"
+          "sha256": "e0ad5995e6f886d58605ca77299db7a466db7af683e5dca749a83ea9e9b1d02f"
         },
         {
           "path": "05_SOURCE_REVIEW.md",
-          "sha256": "61fade6aa9d1871f93119522d522e9c2c7842a873ed4cd057a44ee1cd160c44c"
+          "sha256": "4d541d16cdf52d2e409f5c49776cdb82f0ad657d3b8deb026f4b934e26e38753"
         }
       ],
       "sha256": "a02b1c915155a570de01d073462690a55542b5fa5bdebdb9cab4124af3149dc7",
@@ -53,7 +53,7 @@
       "sources": [
         {
           "path": "06_META_PROVIDER_PLAN.md",
-          "sha256": "41f5cc699f1c0f14771bab7eac6c7d1ebe23b129082f48944291144764a34a93"
+          "sha256": "f28f908b5e58b11e564bed12cd7f7c9df5011264324b51101c54864e40c85626"
         }
       ],
       "sha256": "d18850db519711daa508c562b11ac6b4244248ac7da6afea969f7a36dac1bc32",
@@ -65,11 +65,11 @@
       "sources": [
         {
           "path": "07_IMPLEMENTATION_ROADMAP.md",
-          "sha256": "4d205dcc5ac6c50db0c228aacd7168f7f713793ea2a62737d622789a29d48a61"
+          "sha256": "269a7cdf242ffb414aeb275d34a5be30737f2a097c28f2849ec50cc43f3d543b"
         },
         {
           "path": "10_DECISIONS_AND_HANDOFF.md",
-          "sha256": "fd101783ba271b8a3317a6416376b86c6a4e1bd850334f85233fdd82ccab34a2"
+          "sha256": "6e82f55dd150b65f2f9fbe7601e7909783140758c25fc559f54e9374d638c01e"
         }
       ],
       "sha256": "d5c94ca7f35962884606792c5bfdbbb6b09c38bcd05d8b133a9045b2dc0d84c4",
@@ -81,23 +81,24 @@
       "sources": [
         {
           "path": "08_VALIDATION_AND_OPERATIONS.md",
-          "sha256": "848f38b0fb1b79045edf105c00535a62be88e0bd87698eb248fc8c585993efdb"
+          "sha256": "ced85679c952757ab62ca8a04361b1630d045ff379d036fbfe1a0fa869ba9bd9"
         },
         {
           "path": "09_BRAND_AND_REPOSITORY.md",
-          "sha256": "5ba17ad0d0e1ab3bd0a5e745cfaadc6a67b897fc4d824e6cbb53d18e7e5b68f7"
+          "sha256": "7a13328d20d56d374318abaa5eb457907ef79001c5ae962e1c6b622707237aac"
         },
         {
           "path": "VALIDATION_RESULTS.json",
-          "sha256": "1f886a28c055e2b43f4de7be503bd4621f9acbd18f6e94cf3017e22367f723ea"
+          "sha256": "9bfcafe060e043458fc6a564afd2fdf617eb805f2620d5705f56cc94b16fa38b"
         },
         {
           "path": "DELIVERY_STATUS.json",
-          "sha256": "b57458043fc1869ae3e7fceb1a5fe47431cd895a898e796862315faa5d552fea"
+          "sha256": "29a5e651da380acf0f5de4b82b15581108ddc7d2ca806dc69c4ef7d9d2ef95c2"
         }
       ],
       "sha256": "0b26593a75d0a5abc25c5f274025aaf036e9ad61651a5091731fbff0b6c56095",
       "render_review": "see DOCUMENT_QA.json"
     }
-  ]
+  ],
+  "text_hash_format": "UTF-8 with CRLF normalized to LF; DOCX hashes use exact bytes"
 }

@@ -1,6 +1,6 @@
 # SOVEN frozen speech evaluation protocol
 
-M2.1 freezes a reproducible baseline and acceptance criteria in SPEECH_BASELINE_FREEZE.json. It does not improve recognition or validate a language. Production configuration is unchanged; its default can still be tiny. The benchmark runner, new evaluation data and quality improvements remain M2.2 and later work.
+M2.1 freezes a reproducible baseline and acceptance criteria in SPEECH_BASELINE_FREEZE.json. It does not improve recognition or validate a language. Production configuration is unchanged; its default can still be tiny. The runner and exposed-sample comparison are now implemented in guide 18; new adjudicated evaluation data and verified quality improvements remain open.
 
 ## Frozen reference configuration
 
@@ -8,7 +8,7 @@ The profile backend/data/speech_evaluation_profile.json is fw-base-cpu-int8-2026
 
 The cached model is Systran/faster-whisper-base at revision ebe41f70d5b6dfa9166e2c581c45c9c0cfc57b66. Four artifact checksums pin weights, configuration, tokenizer and vocabulary; no weights are published. The profile uses CPU INT8, four CPU threads and one worker, greedy beam size one, temperature zero, word timestamps, VAD with 300 ms minimum silence and 200 ms padding, and explicit remaining transcription defaults. The language is supplied per clip. Initial prompt, prefix and hotwords are absent; previous-text conditioning is disabled. Never send the expected reading sentence to the recognizer.
 
-The frozen baseline is an evaluation reference, not a claim that this model is suitable for children's speech. Production can still fall back to another local engine; the future benchmark runner must instantiate the exact recorded engine and fail rather than silently substitute it. Model initialization, cold/warm timing, device and codec differences must be reported separately.
+The frozen baseline is an evaluation reference, not a claim that this model is suitable for children's speech. Production can still fall back to another local engine; the implemented runner instantiates the exact recorded engine and fails rather than silently substituting it. Model initialization, cold/warm timing, device and codec differences must be reported separately.
 
 ## Engineering acceptance criteria
 
@@ -34,14 +34,14 @@ Audio paths must stay within the private manifest directory; symlink/path escape
 
 Run python tools/freeze_speech_evaluation.py check to inspect the declared profile without weights or inference. To recreate a freeze, use its freeze command with --model-dir pointing to the existing cached snapshot and --out pointing inside .qa/speech-evaluation. It verifies artifact hashes and dependency versions, hashes the relevant source, and creates a new exclusive receipt. It never downloads or transcribes audio. The public SPEECH_BASELINE_FREEZE.json is a reviewed copy containing no local absolute paths, credentials or learner text.
 
-Run the verify command with --freeze pointing to that receipt to check its seal, current source/profile and installed package versions. It checks receipt/source/environment, not current weight files; the future runner must rehash model artifacts immediately before inference. Receipts use a content checksum to detect accidental changes, not a trusted digital signature.
+Run the verify command with --freeze pointing to that receipt to check its seal, current source/profile and installed package versions. It checks receipt/source/environment, not current weight files; the implemented runner rehashes model artifacts immediately before inference. Receipts use a content checksum to detect accidental changes, not a trusted digital signature.
 
 Run the register command with --freeze, --development, --holdout and --out paths. It checks source/environment drift, references, rights declaration, cohort fields, audio checksums and cross-split/historical exposure. It writes hashed dataset identities, private speaker/audio keys and coverage gaps into a new private receipt. Pilot samples with insufficient coverage can be registered, but remain release_sample_eligible=false. None of these commands performs inference or claims validated quality.
 
-The next M2.2 runner must consume the preregistered hashes, reject changed data/model/configuration, withhold holdout transcripts from tuning, log every attempted clip including failures, and record the exposure after evaluation. It must prevent silent reruns from becoming a new independent result. Those runner, scoring-report and exposure-ledger mechanisms are not implemented by preregistration alone. Use exposed development data for model selection before any untouched evaluation.
+The guide-18 runner now consumes preregistered hashes, rejects changed inputs, retains failed/not-run clips and reserves exposure before inference. Its ledger rejects previously exposed holdouts across output filenames and candidates. Reference text never enters the recognizer. Preserve that private ledger across environments, and use exposed development data for selection before untouched evaluation.
 
 ## Verification and sources
 
-Twenty offline regressions test frozen profile compatibility, weight/version/source drift, malformed manifests, privacy boundaries, label types, overlap and sampling eligibility. The existing 62 application and 18 provider regressions also pass. See SPEECH_EVALUATION_VALIDATION.json. No new learner audio, ASR benchmark, physical device, educator trial or release promotion is claimed.
+The M2.1 snapshot had 20 offline regressions; explicit candidate-profile verification now raises that suite to 21. It covers profile compatibility, artifact/version/source drift, references, overlap and sampling eligibility. The existing 62 application and 18 provider regressions also pass. See SPEECH_EVALUATION_VALIDATION.json. Guide 18 adds synthetic controls and exposed historical reproduction; no new untouched learner benchmark, physical device, educator trial or release promotion is claimed.
 
 Decoder parameter semantics were checked against the [pinned faster-whisper implementation](https://github.com/SYSTRAN/faster-whisper/blob/v1.2.1/faster_whisper/transcribe.py). Historical corpus attribution and limitations remain in evidence/LIVE_VALIDATION.md and its linked author/OpenSLR sources. Thresholds above are SOVEN engineering decisions; do not attribute them to that corpus or library.

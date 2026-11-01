@@ -33,3 +33,5 @@ Read 15_UI_DESIGN_AND_IMPLEMENTATION.md for the approved visual direction, route
 The next engineering step is now implemented: read 16_REASONING_PROVIDER_INTEGRATION.md and REASONING_PROVIDER_VALIDATION.json. Adapter mechanics are mock-tested; permitted configuration and a real Meta invocation remain open. Google remains the default, and only English/Urdu reading is enabled.
 
 M2.1 is now complete: read 17_SPEECH_EVALUATION_PROTOCOL.md, SPEECH_BASELINE_FREEZE.json and SPEECH_EVALUATION_VALIDATION.json. The next task is M2.2: build/run reproducible development evaluation and improve measured speech reliability. The old 40 speakers are exposed; no new holdout or recognition-quality result is claimed.
+
+M2.2a/b are complete: guide 18 and SPEECH_RUNNER_VALIDATION.json describe the offline runner, exposure ledger and measured baseline/beam-five development comparison. Read SPEECH_EXPLORATORY_COMPARISON.json for outcomes and limits. M2.2c still needs sufficient improvement and human-reviewed evaluation data; beam five is unpromoted and no fresh holdout ran.

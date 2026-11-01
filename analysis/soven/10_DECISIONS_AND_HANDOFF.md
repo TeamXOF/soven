@@ -69,3 +69,5 @@ D12 The owner supplied two illustrated reading-platform screenshots and explicit
 D13 Keep Google as the reasoning default. New Meta/compatible adapters are opt-in, require explicit server configuration and access review, and fail to templates rather than silently changing provider. Adapter implementation and mocked tests close M1.6a; permitted access and live validation remain M1.6b/M1.7. See guide 16.
 
 D14 Freeze a reference speech profile and initial engineering thresholds before any new holdout. Treat all 40 prior speakers as exposed. Keep actual transcripts separate from printed targets and do not equate transcript agreement with pronunciation ratings. M2.1 establishes protocol/tooling; M2.2 quality improvement and new evaluation remain open. See guide 17.
+
+D15 Keep the reference production decoder unchanged. Beam five is an explicitly frozen development candidate, not promoted from a 20-speaker exposed comparison. The runner/ledger and historical reproduction close M2.2a/b; sufficient improvement and untouched adjudicated evaluation remain M2.2c. Preserve historical receipts and private exposure across environments.

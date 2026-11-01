@@ -1,7 +1,7 @@
 {
-  "files_checked": 287,
+  "files_checked": 298,
   "findings": [],
   "scope": "Exact export file content and size; excludes dependencies, ignored QA/runtime directories and Git objects.",
-  "review_date": "2026-11-01",
-  "revision": "M2.1 frozen speech baseline, preregistration and maintained handoff"
+  "review_date": "2026-11-02",
+  "revision": "M2.2a/b offline runner, measured development comparison and maintained handoff"
 }

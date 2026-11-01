@@ -60,6 +60,7 @@ For offline reading, cache the selected Whisper model first and set OFFLINE_MODE
 python backend/tests/test_regressions.py
 python backend/tests/test_reasoning_providers.py
 python backend/tests/test_speech_evaluation.py
+python backend/tests/test_speech_runner.py
 python tools/freeze_speech_evaluation.py check
 cd frontend
 npm run lint
@@ -71,7 +72,7 @@ npm run build -- --webpack
 
 Important limits remain: the prior child-speech holdout flagged 29/110 expert-acceptable words; a thirty-recording burst returned eight successes and twenty-two busy responses; Urdu speech quality, educator outcomes and public deployment remain unverified. The successful physical microphone take proves one tested workflow, not general accuracy. Do not repeat historical claims of solved autocorrection, phoneme diagnosis, emotion detection or universal offline operation.
 
-The [frozen speech protocol](analysis/soven/17_SPEECH_EVALUATION_PROTOCOL.md) defines the next evaluation configuration and engineering gates. It does not establish improved recognition or new language support.
+The [frozen speech protocol](analysis/soven/17_SPEECH_EVALUATION_PROTOCOL.md) defines the next evaluation configuration and engineering gates. The [offline runner and exposed development comparison](analysis/soven/18_SPEECH_RUNNER_AND_FINDINGS.md) now work; a measured beam-five signal remains unpromoted and does not establish general accuracy or new language support.
 
 ## SOVEN roadmap
 

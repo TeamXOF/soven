@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "protocol_id": "offline-evaluation-runner-v1",
+  "worker_start_timeout_seconds": 60,
+  "clip_timeout_seconds": 45,
+  "minimum_audio_seconds": 0.2,
+  "maximum_audio_seconds": 30,
+  "maximum_consecutive_failures": 3,
+  "maximum_text_characters": 5000,
+  "maximum_tokens": 1024,
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20261101,
+  "bootstrap_confidence": 0.95,
+  "uncertainty": "Percentile resampling of whole speaker clusters; exploratory, not a population guarantee",
+  "failed_clips": "Retained individually; no release review when any clip failed or was not run",
+  "holdout_policy": "Reserve speaker/audio exposure before worker startup; no automatic holdout rerun"
+}

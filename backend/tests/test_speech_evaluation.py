@@ -116,6 +116,18 @@ class SpeechEvaluationContracts(unittest.TestCase):
                     evaluation.verify_freeze(self.freeze)
         self.verify.start()
 
+    def test_explicit_candidate_profile_must_match_its_own_freeze(self):
+        candidate = deepcopy(self.synthetic_profile)
+        candidate['profile_id'] = 'synthetic-beam5-candidate'
+        candidate['transcribe_options']['beam_size'] = 5
+        receipt = evaluation.freeze_baseline(self.model, candidate, self.profile['required_versions'])
+        self.verify.stop()
+        with patch.object(evaluation, 'installed_versions', return_value=self.profile['required_versions']):
+            evaluation.verify_freeze(receipt, profile=candidate)
+            with self.assertRaisesRegex(ValueError, 'profile differs'):
+                evaluation.verify_freeze(receipt)
+        self.verify.start()
+
     def test_valid_manifest_keeps_verbatim_reference_separate_from_target(self):
         path, data = self.dataset('hold', 'holdout')
         result = evaluation.validate_dataset(path, 'holdout', self.profile)

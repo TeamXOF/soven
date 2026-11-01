@@ -25,5 +25,7 @@
   "next": "M2.2 deterministic evaluation runner and development reliability work; fresh human-reviewed evaluation data remains required",
   "remote_ci": "completed: success; fresh Linux dependencies, all 100 backend tests, profile check, generated-language drift, frontend lint, TypeScript and production build",
   "validated_code_commit": "866d8570543bdc401eb2e97ff2404f40f2e8e4ab",
-  "ci_url": "https://github.com/TeamXOF/soven/actions/runs/41331965581"
+  "ci_url": "https://github.com/TeamXOF/soven/actions/runs/41331965581",
+  "historical_freeze_path": "evidence/SPEECH_BASELINE_FREEZE_M21.json",
+  "snapshot_note": "M2.1 evidence retained; current runner/candidate measurements are in SPEECH_RUNNER_VALIDATION.json"
 }

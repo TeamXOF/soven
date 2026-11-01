@@ -26,7 +26,9 @@ The current code uses the repaired reading baseline. The target is a worldwide p
 ## Milestone two speech reliability and coverage
 
 - [x] M2.1 Freeze a reference recognizer configuration and language-specific engineering criteria before new evaluation. Evidence: guide 17, pinned profile, SPEECH_BASELINE_FREEZE.json and 20 preregistration regressions. No recognition improvement or new holdout result is claimed.
-- [ ] M2.2 Reproduce and improve the recorded child-speech disagreement; retain failed and uncertain observations rather than hiding them.
+- [x] M2.2a Build the bounded offline runner, deterministic metrics and persistent exposure ledger; verify synthetic controls and failure paths. Evidence: guide 18 and 31 runner regressions.
+- [x] M2.2b Reproduce the 20 exposed historical clips and measure one predeclared beam-five candidate with unchanged scoring. Evidence: SPEECH_EXPLORATORY_COMPARISON.json; acceptable-word flags 29/110 to 24/110, expert-error flags remain 4/5. Candidate unpromoted.
+- [ ] M2.2c Establish sufficient recognition improvement on reviewed development data, then evaluate a preregistered untouched sample with verbatim references. Preserve failures and uncertainty; no release-quality result yet.
 - [ ] M2.3 Validate Urdu on representative speakers, devices and noise; establish reviewed Spanish evaluation/content fixtures.
 - [ ] M2.4 Implement explicit STT/TTS/timing capability selection and fallbacks per language. No timestamp or confidence fabrication.
 - [ ] M2.5 Validate script-specific segmentation beyond the current English/Urdu aligner, including non-whitespace scripts where offered.

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "kind": "speech_baseline_freeze",
-  "created_at_utc": "2026-11-01T17:22:22.548006+00:00",
+  "created_at_utc": "2026-11-01T18:33:49.524483+00:00",
   "profile": {
     "schema_version": 1,
     "profile_id": "fw-base-cpu-int8-2026-11-01",
@@ -193,12 +193,16 @@
   "source_sha256": {
     "backend/services/stt.py": "a88e2045b834d2234394c2063a171389169b26bd9b2b0a2306f817fa300f0567",
     "backend/services/acoustic.py": "9105df3e05e6431aa0474f16d6f25fbfb6108899d062ccb3048e84a206fce2b4",
-    "backend/core/speech_evaluation.py": "73de41b62972cdbea9d4d7c650bed014d2833bf9c4de1a00454f2b68461ca5c1",
+    "backend/core/speech_evaluation.py": "9660de30e6f1a69d6dbbe5e2796bf96c01ca2710bc2d5632f2ba0b1654c58fdb",
     "backend/core/config.py": "c6d41852d803d2c7e75aa1ebedc2418c8083241efc7e9db2aadd1f917908df96",
-    "tools/freeze_speech_evaluation.py": "714686612b49f8fa4b8929e72a447f33d273c9d9e5ef8a7dbccecdde53a3ffc7",
-    "backend/requirements.txt": "115a6721868fa8f194446d7342c39ba246efa61af5e89c88e92f7b6af63d807f"
+    "tools/freeze_speech_evaluation.py": "5f5cde4655ed8cf96c753b14eb338655e053742dda2affa937d16b41b8a4430d",
+    "backend/requirements.txt": "115a6721868fa8f194446d7342c39ba246efa61af5e89c88e92f7b6af63d807f",
+    "backend/core/speech_metrics.py": "fcd9e7c235b08e53944dfb2b8592a02799535906c81acb6dcdfb8b6c3e7a4ef9",
+    "backend/core/speech_runner.py": "90aa410a10b39c85ad2c12aa6dbc4ae297ff42725e95a7b4920b432f65d5a008",
+    "backend/data/speech_runner_protocol.json": "9a73746882304d0bb8e6bd7c9abf42be7afdc0eff3706398895fe1ac4a146375",
+    "tools/evaluate_speech.py": "064d509f507ce9ebd612c686bc73d5355d5d53d255121a191382af03a7a12e81"
   },
   "inference_performed": false,
   "quality_validated": false,
-  "receipt_sha256": "1ceec864fdd49b09640e030d161ddfb4b7936b0841e2c3490e69bcfaea285fab"
+  "receipt_sha256": "227ce34e7db99f03b69be26c9060dd4b366e97fc1bf0f687fc4e38da7d422167"
 }

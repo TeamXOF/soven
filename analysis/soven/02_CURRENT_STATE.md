@@ -68,4 +68,4 @@ Default Google and opt-in Meta/compatible reasoning adapters pass 18 mocked cont
 
 ## Frozen speech evaluation foundation
 
-M2.1 pins a cached base-model reference, dependencies, decoding and source hashes, engineering criteria and an exposure registry. Private preregistration rejects known overlap and incomplete references; 20 offline tests pass. No new speech benchmark or production decoder change occurred. Read guide 17 before M2.2; recognition quality remains unvalidated.
+The frozen reference, preregistration and bounded offline runner now pass 52 focused tests. Five synthetic controls pass. Historical reproduction matches the old 29/110 acceptable-word flags; a predeclared beam-five variant yields 24/110 with the same 4/5 expert-error flags. This exposed-sample signal is insufficient for promotion. Production decoding is unchanged, and fresh recognition quality remains unvalidated. Read guides 17–18.

@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-01",
+  "scope": "Same 20 already exposed historical English child-speech clips; printed references and expert ratings, not pure ASR WER",
+  "source": "SpeechOcean762, Zhang et al., Interspeech 2021; CC BY 4.0 per OpenSLR SLR101; attribution retained in evidence/LIVE_VALIDATION.md",
+  "same_manifest_sha256": "aa100352d754fbe6a4c37f3b849a62838d040548a2374d972c7d27ee023ebdea",
+  "candidate_declared_before_run": true,
+  "changed_parameter": "beam_size 1 to 5; same base weights, CPU/thread configuration, scoring, thresholds and sample",
+  "baseline": {
+    "profile_id": "fw-base-cpu-int8-2026-11-01",
+    "clips": 20,
+    "failed": 0,
+    "prompt_words": 115,
+    "prompt_edits": 40,
+    "prompt_text_edit_rate": 0.34782608695652173,
+    "expert_comparison": {
+      "expert_error_model_flag": 4,
+      "expert_error_model_accept": 1,
+      "expert_acceptable_model_accept": 81,
+      "expert_acceptable_model_flag": 29
+    },
+    "expert_acceptable_false_flag_rate": 0.2636363636363636,
+    "expert_error_flag_rate": 0.8,
+    "model_load_ms": 891.768,
+    "elapsed_ms": 26042.031,
+    "private_report_receipt_sha256": "ca5fedf6c1e84ae4034b62e311e0ad937b88ed8934c7b951ca9ec27a53391774",
+    "release_review_eligible": false
+  },
+  "beam5": {
+    "profile_id": "fw-base-cpu-int8-beam5-development-v1",
+    "clips": 20,
+    "failed": 0,
+    "prompt_words": 115,
+    "prompt_edits": 38,
+    "prompt_text_edit_rate": 0.33043478260869563,
+    "expert_comparison": {
+      "expert_error_model_flag": 4,
+      "expert_error_model_accept": 1,
+      "expert_acceptable_model_accept": 86,
+      "expert_acceptable_model_flag": 24
+    },
+    "expert_acceptable_false_flag_rate": 0.21818181818181817,
+    "expert_error_flag_rate": 0.8,
+    "model_load_ms": 898.882,
+    "elapsed_ms": 32876.673,
+    "private_report_receipt_sha256": "c59eabd93c97ffa267f68a31e133b4667b42a51f3a2065f6e31a71b925640474",
+    "release_review_eligible": false
+  },
+  "controls": {
+    "clips": 5,
+    "scripted_spoken_words": 42,
+    "edits": 0,
+    "matching_target_words": 39,
+    "false_flags": 0,
+    "differing_target_words": 3,
+    "differing_flagged": 3,
+    "leading_extra_word_detected": true,
+    "elapsed_ms": 7356.561,
+    "model_load_ms": 857.285,
+    "private_report_receipt_sha256": "80c65857171ed27be5fda8e524d1eca3e3f6f8adf494203b944b33ba25c37670",
+    "release_review_eligible": false
+  },
+  "preliminary_runs": "Five controls and 20 exposed historical clips first checked an earlier runner revision. Final source-bound comparison reran five controls and the baseline/candidate historical set; all repeats are development exposure.",
+  "all_stage_runs": 5,
+  "all_stage_clip_processing_attempts": 70,
+  "fresh_holdout_runs": 0,
+  "candidate_promoted": false,
+  "production_recognizer_changed": false,
+  "quality_validated": false,
+  "interpretation": "Modest exposed-sample signal: 5 fewer acceptable words flagged, same 4/5 expert-error flags and 2 fewer prompt edits. Remaining disagreement is high; beam5 was slower in this run. No general recognition or pronunciation-quality claim.",
+  "privacy": "Only reviewed aggregate outcomes and receipt hashes published; new transcripts, audio, manifests, per-reader results and SQLite exposure ledger stay private"
+}

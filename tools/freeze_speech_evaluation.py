@@ -13,6 +13,7 @@ from core.speech_evaluation import (load_profile, freeze_baseline, verify_freeze
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--profile', type=Path, help='Explicit candidate JSON; default is the frozen reference profile')
     commands = parser.add_subparsers(dest='action', required=True)
     commands.add_parser('check')
     freeze = commands.add_parser('freeze')
@@ -27,7 +28,7 @@ def main():
     register.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
     try:
-        profile = load_profile()
+        profile = load_profile(args.profile) if args.profile else load_profile()
         if args.action == 'check':
             print(json.dumps({'profile_id': profile['profile_id'], 'languages': list(profile['language_criteria']),
                               'inference_performed': False, 'quality_validated': False}))
@@ -38,11 +39,11 @@ def main():
             result = freeze_baseline(args.model_dir, profile)
         else:
             frozen = json.loads(args.freeze.read_text(encoding='utf-8'))
-            verify_freeze(frozen)
+            verify_freeze(frozen, profile=profile)
             if args.action == 'verify':
                 print(json.dumps({'freeze_verified': True, 'inference_performed': False}))
                 return 0
-            result = register_evaluation(args.development, args.holdout, frozen)
+            result = register_evaluation(args.development, args.holdout, frozen, profile=profile)
         write_new_receipt(args.out, result)
         print(json.dumps({'written': True, 'kind': result['kind'], 'receipt_sha256': result['receipt_sha256'],
                           'inference_performed': False, 'quality_validated': False}))

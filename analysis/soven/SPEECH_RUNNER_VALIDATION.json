@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-01",
+  "scope": "M2.2a/b runner mechanics, real synthetic controls and exposed historical development comparison",
+  "backend_tests": {
+    "application": 62,
+    "provider": 18,
+    "freeze_preregistration": 21,
+    "runner_metrics": 31,
+    "total": 132
+  },
+  "controls": 5,
+  "exposed_historical_clips_per_final_configuration": 20,
+  "new_holdout_runs": 0,
+  "real_inference": "Cached local faster-whisper only; no hosted calls or downloads",
+  "reference_default_unchanged": true,
+  "candidate_promoted": false,
+  "quality_validated": false,
+  "checklist": {
+    "done": 32,
+    "open": 29
+  },
+  "frontend": "No application/frontend edits; earlier UI evidence retained, fresh remote CI checks frontend",
+  "comparison_record": "SPEECH_EXPLORATORY_COMPARISON.json",
+  "next": "M2.2c sufficient improvement and reviewed evaluation data; other rollout gates remain open",
+  "remote_ci": "Pending publication verification; outcome will be recorded in completion log"
+}

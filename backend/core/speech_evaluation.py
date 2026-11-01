@@ -13,7 +13,9 @@ PROFILE = ROOT / 'backend/data/speech_evaluation_profile.json'
 REGISTRY = ROOT / 'analysis/soven/SPEECH_EXPOSURE_REGISTRY.json'
 SOURCE_PATHS = ['backend/services/stt.py', 'backend/services/acoustic.py',
                 'backend/core/speech_evaluation.py', 'backend/core/config.py',
-                'tools/freeze_speech_evaluation.py', 'backend/requirements.txt']
+                'tools/freeze_speech_evaluation.py', 'backend/requirements.txt',
+                'backend/core/speech_metrics.py', 'backend/core/speech_runner.py',
+                'backend/data/speech_runner_protocol.json', 'tools/evaluate_speech.py']
 
 
 def canonical(value):
@@ -84,9 +86,9 @@ def freeze_baseline(model_dir, profile=None, versions=None):
         'inference_performed': False, 'quality_validated': False})
 
 
-def verify_freeze(receipt):
+def verify_freeze(receipt, profile=None):
     verify_seal(receipt)
-    profile = load_profile()
+    profile = profile or load_profile()
     if (receipt.get('kind') != 'speech_baseline_freeze'
             or receipt.get('profile_sha256') != hashlib.sha256(canonical(profile)).hexdigest()
             or receipt.get('profile') != profile):
@@ -102,8 +104,13 @@ def _identifier(value):
     return isinstance(value, str) and re.fullmatch(r'[a-zA-Z0-9_.-]{1,80}', value) is not None
 
 
-def validate_dataset(path, split, profile):
+def validate_dataset(path, split, profile, reference_policy='human'):
     from services.acoustic import tokenize
+    policies = {'human': ('verbatim', 'adjudicated'), 'controls': ('synthetic_script', 'scripted'),
+                'historical': ('printed_prompt', 'historical_expert_ratings')}
+    if reference_policy not in policies:
+        raise ValueError('Unknown reference policy')
+    reference_kind, reference_review = policies[reference_policy]
     path = Path(path).resolve(strict=True)
     if path.stat().st_size > 8 * 1024 * 1024:
         raise ValueError('Dataset manifest exceeds size limit')
@@ -129,18 +136,19 @@ def validate_dataset(path, split, profile):
         language = clip.get('language')
         if language not in profile['language_criteria']:
             raise ValueError('Language has no preregistered evaluation criteria')
-        if (clip.get('reference_kind') != 'verbatim' or clip.get('reference_review') != 'adjudicated'
+        if (clip.get('reference_kind') != reference_kind or clip.get('reference_review') != reference_review
                 or not isinstance(clip.get('reference_text'), str)
                 or not isinstance(clip.get('target_text'), str)
                 or not tokenize(clip['reference_text']) or not tokenize(clip['target_text'])
                 or max(len(clip['reference_text']), len(clip['target_text'])) > 5000):
             raise ValueError('Adjudicated verbatim reference and separate target are required')
         labels = clip.get('target_word_matches')
-        if (not isinstance(labels, list) or len(labels) != len(tokenize(clip['target_text']))
+        if reference_policy != 'historical' and (not isinstance(labels, list) or len(labels) != len(tokenize(clip['target_text']))
                 or not all(type(label) is bool for label in labels)):
             raise ValueError('Each target word needs an adjudicated transcript-match label')
         for dimension, values in profile['language_criteria'][language]['required_cohorts'].items():
-            if clip.get(dimension) not in values:
+            extra = ['synthetic'] if reference_policy == 'controls' else ['unknown'] if reference_policy == 'historical' else []
+            if clip.get(dimension) not in values + extra:
                 raise ValueError('Required cohort metadata is missing or unsupported: ' + dimension)
         if clip['speaker_id'] in ages and ages[clip['speaker_id']] != clip['age_band']:
             raise ValueError('A speaker cannot change age cohort within the dataset')
@@ -192,8 +200,8 @@ def coverage(dataset, profile):
     return reports
 
 
-def register_evaluation(development_path, holdout_path, freeze, registry_path=REGISTRY):
-    verify_freeze(freeze)
+def register_evaluation(development_path, holdout_path, freeze, registry_path=REGISTRY, *, profile=None):
+    verify_freeze(freeze, profile=profile)
     profile = freeze['profile']
     development = validate_dataset(development_path, 'development', profile)
     holdout = validate_dataset(holdout_path, 'holdout', profile)

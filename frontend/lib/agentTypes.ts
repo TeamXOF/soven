@@ -1,0 +1,34 @@
+/** Legacy coaching output. Observations and generated advice remain distinct. */
+export type AgentResult = {
+  status?: "available" | "fallback" | "unavailable";
+  error?: string;
+  struggling_words?: string[];
+  struggling_phonemes?: (string | { label: string; words: string[] })[];
+  confidence?: number | null;
+  severity?: string;
+  reasoning?: string;
+  category?: string;
+  primary_issue?: string;
+  secondary_issue?: string | null;
+  emotional_state?: string;
+  frustration_signal?: number | null;
+  engagement_level?: number | null;
+  suggested_tone?: string;
+  teacher_note?: string;
+  focus_area?: string;
+  sentences?: { text: string; target_word?: string; target_phoneme?: string; difficulty?: string }[];
+  encouraging_note?: string;
+  difficulty_note?: string;
+  teacher_tip?: string;
+  trend?: string;
+  improvement_percentage?: number | null;
+  highlights?: string[];
+  areas_to_watch?: string[];
+  recommendation?: string;
+  report_text?: string;
+  source?: string;
+  current_accuracy?: number;
+  previous_accuracy?: number | null;
+  accuracy_change_points?: number | null;
+  comparable_attempt_count?: number;
+};

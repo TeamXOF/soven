@@ -1,0 +1,657 @@
+{
+  "captured_at_utc": "2026-11-01T07:34:36.722811+00:00",
+  "source_repository": "https://github.com/TeamXOF/speakflow-mesh",
+  "source_commit": "6c8a89a325a60aa38704b48c7e0f075af3a94196",
+  "basis": "Repaired working files including uncommitted and previously untracked repairs; this is not a clone of the source commit.",
+  "files": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 864,
+      "sha256": "4c61670c02a14d7a6671ea1d8f14487fd636ac8b12854b1ed1eb0c393590d4e2"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 4575,
+      "sha256": "dc7f7202e54ff1c2d2e1af6a69d9d7d5466c6baf87232fec99bb1c63446ee672"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1080,
+      "sha256": "992291bb6c96b20de33c06d573e395a573eca2a2816d503eef7dd1b980c1fa06"
+    },
+    {
+      "path": "README.md",
+      "bytes": 9932,
+      "sha256": "6e2a72e35a700c4c90a56c94eda57dc51e2dcee231a27907d4a2eec578f69194"
+    },
+    {
+      "path": "backend/.env.example",
+      "bytes": 2823,
+      "sha256": "8d67a32d60e1d544767239eb1963203b2d2ed38fb281bd2c4d92f828c94c4f6e"
+    },
+    {
+      "path": "backend/agents/__init__.py",
+      "bytes": 27,
+      "sha256": "7444dd3d7b2ec35a895f82e081e32779a0a4582cedb6d896a019fbcd719bca6c"
+    },
+    {
+      "path": "backend/agents/difficulty_agent.py",
+      "bytes": 774,
+      "sha256": "c2d31c5958bd9cc2d5f5148aefa1564c03ca9d381ac5403da9bc3cd4bbac281b"
+    },
+    {
+      "path": "backend/agents/engagement_agent.py",
+      "bytes": 638,
+      "sha256": "f0e63915a23e8c857642e7dedc7cbf5cbba2c0162c9a68342917d3c88540c385"
+    },
+    {
+      "path": "backend/agents/orchestrator.py",
+      "bytes": 9611,
+      "sha256": "607d692280e24b44728c769a666a44f8b3bfa9d8207dd88a1af41f57faf8fa58"
+    },
+    {
+      "path": "backend/agents/phonetic_agent.py",
+      "bytes": 1175,
+      "sha256": "ed0619dd83b0c6c79cfbd04901ed141fee0566cda8a012cf210c53fe6ae88a32"
+    },
+    {
+      "path": "backend/agents/practice_agent.py",
+      "bytes": 684,
+      "sha256": "22f43338be5f6394d527b2e95fe033fb6b0f2d2ac444957f79e89653e87f7a16"
+    },
+    {
+      "path": "backend/agents/progress_agent.py",
+      "bytes": 947,
+      "sha256": "1764aba0b2a2f2d1d1c9068151e646e72fd4906a09cc215cb48887f3089ccba2"
+    },
+    {
+      "path": "backend/core/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "backend/core/access.py",
+      "bytes": 1512,
+      "sha256": "fc7e8205d8e33bc031d45bd65727e085359a853c67b3a2f071cc7966074e3bce"
+    },
+    {
+      "path": "backend/core/config.py",
+      "bytes": 5231,
+      "sha256": "55ec2c2888d49f9a84eeff237aaf65a9eda560078590bbc52abc1e316f74dff6"
+    },
+    {
+      "path": "backend/core/middleware.py",
+      "bytes": 5701,
+      "sha256": "1d8a4a598bb3c3c8901483a47eef7083cf36af7930317a43396653969f3a25fa"
+    },
+    {
+      "path": "backend/core/security.py",
+      "bytes": 675,
+      "sha256": "a860805925ae6f7959c547af7c4f8e1f265f36b8372a32d25dcd5754fb680835"
+    },
+    {
+      "path": "backend/core/workload.py",
+      "bytes": 1366,
+      "sha256": "528a3366272e888ae0e3939a4bf8601fb34f127272710d9243019ea2c94498c7"
+    },
+    {
+      "path": "backend/data/feedback_templates.json",
+      "bytes": 4177,
+      "sha256": "538c4d6a79c1782e5b0e14f683b7931dff535028e6b6d7ead3a920686413ab9e"
+    },
+    {
+      "path": "backend/data/manual_overrides.json",
+      "bytes": 254,
+      "sha256": "f8a49bbaa057a43fe6fdd2357f3277398202001c0439b9a4f9588f236922fdf0"
+    },
+    {
+      "path": "backend/data/phoneme_confusions.json",
+      "bytes": 672,
+      "sha256": "8138dc1a5828135db7215db3a46e49b99337c02edd593136475f29b6ef2b403f"
+    },
+    {
+      "path": "backend/data/phoneme_dictionary.json",
+      "bytes": 2106,
+      "sha256": "af1fa265c223b1872433539f5dc5545e7ddade8fb3e8dfe8aa23cb54f1b6e20d"
+    },
+    {
+      "path": "backend/data/stories.json",
+      "bytes": 3527,
+      "sha256": "6a37495c1a5a7f7ca59545b86155e834553cf3917adc082c73414de2a3274cf1"
+    },
+    {
+      "path": "backend/database/__init__.py",
+      "bytes": 29,
+      "sha256": "2f9e4dedc27d3873ffb5c0db200dd1e413f863cc1c11b14849bf828cf22e2e52"
+    },
+    {
+      "path": "backend/database/models.py",
+      "bytes": 543,
+      "sha256": "a742dbb0db4009fa60452be398b5a17e21ca8e540a2968229d0b1de2b8594866"
+    },
+    {
+      "path": "backend/database/schema.py",
+      "bytes": 14332,
+      "sha256": "d4ec1444aa590f8cce50e8c2387d26cef55ffb7306565af4176848df75812be9"
+    },
+    {
+      "path": "backend/main.py",
+      "bytes": 6593,
+      "sha256": "cc24cfcd5306f31698e415b75096f79ce3162cab095a280481492e7e3d0850d7"
+    },
+    {
+      "path": "backend/requirements-dev.txt",
+      "bytes": 55,
+      "sha256": "16b58c79d4af36d179d97898e8638daa46917baa18b442afd4e66dedb3fa5648"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "bytes": 244,
+      "sha256": "115a6721868fa8f194446d7342c39ba246efa61af5e89c88e92f7b6af63d807f"
+    },
+    {
+      "path": "backend/routers/__init__.py",
+      "bytes": 28,
+      "sha256": "64afb93a830bafb10254f8d264ec9c422d6c076b914060156c574f42c690838d"
+    },
+    {
+      "path": "backend/routers/auth.py",
+      "bytes": 12695,
+      "sha256": "a80b79f92eae26d6a5e16c670e6e7093bd48ff3675964e5af8f9e5e9a0236127"
+    },
+    {
+      "path": "backend/routers/pipeline.py",
+      "bytes": 15503,
+      "sha256": "da0bde2093c97e96534c9086cde29aecceedbe4e8ca8efad80cb5ca20b39212b"
+    },
+    {
+      "path": "backend/routers/sessions.py",
+      "bytes": 2542,
+      "sha256": "3828818d971d4a1b0bf18d95c331f13261bac97e0fe4108543f0fdfa37fead3a"
+    },
+    {
+      "path": "backend/routers/story_mode.py",
+      "bytes": 25360,
+      "sha256": "498f79b938455230ad9000e7176ed865958f6e4a3c0ae6e113517f2565bd6dbd"
+    },
+    {
+      "path": "backend/routers/students.py",
+      "bytes": 3458,
+      "sha256": "7422f06166fd9fdd95e77445d0b3d7035ffbe7f3c5a7b51c119a1028aef7af52"
+    },
+    {
+      "path": "backend/routers/sync_ingest.py",
+      "bytes": 1291,
+      "sha256": "e43d610a05f3926c7b42c3d4d9bddb2d17d23cde770a9cb188c7e330459a7401"
+    },
+    {
+      "path": "backend/routers/teacher.py",
+      "bytes": 11934,
+      "sha256": "355406a5088bc1a987cd43c435421e69a7a9ff601f103a76a47da6c300c4ff09"
+    },
+    {
+      "path": "backend/routers/v1.py",
+      "bytes": 38758,
+      "sha256": "719cdf567b121b54312635f27a3665f72858fb5152e1e706f3b38f0c5feb1862"
+    },
+    {
+      "path": "backend/scripts/bootstrap_teacher.py",
+      "bytes": 2391,
+      "sha256": "66b32379ac1b68c19166f1bca4d2f94c7bd780ebed2096d721caa42c8bc66888"
+    },
+    {
+      "path": "backend/scripts/build_dictionary.py",
+      "bytes": 1639,
+      "sha256": "29f6b41541c24efb6e6b5cd493d4cab3548d6115831cce74729bac3efa9cd9c8"
+    },
+    {
+      "path": "backend/scripts/calibrate.py",
+      "bytes": 9274,
+      "sha256": "aee902d9e650614bae4cacde83b0b042ac3b1c946864a4cc98cd66560bd3e53c"
+    },
+    {
+      "path": "backend/scripts/check_runtime.py",
+      "bytes": 909,
+      "sha256": "2f7d74856c88f82a013bc8a5f07fda1c86231c05a0f3e574247b52f8a15400ed"
+    },
+    {
+      "path": "backend/scripts/restore_reader.py",
+      "bytes": 856,
+      "sha256": "85bd8fb0d377d03ce094d21afb2f73239c7db106cb4f0cea30e794ee215657ce"
+    },
+    {
+      "path": "backend/services/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "backend/services/acoustic.py",
+      "bytes": 14940,
+      "sha256": "11032c5ee32c1596fcc9258321b7ee69c7ac6eef0b1949e22666ec95f651c06f"
+    },
+    {
+      "path": "backend/services/analytics.py",
+      "bytes": 10977,
+      "sha256": "2e88317cd8d97b17182accf9f44716656fb2c8a1548485220e944f3c95717d2a"
+    },
+    {
+      "path": "backend/services/dictionary.py",
+      "bytes": 3323,
+      "sha256": "7bc9f58cbde8270c96fbb977bb5c346fe94594f0407173593d3010f390709195"
+    },
+    {
+      "path": "backend/services/jobs.py",
+      "bytes": 2608,
+      "sha256": "b6d7e49a7b7ca877f0c33ac4737444176ee99e23810cc2d4be0894994a2eec46"
+    },
+    {
+      "path": "backend/services/model_client.py",
+      "bytes": 1881,
+      "sha256": "552a5f8acde9759c59c9ff8fde0950ae7f1ec29067c6608616887b59fe7bd903"
+    },
+    {
+      "path": "backend/services/reasoning.py",
+      "bytes": 10715,
+      "sha256": "6bc48cfc8217cfadcc5d1c1b85d76f4073558a8f528953e35d9ff7414b083ed8"
+    },
+    {
+      "path": "backend/services/stt.py",
+      "bytes": 9880,
+      "sha256": "d153dbf4fa54ea22a924228669c908043bb3a32c602dfcd251cd38d33ae6aae9"
+    },
+    {
+      "path": "backend/services/sync.py",
+      "bytes": 173,
+      "sha256": "6a2b263305d6890e2f2f6d6906350cad92d090a1f3c0f2290eca9aa837ac67d9"
+    },
+    {
+      "path": "backend/services/sync_snapshots.py",
+      "bytes": 5264,
+      "sha256": "8aa3a7291cdad2a13d814977059a0aa7019e6b62442079b873e2b899fb97713c"
+    },
+    {
+      "path": "backend/tests/compare_local_stt.py",
+      "bytes": 2213,
+      "sha256": "65b6b7b715b2b8e400400e7c4482054b922ab5cdc4b4b83d2e8cc125496c1aaf"
+    },
+    {
+      "path": "backend/tests/compare_pitch_cost.py",
+      "bytes": 1995,
+      "sha256": "bb540caa3a69cb84421bd3554ea6bf28ac02dadd49c44533459cd0804d887703"
+    },
+    {
+      "path": "backend/tests/test_regressions.py",
+      "bytes": 33144,
+      "sha256": "641f471f0e5982fd30c5a7460e6783038e8406a77eedd559bd4fa79fd8bb6cda"
+    },
+    {
+      "path": "backend/tests/validate_child_corpus.py",
+      "bytes": 7313,
+      "sha256": "582166c1003396ccda9e4989806f4fc26fff97c7744b5528c0f2448b83206318"
+    },
+    {
+      "path": "backend/tests/validate_dashboard_ui.cjs",
+      "bytes": 17322,
+      "sha256": "ce20e1a9486732627646517682222ba63e8965f885d6a4f202cf8ffc8770b0e5"
+    },
+    {
+      "path": "backend/tests/validate_enrollment_runtime.py",
+      "bytes": 7052,
+      "sha256": "c7376f0f67ba4981234f9ccb3d9e4624f6406c0af769e87b6b0cc62996a96fc8"
+    },
+    {
+      "path": "backend/tests/validate_enrollment_ui.cjs",
+      "bytes": 5465,
+      "sha256": "5e6513f30ab984eaebc3a784a034b2a3bd5b0bbb5a14bbfead784b31a7c68d76"
+    },
+    {
+      "path": "docs/SETUP.md",
+      "bytes": 9935,
+      "sha256": "e4ca3abe29d2879203fd4c7fe7c918411027c8dde3b414dff1ee9f843bf707c8"
+    },
+    {
+      "path": "frontend/.env.example",
+      "bytes": 171,
+      "sha256": "3c97d45263b9ddfffd20edd8b9af7169aab4793a29c0c2e2a6bcc27fb16099a3"
+    },
+    {
+      "path": "frontend/.gitignore",
+      "bytes": 480,
+      "sha256": "207e265ff4901f9ad9f96d8ce08530e04f9fc600815472a66d0a446096d654cd"
+    },
+    {
+      "path": "frontend/app/(app)/agents/page.tsx",
+      "bytes": 310,
+      "sha256": "9f5c6dad5ebac222a1e82844b1e7ed5cae4ebd67f204f7896de1b50e73bfe1e4"
+    },
+    {
+      "path": "frontend/app/(app)/dashboard/page.tsx",
+      "bytes": 3325,
+      "sha256": "925c5c4ba3bcedfb42fd30d8fbbe1dc73c5ade12b69c7e9520d62893aa291232"
+    },
+    {
+      "path": "frontend/app/(app)/layout.tsx",
+      "bytes": 1035,
+      "sha256": "245f40647146d6fcfb0c0a771a197559498eb4c001d45c704ea3b9aa5e778ba7"
+    },
+    {
+      "path": "frontend/app/(app)/me/page.tsx",
+      "bytes": 967,
+      "sha256": "4ef0d0a8fa3f70e671998e842e521f5ebdb83fa8dbcd895b7db9d84a25a1a531"
+    },
+    {
+      "path": "frontend/app/(app)/pipeline/page.tsx",
+      "bytes": 9310,
+      "sha256": "4b1be0954fc1775401ed3030a63b44076cab03da893fbe739edeeb819647c2a2"
+    },
+    {
+      "path": "frontend/app/(app)/practice/page.tsx",
+      "bytes": 10984,
+      "sha256": "44f432522516a9474a178f2d6059662b493bbf23bea079c51335e2ac61b25d2f"
+    },
+    {
+      "path": "frontend/app/(app)/progress/page.tsx",
+      "bytes": 8774,
+      "sha256": "6b0274d8889cf31b9a5e3c88a4f942374450475865e45ceba6c9788513e67aff"
+    },
+    {
+      "path": "frontend/app/(app)/reports/page.tsx",
+      "bytes": 7245,
+      "sha256": "adb845deb302a117f48a47629e13b0bfeb0a21399362ab20191affc5689ed8ea"
+    },
+    {
+      "path": "frontend/app/(app)/sessions/[id]/page.tsx",
+      "bytes": 16283,
+      "sha256": "0a731fa64051f9b5e7933fd35a3806d43d747ea4f9ea9efe480394d074a54aa0"
+    },
+    {
+      "path": "frontend/app/(app)/sessions/page.tsx",
+      "bytes": 8755,
+      "sha256": "e5e99b8901dcb6b76c839fd1753838a4c18160429ddc6f3b8f01ddc20fd2ae93"
+    },
+    {
+      "path": "frontend/app/(app)/settings/page.tsx",
+      "bytes": 32707,
+      "sha256": "88eff4904f61314926cc4b13cf44dfe0cc158e1a4af538b6aea81adda4d780dc"
+    },
+    {
+      "path": "frontend/app/(app)/students/[id]/page.tsx",
+      "bytes": 16100,
+      "sha256": "357573b3f01a0a84ebfbad09ed23bd48428257871931632e005a633ca0eba48e"
+    },
+    {
+      "path": "frontend/app/(app)/students/page.tsx",
+      "bytes": 21612,
+      "sha256": "87ec55e4428958125ddc02585f40ee6dc18e79ba075cf9e4bff57f9124b9e2dd"
+    },
+    {
+      "path": "frontend/app/(app)/teacher/page.tsx",
+      "bytes": 10940,
+      "sha256": "82dedd02b2550021fbf8f7348df81b698b1d3d95901a75c83cac0d12e7220203"
+    },
+    {
+      "path": "frontend/app/favicon.ico",
+      "bytes": 25931,
+      "sha256": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932"
+    },
+    {
+      "path": "frontend/app/fonts/dm-sans-latin-wght-normal.woff2",
+      "bytes": 36932,
+      "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+    },
+    {
+      "path": "frontend/app/fonts/jetbrains-mono-latin-wght-normal.woff2",
+      "bytes": 40404,
+      "sha256": "18be452724bfdc236c074ca94a249a7f41a86752c7d04ab258ce9ed5651f6a7e"
+    },
+    {
+      "path": "frontend/app/fonts/noto-nastaliq-urdu-arabic-wght-normal.woff2",
+      "bytes": 239060,
+      "sha256": "609856a4affa17480bec6ae2e77d0d3743acb94c7cbdc020aeb317b7eb7365f6"
+    },
+    {
+      "path": "frontend/app/globals.css",
+      "bytes": 3035,
+      "sha256": "8274eb9a4bf17897b57cd0044611ddd28d809051401f3f53a1b21690283456ea"
+    },
+    {
+      "path": "frontend/app/layout.tsx",
+      "bytes": 1445,
+      "sha256": "4e7071e56d98843847cf75a189340bf09ba2b3fb25e82aa3b6fafb18bcdc635b"
+    },
+    {
+      "path": "frontend/app/login/page.tsx",
+      "bytes": 6619,
+      "sha256": "51c49730e523d7785499adc926f41a9eda3b06289b3d647ab764f429b3709a8e"
+    },
+    {
+      "path": "frontend/app/page.tsx",
+      "bytes": 751,
+      "sha256": "28a0ea82427b593221171284b6dde2672f9336622ba919e0d8beb69cbd604edb"
+    },
+    {
+      "path": "frontend/app/read/[sessionId]/page.tsx",
+      "bytes": 30778,
+      "sha256": "8df22e7a79240f693ca155487790d1453bc95f0bd011855396d7ead9e1cb48a3"
+    },
+    {
+      "path": "frontend/app/read/layout.tsx",
+      "bytes": 272,
+      "sha256": "9760d1f72530398e62d4505b775a5c2fa75593d550416ad3ff7da5da02b9adad"
+    },
+    {
+      "path": "frontend/app/read/page.tsx",
+      "bytes": 15001,
+      "sha256": "294860df996616c99a24ec2d187076ec6ac139f7675ab2c4c939ff7d10d3a868"
+    },
+    {
+      "path": "frontend/app/read/play/page.tsx",
+      "bytes": 26206,
+      "sha256": "3e60dd3359694b620289a388f6692f59cfb77c64d1d2f2f5a2f267bcbf9fa76f"
+    },
+    {
+      "path": "frontend/app/signup/page.tsx",
+      "bytes": 6082,
+      "sha256": "8bd5e19a43c822e2f44401fd36f06e94c925ceb19aaba72e1a381a6d046a0aa4"
+    },
+    {
+      "path": "frontend/components/auth/AuthGate.tsx",
+      "bytes": 2194,
+      "sha256": "e716262d056d5af763b03395003230a5559dcc77870dd4e6b1718da2af033db3"
+    },
+    {
+      "path": "frontend/components/auth/AuthProvider.tsx",
+      "bytes": 3422,
+      "sha256": "f99752822acaeace93331b6a9d7500b7bca4be07ccce79054cd7cd73bc18d7dc"
+    },
+    {
+      "path": "frontend/components/auth/KidAuthGate.tsx",
+      "bytes": 768,
+      "sha256": "e7d62dea90170f9e18936c4d4867b516aa53a711f2f7d3c2586caa9ca9ea76ea"
+    },
+    {
+      "path": "frontend/components/auth/KidNav.tsx",
+      "bytes": 3213,
+      "sha256": "eeb7a1d13a932cec9d65da3c10d3b02d0ae58155c61d0411c385c55d434cd7f8"
+    },
+    {
+      "path": "frontend/components/auth/StudentBinding.tsx",
+      "bytes": 771,
+      "sha256": "cdb1d8a502dc83afc2f9d7061f28eaa86b0a5246f82f572d44271679c64e041a"
+    },
+    {
+      "path": "frontend/components/dashboard/AIDiagnosisCard.tsx",
+      "bytes": 3520,
+      "sha256": "e485ccfd8e51bdd5ccf80b0952da5bc6e2066a7ba83663acd84b17e0241f1a11"
+    },
+    {
+      "path": "frontend/components/dashboard/AgentsAtWorkCard.tsx",
+      "bytes": 2423,
+      "sha256": "213d3315417681cb7f93f27c101dde775f6a6135e1c56986109e2261c749526b"
+    },
+    {
+      "path": "frontend/components/dashboard/FeedbackSource.tsx",
+      "bytes": 1236,
+      "sha256": "6c8d1d69707d105ac9e5a2ae46dccaa6c510f706138997792873a9a16f6f8aef"
+    },
+    {
+      "path": "frontend/components/dashboard/LiveReadingCard.tsx",
+      "bytes": 20780,
+      "sha256": "7040752b28d15b0ec22d7844656e4d8bfe64e7ad2c3a8826ed195ca9b9ba2e33"
+    },
+    {
+      "path": "frontend/components/dashboard/PracticeCard.tsx",
+      "bytes": 3477,
+      "sha256": "8035e1f26834ef1a3789672b5559fa023616f231e6d1b526b8d03da6685dbfdc"
+    },
+    {
+      "path": "frontend/components/dashboard/ProgressChart.tsx",
+      "bytes": 5548,
+      "sha256": "125fe8a7bd72b894d966e627249ba6ef283c30b1bc5546bfc2258bcacce2d760"
+    },
+    {
+      "path": "frontend/components/dashboard/SessionSummaryCard.tsx",
+      "bytes": 2749,
+      "sha256": "8ae6bd70a529601915664f2bd84f3c133bbde4a84065cd24c30f7d8e36f11737"
+    },
+    {
+      "path": "frontend/components/layout/ClientProviders.tsx",
+      "bytes": 903,
+      "sha256": "8e7fb183e89ce7f96f5f3c8e96cc086e6135ebf02eaf62941c5d549308ab5369"
+    },
+    {
+      "path": "frontend/components/layout/NotificationToaster.tsx",
+      "bytes": 1145,
+      "sha256": "eebe23d8395ab72b03a5a063299bce69aa21f1f7470133f7a8df51428895ee19"
+    },
+    {
+      "path": "frontend/components/layout/Sidebar.tsx",
+      "bytes": 4859,
+      "sha256": "317eee399321a6cb51fb1035e05788d2a9eaa2cef767e6841ad2bf08b4832241"
+    },
+    {
+      "path": "frontend/components/layout/Topbar.tsx",
+      "bytes": 10301,
+      "sha256": "2d65b66f2dfdd519141cfab0803ce1660c89dbc4e7ff2889f50f672a2fa4d1b4"
+    },
+    {
+      "path": "frontend/components/read/Mascot.tsx",
+      "bytes": 3468,
+      "sha256": "015e22bb1647538c0fc86b481cc156eb4f381a19cc73ae3f04f59c597a3655f3"
+    },
+    {
+      "path": "frontend/components/settings/StudentApprovals.tsx",
+      "bytes": 7004,
+      "sha256": "bc4a5c8a51f46a163556e9899ef57e9d46b901657b43ffe4cd389154ac4dc74b"
+    },
+    {
+      "path": "frontend/components/settings/StudentSettings.tsx",
+      "bytes": 11770,
+      "sha256": "3db962d567187c16d3d7507b3c7214916c3c054312e7f8152cfdf0c3ecd6c835"
+    },
+    {
+      "path": "frontend/context/SpeakFlowContext.tsx",
+      "bytes": 17835,
+      "sha256": "bf5126d83465a1dd7984da464141e5ce99b20a621a3fc8837e0dd5dfcfc86897"
+    },
+    {
+      "path": "frontend/context/SpeakFlowSessionContext.tsx",
+      "bytes": 19841,
+      "sha256": "64b3120a3b46f193dc55bf8e75da17f08cc854dffd9c4ab3ac9b3acfb94f7682"
+    },
+    {
+      "path": "frontend/eslint.config.mjs",
+      "bytes": 550,
+      "sha256": "c993a26cf041a4d00bb5770955d265dbd3814072d25a364afc5cd714dc0a4fe5"
+    },
+    {
+      "path": "frontend/hooks/useDeferredEffect.ts",
+      "bytes": 660,
+      "sha256": "6e2810295bc6afa98269387cadc2536233c175bfebc2b2aaeb20811af2f76983"
+    },
+    {
+      "path": "frontend/hooks/useRecorder.ts",
+      "bytes": 4381,
+      "sha256": "8f0f952710dffefdd3c59f300aa760f92db4da19ab55042340d4ef91d340f70f"
+    },
+    {
+      "path": "frontend/lib/agentTypes.ts",
+      "bytes": 1132,
+      "sha256": "900430eefbec9cda72f2ba0eaf673d5a0980323612224fdc41a3c011640202b0"
+    },
+    {
+      "path": "frontend/lib/api.ts",
+      "bytes": 28197,
+      "sha256": "42dbfb8a6f645b44469c2421e2f40d6dfaae79cd5ededc4d7bc54cc82b36977f"
+    },
+    {
+      "path": "frontend/lib/errors.ts",
+      "bytes": 230,
+      "sha256": "b267ae080cb35e0e6ab4e47ca85ed065eea228d15b04397b1d95020e5868d615"
+    },
+    {
+      "path": "frontend/lib/letterDiff.ts",
+      "bytes": 2044,
+      "sha256": "00cd21b54630460c4ad200f2dcf29c2600f8991d4b93e4a5df16072f75416a53"
+    },
+    {
+      "path": "frontend/lib/phonemes.ts",
+      "bytes": 567,
+      "sha256": "5d1686e47df29f161ea3dcd1cfdb94c8d7f10f5afc570cbb5544d0533cfe0d91"
+    },
+    {
+      "path": "frontend/lib/popover.ts",
+      "bytes": 805,
+      "sha256": "bf1d78f13ce629449944a4f8c2d8bb824d3f27772740b81217773535555afa40"
+    },
+    {
+      "path": "frontend/lib/prefs.ts",
+      "bytes": 1263,
+      "sha256": "93e9b6d810501fe1595aa175b1737dfb5f22c2e2f70bd43f6c209cc40db00ed4"
+    },
+    {
+      "path": "frontend/lib/speech.ts",
+      "bytes": 2226,
+      "sha256": "01ad9286dbd0a05da2aa8b2e6d8feae54e4f2ad46aa84af66f1a12acae3dbfe6"
+    },
+    {
+      "path": "frontend/next.config.ts",
+      "bytes": 133,
+      "sha256": "614bce25b089c3f19b1e17a6346c74b858034040154c6621e7d35303004767cc"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "bytes": 214123,
+      "sha256": "b0355392435a5dd2936263c138caced73816a7de17a5e7f619cdf99c594f15ad"
+    },
+    {
+      "path": "frontend/package.json",
+      "bytes": 803,
+      "sha256": "a4e9c97e6ababcac9fa36c2c5a5106fec7710f887cead6831f37a9d75a579490"
+    },
+    {
+      "path": "frontend/postcss.config.mjs",
+      "bytes": 94,
+      "sha256": "dfac7ac2d86d326a0e5adb024e7943c181393ed17a5fcb8f0315b24c7da6ddde"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "bytes": 666,
+      "sha256": "be18523b23b78b6e1a876ddd107d330f0168bddf09d751b57e0b5edce69c66f3"
+    },
+    {
+      "path": "start_speakflow.bat",
+      "bytes": 4426,
+      "sha256": "f4c691a459a756ac1e7813d2e916a8272c7941432f10a63a0e2fe9b7668893df"
+    }
+  ],
+  "excluded_categories": [
+    "credentials and environment files except examples",
+    "databases/backups/private telemetry",
+    "raw audio/video and model weights",
+    "dependencies/build outputs",
+    "vendored executables",
+    "obsolete pitches and original private planning documents",
+    "legacy live-test scripts and workstation-specific benchmarks"
+  ]
+}

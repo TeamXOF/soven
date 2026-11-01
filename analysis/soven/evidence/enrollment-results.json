@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "scope": "Isolated temporary database, real UI and HTTP, synthetic accounts only",
+  "checks": [
+    "child signup remains pending and cannot log in",
+    "classroom code visible on Students page",
+    "approval creates and links one new profile",
+    "approved child logs in with that profile",
+    "same-name roster profile requires explicit selection",
+    "existing profile linked without a duplicate",
+    "linked child logs in with existing profile",
+    "Settings shares the current approval queue",
+    "no browser runtime errors"
+  ]
+}

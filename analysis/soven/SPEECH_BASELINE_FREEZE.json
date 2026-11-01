@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "kind": "speech_baseline_freeze",
+  "created_at_utc": "2026-11-01T17:22:22.548006+00:00",
+  "profile": {
+    "schema_version": 1,
+    "profile_id": "fw-base-cpu-int8-2026-11-01",
+    "status": "frozen_reference_baseline_not_quality_validated",
+    "engine": "faster-whisper",
+    "model_repository": "Systran/faster-whisper-base",
+    "model_revision": "ebe41f70d5b6dfa9166e2c581c45c9c0cfc57b66",
+    "model_options": {
+      "device": "cpu",
+      "compute_type": "int8",
+      "cpu_threads": 4,
+      "num_workers": 1
+    },
+    "transcribe_options": {
+      "task": "transcribe",
+      "log_progress": false,
+      "beam_size": 1,
+      "best_of": 5,
+      "patience": 1,
+      "length_penalty": 1,
+      "repetition_penalty": 1,
+      "no_repeat_ngram_size": 0,
+      "temperature": 0.0,
+      "compression_ratio_threshold": 2.4,
+      "log_prob_threshold": -1.0,
+      "no_speech_threshold": 0.6,
+      "condition_on_previous_text": false,
+      "prompt_reset_on_temperature": 0.5,
+      "initial_prompt": null,
+      "prefix": null,
+      "suppress_blank": true,
+      "suppress_tokens": [
+        -1
+      ],
+      "without_timestamps": false,
+      "max_initial_timestamp": 1.0,
+      "word_timestamps": true,
+      "prepend_punctuations": "\"'“¿([{-",
+      "append_punctuations": "\"'.。,，!！?？:：”)]}、",
+      "multilingual": false,
+      "vad_filter": true,
+      "vad_parameters": {
+        "min_silence_duration_ms": 300,
+        "speech_pad_ms": 200
+      },
+      "max_new_tokens": null,
+      "chunk_length": null,
+      "clip_timestamps": "0",
+      "hallucination_silence_threshold": null,
+      "hotwords": null,
+      "language_detection_threshold": 0.5,
+      "language_detection_segments": 1
+    },
+    "required_versions": {
+      "faster-whisper": "1.2.1",
+      "av": "16.0.1",
+      "ctranslate2": "4.8.4",
+      "tokenizers": "0.23.3",
+      "numpy": "2.5.4",
+      "onnxruntime": "1.31.1"
+    },
+    "normalization": "Current acoustic.tokenize and _norm; NFC/casefold, punctuation ignored, genuine letters preserved",
+    "criteria_status": "Owner-authorized engineering targets; not clinical or literature-derived standards",
+    "language_criteria": {
+      "en": {
+        "max_corpus_wer": 0.15,
+        "max_mean_speaker_wer": 0.2,
+        "max_reference_matching_target_false_flag_rate": 0.05,
+        "min_reference_difference_flag_recall": 0.8,
+        "min_speakers": 30,
+        "min_clips": 90,
+        "min_reference_words": 1000,
+        "min_reference_matching_target_words": 500,
+        "min_reference_differing_target_words": 50,
+        "required_cohorts": {
+          "age_band": [
+            "child",
+            "adult"
+          ],
+          "device": [
+            "phone",
+            "desktop"
+          ],
+          "noise": [
+            "quiet",
+            "background"
+          ]
+        },
+        "min_speakers_per_cohort": 10,
+        "runtime_enabled": true,
+        "min_clips_per_speaker": 3
+      },
+      "ur": {
+        "max_corpus_wer": 0.2,
+        "max_mean_speaker_wer": 0.25,
+        "max_reference_matching_target_false_flag_rate": 0.05,
+        "min_reference_difference_flag_recall": 0.8,
+        "min_speakers": 30,
+        "min_clips": 90,
+        "min_reference_words": 1000,
+        "min_reference_matching_target_words": 500,
+        "min_reference_differing_target_words": 50,
+        "required_cohorts": {
+          "age_band": [
+            "child",
+            "adult"
+          ],
+          "device": [
+            "phone",
+            "desktop"
+          ],
+          "noise": [
+            "quiet",
+            "background"
+          ]
+        },
+        "min_speakers_per_cohort": 10,
+        "runtime_enabled": true,
+        "min_clips_per_speaker": 3
+      },
+      "es": {
+        "max_corpus_wer": 0.15,
+        "max_mean_speaker_wer": 0.2,
+        "max_reference_matching_target_false_flag_rate": 0.05,
+        "min_reference_difference_flag_recall": 0.8,
+        "min_speakers": 30,
+        "min_clips": 90,
+        "min_reference_words": 1000,
+        "min_reference_matching_target_words": 500,
+        "min_reference_differing_target_words": 50,
+        "required_cohorts": {
+          "age_band": [
+            "child",
+            "adult"
+          ],
+          "device": [
+            "phone",
+            "desktop"
+          ],
+          "noise": [
+            "quiet",
+            "background"
+          ]
+        },
+        "min_speakers_per_cohort": 10,
+        "runtime_enabled": false,
+        "min_clips_per_speaker": 3
+      }
+    },
+    "model_artifact_sha256": {
+      "config.json": "56a6d8110d311f19c8f0471e562832c7527f146b567275bfca59fcf7c184da9a",
+      "model.bin": "d01c3014881c9c6f3133c182f3d2887eb6ca1c789a7538c5c007196857a0a6a9",
+      "tokenizer.json": "fb7b63191e9bb045082c79fd742a3106a12c99513ab30df4a0d47fa6cb6fd0ab",
+      "vocabulary.txt": "34ce3fe1c5041027b3f8d42912270993f986dbc4bb34cf27f951e34a1e453913"
+    }
+  },
+  "profile_sha256": "598c787f1f4200244ab2ee31d29bb87789b8eed5aeeb7093f99b8ab870ddfee2",
+  "model_artifacts": {
+    "model.bin": {
+      "sha256": "d01c3014881c9c6f3133c182f3d2887eb6ca1c789a7538c5c007196857a0a6a9",
+      "bytes": 145217532
+    },
+    "config.json": {
+      "sha256": "56a6d8110d311f19c8f0471e562832c7527f146b567275bfca59fcf7c184da9a",
+      "bytes": 2309
+    },
+    "tokenizer.json": {
+      "sha256": "fb7b63191e9bb045082c79fd742a3106a12c99513ab30df4a0d47fa6cb6fd0ab",
+      "bytes": 2203239
+    },
+    "vocabulary.txt": {
+      "sha256": "34ce3fe1c5041027b3f8d42912270993f986dbc4bb34cf27f951e34a1e453913",
+      "bytes": 459861
+    }
+  },
+  "package_versions": {
+    "faster-whisper": "1.2.1",
+    "av": "16.0.1",
+    "ctranslate2": "4.8.4",
+    "tokenizers": "0.23.3",
+    "numpy": "2.5.4",
+    "onnxruntime": "1.31.1"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "system": "Windows",
+    "architecture": "AMD64"
+  },
+  "source_sha256": {
+    "backend/services/stt.py": "a88e2045b834d2234394c2063a171389169b26bd9b2b0a2306f817fa300f0567",
+    "backend/services/acoustic.py": "9105df3e05e6431aa0474f16d6f25fbfb6108899d062ccb3048e84a206fce2b4",
+    "backend/core/speech_evaluation.py": "73de41b62972cdbea9d4d7c650bed014d2833bf9c4de1a00454f2b68461ca5c1",
+    "backend/core/config.py": "c6d41852d803d2c7e75aa1ebedc2418c8083241efc7e9db2aadd1f917908df96",
+    "tools/freeze_speech_evaluation.py": "714686612b49f8fa4b8929e72a447f33d273c9d9e5ef8a7dbccecdde53a3ffc7",
+    "backend/requirements.txt": "115a6721868fa8f194446d7342c39ba246efa61af5e89c88e92f7b6af63d807f"
+  },
+  "inference_performed": false,
+  "quality_validated": false,
+  "receipt_sha256": "1ceec864fdd49b09640e030d161ddfb4b7936b0841e2c3490e69bcfaea285fab"
+}

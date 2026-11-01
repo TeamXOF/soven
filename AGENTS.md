@@ -19,3 +19,5 @@ The owner supplied two illustrated UI references and authorized implementation. 
 The owner has now supplied two cream/coral illustrated reading-platform references and explicitly authorized implementation without further permission. The UI design hold is resolved. Follow analysis/soven/15_UI_DESIGN_AND_IMPLEMENTATION.md, retain the approved SOVEN logo and accurate capability/privacy copy. Do not substitute sample statistics for user history.
 
 Read analysis/soven/16_REASONING_PROVIDER_INTEGRATION.md before changing providers. Adapter contracts are implemented and mock-tested; Google is default, live permitted access remains open, and hosted Meta must not be enabled from this Pakistan environment. Run both backend test files; no silent cross-provider fallback is allowed.
+
+M2.1 is complete. Read analysis/soven/17_SPEECH_EVALUATION_PROTOCOL.md before M2.2. Run backend/tests/test_speech_evaluation.py with the existing suites. Use the pinned reference/profile and private preregistration checks; old speakers are exposed, and no new quality result is claimed. Do not use historical printed prompts as verbatim ASR references.

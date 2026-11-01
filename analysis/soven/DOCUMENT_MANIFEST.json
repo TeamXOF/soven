@@ -14,10 +14,10 @@
         },
         {
           "path": "02_CURRENT_STATE.md",
-          "sha256": "7a63ed572d1a51900495bac3a56a1915ff49c7641b67297e494fe328885aeb01"
+          "sha256": "b7ed53f448b81b002409fb795c79e3ada7a0988d03f1928be678da44942be5b9"
         }
       ],
-      "sha256": "1a1ce2a022cb91c58564bcb8eba26728cebacd61a9eb211dcfbc7f85f0440c2b",
+      "sha256": "070a91fdd953f31b0b91a658346cfb8c1b17cfac21a6834c558cca959941183a",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -26,10 +26,14 @@
       "sources": [
         {
           "path": "03_ARCHITECTURE.md",
-          "sha256": "d56f893dda85f597bf0406ed9392aa91382336e6b17173697fa432aa8a84aa1c"
+          "sha256": "bf4d2608486a89c292ebbd742e14b31feb3e92e4de58987da5bd85d6be3e1515"
+        },
+        {
+          "path": "17_SPEECH_EVALUATION_PROTOCOL.md",
+          "sha256": "cda41f77012dbdc4cf1a3bec1bc72ad04922b2a9ea8857b762640f59491842b9"
         }
       ],
-      "sha256": "d75f44c329a737a86488bb98c5f7272fb8e4e9b32566ace1594ecc6b37d4981a",
+      "sha256": "c48f874837c75891422772ca46965b1ebe99c97630299e0fdef2666a2182008b",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -38,14 +42,14 @@
       "sources": [
         {
           "path": "04_PRODUCT_REQUIREMENTS.md",
-          "sha256": "e51dcf992745c795c3119c5c3114621f326e2db33eab20c4f65fb4f4c368194d"
+          "sha256": "31283eda9b946ee18c1faa6f5cd0049e04f2b385bccad1300f12545c3a482083"
         },
         {
           "path": "05_SOURCE_REVIEW.md",
           "sha256": "c39beb6148f3f06cbec39cf5332b4899012686cabfbbff07b4bb4d457664ff8e"
         }
       ],
-      "sha256": "7ceede60813508cf68e3bd31cc2054c529358726478af525d2deb3d96556d7df",
+      "sha256": "3142ae519cc8dc6f5d3165ae9077a2f9f41acf937e6c18b5c762b2dd8f519cb1",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -61,7 +65,7 @@
           "sha256": "a85940cfc71bfac896cb65784c2a435ea757982cfd4ce624e795fd19252b866b"
         }
       ],
-      "sha256": "5440ec42a84e88b359bd0fc920c6e4ab01ac8d78de71d4455e647eb8ebbed342",
+      "sha256": "4ad09a9bca275a5b046eb686f654f2aa0d6fea949ee9ad9f0da5001b42f8b2ab",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -70,18 +74,18 @@
       "sources": [
         {
           "path": "07_IMPLEMENTATION_ROADMAP.md",
-          "sha256": "16612dd2b19de9a2a4be0f48a49b8c161d84b06717043521614aa285b2e4286d"
+          "sha256": "b9c078d8bf330a80fd6752ea300fabe413e6263c6e6c39ad8a1d2d5aaca17179"
         },
         {
           "path": "10_DECISIONS_AND_HANDOFF.md",
-          "sha256": "10123f391ce764d1661786ff34a27f4b04bfc1c4a7ef0cfd7d4d8653bacbc648"
+          "sha256": "976168854293ed4e54299f88fa09a8dc1bc65894a40ed1a78d3ebef64bb06ae7"
         },
         {
           "path": "11_PRODUCT_DEFAULTS.md",
           "sha256": "4a629b7f82f9bf67392c73ce8909501f05dddfd899214f327b7c9c6b521b978a"
         }
       ],
-      "sha256": "fbefc17b1d153e12b0677cc05ed9367b5885c2070d755ce42a60aeb1174f13ff",
+      "sha256": "67293d752a614212f36a46d576937445a14f33fcb38b53ae85fbf0ef7958d07e",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -90,7 +94,7 @@
       "sources": [
         {
           "path": "08_VALIDATION_AND_OPERATIONS.md",
-          "sha256": "67caa056e71d199265cd4668c99368902ddd1142cf8f9529e7c82ca39b48e525"
+          "sha256": "86e1f272edd4503716a3137cd985fd4a48340aa349ac187dfbb0d2b818cd88c6"
         },
         {
           "path": "09_BRAND_AND_REPOSITORY.md",
@@ -102,7 +106,7 @@
         },
         {
           "path": "DELIVERY_STATUS.json",
-          "sha256": "9688da957db9e945ace4dce52e31e437b5bb15480228695b2449e83790ea14bd"
+          "sha256": "8ba5b3cc5d06b77e071cd8cd6cbaaa395a6609e50f90fa95ad02334a01a9d7a5"
         },
         {
           "path": "FOUNDATION_VALIDATION.json",
@@ -117,7 +121,7 @@
           "sha256": "a637bade66569f24ef1d91f5646efdc0b6d536f853dacbb65415882ed69e3f99"
         }
       ],
-      "sha256": "d8168e8fd86e94073c307c63148ea462b062c7c7e1966eba1fbf9c70c7035a70",
+      "sha256": "e76b989912c9127fd5203deac27ac1ce8a89969e161deb8c79d9430ebbdfd5d2",
       "render_review": "see DOCUMENT_QA.json"
     }
   ]

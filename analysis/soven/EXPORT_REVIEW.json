@@ -1,7 +1,7 @@
 {
-  "files_checked": 279,
+  "files_checked": 287,
   "findings": [],
   "scope": "Exact export file content and size; excludes dependencies, ignored QA/runtime directories and Git objects.",
   "review_date": "2026-11-01",
-  "revision": "Configured reasoning adapters with mocked contracts and current handoff"
+  "revision": "M2.1 frozen speech baseline, preregistration and maintained handoff"
 }

@@ -25,7 +25,7 @@ The current code uses the repaired reading baseline. The target is a worldwide p
 
 ## Milestone two speech reliability and coverage
 
-- [ ] M2.1 Freeze a recognizer configuration and define language-specific release thresholds before evaluating untouched speakers.
+- [x] M2.1 Freeze a reference recognizer configuration and language-specific engineering criteria before new evaluation. Evidence: guide 17, pinned profile, SPEECH_BASELINE_FREEZE.json and 20 preregistration regressions. No recognition improvement or new holdout result is claimed.
 - [ ] M2.2 Reproduce and improve the recorded child-speech disagreement; retain failed and uncertain observations rather than hiding them.
 - [ ] M2.3 Validate Urdu on representative speakers, devices and noise; establish reviewed Spanish evaluation/content fixtures.
 - [ ] M2.4 Implement explicit STT/TTS/timing capability selection and fallbacks per language. No timestamp or confidence fabrication.

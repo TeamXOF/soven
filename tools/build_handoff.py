@@ -16,7 +16,7 @@ parser=argparse.ArgumentParser();parser.add_argument('--root',type=Path,default=
 ROOT=args.root;PACK=ROOT/'analysis/soven';OUT=PACK/'documents';OUT.mkdir(parents=True,exist_ok=True)
 groups=[
  ('01_SOVEN_Project_Context_and_Current_State.docx','SOVEN project context and current state',['01_PROJECT_CONTEXT.md','02_CURRENT_STATE.md']),
- ('02_SOVEN_Architecture_and_Engineering_Handoff.docx','SOVEN architecture and engineering handoff',['03_ARCHITECTURE.md']),
+ ('02_SOVEN_Architecture_and_Engineering_Handoff.docx','SOVEN architecture and engineering handoff',['03_ARCHITECTURE.md','17_SPEECH_EVALUATION_PROTOCOL.md']),
  ('03_SOVEN_Product_Requirements_and_Source_Review.docx','SOVEN product requirements and source review',['04_PRODUCT_REQUIREMENTS.md','05_SOURCE_REVIEW.md']),
  ('04_SOVEN_Meta_Integration_and_Privacy.docx','SOVEN Meta integration and privacy',['06_META_PROVIDER_PLAN.md','16_REASONING_PROVIDER_INTEGRATION.md']),
  ('05_SOVEN_Roadmap_and_Decisions.docx','SOVEN implementation roadmap and decisions',['07_IMPLEMENTATION_ROADMAP.md','10_DECISIONS_AND_HANDOFF.md','11_PRODUCT_DEFAULTS.md']),

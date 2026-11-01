@@ -1,12 +1,12 @@
 {
-  "generated_at_utc": "2026-11-01T16:42:26.650783+00:00",
+  "generated_at_utc": "2026-11-01T17:26:19.327428+00:00",
   "scope": "Active source and supported tooling; no runtime/private files",
   "text_hash_format": "UTF-8 with CRLF normalized to LF",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
-      "sha256": "8970b659cc6b9f8b7a429a02a276e25a4a727319b2f6faae86f16450e8fdeba6",
-      "lines": 32,
+      "sha256": "522fad361fca28791696915d1322bbe419bc38576443ee2ad52469f976b89750",
+      "lines": 34,
       "symbols": []
     },
     {
@@ -254,6 +254,78 @@
         {
           "name": "new_token",
           "line": 21,
+          "kind": "FunctionDef"
+        }
+      ]
+    },
+    {
+      "path": "backend/core/speech_evaluation.py",
+      "sha256": "73de41b62972cdbea9d4d7c650bed014d2833bf9c4de1a00454f2b68461ca5c1",
+      "lines": 224,
+      "symbols": [
+        {
+          "name": "canonical",
+          "line": 19,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "file_hash",
+          "line": 23,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "load_profile",
+          "line": 33,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "seal",
+          "line": 44,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "verify_seal",
+          "line": 48,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "installed_versions",
+          "line": 54,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "freeze_baseline",
+          "line": 58,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "verify_freeze",
+          "line": 87,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "_identifier",
+          "line": 101,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "validate_dataset",
+          "line": 105,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "coverage",
+          "line": 168,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "register_evaluation",
+          "line": 195,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "write_new_receipt",
+          "line": 220,
           "kind": "FunctionDef"
         }
       ]
@@ -2007,6 +2079,138 @@
       ]
     },
     {
+      "path": "backend/tests/test_speech_evaluation.py",
+      "sha256": "74dee0720371cbeeb36923954b30d46af8ad3317c2f5ff95c49bd892b619811f",
+      "lines": 253,
+      "symbols": [
+        {
+          "name": "SpeechEvaluationContracts",
+          "line": 19,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "setUp",
+          "line": 20,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "dataset",
+          "line": 40,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "save",
+          "line": 57,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "register",
+          "line": 60,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_profile_freezes_language_targets_without_enabling_spanish",
+          "line": 63,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_profile_keeps_current_explicit_decoder_controls",
+          "line": 73,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_freeze_records_artifacts_and_sources_without_inference",
+          "line": 84,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_changed_or_missing_cached_weights_are_rejected",
+          "line": 92,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_dependency_drift_is_not_silent",
+          "line": 100,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_receipt_tampering_and_source_drift_are_rejected",
+          "line": 105,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_valid_manifest_keeps_verbatim_reference_separate_from_target",
+          "line": 119,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_printed_prompt_and_unreviewed_references_are_rejected",
+          "line": 125,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_word_labels_require_exact_boolean_target_positions",
+          "line": 135,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_speaker_split_leakage_is_rejected",
+          "line": 143,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_historical_exposed_speaker_is_not_fresh_holdout",
+          "line": 149,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_audio_leakage_is_rejected_across_different_corpus_names",
+          "line": 158,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_duplicate_clips_hash_changes_and_path_escape_fail",
+          "line": 164,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_missing_rights_cohorts_and_false_age_changes_fail",
+          "line": 178,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_registration_records_gaps_and_never_claims_quality",
+          "line": 193,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_sample_eligibility_requires_balance_and_per_speaker_repeats",
+          "line": 204,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_nonobject_and_oversize_private_manifests_fail_cleanly",
+          "line": 219,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_unexpected_model_assets_require_a_new_freeze",
+          "line": 229,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_receipts_are_exclusive_and_cannot_overwrite_prior_registration",
+          "line": 234,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_cli_check_has_no_weights_network_or_private_output",
+          "line": 241,
+          "kind": "FunctionDef"
+        }
+      ]
+    },
+    {
       "path": "backend/tests/validate_accounts_ui.cjs",
       "sha256": "df993ae4685f715ca7cf5f07a5f51b33d8ecbb6c675a41adbfb812ce76cb2b6f",
       "lines": 81,
@@ -3680,7 +3884,7 @@
     },
     {
       "path": "tools/build_handoff.py",
-      "sha256": "5ab2a28e9e91e7f5f14c3b7592106bec7f32218c21ba4530088dbee7e29de285",
+      "sha256": "3b71b3700f7bb4bba15deea57376d20a6e2f7b42f7462d1a776ee4d96354299c",
       "lines": 104,
       "symbols": [
         {
@@ -3722,6 +3926,18 @@
       "sha256": "be024f53957e667856b9880e3022d836e280765888822a7d31921efc518850c0",
       "lines": 39,
       "symbols": []
+    },
+    {
+      "path": "tools/freeze_speech_evaluation.py",
+      "sha256": "714686612b49f8fa4b8929e72a447f33d273c9d9e5ef8a7dbccecdde53a3ffc7",
+      "lines": 58,
+      "symbols": [
+        {
+          "name": "main",
+          "line": 14,
+          "kind": "FunctionDef"
+        }
+      ]
     }
   ]
 }

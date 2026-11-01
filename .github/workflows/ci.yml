@@ -14,6 +14,8 @@ jobs:
       - run: python tools/build_language_types.py --check
       - run: python backend/tests/test_regressions.py
       - run: python backend/tests/test_reasoning_providers.py
+      - run: python backend/tests/test_speech_evaluation.py
+      - run: python tools/freeze_speech_evaluation.py check
   frontend:
     runs-on: ubuntu-latest
     defaults:

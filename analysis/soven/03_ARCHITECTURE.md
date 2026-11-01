@@ -85,3 +85,7 @@ BookReader ties results and word tips to token/route/attempt generation; phase-t
 ## Configured reasoning boundary
 
 services/model_client.py selects one server-configured provider per call. Google keeps its existing model retry. Meta and explicit compatible endpoints use Chat Completions with closed schemas and no cross-provider fallback. ModelResult carries provenance outside generated fields; reasoning.py validates its existing Pydantic output and returns accurate source labels, while orchestrator.py preserves measured scoring and validated practice. Existing database source text fields accept new values without rewriting old records. Public inventory reports adapter implementation separately from live validation. See 16_REASONING_PROVIDER_INTEGRATION.md for configuration, bounds and retained cache/latency compatibility.
+
+## Speech evaluation tooling
+
+core/speech_evaluation.py validates frozen profiles, artifact/dependency/source checksums, private manifests, disjoint speakers/audio and sample coverage. tools/freeze_speech_evaluation.py exposes check/freeze/verify/register commands without inference or downloads. backend/data/speech_evaluation_profile.json declares the reference configuration; the public exposure registry retains historical IDs/hashes. Runtime stt.py is unchanged. A benchmark runner and fresh quality evaluation remain next work; guide 17 defines the protocol.

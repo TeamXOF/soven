@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-01",
+  "milestone": "M2.1 frozen reference baseline and preregistration",
+  "existing_application_tests": 62,
+  "provider_contract_tests": 18,
+  "speech_evaluation_tests": 20,
+  "backend_total": 100,
+  "profile_id": "fw-base-cpu-int8-2026-11-01",
+  "baseline_receipt_sha256": "1ceec864fdd49b09640e030d161ddfb4b7936b0841e2c3490e69bcfaea285fab",
+  "cached_model_artifacts_verified": 4,
+  "historical_exposed_speakers": 40,
+  "historical_available_audio_hashes": 20,
+  "new_speech_benchmark_runs": 0,
+  "production_recognizer_changed": false,
+  "runtime_languages_unchanged": [
+    "en",
+    "ur"
+  ],
+  "front_end": "No frontend edits; earlier local/browser evidence retained, remote CI runs frontend checks",
+  "quality_status": "Not validated; criteria are predeclared internal engineering gates, not measured outcomes",
+  "checklist": {
+    "done": 30,
+    "open": 29
+  },
+  "next": "M2.2 deterministic evaluation runner and development reliability work; fresh human-reviewed evaluation data remains required",
+  "remote_ci": "Pending publication verification; outcome will be recorded in completion log"
+}

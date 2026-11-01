@@ -65,3 +65,7 @@ Run the new route/account/book browser journey with VALIDATION_BROWSER_SCRIPT=va
 ## Reasoning adapter checks
 
 Current verification passes 62 application regressions plus 18 isolated provider contracts, frontend lint/TypeScript/production build and 19 illustrated UI scenarios. This browser rerun extends the earlier 18-case UI snapshot; the previous 27 enrollment/dashboard/account checks remain dated UI-stage evidence rather than a new rerun. Provider tests mock transport, including Meta protocol responses; no new live service was contacted. Windows peer-reset callbacks can appear on aborted HTTPS browser navigation while scenario assertions and browser runtime-error checks pass. Read guide 16 before configuring a provider.
+
+## Frozen speech evaluation checks
+
+Run python backend/tests/test_speech_evaluation.py alongside the existing application/provider suites. The current total is 100 passing backend contracts (62 + 18 + 20). No frontend or runtime reading behavior changed in this stage, so earlier browser/physical evidence is unchanged; fresh remote CI still checks the frontend. Run python tools/freeze_speech_evaluation.py check for a weight-free configuration check, then follow guide 17 for private freeze/registration. The sealed reference was verified against cached artifacts and installed dependencies without new speech inference. Sample coverage and engineering targets are not measured quality.

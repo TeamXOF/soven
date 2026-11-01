@@ -18,7 +18,7 @@ The baseline has functioning local reading and teacher workflows. It is not a fi
 
 Hosted reasoning still uses Google; online speech uses Groq, with local Whisper fallback. Provider availability has not been established by this import. Explicit offline mode disables outbound inference, probes and sync. Cached local model weights and dependencies are required. The prior tested model was base INT8 on CPU; the configuration default remains tiny unless changed, so reproduce benchmarks with an explicit model selection.
 
-Browser speech synthesis is available when the device has an appropriate voice; availability and network behavior vary. No neural TTS service, Meta runtime adapter, Muse Image story generation, Spanish track or real-time interrupting coach is implemented.
+Browser speech synthesis is available when the device has an appropriate voice; availability and network behavior vary. No neural TTS service, live verified Meta use, Muse Image story generation, Spanish track or real-time interrupting coach is implemented. Meta/compatible reasoning adapter mechanics are mock-tested.
 
 ## Measured limitations
 
@@ -64,4 +64,8 @@ New accounts see honest empty history. Book progress and unlock presentation can
 
 ## Configurable reasoning milestone
 
-The coaching boundary now supports default Google, opt-in Meta Chat Completions and an explicit compatible endpoint. Structured output, local validation, source metadata, output limits, redacted errors and template fallbacks pass 18 mocked provider contracts, alongside the 62 existing backend regressions. The illustrated browser journey passes 19 scenarios, including a controlled provider-source display. Lint, TypeScript and production build pass. No live new-provider call, permitted account, measured cost or new speech-quality claim is established. See guide 16 and REASONING_PROVIDER_VALIDATION.json.
+Default Google and opt-in Meta/compatible reasoning adapters pass 18 mocked contracts for structured output, validation, provenance, limits and fallback. The UI journey passes 19 controlled browser scenarios; frontend checks pass. Live permitted access and measured provider quality/cost remain open. See guide 16 and REASONING_PROVIDER_VALIDATION.json.
+
+## Frozen speech evaluation foundation
+
+M2.1 pins a cached base-model reference, dependencies, decoding and source hashes, engineering criteria and an exposure registry. Private preregistration rejects known overlap and incomplete references; 20 offline tests pass. No new speech benchmark or production decoder change occurred. Read guide 17 before M2.2; recognition quality remains unvalidated.

@@ -16,7 +16,7 @@ import urllib.request
 from unittest.mock import patch
 
 ROOT=Path(__file__).resolve().parents[2]
-OUT=ROOT/'analysis/meta-hackathon-2026/runtime-validation'
+OUT=ROOT/'.qa/runtime-validation'
 DATA=OUT/'speechocean-sample';DATA.mkdir(parents=True,exist_ok=True)
 BASE='https://raw.githubusercontent.com/jimbozhang/speechocean762/main/'
 

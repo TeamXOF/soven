@@ -111,6 +111,30 @@ class Regressions(unittest.TestCase):
         with get_db_connection() as conn:
             self.assertIsNotNone(conn.execute("SELECT id FROM students WHERE id='s-a'").fetchone())
 
+    def test_startup_check_and_backup_connections_are_closed(self):
+        import sqlite3
+        from database import schema
+        real_connect = sqlite3.connect
+        with tempfile.TemporaryDirectory() as directory:
+            database = str(Path(directory) / 'legacy.db')
+            connection = real_connect(database)
+            connection.execute('CREATE TABLE legacy_marker (id INTEGER)')
+            connection.commit()
+            connection.close()
+            connections = []
+            def track_connection(*args, **kwargs):
+                connection = real_connect(*args, **kwargs)
+                connections.append(connection)
+                return connection
+            with patch.object(schema, 'DB_PATH', database), patch.object(schema.sqlite3, 'connect', side_effect=track_connection):
+                schema.init_db()  # Unversioned database and recovery backup.
+                schema.init_db()  # Already versioned startup inspection.
+            self.assertTrue((Path(directory) / '.db_backup/legacy-before-hardening.db').exists())
+            self.assertGreaterEqual(len(connections), 5)
+            for connection in connections:
+                with self.assertRaises(sqlite3.ProgrammingError):
+                    connection.execute('SELECT 1')
+
     def test_dynamic_detail_link(self):
         with get_db_connection() as conn:
             conn.execute("INSERT OR REPLACE INTO story_attempts(id,student_id,track,level,accuracy,stars,passed,result_json) VALUES ('detail','s-a','en',1,80,2,1,?)", (json.dumps({'words':[], 'transcript':'The cat sat','wpm':42}),))

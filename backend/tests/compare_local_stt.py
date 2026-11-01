@@ -9,7 +9,7 @@ from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'.test-deps'))
 sys.path.insert(0,str(ROOT/'backend'))
-OUT=ROOT/'analysis/meta-hackathon-2026/runtime-validation'
+OUT=ROOT/'.qa/runtime-validation'
 cache=Path.home()/'.cache/huggingface/hub/models--Systran--faster-whisper-base/snapshots'
 model_path=next(p for p in cache.iterdir() if (p/'model.bin').is_file())
 os.environ.update(OFFLINE_MODE='1',HF_HUB_OFFLINE='1',HF_HUB_DISABLE_TELEMETRY='1')

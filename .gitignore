@@ -208,3 +208,5 @@ pass.txt
 .soven-work/
 analysis/soven/private/
 *.db-journal
+
+!/HANDOFF.md

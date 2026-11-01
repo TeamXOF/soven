@@ -1,4 +1,5 @@
 "use client";
+import BrandMark from "@/components/brand/BrandMark";
 
 /**
  * Dark sidebar per the UI guide's teacher mock: near-black rail, SpeakFlow
@@ -12,7 +13,7 @@
 import { useAuth } from "@/components/auth/AuthProvider";
 import {
 Activity,
-AudioLines,
+
 BookOpen,
 FileText,
 GraduationCap,
@@ -72,11 +73,11 @@ export default function Sidebar() {
       {/* Logo */}
       <div className="p-5 flex items-center gap-2.5">
         <span className="h-10 w-10 rounded-xl bg-accent-primary flex items-center justify-center shadow-lg">
-          <AudioLines className="w-5 h-5 text-white" />
+          <BrandMark />
         </span>
         <div>
           <h1 className="text-lg font-extrabold leading-tight">
-            SpeakFlow<span className="text-accent-primary">AI</span>
+            SOVEN
           </h1>
           <p className="text-[9px] font-mono uppercase tracking-wider text-gray-500">Every reader. Every day.</p>
         </div>

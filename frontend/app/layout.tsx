@@ -28,8 +28,8 @@ const notoNastaliqUrdu = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "SpeakFlow AI",
-  description: "Every reader. Every day.",
+  title: "SOVEN",
+  description: "Reading practice, one word at a time.",
 };
 
 export default function RootLayout({

@@ -1,0 +1,103 @@
+{
+  "maintained_format": "Markdown",
+  "generated_format": "DOCX",
+  "source_date": "2026-11-01",
+  "documents": [
+    {
+      "document": "documents/01_SOVEN_Project_Context_and_Current_State.docx",
+      "title": "SOVEN project context and current state",
+      "sources": [
+        {
+          "path": "01_PROJECT_CONTEXT.md",
+          "sha256": "4746acaa794bd9f32f6550c141b70fc10e3434127461e32bf76072330ad8cd2a"
+        },
+        {
+          "path": "02_CURRENT_STATE.md",
+          "sha256": "e61504de279da2e8107d04e12717b909dc34079474902d87be41376d4a179c57"
+        }
+      ],
+      "sha256": "2fe8013fc824bd4d4254c28002c8891fe7113194b221cc8290e6789a191e9315",
+      "render_review": "see DOCUMENT_QA.json"
+    },
+    {
+      "document": "documents/02_SOVEN_Architecture_and_Engineering_Handoff.docx",
+      "title": "SOVEN architecture and engineering handoff",
+      "sources": [
+        {
+          "path": "03_ARCHITECTURE.md",
+          "sha256": "502ae52f1ab547689bdb1c43476860f75e1ef03e9ba5075cbb716e2bca244451"
+        }
+      ],
+      "sha256": "6af4c565b779462fc16164ca01f7eea1bc208acbe60b8909001bb6a3378318ff",
+      "render_review": "see DOCUMENT_QA.json"
+    },
+    {
+      "document": "documents/03_SOVEN_Product_Requirements_and_Source_Review.docx",
+      "title": "SOVEN product requirements and source review",
+      "sources": [
+        {
+          "path": "04_PRODUCT_REQUIREMENTS.md",
+          "sha256": "4319e8fefe1575a943a6017e093d1671e32f77e4278700fbd29d3b3b8c2f8c11"
+        },
+        {
+          "path": "05_SOURCE_REVIEW.md",
+          "sha256": "61fade6aa9d1871f93119522d522e9c2c7842a873ed4cd057a44ee1cd160c44c"
+        }
+      ],
+      "sha256": "a02b1c915155a570de01d073462690a55542b5fa5bdebdb9cab4124af3149dc7",
+      "render_review": "see DOCUMENT_QA.json"
+    },
+    {
+      "document": "documents/04_SOVEN_Meta_Integration_and_Privacy.docx",
+      "title": "SOVEN Meta integration and privacy",
+      "sources": [
+        {
+          "path": "06_META_PROVIDER_PLAN.md",
+          "sha256": "41f5cc699f1c0f14771bab7eac6c7d1ebe23b129082f48944291144764a34a93"
+        }
+      ],
+      "sha256": "d18850db519711daa508c562b11ac6b4244248ac7da6afea969f7a36dac1bc32",
+      "render_review": "see DOCUMENT_QA.json"
+    },
+    {
+      "document": "documents/05_SOVEN_Roadmap_and_Decisions.docx",
+      "title": "SOVEN implementation roadmap and decisions",
+      "sources": [
+        {
+          "path": "07_IMPLEMENTATION_ROADMAP.md",
+          "sha256": "4d205dcc5ac6c50db0c228aacd7168f7f713793ea2a62737d622789a29d48a61"
+        },
+        {
+          "path": "10_DECISIONS_AND_HANDOFF.md",
+          "sha256": "fd101783ba271b8a3317a6416376b86c6a4e1bd850334f85233fdd82ccab34a2"
+        }
+      ],
+      "sha256": "d5c94ca7f35962884606792c5bfdbbb6b09c38bcd05d8b133a9045b2dc0d84c4",
+      "render_review": "see DOCUMENT_QA.json"
+    },
+    {
+      "document": "documents/06_SOVEN_Validation_Operations_and_Brand.docx",
+      "title": "SOVEN validation operations and brand",
+      "sources": [
+        {
+          "path": "08_VALIDATION_AND_OPERATIONS.md",
+          "sha256": "848f38b0fb1b79045edf105c00535a62be88e0bd87698eb248fc8c585993efdb"
+        },
+        {
+          "path": "09_BRAND_AND_REPOSITORY.md",
+          "sha256": "5ba17ad0d0e1ab3bd0a5e745cfaadc6a67b897fc4d824e6cbb53d18e7e5b68f7"
+        },
+        {
+          "path": "VALIDATION_RESULTS.json",
+          "sha256": "1f886a28c055e2b43f4de7be503bd4621f9acbd18f6e94cf3017e22367f723ea"
+        },
+        {
+          "path": "DELIVERY_STATUS.json",
+          "sha256": "b57458043fc1869ae3e7fceb1a5fe47431cd895a898e796862315faa5d552fea"
+        }
+      ],
+      "sha256": "0b26593a75d0a5abc25c5f274025aaf036e9ad61651a5091731fbff0b6c56095",
+      "render_review": "see DOCUMENT_QA.json"
+    }
+  ]
+}

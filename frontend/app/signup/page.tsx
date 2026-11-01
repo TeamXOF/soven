@@ -1,4 +1,5 @@
 "use client";
+import BrandMark from "@/components/brand/BrandMark";
 import { toError } from "@/lib/errors";
 
 /**
@@ -7,7 +8,7 @@ import { toError } from "@/lib/errors";
  */
 
 import { useAuth } from "@/components/auth/AuthProvider";
-import { AudioLines,CheckCircle2,Loader2 } from "lucide-react";
+import { CheckCircle2,Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -45,9 +46,9 @@ export default function SignupPage() {
       <div className="speakflow-card w-full max-w-md p-8 bg-white shadow-xl">
         <div className="flex items-center gap-2.5 mb-6">
           <span className="h-10 w-10 rounded-xl bg-accent-primary flex items-center justify-center shadow">
-            <AudioLines className="w-5 h-5 text-white" />
+            <BrandMark />
           </span>
-          <p className="text-lg font-extrabold text-text-primary">SpeakFlow<span className="text-accent-primary-dark">AI</span></p>
+          <p className="text-lg font-extrabold text-text-primary">SOVEN</p>
         </div>
 
         {done ? (

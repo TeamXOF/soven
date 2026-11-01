@@ -1,11 +1,12 @@
 "use client";
+import BrandMark from "@/components/brand/BrandMark";
 
 /**
  * Kid navigation bar for the fullscreen Story Mode area — so a student is
  * NEVER trapped without navigation. Slim, playful, role-aware.
  */
 
-import { AudioLines,BookOpen,GraduationCap,LayoutDashboard,LineChart,LogOut,Target } from "lucide-react";
+import { BookOpen,GraduationCap,LayoutDashboard,LineChart,LogOut,Target } from "lucide-react";
 import Link from "next/link";
 import { usePathname,useRouter } from "next/navigation";
 import { useAuth } from "./AuthProvider";
@@ -39,10 +40,10 @@ export default function KidNav() {
       <div className="max-w-3xl mx-auto px-4 h-14 flex items-center justify-between">
         <Link href="/read" className="flex items-center gap-2">
           <span className="h-8 w-8 rounded-lg bg-accent-primary flex items-center justify-center">
-            <AudioLines className="w-5 h-5 text-white" />
+            <BrandMark />
           </span>
           <span className="font-extrabold text-text-primary">
-            SpeakFlow<span className="text-accent-primary-dark">AI</span>
+            SOVEN
           </span>
         </Link>
 

@@ -1,3 +1,5 @@
+> Historical evidence from the SpeakFlow repair pass. For current SOVEN status and executable instructions, read ../00_START_HERE.md. Older test counts and workstation commands are historical.
+
 # Dashboard feedback repairs — 31 October 2026
 
 The screenshot review exposed presentation, notification, practice-selection and Urdu scoring defects. These repairs concern the classic reading dashboard. They do not establish speech-recognition accuracy on children.

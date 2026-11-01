@@ -1,3 +1,5 @@
+> Historical evidence from the SpeakFlow repair pass. For current SOVEN status and executable instructions, read ../00_START_HERE.md. Older test counts and workstation commands are historical.
+
 # SpeakFlow runtime validation — 30 October 2026
 
 The processing path now has real runtime evidence. Recognition quality on children's speech remains a material product issue. These checks do not establish learning outcomes, reliable pronunciation diagnosis, production capacity, or global language support.

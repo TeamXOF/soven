@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Sparkle — the SpeakFlow mascot. A soft rounded star character drawn in the
+ * Sparkle — the SOVEN mascot. A soft rounded star character drawn in the
  * design-system palette (lavender body, pink cheeks, ink outline), replacing
  * the emoji placeholder everywhere a mascot appears in Story Mode.
  *
@@ -45,7 +45,7 @@ export default function Mascot({
 }) {
   return (
     <svg viewBox="0 0 100 100" className={`${className} select-none`} role="img"
-      aria-label={`SpeakFlow mascot (${mood})`}>
+      aria-label={`SOVEN mascot (${mood})`}>
       {/* dark outline pass (slightly larger, rounded joins) */}
       <polygon points={STAR} fill={INK} stroke={INK} strokeWidth={17} strokeLinejoin="round" />
       {/* body */}

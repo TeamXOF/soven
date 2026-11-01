@@ -1,0 +1,118 @@
+{
+  "input": "Chromium fake microphone fed with local adult TTS WAV",
+  "checks": [
+    "actual UI sign-in succeeded",
+    "getUserMedia and MediaRecorder started in secure context with simulated microphone",
+    "browser WebM upload passed through HTTPS proxy and real cached Whisper/acoustic pipeline",
+    "next level clears previous result and permits a new microphone recording"
+  ],
+  "console_errors": [],
+  "request_failures": [],
+  "secure_context": true,
+  "analysis_http_status": 200,
+  "analysis": {
+    "attempt_id": "att_948fb194c9",
+    "track": "en",
+    "level": 1,
+    "sentence": "The little fox woke up early in the morning.",
+    "theme": "Runtime validation",
+    "difficulty": "easy",
+    "transcript": "The little fox woke up early in the morning.",
+    "words": [
+      {
+        "word": "The",
+        "correct": true,
+        "score": 100,
+        "phoneme_mismatch": null,
+        "spoken": "The",
+        "recognition_confidence": 0.8011160492897034,
+        "assessment_basis": "transcript_alignment"
+      },
+      {
+        "word": "little",
+        "correct": true,
+        "score": 100,
+        "phoneme_mismatch": null,
+        "spoken": "little",
+        "recognition_confidence": 0.8900827765464783,
+        "assessment_basis": "transcript_alignment"
+      },
+      {
+        "word": "fox",
+        "correct": true,
+        "score": 100,
+        "phoneme_mismatch": null,
+        "spoken": "fox",
+        "recognition_confidence": 0.9395672082901001,
+        "assessment_basis": "transcript_alignment"
+      },
+      {
+        "word": "woke",
+        "correct": true,
+        "score": 100,
+        "phoneme_mismatch": null,
+        "spoken": "woke",
+        "recognition_confidence": 0.9987996816635132,
+        "assessment_basis": "transcript_alignment"
+      },
+      {
+        "word": "up",
+        "correct": true,
+        "score": 100,
+        "phoneme_mismatch": null,
+        "spoken": "up",
+        "recognition_confidence": 0.9987576007843018,
+        "assessment_basis": "transcript_alignment"
+      },
+      {
+        "word": "early",
+        "correct": true,
+        "score": 100,
+        "phoneme_mismatch": null,
+        "spoken": "early",
+        "recognition_confidence": 0.9988669157028198,
+        "assessment_basis": "transcript_alignment"
+      },
+      {
+        "word": "in",
+        "correct": true,
+        "score": 100,
+        "phoneme_mismatch": null,
+        "spoken": "in",
+        "recognition_confidence": 0.998754620552063,
+        "assessment_basis": "transcript_alignment"
+      },
+      {
+        "word": "the",
+        "correct": true,
+        "score": 100,
+        "phoneme_mismatch": null,
+        "spoken": "the",
+        "recognition_confidence": 0.9994657635688782,
+        "assessment_basis": "transcript_alignment"
+      },
+      {
+        "word": "morning",
+        "correct": true,
+        "score": 100,
+        "phoneme_mismatch": null,
+        "spoken": "morning.",
+        "recognition_confidence": 0.9981325268745422,
+        "assessment_basis": "transcript_alignment"
+      }
+    ],
+    "accuracy": 100,
+    "stars": 3,
+    "passed": true,
+    "wpm": 82.6,
+    "hesitations": [],
+    "engagement_state": "steady_reading",
+    "stt_source": "local_fallback",
+    "latency_ms": {
+      "stt": 1037,
+      "acoustic": 93,
+      "total": 1131
+    }
+  },
+  "success": true
+}

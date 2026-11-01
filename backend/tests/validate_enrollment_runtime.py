@@ -18,7 +18,7 @@ import tempfile
 import threading
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / 'analysis/meta-hackathon-2026/runtime-validation'
+OUT = ROOT / '.qa/runtime-validation'
 sys.path.insert(0, str(ROOT / '.test-deps'))
 sys.path.insert(0, str(ROOT / 'backend'))
 WORK = tempfile.TemporaryDirectory(prefix='speakflow-enrollment-')

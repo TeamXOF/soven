@@ -12,7 +12,7 @@ import librosa
 import numpy as np
 from services import acoustic
 from services.stt import TranscriptResult
-OUT=ROOT/'analysis/meta-hackathon-2026/runtime-validation'
+OUT=ROOT/'.qa/runtime-validation'
 decodings=json.loads((OUT/'decoder-comparison.json').read_text())
 rows=[]
 

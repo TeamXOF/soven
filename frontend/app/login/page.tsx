@@ -1,4 +1,5 @@
 "use client";
+import BrandMark from "@/components/brand/BrandMark";
 import { toError } from "@/lib/errors";
 
 /**
@@ -8,7 +9,7 @@ import { toError } from "@/lib/errors";
 
 import { homeFor } from "@/components/auth/AuthGate";
 import { useAuth } from "@/components/auth/AuthProvider";
-import { AudioLines,Loader2,Lock,User } from "lucide-react";
+import { Loader2,Lock,User } from "lucide-react";
 import Link from "next/link";
 import { useRouter,useSearchParams } from "next/navigation";
 import { Suspense,useState } from "react";
@@ -18,10 +19,10 @@ function BrandPanel() {
     <div className="hidden md:flex flex-col justify-between bg-gradient-to-br from-accent-primary-bg to-accent-secondary-bg p-10 border-r border-gray-100">
       <div className="flex items-center gap-3">
         <span className="h-11 w-11 rounded-2xl bg-accent-primary flex items-center justify-center shadow">
-          <AudioLines className="w-6 h-6 text-white" />
+          <BrandMark />
         </span>
         <div>
-          <p className="text-xl font-extrabold text-text-primary">SpeakFlow<span className="text-accent-primary-dark">AI</span></p>
+          <p className="text-xl font-extrabold text-text-primary">SOVEN</p>
           <p className="text-[10px] font-mono uppercase tracking-wider text-text-muted">Every reader. Every day.</p>
         </div>
       </div>
@@ -77,9 +78,9 @@ function LoginForm() {
         <div className="flex-1 p-8 md:p-10 bg-white">
           <div className="md:hidden flex items-center gap-2 mb-6">
             <span className="h-9 w-9 rounded-xl bg-accent-primary flex items-center justify-center">
-              <AudioLines className="w-5 h-5 text-white" />
+              <BrandMark />
             </span>
-            <p className="text-lg font-extrabold text-text-primary">SpeakFlow<span className="text-accent-primary-dark">AI</span></p>
+            <p className="text-lg font-extrabold text-text-primary">SOVEN</p>
           </div>
 
           <h1 className="text-2xl font-extrabold text-text-primary">Welcome back!</h1>

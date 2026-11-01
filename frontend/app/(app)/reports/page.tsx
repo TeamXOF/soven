@@ -69,7 +69,7 @@ export default function ReportsPage() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `speakflow-report-${r.name.replace(/\s+/g, "-").toLowerCase()}.txt`;
+      a.download = `soven-report-${r.name.replace(/\s+/g, "-").toLowerCase()}.txt`;
       a.click();
       URL.revokeObjectURL(url);
       addNotification({ title: "Download ready", message: `Report for ${r.name} saved.`, type: "success" });

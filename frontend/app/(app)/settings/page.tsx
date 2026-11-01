@@ -633,7 +633,7 @@ export default function SettingsPage() {
               <div className="p-4 bg-accent-primary-bg rounded-xl border border-accent-primary/20">
                 <p className="text-xs font-bold text-accent-primary-dark mb-1">How the pipeline works</p>
                 <p className="text-xs text-text-secondary leading-relaxed">
-                  SpeakFlow runs two processing layers. <strong>Story Mode (v2):</strong> speech-to-text via the
+                  SOVEN runs two processing layers. <strong>Story Mode (v2):</strong> speech-to-text via the
                   Groq Whisper API when online, or a local Whisper model offline; acoustic evidence via
                   <strong> librosa</strong>; and <strong>Gemini</strong> for feedback text plus an optional judgment
                   on ambiguous pauses — note that this hesitation call sends a short raw audio clip to

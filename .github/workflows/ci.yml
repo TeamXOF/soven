@@ -1,4 +1,4 @@
-name: Verify SpeakFlow
+name: Verify SOVEN
 on: [push, pull_request]
 jobs:
   backend:

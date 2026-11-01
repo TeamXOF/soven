@@ -31,7 +31,7 @@ try:
 except ImportError:
     pass
 
-app = FastAPI(title="SpeakFlow AI API", docs_url=None if os.getenv("ENV") == "production" else "/docs",
+app = FastAPI(title="SOVEN API", docs_url=None if os.getenv("ENV") == "production" else "/docs",
               redoc_url=None if os.getenv("ENV") == "production" else "/redoc")
 from core.middleware import AccessMiddleware
 app.add_middleware(AccessMiddleware)
@@ -130,7 +130,7 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException):
 if __name__ == "__main__":
     import argparse
     import uvicorn
-    parser = argparse.ArgumentParser(description="SpeakFlow AI backend")
+    parser = argparse.ArgumentParser(description="SOVEN backend")
     parser.add_argument("--local-host", action="store_true",
                         help="bind to 0.0.0.0 (LAN) for the offline classroom mesh")
     args = parser.parse_args()

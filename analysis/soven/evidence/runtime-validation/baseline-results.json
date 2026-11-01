@@ -1,0 +1,697 @@
+{
+  "scope": "Synthetic adult English TTS, cached base Whisper on CPU; isolated accounts/database.",
+  "python": "3.12.14",
+  "logical_cpu_count": 8,
+  "model": "cached faster-whisper-base INT8 CPU",
+  "offline_stt": [
+    {
+      "case": "correct",
+      "spoken_reference": "The little fox woke up early in the morning.",
+      "target": "The little fox woke up early in the morning.",
+      "transcript": "The little fox woke up early in the morning. you",
+      "stt_source": "local_fallback",
+      "stt_seconds": 14.604,
+      "acoustic_seconds": 11.97,
+      "spoken_transcription_wer": 0.1111,
+      "reading_accuracy": 90,
+      "flagged_words": [
+        {
+          "word": "you",
+          "correct": false,
+          "score": 15,
+          "phoneme_mismatch": "extra word",
+          "spoken": "you",
+          "extra": true
+        }
+      ]
+    },
+    {
+      "case": "leading-insertion",
+      "spoken_reference": "Hello, The little fox woke up early in the morning.",
+      "target": "The little fox woke up early in the morning.",
+      "transcript": "Hello, the little fox woke up early in the morning. you",
+      "stt_source": "local_fallback",
+      "stt_seconds": 3.682,
+      "acoustic_seconds": 4.387,
+      "spoken_transcription_wer": 0.1,
+      "reading_accuracy": 73,
+      "flagged_words": [
+        {
+          "word": "The",
+          "correct": false,
+          "score": 78,
+          "phoneme_mismatch": null,
+          "spoken": "the",
+          "recognition_confidence": 0.5154387950897217,
+          "assessment_basis": "transcript_alignment"
+        },
+        {
+          "word": "Hello,",
+          "correct": false,
+          "score": 15,
+          "phoneme_mismatch": "extra word",
+          "spoken": "Hello,",
+          "extra": true
+        },
+        {
+          "word": "you",
+          "correct": false,
+          "score": 15,
+          "phoneme_mismatch": "extra word",
+          "spoken": "you",
+          "extra": true
+        }
+      ]
+    },
+    {
+      "case": "missing-word",
+      "spoken_reference": "The little fox woke early in the morning.",
+      "target": "The little fox woke up early in the morning.",
+      "transcript": "The little fox woke early in the morning. you",
+      "stt_source": "local_fallback",
+      "stt_seconds": 4.419,
+      "acoustic_seconds": 3.206,
+      "spoken_transcription_wer": 0.125,
+      "reading_accuracy": 80,
+      "flagged_words": [
+        {
+          "word": "up",
+          "correct": false,
+          "score": 20,
+          "phoneme_mismatch": null,
+          "spoken": ""
+        },
+        {
+          "word": "you",
+          "correct": false,
+          "score": 15,
+          "phoneme_mismatch": "extra word",
+          "spoken": "you",
+          "extra": true
+        }
+      ]
+    },
+    {
+      "case": "substitution",
+      "spoken_reference": "The little dog woke up early in the morning.",
+      "target": "The little fox woke up early in the morning.",
+      "transcript": "The little dog woke up early in the morning. you",
+      "stt_source": "local_fallback",
+      "stt_seconds": 4.674,
+      "acoustic_seconds": 3.711,
+      "spoken_transcription_wer": 0.1111,
+      "reading_accuracy": 80,
+      "flagged_words": [
+        {
+          "word": "fox",
+          "correct": false,
+          "score": 20,
+          "phoneme_mismatch": "word substitution",
+          "spoken": "dog"
+        },
+        {
+          "word": "you",
+          "correct": false,
+          "score": 15,
+          "phoneme_mismatch": "extra word",
+          "spoken": "you",
+          "extra": true
+        }
+      ]
+    },
+    {
+      "case": "missing-ending",
+      "spoken_reference": "The cats jump over the fence.",
+      "target": "The cats jumped over the fence.",
+      "transcript": "The cats jump over the fence.",
+      "stt_source": "local_fallback",
+      "stt_seconds": 2.398,
+      "acoustic_seconds": 2.075,
+      "spoken_transcription_wer": 0.0,
+      "reading_accuracy": 83,
+      "flagged_words": [
+        {
+          "word": "jumped",
+          "correct": false,
+          "score": 50,
+          "phoneme_mismatch": "missing -ed",
+          "spoken": "jump"
+        }
+      ]
+    }
+  ],
+  "load": [
+    {
+      "concurrency": 1,
+      "wall_seconds": 7.377,
+      "status_counts": {
+        "200": 1
+      },
+      "successful_latency_p50": 7.254,
+      "successful_latency_p95": 7.254,
+      "health_latency_p95": 0.042,
+      "requests": [
+        {
+          "http_status": 200,
+          "seconds": 7.254,
+          "accuracy": 90,
+          "error": null
+        }
+      ]
+    },
+    {
+      "concurrency": 4,
+      "wall_seconds": 31.355,
+      "status_counts": {
+        "200": 4
+      },
+      "successful_latency_p50": 22.119,
+      "successful_latency_p95": 26.204,
+      "health_latency_p95": 0.059,
+      "requests": [
+        {
+          "http_status": 200,
+          "seconds": 18.131,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 26.204,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 31.226,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 22.119,
+          "accuracy": 90,
+          "error": null
+        }
+      ]
+    },
+    {
+      "concurrency": 8,
+      "wall_seconds": 58.052,
+      "status_counts": {
+        "200": 8
+      },
+      "successful_latency_p50": 43.577,
+      "successful_latency_p95": 54.342,
+      "health_latency_p95": 0.111,
+      "requests": [
+        {
+          "http_status": 200,
+          "seconds": 32.964,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 43.577,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 54.342,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 40.113,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 50.551,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 57.914,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 47.229,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 36.493,
+          "accuracy": 90,
+          "error": null
+        }
+      ]
+    },
+    {
+      "concurrency": 16,
+      "wall_seconds": 59.966,
+      "status_counts": {
+        "200": 8,
+        "503": 8
+      },
+      "successful_latency_p50": 45.401,
+      "successful_latency_p95": 56.352,
+      "health_latency_p95": 0.107,
+      "requests": [
+        {
+          "http_status": 200,
+          "seconds": 34.337,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 49.061,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 503,
+          "seconds": 1.295,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 200,
+          "seconds": 37.882,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 56.352,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 59.868,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 45.401,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 52.414,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 41.578,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 503,
+          "seconds": 1.172,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 1.205,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 1.218,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 1.233,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 1.238,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 1.254,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 1.252,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        }
+      ]
+    },
+    {
+      "concurrency": 30,
+      "wall_seconds": 60.705,
+      "status_counts": {
+        "200": 8,
+        "503": 22
+      },
+      "successful_latency_p50": 45.236,
+      "successful_latency_p95": 56.752,
+      "health_latency_p95": 0.111,
+      "requests": [
+        {
+          "http_status": 200,
+          "seconds": 34.471,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 49.344,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 53.078,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 37.854,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 503,
+          "seconds": 2.216,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 200,
+          "seconds": 60.572,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 45.236,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 41.529,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 200,
+          "seconds": 56.752,
+          "accuracy": 90,
+          "error": null
+        },
+        {
+          "http_status": 503,
+          "seconds": 1.602,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 1.603,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 1.583,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 1.921,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 1.93,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 1.96,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 1.965,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 2.013,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 2.055,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 2.058,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 2.057,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 2.104,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 2.112,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 2.003,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 2.142,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 2.138,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 2.141,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 2.142,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 2.142,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 2.142,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        },
+        {
+          "http_status": 503,
+          "seconds": 2.147,
+          "accuracy": null,
+          "error": "The reading server is busy. Please retry shortly."
+        }
+      ]
+    }
+  ],
+  "offline_network_connections": "blocked by test; all cached-model cases completed without connections",
+  "offline_total_seconds": 55.141,
+  "local_https": {
+    "certificate_verified": true,
+    "health_status": 200,
+    "scope": "Ephemeral localhost certificate pinned by test; no public domain or OS trust-store changes."
+  },
+  "teacher_report": {
+    "http_status": 200,
+    "readers_with_results": 9
+  },
+  "browser_exit_code": 0,
+  "browser_stdout": "{\"success\":true,\"checks\":[\"actual UI sign-in succeeded\",\"getUserMedia and MediaRecorder started in secure context with simulated microphone\",\"browser WebM upload passed through HTTPS proxy and real cached Whisper/acoustic pipeline\"]}",
+  "browser_stderr": "",
+  "browser": {
+    "input": "Chromium fake microphone fed with local adult TTS WAV",
+    "checks": [
+      "actual UI sign-in succeeded",
+      "getUserMedia and MediaRecorder started in secure context with simulated microphone",
+      "browser WebM upload passed through HTTPS proxy and real cached Whisper/acoustic pipeline"
+    ],
+    "console_errors": [],
+    "request_failures": [
+      {
+        "url": "/students/validation-student-29",
+        "error": "net::ERR_ABORTED"
+      }
+    ],
+    "secure_context": true,
+    "analysis_http_status": 200,
+    "analysis": {
+      "attempt_id": "att_bd92210f92",
+      "track": "en",
+      "level": 1,
+      "sentence": "The little fox woke up early in the morning.",
+      "theme": "Runtime validation",
+      "difficulty": "easy",
+      "transcript": "The little fox woke up early in the morning.",
+      "words": [
+        {
+          "word": "The",
+          "correct": true,
+          "score": 94,
+          "phoneme_mismatch": null,
+          "spoken": "The",
+          "recognition_confidence": 0.8730619549751282,
+          "assessment_basis": "transcript_alignment"
+        },
+        {
+          "word": "little",
+          "correct": true,
+          "score": 96,
+          "phoneme_mismatch": null,
+          "spoken": "little",
+          "recognition_confidence": 0.9130303859710693,
+          "assessment_basis": "transcript_alignment"
+        },
+        {
+          "word": "fox",
+          "correct": true,
+          "score": 98,
+          "phoneme_mismatch": null,
+          "spoken": "fox",
+          "recognition_confidence": 0.9501181244850159,
+          "assessment_basis": "transcript_alignment"
+        },
+        {
+          "word": "woke",
+          "correct": true,
+          "score": 100,
+          "phoneme_mismatch": null,
+          "spoken": "woke",
+          "recognition_confidence": 0.9990359544754028,
+          "assessment_basis": "transcript_alignment"
+        },
+        {
+          "word": "up",
+          "correct": true,
+          "score": 100,
+          "phoneme_mismatch": null,
+          "spoken": "up",
+          "recognition_confidence": 0.9988635778427124,
+          "assessment_basis": "transcript_alignment"
+        },
+        {
+          "word": "early",
+          "correct": true,
+          "score": 100,
+          "phoneme_mismatch": null,
+          "spoken": "early",
+          "recognition_confidence": 0.9988297820091248,
+          "assessment_basis": "transcript_alignment"
+        },
+        {
+          "word": "in",
+          "correct": true,
+          "score": 100,
+          "phoneme_mismatch": null,
+          "spoken": "in",
+          "recognition_confidence": 0.9993252754211426,
+          "assessment_basis": "transcript_alignment"
+        },
+        {
+          "word": "the",
+          "correct": true,
+          "score": 100,
+          "phoneme_mismatch": null,
+          "spoken": "the",
+          "recognition_confidence": 0.9995622038841248,
+          "assessment_basis": "transcript_alignment"
+        },
+        {
+          "word": "morning",
+          "correct": true,
+          "score": 100,
+          "phoneme_mismatch": null,
+          "spoken": "morning.",
+          "recognition_confidence": 0.9980790615081787,
+          "assessment_basis": "transcript_alignment"
+        }
+      ],
+      "accuracy": 100,
+      "stars": 3,
+      "passed": true,
+      "wpm": 77.6,
+      "hesitations": [],
+      "engagement_state": "steady_reading",
+      "stt_source": "local_fallback",
+      "latency_ms": {
+        "stt": 2121,
+        "acoustic": 2694,
+        "total": 4817
+      }
+    },
+    "success": true
+  }
+}

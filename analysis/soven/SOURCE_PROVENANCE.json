@@ -1,0 +1,19 @@
+{
+  "review_date": "2026-11-01",
+  "sources": [
+    {
+      "filename": "speakflow_mesh_meta_hackathon_master_plan.docx",
+      "kind": "expanded technical playbook",
+      "bytes": 208941,
+      "sha256": "35a1384d4c1f45a21fbf9027e16f1a7609595002ce7b4b9805037c0dd1da71de",
+      "publication": "local original only; reviewed summaries in 04 and 05"
+    },
+    {
+      "filename": "Meeting minutes - SpeakFlow.pdf",
+      "kind": "one-page product meeting notes",
+      "bytes": 29129,
+      "sha256": "8135ff1be5824aa9663bca220ca20f3ac4353c2bcf5899bef06f4b4ee01c159a",
+      "publication": "local original only; reviewed summaries in 04 and 05"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import sqlite3
 import os
-from contextlib import contextmanager
+from contextlib import contextmanager, closing
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -30,14 +30,14 @@ def init_db():
     # SQLite's backup API gives a consistent copy even when WAL is in use.
     # Never migrate an existing, unversioned classroom without a recovery copy.
     if os.path.isfile(DB_PATH):
-        with sqlite3.connect(DB_PATH) as source:
+        with closing(sqlite3.connect(DB_PATH)) as source:
             versioned = source.execute("SELECT 1 FROM sqlite_master WHERE name='schema_migrations'").fetchone()
             if not versioned:
                 backup_dir = Path(DB_PATH).parent / ".db_backup"
                 backup_dir.mkdir(exist_ok=True)
                 backup_path = backup_dir / (Path(DB_PATH).stem + "-before-hardening.db")
                 if not backup_path.exists():
-                    with sqlite3.connect(backup_path) as destination:
+                    with closing(sqlite3.connect(backup_path)) as destination:
                         source.backup(destination)
     with get_db_connection() as conn:
         conn.execute("BEGIN IMMEDIATE")

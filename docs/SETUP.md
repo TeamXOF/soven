@@ -1,6 +1,6 @@
-# SpeakFlow development and deployment
+# SOVEN development and deployment
 
-This is the current setup guide after the codebase repair pass. The older Alibaba/Gemma decks, scripts and pitch documents describe earlier snapshots. Refer to `analysis/meta-hackathon-2026/REPAIR_LOG.md` for verified changes and remaining validation.
+This is the current setup guide after the codebase repair pass. The earlier SpeakFlow project and its private planning files describe earlier snapshots. Refer to `analysis/soven/00_START_HERE.md` for verified changes and remaining validation.
 
 ## Requirements
 
@@ -99,10 +99,10 @@ npx tsc --noEmit --incremental false
 npm run build -- --webpack
 ```
 
-For the optional real-browser enrollment check, install Playwright/Chromium and run `python backend/tests/validate_enrollment_runtime.py` from the repository root after building the frontend. It starts temporary local HTTPS/API/frontend servers and uses a disposable database. Set `VALIDATION_NODE` or `PLAYWRIGHT_MODULE` if those runtimes are outside normal executable/module lookup paths. It writes a credential-free report to `analysis/meta-hackathon-2026/runtime-validation/enrollment-results.json`.
+For the optional real-browser enrollment check, install Playwright/Chromium and run `python backend/tests/validate_enrollment_runtime.py` from the repository root after building the frontend. It starts temporary local HTTPS/API/frontend servers and uses a disposable database. Set `VALIDATION_NODE` or `PLAYWRIGHT_MODULE` if those runtimes are outside normal executable/module lookup paths. It writes a credential-free report to `.qa/runtime-validation/enrollment-results.json`.
 
-The legacy live test scripts require `RUN_LEGACY_LIVE_TESTS=1` and separately configured isolated accounts. They are historical integration scripts, not the supported automated regression suite. Do not run them against a real classroom.
+Obsolete live-test scripts were excluded from the SOVEN export. Use the supported isolated regression suite and browser harness.
 
 Before a public demo, test actual microphones, local/online STT, HTTPS on the intended devices, provider failures and realistic concurrent use. Synthetic audio checks verify processing mechanics, not accuracy on children's voices. Educator evaluation, learning improvement, global language coverage, Meta access and hackathon prior-code eligibility remain separate validation tasks.
 
-See [measured runtime validation](../analysis/meta-hackathon-2026/LIVE_VALIDATION.md): cached local STT, browser recording over local TLS, a physical microphone request, and burst load tests have run. A small public child-speech holdout exposed substantial recognition/assessment disagreement; do not present the current recognizer as validated child-pronunciation assessment. Public HTTPS deployment and educator trials remain outstanding.
+See [measured runtime validation](../analysis/soven/evidence/LIVE_VALIDATION.md): cached local STT, browser recording over local TLS, a physical microphone request, and burst load tests have run. A small public child-speech holdout exposed substantial recognition/assessment disagreement; do not present the current recognizer as validated child-pronunciation assessment. Public HTTPS deployment and educator trials remain outstanding.

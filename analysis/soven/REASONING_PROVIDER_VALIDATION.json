@@ -31,5 +31,7 @@
     "Speech/content/target-device quality",
     "Public consent/retention/deletion and sustained deployment validation"
   ],
-  "remote_ci": "CI includes both backend suites; exact published outcome is linked from GitHub Actions and the completion log"
+  "remote_ci": "completed: success; fresh Linux installs, 62 application regressions, 18 provider contracts, frontend lint, TypeScript and production build",
+  "validated_code_commit": "9cb7d61816f0426d93d0c7a10d67bc2931f84334",
+  "ci_url": "https://github.com/TeamXOF/soven/actions/runs/41328185301"
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-01T08:04:59.390110+00:00",
+  "generated_at_utc": "2026-11-01T08:07:40.275353+00:00",
   "scope": "Active source and supported tooling; no runtime/private files",
   "text_hash_format": "UTF-8 with CRLF normalized to LF",
   "files": [
@@ -2867,12 +2867,6 @@
       ]
     },
     {
-      "path": "frontend/next-env.d.ts",
-      "sha256": "7b550dda9686c16f36a17bf9051d5dbf31e98555b30d114ac49fc49a1e712651",
-      "lines": 6,
-      "symbols": []
-    },
-    {
       "path": "frontend/next.config.ts",
       "sha256": "614bce25b089c3f19b1e17a6346c74b858034040154c6621e7d35303004767cc",
       "lines": 7,
@@ -2908,8 +2902,8 @@
     },
     {
       "path": "tools/build_source_catalog.py",
-      "sha256": "1f50252395f6ce813f5f6aa3778c5ed76cad4ceca44bda84bb0789544017ff77",
-      "lines": 37,
+      "sha256": "be024f53957e667856b9880e3022d836e280765888822a7d31921efc518850c0",
+      "lines": 39,
       "symbols": []
     }
   ]

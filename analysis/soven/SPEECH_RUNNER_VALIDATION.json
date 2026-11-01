@@ -22,5 +22,11 @@
   "frontend": "No application/frontend edits; earlier UI evidence retained, fresh remote CI checks frontend",
   "comparison_record": "SPEECH_EXPLORATORY_COMPARISON.json",
   "next": "M2.2c sufficient improvement and reviewed evaluation data; other rollout gates remain open",
-  "remote_ci": "Pending publication verification; outcome will be recorded in completion log"
+  "remote_ci": "Completed: success; fresh Linux backend/frontend installation, all 132 backend tests, generated-language drift, lint, TypeScript and production build",
+  "verified_at_utc": "2026-11-01T19:10:16.172716+00:00",
+  "validated_code_commit": "162150408cd26b19fb6c066ac551b26faeaea165",
+  "ci_url": "https://github.com/TeamXOF/soven/actions/runs/41340144589",
+  "public_remote_tree_verified": true,
+  "mirrored_handoff_files": 75,
+  "snapshot_note": "This receipt records the validated code commit. A subsequent documentation-only commit records this evidence; original launch and M2.1 receipts remain historical."
 }

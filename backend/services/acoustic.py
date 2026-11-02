@@ -12,6 +12,7 @@ import logging
 import unicodedata
 
 from core.config import settings
+from core.speech_capabilities import has_word_timing, finite_number, observed_speech_evidence
 
 log = logging.getLogger("speakflow.acoustic")
 
@@ -169,10 +170,10 @@ def extract_word_acoustics(audio_path: str, spoken_words: list) -> dict:
     total_dur = len(y) / sr
     if total_dur > 120:
         raise ValueError("Recordings must be no longer than two minutes")
-    spoken_words = [w for w in spoken_words if w.get("timing_source") != "estimated"]
+    spoken_words = [w for w in spoken_words if has_word_timing(w) and w['end'] <= total_dur]
 
     # Pitch track once for the SPEECH REGION only (big speed win on long clips)
-    pitch_variance = 0.0
+    pitch_variance = None
     f0 = None
     frame_offset = 0
     if spoken_words:
@@ -193,7 +194,7 @@ def extract_word_acoustics(audio_path: str, spoken_words: list) -> dict:
                 f0 = np.where(voiced_flag, f0, np.nan)
             valid_f0 = f0[voiced_flag] if (f0 is not None and voiced_flag is not None
                                            and voiced_flag.any()) else np.array([])
-            pitch_variance = float(np.var(valid_f0)) if valid_f0.size else 0.0
+            pitch_variance = float(np.var(valid_f0)) if valid_f0.size else None
 
     frame_rate = sr / 512  # librosa default hop
     feats = {}
@@ -267,15 +268,13 @@ def score_word(entry: dict, acoustics: dict) -> dict:
 def detect_hesitations(spoken_words: list) -> list:
     """Gaps > PAUSE_FLAG_MS between consecutive spoken words."""
     pauses = []
-    spoken_words = [w for w in spoken_words if w.get("timing_source") != "estimated"]
-    for i in range(1, len(spoken_words)):
-        gap_ms = (spoken_words[i]["start"] - spoken_words[i - 1]["end"]) * 1000
+    # Never bridge over a word whose timing is missing, estimated or invalid.
+    for previous,current in zip(spoken_words,spoken_words[1:]):
+        if not has_word_timing(previous) or not has_word_timing(current):continue
+        gap_ms=(current['start']-previous['end'])*1000
         if gap_ms > settings.PAUSE_FLAG_MS:
-            pauses.append({
-                "after_word": spoken_words[i - 1]["word"],
-                "pause_ms": int(round(gap_ms)),
-                "flagged_ambiguous": bool(gap_ms < settings.PAUSE_AMBIGUOUS_MS),
-            })
+            pauses.append({'after_word':previous['word'],'pause_ms':int(round(gap_ms)),
+                           'flagged_ambiguous':bool(gap_ms < settings.PAUSE_AMBIGUOUS_MS)})
     return pauses
 
 
@@ -318,15 +317,16 @@ def build_signal(target_text: str, transcript_result, acoustics: dict, language:
     correct_count = sum(1 for w in words_scored if w["correct"])
     accuracy = int(round(correct_count / (target_count + len(extras_scored)) * 100))
 
-    pauses = detect_hesitations(transcript_result.words)
+    evidence=observed_speech_evidence(transcript_result,language,acoustics.get("total_duration"))
+    pauses = detect_hesitations(transcript_result.words) if evidence["pause_assessment"]=="available" else []
     wpm = 0.0
     if transcript_result.words:
-        dur = acoustics["total_duration"] or (
-            transcript_result.words[-1]["end"] - transcript_result.words[0]["start"])
-        if dur > 0:
+        dur = acoustics.get("total_duration")
+        if finite_number(dur) and dur > 0:
             wpm = round(sum(bool(_norm(w['word'])) for w in transcript_result.words) / dur * 60, 1)
 
     return {
+        "speech_evidence":evidence,
         "transcript": transcript_result.text,
         "words": words_scored,
         "wpm": wpm,
@@ -338,7 +338,7 @@ def build_signal(target_text: str, transcript_result, acoustics: dict, language:
         "stt_source": transcript_result.source,
         "stt_fallback_reason": transcript_result.fallback_reason,
         "engagement_state": engagement_heuristic(
-            acoustics["pitch_variance"], pauses, accuracy),
+            acoustics["pitch_variance"], pauses, accuracy) if evidence["pause_assessment"]=="available" else "unknown",
         "latency_ms": {
             "stt": int(stt_ms),
             "acoustic": int(acoustic_ms),

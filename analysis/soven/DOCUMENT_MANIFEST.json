@@ -2,7 +2,7 @@
   "text_hash_format": "UTF-8 with CRLF normalized to LF; DOCX hashes use exact bytes",
   "maintained_format": "Markdown",
   "generated_format": "DOCX",
-  "source_date": "2026-11-01",
+  "source_date": "2026-11-02",
   "documents": [
     {
       "document": "documents/01_SOVEN_Project_Context_and_Current_State.docx",
@@ -14,10 +14,10 @@
         },
         {
           "path": "02_CURRENT_STATE.md",
-          "sha256": "3337cf7de8ebf4b7c06102245510a0ef521b02c3583352566e71ab0450157e2d"
+          "sha256": "a20e8f34e6ff5f3e02ac36db714cd6a746cd0094e75ae8cc5d6a95133022173c"
         }
       ],
-      "sha256": "aff6b492d902c1ef4427a77a09aa36b9455adebe4d3f0ae5e3461b72dd872cad",
+      "sha256": "8e0e707164adddfa7f8686d273658c724bd0ad618b2ab44a4fdc2406dfc51ac3",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -26,7 +26,7 @@
       "sources": [
         {
           "path": "03_ARCHITECTURE.md",
-          "sha256": "f79b7cc98dd02699c5c1d34feefe8bcec4dbb1071bf403c4201ca50cb837aa57"
+          "sha256": "42022cbb8bb53d5ef7936b1a8dbbc230dd2097ee33ade264a2bc858e2cb4666a"
         },
         {
           "path": "17_SPEECH_EVALUATION_PROTOCOL.md",
@@ -35,9 +35,13 @@
         {
           "path": "18_SPEECH_RUNNER_AND_FINDINGS.md",
           "sha256": "491ba33dc62497694ce61f8bc84066b8c8065f6129750875fef18a7c374950f6"
+        },
+        {
+          "path": "19_SPEECH_CAPABILITY_SELECTION.md",
+          "sha256": "63233257e35cbc0e3278b74351b09d28d780f7028e5c0d50d33141cada23cbdd"
         }
       ],
-      "sha256": "db4abbaf529d59e4b14cee3091e1dff679801e0e190d616fb10a661afd0f910a",
+      "sha256": "f2fc940406363e091be493a8a07051ea98bd533ffe557f8f15a5c5eccc7d440c",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -53,7 +57,7 @@
           "sha256": "c39beb6148f3f06cbec39cf5332b4899012686cabfbbff07b4bb4d457664ff8e"
         }
       ],
-      "sha256": "6fd77617bdd1fb7eeccfebb578b12ae2512a00881617f24c01dc8a9a3826d939",
+      "sha256": "364ecd1f8e20a081e2fb9ad326af6ab1a8411e0f80cd6ff6aaa1788bf7d3faed",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -69,7 +73,7 @@
           "sha256": "a85940cfc71bfac896cb65784c2a435ea757982cfd4ce624e795fd19252b866b"
         }
       ],
-      "sha256": "6ef5ddb12629a56ec42cb311e1f4378c4ade5c695980d63c53694ea880009986",
+      "sha256": "ec3453416f03fe3937feb47c54cd0543d3fa10975a0a9d3b4f1601f66f62b688",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -78,18 +82,18 @@
       "sources": [
         {
           "path": "07_IMPLEMENTATION_ROADMAP.md",
-          "sha256": "594e15974def7009723f6499a87c407c657140dde1cef126c7afd610ee3e53c4"
+          "sha256": "c4ccb7b59a366fa92d0a8e7a589d330d8d297d7af63106590f314c56ee184927"
         },
         {
           "path": "10_DECISIONS_AND_HANDOFF.md",
-          "sha256": "b713dca10d24ecba18dfa8e1a0e1836f6677e411d789a78a778da2954e3a1bf7"
+          "sha256": "48d07a4627918051ba244960c79c26c884c896c234ae83edae9ee5db3ce30f36"
         },
         {
           "path": "11_PRODUCT_DEFAULTS.md",
           "sha256": "4a629b7f82f9bf67392c73ce8909501f05dddfd899214f327b7c9c6b521b978a"
         }
       ],
-      "sha256": "5f58cc46c58bf2260c4f18a6f979b868252356064d48bd93b67855ce75d92aa1",
+      "sha256": "d9b45a83f163f80395581a2ade2d0aec17ea82dc96f6532472fc9742e41f06f8",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -98,7 +102,7 @@
       "sources": [
         {
           "path": "08_VALIDATION_AND_OPERATIONS.md",
-          "sha256": "ccd5e5c0357b89af2f5024d0053950b35729073f72acc6bf422b7e098cc6576b"
+          "sha256": "6117a8db24d177bd839a00bce9b0a5736460f63f1142347c35aacfc489a6171a"
         },
         {
           "path": "09_BRAND_AND_REPOSITORY.md",
@@ -110,7 +114,7 @@
         },
         {
           "path": "DELIVERY_STATUS.json",
-          "sha256": "3db2f0714dd183cf59925cfe0e7afc2d51df9abe8f68a95ccc3678cb3cf001fa"
+          "sha256": "c8a5df73b3ec7436581add42309c6e6bbb0c842cd54a80a9f8aefa90cb56c4fe"
         },
         {
           "path": "FOUNDATION_VALIDATION.json",
@@ -123,9 +127,13 @@
         {
           "path": "UI_REDESIGN_VALIDATION.json",
           "sha256": "a637bade66569f24ef1d91f5646efdc0b6d536f853dacbb65415882ed69e3f99"
+        },
+        {
+          "path": "SPEECH_CAPABILITY_VALIDATION.json",
+          "sha256": "cb275ab509929873f34847ede7b7649c81e655e50e5bf1a171be929488c9d34e"
         }
       ],
-      "sha256": "6984ccbb1a66b32113fa880d839188c2e71787e91bb566403cd1a7848ec5897e",
+      "sha256": "e75a985d5f81430b36307aeadc77c5aeb0ba73aa202e67d3f2fec0723a386fcc",
       "render_review": "see DOCUMENT_QA.json"
     }
   ]

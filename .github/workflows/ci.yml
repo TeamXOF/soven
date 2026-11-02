@@ -16,6 +16,7 @@ jobs:
       - run: python backend/tests/test_reasoning_providers.py
       - run: python backend/tests/test_speech_evaluation.py
       - run: python backend/tests/test_speech_runner.py
+      - run: python backend/tests/test_speech_capabilities.py
       - run: python tools/freeze_speech_evaluation.py check
   frontend:
     runs-on: ubuntu-latest
@@ -30,6 +31,7 @@ jobs:
           cache: npm
           cache-dependency-path: frontend/package-lock.json
       - run: npm ci
+      - run: node ../tools/test_speech_playback.cjs
       - run: npm run lint
       - run: npx tsc --noEmit --incremental false
       - run: npm run build -- --webpack

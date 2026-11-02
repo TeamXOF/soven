@@ -72,7 +72,7 @@ npm run build -- --webpack
 
 Important limits remain: the prior child-speech holdout flagged 29/110 expert-acceptable words; a thirty-recording burst returned eight successes and twenty-two busy responses; Urdu speech quality, educator outcomes and public deployment remain unverified. The successful physical microphone take proves one tested workflow, not general accuracy. Do not repeat historical claims of solved autocorrection, phoneme diagnosis, emotion detection or universal offline operation.
 
-The [frozen speech protocol](analysis/soven/17_SPEECH_EVALUATION_PROTOCOL.md) defines the next evaluation configuration and engineering gates. The [offline runner and exposed development comparison](analysis/soven/18_SPEECH_RUNNER_AND_FINDINGS.md) now work; a measured beam-five signal remains unpromoted and does not establish general accuracy or new language support.
+The [frozen speech protocol](analysis/soven/17_SPEECH_EVALUATION_PROTOCOL.md) defines the next evaluation configuration and engineering gates. The [offline runner and exposed development comparison](analysis/soven/18_SPEECH_RUNNER_AND_FINDINGS.md) now work; a measured beam-five signal remains unpromoted and does not establish general accuracy or new language support. [Speech capability selection and evidence](analysis/soven/19_SPEECH_CAPABILITY_SELECTION.md) documents the enabled English/Urdu routes and truthful unavailable-timing/voice states; it is not a speech-quality claim.
 
 ## SOVEN roadmap
 

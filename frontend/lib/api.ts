@@ -127,7 +127,16 @@ export type Hesitation = {
   flagged_ambiguous: boolean;
 };
 
+export type SpeechEvidence = {
+  schema_version: number; origin: "recognizer" | "simulation"; language: string;
+  provider: string; engine: string; fallback_reason: string | null;
+  word_timing: "available" | "partial" | "unavailable";
+  recognition_confidence: "available" | "partial" | "unavailable";
+  confidence_basis: string; word_count: number; timed_word_count: number;
+  pause_assessment: "available" | "unavailable"; quality_validated: false;
+};
 export type Phase1Response = {
+  speech_evidence?: SpeechEvidence | null;
   session_id: string;
   checkpoint_id: string;
   phase: 1;
@@ -182,6 +191,7 @@ export type CreatedSession = {
 };
 
 export type SessionCheckpointDetail = StoryCheckpoint & {
+  speech_evidence?: SpeechEvidence | null;
   status: "pending" | "attempted";
   passed: boolean;
   accuracy: number | null;
@@ -619,6 +629,7 @@ export type StoryWord = {
 };
 
 export type StoryAttemptResult = {
+  speech_evidence?: SpeechEvidence | null;
   attempt_id: string; track: StoryTrack; level: number; sentence: string;
   theme: string; difficulty: string; transcript: string; words: StoryWord[];
   accuracy: number; stars: number; passed: boolean; wpm: number;

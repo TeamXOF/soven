@@ -30,6 +30,7 @@ from core.config import settings
 from core.security import new_token
 from database.schema import get_db_connection
 from routers.auth import get_current_user
+from core.speech_capabilities import observed_speech_evidence
 from services.stt import get_transcript
 from services import acoustic
 from services.reasoning import generate_feedback
@@ -375,17 +376,17 @@ async def story_analyze(request: Request, background_tasks: BackgroundTasks,
         passed = accuracy >= settings.CHECKPOINT_PASS_THRESHOLD
         wpm = 0.0
         if transcript.words:
-            dur = acoustics.get("total_duration") or (
-                transcript.words[-1]["end"] - transcript.words[0]["start"])
+            dur = acoustics.get("total_duration") or 0
             if dur > 0:
                 wpm = round(len(transcript.words) / dur * 60, 1)
-        pauses = acoustic.detect_hesitations(transcript.words)
-        engagement = acoustic.engagement_heuristic(acoustics.get("pitch_variance", 0.0), pauses, accuracy)
+        evidence=observed_speech_evidence(transcript,track,acoustics.get("total_duration"))
+        pauses = acoustic.detect_hesitations(transcript.words) if evidence["pause_assessment"]=="available" else []
+        engagement = acoustic.engagement_heuristic(acoustics.get("pitch_variance", 0.0), pauses, accuracy) if evidence["pause_assessment"]=="available" else "unknown"
         scoring_ms = (time.perf_counter() - t0) * 1000
 
         attempt_id = f"att_{uuid.uuid4().hex[:10]}"
         signal = {"transcript": transcript.text, "words": scored, "accuracy": accuracy,
-                  "wpm": wpm, "hesitations": pauses, "engagement_state": engagement}
+                  "wpm": wpm, "hesitations": pauses, "engagement_state": engagement, "speech_evidence":evidence}
 
         with get_db_connection() as conn:
             conn.execute(
@@ -394,7 +395,7 @@ async def story_analyze(request: Request, background_tasks: BackgroundTasks,
                 (attempt_id, student_id, track, level, accuracy, stars, 1 if passed else 0,
                  json.dumps({"words": scored, "wpm": wpm, "hesitations": pauses,
                              "latency_ms": {"stt": int(stt_ms), "acoustic": int(acoustic_ms),
-                                            "total": int(scoring_ms)}, "transcript": transcript.text, "stt_source": transcript.source},
+                                            "total": int(scoring_ms)}, "transcript": transcript.text, "stt_source": transcript.source, "speech_evidence":evidence},
                             ensure_ascii=False)))
             conn.execute(
                 """INSERT INTO story_progress (student_id, track, level, best_accuracy, stars, attempts, passed)
@@ -418,6 +419,7 @@ async def story_analyze(request: Request, background_tasks: BackgroundTasks,
             "transcript": transcript.text,
             "words": scored, "accuracy": accuracy, "stars": stars, "passed": passed,
             "wpm": wpm, "hesitations": pauses, "engagement_state": engagement,
+            "speech_evidence":evidence,
             "stt_source": transcript.source, "latency_ms": {"stt": int(stt_ms), "acoustic": int(acoustic_ms),
                                                             "total": int(scoring_ms)},
         }

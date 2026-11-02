@@ -1,12 +1,12 @@
 {
-  "generated_at_utc": "2026-11-01T18:52:53.367601+00:00",
+  "generated_at_utc": "2026-11-02T13:56:44.313817+00:00",
   "scope": "Active source and supported tooling; no runtime/private files",
   "text_hash_format": "UTF-8 with CRLF normalized to LF",
   "files": [
     {
       "path": ".github/workflows/ci.yml",
-      "sha256": "6c99658ef8397ee31dee82f8668427dcbf8a1b6c8709588717822b9d2e1c5e7e",
-      "lines": 35,
+      "sha256": "a4fd9bfc50e5f8de24a70d20c6ad2f05d0514651b85ebfd1a61546ddc92b61bc",
+      "lines": 37,
       "symbols": []
     },
     {
@@ -29,42 +29,42 @@
     },
     {
       "path": "backend/agents/orchestrator.py",
-      "sha256": "48118a9aa65d2ec21e208324a9278e80880ec692c94613dfa2b96a47d4971b13",
-      "lines": 160,
+      "sha256": "749cbcdc044d3ad07b632ad4b172401f163448822a6d3d4424536c5570923075",
+      "lines": 162,
       "symbols": [
         {
           "name": "_resolve_model",
-          "line": 24,
+          "line": 25,
           "kind": "FunctionDef"
         },
         {
           "name": "call_agent",
-          "line": 29,
+          "line": 30,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "_in_language",
-          "line": 40,
+          "line": 41,
           "kind": "FunctionDef"
         },
         {
           "name": "_sentence_key",
-          "line": 48,
+          "line": 49,
           "kind": "FunctionDef"
         },
         {
           "name": "progress_comparison",
-          "line": 52,
+          "line": 53,
           "kind": "FunctionDef"
         },
         {
           "name": "_fallback_sentences",
-          "line": 78,
+          "line": 79,
           "kind": "FunctionDef"
         },
         {
           "name": "run_pipeline",
-          "line": 89,
+          "line": 90,
           "kind": "AsyncFunctionDef"
         }
       ]
@@ -199,7 +199,7 @@
     },
     {
       "path": "backend/core/provider_capabilities.py",
-      "sha256": "5dd0716fa984862fe8403d1240a2c6e59488bca57c15dfad367bd2486017dd90",
+      "sha256": "ca3962401900ec45cd90ff70559799ce752cdb65be378e490f98f1b0ca709544",
       "lines": 28,
       "symbols": [
         {
@@ -259,73 +259,125 @@
       ]
     },
     {
+      "path": "backend/core/speech_capabilities.py",
+      "sha256": "b9c114c0611521dfba10e6884e7c8728bd4e41d30b8f3c849bbff0efef559d0e",
+      "lines": 54,
+      "symbols": [
+        {
+          "name": "speech_policy",
+          "line": 10,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "language_speech_inventory",
+          "line": 16,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "finite_number",
+          "line": 19,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "has_word_timing",
+          "line": 22,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "observed_speech_evidence",
+          "line": 27,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "save_speech_evidence",
+          "line": 48,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "load_speech_evidence",
+          "line": 52,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "valid_time",
+          "line": 32,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "availability",
+          "line": 35,
+          "kind": "FunctionDef"
+        }
+      ]
+    },
+    {
       "path": "backend/core/speech_evaluation.py",
-      "sha256": "9660de30e6f1a69d6dbbe5e2796bf96c01ca2710bc2d5632f2ba0b1654c58fdb",
-      "lines": 232,
+      "sha256": "18ba32fa8bebf56945e6f2b321ed8e86986b3cd005784ff63e88a0c36c1d9258",
+      "lines": 233,
       "symbols": [
         {
           "name": "canonical",
-          "line": 21,
+          "line": 22,
           "kind": "FunctionDef"
         },
         {
           "name": "file_hash",
-          "line": 25,
+          "line": 26,
           "kind": "FunctionDef"
         },
         {
           "name": "load_profile",
-          "line": 35,
+          "line": 36,
           "kind": "FunctionDef"
         },
         {
           "name": "seal",
-          "line": 46,
+          "line": 47,
           "kind": "FunctionDef"
         },
         {
           "name": "verify_seal",
-          "line": 50,
+          "line": 51,
           "kind": "FunctionDef"
         },
         {
           "name": "installed_versions",
-          "line": 56,
+          "line": 57,
           "kind": "FunctionDef"
         },
         {
           "name": "freeze_baseline",
-          "line": 60,
+          "line": 61,
           "kind": "FunctionDef"
         },
         {
           "name": "verify_freeze",
-          "line": 89,
+          "line": 90,
           "kind": "FunctionDef"
         },
         {
           "name": "_identifier",
-          "line": 103,
+          "line": 104,
           "kind": "FunctionDef"
         },
         {
           "name": "validate_dataset",
-          "line": 107,
+          "line": 108,
           "kind": "FunctionDef"
         },
         {
           "name": "coverage",
-          "line": 176,
+          "line": 177,
           "kind": "FunctionDef"
         },
         {
           "name": "register_evaluation",
-          "line": 203,
+          "line": 204,
           "kind": "FunctionDef"
         },
         {
           "name": "write_new_receipt",
-          "line": 228,
+          "line": 229,
           "kind": "FunctionDef"
         }
       ]
@@ -506,8 +558,8 @@
     },
     {
       "path": "backend/database/schema.py",
-      "sha256": "e6276eb523d83f7ea0b4e564812f5f9d02ef32f446bd5aa82ef4f231caf098b5",
-      "lines": 327,
+      "sha256": "b500fedf19cab9dea026d78fd828e133f56a853a9475d8fb386453f86486b228",
+      "lines": 329,
       "symbols": [
         {
           "name": "get_db_connection",
@@ -668,39 +720,39 @@
     },
     {
       "path": "backend/routers/capabilities.py",
-      "sha256": "27d1e24743f7defa07cb6132feda175a6acc78f1cd35aeb0bdf97799e1ca884a",
-      "lines": 13,
+      "sha256": "518dc2d160ec421c95fa8e30041ee90550c65a767161de54d57434b6bdbed587",
+      "lines": 14,
       "symbols": [
         {
           "name": "capabilities",
-          "line": 10,
+          "line": 11,
           "kind": "FunctionDef"
         }
       ]
     },
     {
       "path": "backend/routers/pipeline.py",
-      "sha256": "74d1a8ae044916a8da2d44a5d24d6194bae985df16a316151f07f0e81a0667f0",
-      "lines": 318,
+      "sha256": "d1d8025e57ba4444ca4465f5176dc9a02e02b304b59936d4a4b078df2c84bde2",
+      "lines": 321,
       "symbols": [
         {
           "name": "_SimulationOnly",
-          "line": 17,
+          "line": 18,
           "kind": "ClassDef"
         },
         {
           "name": "generate_sentences",
-          "line": 94,
+          "line": 95,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "_process_audio",
-          "line": 125,
+          "line": 126,
           "kind": "FunctionDef"
         },
         {
           "name": "execute_pipeline",
-          "line": 156,
+          "line": 157,
           "kind": "AsyncFunctionDef"
         }
       ]
@@ -724,8 +776,8 @@
     },
     {
       "path": "backend/routers/sessions.py",
-      "sha256": "3828818d971d4a1b0bf18d95c331f13261bac97e0fe4108543f0fdfa37fead3a",
-      "lines": 65,
+      "sha256": "f71cd5131b8611ac692bd288de6a06e9759deda1af59d1a2ab0891b4a61b7a74",
+      "lines": 68,
       "symbols": [
         {
           "name": "SessionResponse",
@@ -746,102 +798,102 @@
     },
     {
       "path": "backend/routers/story_mode.py",
-      "sha256": "d6c089db9ee877485ce10aff8ae1901e76d80118083c54e278d6a2c9e9ee3fdd",
-      "lines": 510,
+      "sha256": "444ae830080641e1515c3f0c894cda5f9c375df5b34404293b4a3ae2bf8a084c",
+      "lines": 512,
       "symbols": [
         {
           "name": "_band",
-          "line": 102,
+          "line": 103,
           "kind": "FunctionDef"
         },
         {
           "name": "level_difficulty",
-          "line": 110,
+          "line": 111,
           "kind": "FunctionDef"
         },
         {
           "name": "level_theme",
-          "line": 114,
+          "line": 115,
           "kind": "FunctionDef"
         },
         {
           "name": "world_name",
-          "line": 119,
+          "line": 120,
           "kind": "FunctionDef"
         },
         {
           "name": "language_name",
-          "line": 124,
+          "line": 125,
           "kind": "FunctionDef"
         },
         {
           "name": "stars_for",
-          "line": 128,
+          "line": 129,
           "kind": "FunctionDef"
         },
         {
           "name": "get_or_create_level",
-          "line": 136,
+          "line": 137,
           "kind": "FunctionDef"
         },
         {
           "name": "_student_id_or_403",
-          "line": 185,
+          "line": 186,
           "kind": "FunctionDef"
         },
         {
           "name": "_progress_rows",
-          "line": 198,
+          "line": 199,
           "kind": "FunctionDef"
         },
         {
           "name": "_unlocked_and_next",
-          "line": 207,
+          "line": 208,
           "kind": "FunctionDef"
         },
         {
           "name": "story_map",
-          "line": 220,
+          "line": 221,
           "kind": "FunctionDef"
         },
         {
           "name": "play_level",
-          "line": 266,
+          "line": 267,
           "kind": "FunctionDef"
         },
         {
           "name": "_audio_ext",
-          "line": 286,
+          "line": 287,
           "kind": "FunctionDef"
         },
         {
           "name": "_run_phase2",
-          "line": 294,
+          "line": 295,
           "kind": "FunctionDef"
         },
         {
           "name": "story_analyze",
-          "line": 314,
+          "line": 315,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "story_analyze_mock",
-          "line": 433,
+          "line": 435,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "story_feedback",
-          "line": 487,
+          "line": 489,
           "kind": "FunctionDef"
         },
         {
           "name": "story_summary",
-          "line": 500,
+          "line": 502,
           "kind": "FunctionDef"
         },
         {
           "name": "_call",
-          "line": 154,
+          "line": 155,
           "kind": "AsyncFunctionDef"
         }
       ]
@@ -969,167 +1021,167 @@
     },
     {
       "path": "backend/routers/v1.py",
-      "sha256": "3180b8a087f92f4d960d59439ea6aeae86b464a902f226db98827f87e4f5db62",
-      "lines": 814,
+      "sha256": "59456118d8848ccee1d1bf6178f97ba60b32e256d638057101a6e16bab53225e",
+      "lines": 823,
       "symbols": [
         {
           "name": "recorded_activity",
-          "line": 47,
+          "line": 48,
           "kind": "FunctionDef"
         },
         {
           "name": "ApiError",
-          "line": 70,
+          "line": 71,
           "kind": "ClassDef"
         },
         {
           "name": "SessionSocketManager",
-          "line": 89,
+          "line": 90,
           "kind": "ClassDef"
         },
         {
           "name": "_audio_ext",
-          "line": 130,
+          "line": 131,
           "kind": "FunctionDef"
         },
         {
           "name": "_get_session_or_404",
-          "line": 142,
+          "line": 143,
           "kind": "FunctionDef"
         },
         {
           "name": "_story_checkpoints",
-          "line": 151,
+          "line": 152,
           "kind": "FunctionDef"
         },
         {
           "name": "_warning_for",
-          "line": 165,
+          "line": 166,
           "kind": "FunctionDef"
         },
         {
           "name": "v1_health",
-          "line": 174,
+          "line": 175,
           "kind": "FunctionDef"
         },
         {
           "name": "word_tip",
-          "line": 189,
+          "line": 190,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "list_stories",
-          "line": 237,
+          "line": 238,
           "kind": "FunctionDef"
         },
         {
           "name": "list_story_sessions",
-          "line": 279,
+          "line": 280,
           "kind": "FunctionDef"
         },
         {
           "name": "create_session",
-          "line": 325,
+          "line": 326,
           "kind": "FunctionDef"
         },
         {
           "name": "_run_phase2",
-          "line": 375,
+          "line": 376,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "_persist_phase1",
-          "line": 456,
+          "line": 457,
           "kind": "FunctionDef"
         },
         {
           "name": "_phase1_response",
-          "line": 489,
+          "line": 492,
           "kind": "FunctionDef"
         },
         {
           "name": "_analyze_flow",
-          "line": 510,
+          "line": 514,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "_mock_acoustics",
-          "line": 576,
+          "line": 580,
           "kind": "FunctionDef"
         },
         {
           "name": "analyze_checkpoint",
-          "line": 588,
+          "line": 592,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "analyze_checkpoint_mock",
-          "line": 616,
+          "line": 620,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "get_session",
-          "line": 630,
+          "line": 634,
           "kind": "FunctionDef"
         },
         {
           "name": "get_feedback",
-          "line": 721,
+          "line": 730,
           "kind": "FunctionDef"
         },
         {
           "name": "student_dashboard",
-          "line": 750,
+          "line": 759,
           "kind": "FunctionDef"
         },
         {
           "name": "classroom_overview",
-          "line": 761,
+          "line": 770,
           "kind": "FunctionDef"
         },
         {
           "name": "trigger_sync",
-          "line": 772,
+          "line": 781,
           "kind": "FunctionDef"
         },
         {
           "name": "sync_status",
-          "line": 777,
+          "line": 786,
           "kind": "FunctionDef"
         },
         {
           "name": "session_ws",
-          "line": 787,
+          "line": 796,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "__init__",
-          "line": 74,
+          "line": 75,
           "kind": "FunctionDef"
         },
         {
           "name": "__init__",
-          "line": 90,
+          "line": 91,
           "kind": "FunctionDef"
         },
         {
           "name": "connect",
-          "line": 94,
+          "line": 95,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "disconnect",
-          "line": 99,
+          "line": 100,
           "kind": "FunctionDef"
         },
         {
           "name": "broadcast",
-          "line": 102,
+          "line": 103,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "deliver",
-          "line": 111,
+          "line": 112,
           "kind": "AsyncFunctionDef"
         }
       ]
@@ -1205,67 +1257,67 @@
     },
     {
       "path": "backend/services/acoustic.py",
-      "sha256": "9105df3e05e6431aa0474f16d6f25fbfb6108899d062ccb3048e84a206fce2b4",
+      "sha256": "8c14e8459b12eca15bd2fa45e12af9d3a7ce56fe6b5ee7bfdb7af471e56f850f",
       "lines": 348,
       "symbols": [
         {
           "name": "tokenize",
-          "line": 23,
+          "line": 24,
           "kind": "FunctionDef"
         },
         {
           "name": "_norm",
-          "line": 41,
+          "line": 42,
           "kind": "FunctionDef"
         },
         {
           "name": "_morphology_error",
-          "line": 51,
+          "line": 52,
           "kind": "FunctionDef"
         },
         {
           "name": "align_words",
-          "line": 71,
+          "line": 72,
           "kind": "FunctionDef"
         },
         {
           "name": "_guess_phoneme_mismatch",
-          "line": 128,
+          "line": 129,
           "kind": "FunctionDef"
         },
         {
           "name": "_formants",
-          "line": 133,
+          "line": 134,
           "kind": "FunctionDef"
         },
         {
           "name": "extract_word_acoustics",
-          "line": 160,
+          "line": 161,
           "kind": "FunctionDef"
         },
         {
           "name": "score_word",
-          "line": 229,
+          "line": 230,
           "kind": "FunctionDef"
         },
         {
           "name": "detect_hesitations",
-          "line": 267,
+          "line": 268,
           "kind": "FunctionDef"
         },
         {
           "name": "engagement_heuristic",
-          "line": 282,
+          "line": 281,
           "kind": "FunctionDef"
         },
         {
           "name": "stars_for",
-          "line": 290,
+          "line": 289,
           "kind": "FunctionDef"
         },
         {
           "name": "build_signal",
-          "line": 297,
+          "line": 296,
           "kind": "FunctionDef"
         }
       ]
@@ -1517,57 +1569,62 @@
     },
     {
       "path": "backend/services/stt.py",
-      "sha256": "a88e2045b834d2234394c2063a171389169b26bd9b2b0a2306f817fa300f0567",
-      "lines": 225,
+      "sha256": "a725b19baa5386cbc2e2c7a0b53616e9cc5c11565b509cc60dd064e701c37bac",
+      "lines": 227,
       "symbols": [
         {
           "name": "NoSpeechError",
-          "line": 25,
+          "line": 26,
           "kind": "ClassDef"
         },
         {
           "name": "_require_speech",
-          "line": 29,
+          "line": 30,
           "kind": "FunctionDef"
         },
         {
           "name": "network_available",
-          "line": 35,
+          "line": 36,
           "kind": "FunctionDef"
         },
         {
           "name": "TranscriptResult",
-          "line": 56,
+          "line": 57,
           "kind": "ClassDef"
         },
         {
+          "name": "_normalize_words",
+          "line": 65,
+          "kind": "FunctionDef"
+        },
+        {
           "name": "_get_local_whisper",
-          "line": 64,
+          "line": 85,
           "kind": "FunctionDef"
         },
         {
           "name": "groq_whisper",
-          "line": 144,
+          "line": 160,
           "kind": "FunctionDef"
         },
         {
           "name": "local_whisper",
-          "line": 195,
+          "line": 194,
           "kind": "FunctionDef"
         },
         {
           "name": "get_transcript",
-          "line": 204,
+          "line": 203,
           "kind": "FunctionDef"
         },
         {
           "name": "_transcribe",
-          "line": 74,
+          "line": 95,
           "kind": "FunctionDef"
         },
         {
           "name": "_transcribe",
-          "line": 115,
+          "line": 129,
           "kind": "FunctionDef"
         }
       ]
@@ -1797,8 +1854,8 @@
     },
     {
       "path": "backend/tests/test_regressions.py",
-      "sha256": "a4726cabcbcc2c7da8ef0682b444d5795ce0ef5d75a9d5e9c205a4d6589e797b",
-      "lines": 894,
+      "sha256": "107c9f1017e2ae59014f39d0383120c1baa5d6aa417d56398adfb974888b5da8",
+      "lines": 895,
       "symbols": [
         {
           "name": "Regressions",
@@ -1807,17 +1864,17 @@
         },
         {
           "name": "DashboardFeedbackRegressions",
-          "line": 396,
+          "line": 397,
           "kind": "ClassDef"
         },
         {
           "name": "EnrollmentRegressions",
-          "line": 503,
+          "line": 504,
           "kind": "ClassDef"
         },
         {
           "name": "AccountProfileRegressions",
-          "line": 615,
+          "line": 616,
           "kind": "ClassDef"
         },
         {
@@ -1992,222 +2049,404 @@
         },
         {
           "name": "test_checkpoint_reread_generates_fresh_coaching",
-          "line": 375,
+          "line": 376,
           "kind": "FunctionDef"
         },
         {
           "name": "signal",
-          "line": 397,
+          "line": 398,
           "kind": "FunctionDef"
         },
         {
           "name": "run_feedback",
-          "line": 404,
+          "line": 405,
           "kind": "FunctionDef"
         },
         {
           "name": "test_urdu_punctuation_never_changes_word_match",
-          "line": 411,
+          "line": 412,
           "kind": "FunctionDef"
         },
         {
           "name": "test_unicode_words_preserve_letters_and_marks",
-          "line": 419,
+          "line": 420,
           "kind": "FunctionDef"
         },
         {
           "name": "test_flagged_words_and_current_score_share_observations",
-          "line": 425,
+          "line": 426,
           "kind": "FunctionDef"
         },
         {
           "name": "test_current_low_score_overrides_strong_history",
-          "line": 433,
+          "line": 434,
           "kind": "FunctionDef"
         },
         {
           "name": "test_practice_difficulty_boundaries",
-          "line": 441,
+          "line": 442,
           "kind": "FunctionDef"
         },
         {
           "name": "test_generated_exercises_require_word_language_and_tier",
-          "line": 449,
+          "line": 450,
           "kind": "FunctionDef"
         },
         {
           "name": "test_all_fallback_results_have_explicit_availability",
-          "line": 466,
+          "line": 467,
           "kind": "FunctionDef"
         },
         {
           "name": "test_estimated_timing_does_not_claim_zero_observed_pauses",
-          "line": 476,
+          "line": 477,
           "kind": "FunctionDef"
         },
         {
           "name": "test_progress_uses_latest_same_sentence_and_language",
-          "line": 483,
+          "line": 484,
           "kind": "FunctionDef"
         },
         {
           "name": "setUpClass",
-          "line": 505,
+          "line": 506,
           "kind": "FunctionDef"
         },
         {
           "name": "setUp",
-          "line": 509,
+          "line": 510,
           "kind": "FunctionDef"
         },
         {
           "name": "signup",
-          "line": 521,
+          "line": 522,
           "kind": "FunctionDef"
         },
         {
           "name": "profile",
-          "line": 530,
+          "line": 531,
           "kind": "FunctionDef"
         },
         {
           "name": "test_child_first_approval_creates_one_linked_profile",
-          "line": 535,
+          "line": 536,
           "kind": "FunctionDef"
         },
         {
           "name": "test_existing_profile_is_linked_without_losing_history",
-          "line": 555,
+          "line": 556,
           "kind": "FunctionDef"
         },
         {
           "name": "test_linking_rejects_occupied_archived_and_foreign_profiles",
-          "line": 571,
+          "line": 572,
           "kind": "FunctionDef"
         },
         {
           "name": "test_two_signups_cannot_claim_one_profile_concurrently",
-          "line": 592,
+          "line": 593,
           "kind": "FunctionDef"
         },
         {
           "name": "test_approved_account_cannot_be_reassigned",
-          "line": 604,
+          "line": 605,
           "kind": "FunctionDef"
         },
         {
           "name": "setUpClass",
-          "line": 617,
+          "line": 618,
           "kind": "FunctionDef"
         },
         {
           "name": "setUp",
-          "line": 621,
+          "line": 622,
           "kind": "FunctionDef"
         },
         {
           "name": "adult",
-          "line": 639,
+          "line": 640,
           "kind": "FunctionDef"
         },
         {
           "name": "profile",
-          "line": 650,
+          "line": 651,
           "kind": "FunctionDef"
         },
         {
           "name": "test_adult_registration_creates_one_private_reader",
-          "line": 655,
+          "line": 656,
           "kind": "FunctionDef"
         },
         {
           "name": "test_adult_school_and_other_adult_isolation",
-          "line": 674,
+          "line": 675,
           "kind": "FunctionDef"
         },
         {
           "name": "test_profile_languages_persist_without_rewriting_history",
-          "line": 690,
+          "line": 691,
           "kind": "FunctionDef"
         },
         {
           "name": "test_invalid_profile_updates_are_atomic_and_do_not_echo_inputs",
-          "line": 711,
+          "line": 712,
           "kind": "FunctionDef"
         },
         {
           "name": "test_profile_version_prevents_stale_and_concurrent_overwrites",
-          "line": 725,
+          "line": 726,
           "kind": "FunctionDef"
         },
         {
           "name": "test_completion_rollout_gate_allows_account_recovery",
-          "line": 742,
+          "line": 743,
           "kind": "FunctionDef"
         },
         {
           "name": "test_personal_join_code_cannot_enroll_a_classroom_child",
-          "line": 765,
+          "line": 766,
           "kind": "FunctionDef"
         },
         {
           "name": "test_existing_pending_child_cannot_switch_into_adult_approval",
-          "line": 773,
+          "line": 774,
           "kind": "FunctionDef"
         },
         {
           "name": "test_adult_duplicate_registration_does_not_leave_orphan_scopes",
-          "line": 783,
+          "line": 784,
           "kind": "FunctionDef"
         },
         {
           "name": "test_profile_migration_backups_and_preserves_version_two_records",
-          "line": 798,
+          "line": 799,
           "kind": "FunctionDef"
         },
         {
           "name": "test_teacher_cannot_manage_a_personal_adult_account",
-          "line": 828,
+          "line": 829,
           "kind": "FunctionDef"
         },
         {
           "name": "test_profile_endpoints_require_identity_and_registration_limit_is_shared",
-          "line": 837,
+          "line": 838,
           "kind": "FunctionDef"
         },
         {
           "name": "test_personal_scope_owner_binding_is_checked_on_every_request",
-          "line": 848,
+          "line": 849,
           "kind": "FunctionDef"
         },
         {
           "name": "test_accessibility_merges_without_diagnosis_or_cross_account_updates",
-          "line": 856,
+          "line": 857,
           "kind": "FunctionDef"
         },
         {
           "name": "test_book_catalogue_progress_is_language_specific_and_scoped",
-          "line": 873,
+          "line": 874,
           "kind": "FunctionDef"
         },
         {
           "name": "approve",
-          "line": 596,
+          "line": 597,
           "kind": "FunctionDef"
         },
         {
           "name": "save",
-          "line": 728,
+          "line": 729,
           "kind": "FunctionDef"
         },
         {
           "name": "register",
-          "line": 788,
+          "line": 789,
           "kind": "FunctionDef"
         },
         {
           "name": "track_connection",
           "line": 190,
+          "kind": "FunctionDef"
+        }
+      ]
+    },
+    {
+      "path": "backend/tests/test_speech_capabilities.py",
+      "sha256": "b2c4f88fa460f2935abddf65f0e9490fa24a9ee580d738e8c803c49f2c12cb6d",
+      "lines": 182,
+      "symbols": [
+        {
+          "name": "Contracts",
+          "line": 22,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "HttpContracts",
+          "line": 130,
+          "kind": "ClassDef"
+        },
+        {
+          "name": "setUp",
+          "line": 23,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "response",
+          "line": 26,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "local",
+          "line": 27,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "evidence",
+          "line": 28,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_language_routes_are_canonical_and_isolated",
+          "line": 30,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_planned_language_rejected_before_any_provider_or_probe",
+          "line": 34,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_forced_local_never_probes_or_calls_cloud",
+          "line": 39,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_missing_key_uses_local_without_network_probe",
+          "line": 44,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_cloud_success_does_not_invoke_local",
+          "line": 47,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_cloud_failure_falls_back_with_redacted_reason",
+          "line": 50,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_no_speech_does_not_retry_as_another_recognizer",
+          "line": 53,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_cloud_segment_only_text_has_no_invented_timings",
+          "line": 57,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_cloud_text_only_remains_scoreable",
+          "line": 65,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_invalid_timing_and_probability_stay_unavailable",
+          "line": 71,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_partial_timing_cannot_claim_complete_pause_assessment",
+          "line": 76,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_overlapping_or_single_words_cannot_claim_pause_assessment",
+          "line": 80,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_pause_detection_never_bridges_missing_word",
+          "line": 84,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_complete_real_timing_and_confidence_are_reported",
+          "line": 88,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_out_of_clip_timing_does_not_create_pauses",
+          "line": 92,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_mock_timings_are_explicitly_simulation",
+          "line": 99,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_faster_whisper_segment_fallback_has_no_word_timing",
+          "line": 103,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_openai_whisper_preserves_untimed_segments",
+          "line": 110,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_no_timing_still_measures_clip_duration_without_pitch",
+          "line": 117,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_coaching_reports_unavailable_pauses",
+          "line": 124,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "setUpClass",
+          "line": 132,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "words",
+          "line": 135,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "features",
+          "line": 136,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_public_inventory_contains_routes_without_private_configuration",
+          "line": 137,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_additive_evidence_migration_is_idempotent",
+          "line": 141,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_classic_missing_timing_is_persisted_and_scoped",
+          "line": 146,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_checkpoint_evidence_survives_history_and_reread",
+          "line": 154,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_dynamic_evidence_survives_history",
+          "line": 167,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_legacy_evidence_is_unknown_not_reconstructed",
+          "line": 175,
           "kind": "FunctionDef"
         }
       ]
@@ -2677,7 +2916,7 @@
     },
     {
       "path": "backend/tests/validate_enrollment_runtime.py",
-      "sha256": "6e54c4a13cb6266cc65cab338dc4af49b0a143f227f495a1a21f4e0b0d2e3e1d",
+      "sha256": "29c541caa20123ce36d5b958a43e07b7e4285176657f79af80bd48c2c1dca55d",
       "lines": 143,
       "symbols": [
         {
@@ -2710,12 +2949,12 @@
     },
     {
       "path": "backend/tests/validate_soven_ui.cjs",
-      "sha256": "5ba5c767393152a6da6a5a0d46c74b3787169f7a851bc6d4d1a1b71eb6ba3113",
-      "lines": 46,
+      "sha256": "a9484ced5130b094eaa204c4b4f2a83d2d55c3470d6dd82b71813d82cb700175",
+      "lines": 65,
       "symbols": [
         {
           "name": "preference",
-          "line": 42
+          "line": 61
         }
       ]
     },
@@ -3155,7 +3394,7 @@
     },
     {
       "path": "frontend/app/read/[sessionId]/page.tsx",
-      "sha256": "31cb3db1802d87e6d0d651ec0b70bfc62dfa08ad0199cbfd67e3a450b608dffb",
+      "sha256": "60b6c666ad2e0577b4a98dcffa9d3d538002296b9345954880664eae0aa990e1",
       "lines": 641,
       "symbols": [
         {
@@ -3637,7 +3876,7 @@
     },
     {
       "path": "frontend/context/SpeakFlowContext.tsx",
-      "sha256": "972b867a9a5038e8f5e87c06515ecd2fc8741cbcffd75249bf6e04e39b89301b",
+      "sha256": "55c2b3d0ed9315c7dfcc42f26c663eb2f680b22ecf8903cd861bbcef22dc8ff1",
       "lines": 479,
       "symbols": [
         {
@@ -3762,8 +4001,8 @@
     },
     {
       "path": "frontend/lib/api.ts",
-      "sha256": "d6ebaf2e6ec62ecff7757f00590ef2b056708617b3af8ebbf8e8feaae2fcf970",
-      "lines": 834,
+      "sha256": "af039f7d062c1f549f8a426ff59892189f91b930bb3ba069f35811c6e050db67",
+      "lines": 845,
       "symbols": [
         {
           "name": "apiFetch",
@@ -3826,324 +4065,328 @@
           "line": 124
         },
         {
-          "name": "Phase1Response",
+          "name": "SpeechEvidence",
           "line": 130
         },
         {
+          "name": "Phase1Response",
+          "line": 138
+        },
+        {
           "name": "Phase2Response",
-          "line": 146
+          "line": 155
         },
         {
           "name": "StoryCheckpoint",
-          "line": 160
+          "line": 169
         },
         {
           "name": "StorySummary",
-          "line": 162
+          "line": 171
         },
         {
           "name": "CreatedSession",
-          "line": 174
+          "line": 183
         },
         {
           "name": "SessionCheckpointDetail",
-          "line": 184
+          "line": 193
         },
         {
           "name": "SessionDetail",
-          "line": 201
+          "line": 211
         },
         {
           "name": "StudentDashboard",
-          "line": 224
+          "line": 234
         },
         {
           "name": "ClassroomOverview",
-          "line": 247
+          "line": 257
         },
         {
           "name": "V1Health",
-          "line": 265
+          "line": 275
         },
         {
           "name": "RecordedActivity",
-          "line": 274
+          "line": 284
         },
         {
           "name": "fetchRecordedActivity",
-          "line": 279
+          "line": 289
         },
         {
           "name": "SyncStatus",
-          "line": 285
+          "line": 295
         },
         {
           "name": "V2SessionListItem",
-          "line": 287
+          "line": 297
         },
         {
           "name": "Role",
-          "line": 306
+          "line": 316
         },
         {
           "name": "AuthUser",
-          "line": 307
+          "line": 317
         },
         {
           "name": "getStoredToken",
-          "line": 327
+          "line": 337
         },
         {
           "name": "getStoredUser",
-          "line": 332
-        },
-        {
-          "name": "storeSession",
           "line": 342
         },
         {
-          "name": "clearSession",
-          "line": 347
-        },
-        {
-          "name": "authHeaders",
+          "name": "storeSession",
           "line": 352
         },
         {
-          "name": "apiLogin",
+          "name": "clearSession",
           "line": 357
         },
         {
-          "name": "apiRegister",
+          "name": "authHeaders",
+          "line": 362
+        },
+        {
+          "name": "apiLogin",
           "line": 367
         },
         {
-          "name": "apiLogout",
+          "name": "apiRegister",
           "line": 377
         },
         {
-          "name": "ManagedUser",
+          "name": "apiLogout",
           "line": 387
         },
         {
+          "name": "ManagedUser",
+          "line": 397
+        },
+        {
           "name": "fetchUsers",
-          "line": 389
+          "line": 399
         },
         {
           "name": "approveUser",
-          "line": 395
+          "line": 405
         },
         {
           "name": "rejectUser",
-          "line": 404
+          "line": 414
         },
         {
           "name": "deleteUserAccount",
-          "line": 411
+          "line": 421
         },
         {
           "name": "RosterEntry",
-          "line": 420
+          "line": 430
         },
         {
           "name": "fetchRoster",
-          "line": 435
+          "line": 445
         },
         {
           "name": "toggleParentUpdates",
-          "line": 441
+          "line": 451
         },
         {
           "name": "ParentUpdate",
-          "line": 450
-        },
-        {
-          "name": "fetchParentMessage",
-          "line": 452
-        },
-        {
-          "name": "StudentReport",
           "line": 460
         },
         {
+          "name": "fetchParentMessage",
+          "line": 462
+        },
+        {
+          "name": "StudentReport",
+          "line": 470
+        },
+        {
           "name": "fetchReports",
-          "line": 476
+          "line": 486
         },
         {
           "name": "PracticeLibrary",
-          "line": 482
+          "line": 492
         },
         {
           "name": "fetchPracticeLibrary",
-          "line": 499
+          "line": 509
         },
         {
           "name": "changePassword",
-          "line": 505
-        },
-        {
-          "name": "SttMode",
           "line": 515
         },
         {
+          "name": "SttMode",
+          "line": 525
+        },
+        {
           "name": "AgentModel",
-          "line": 516
+          "line": 526
         },
         {
           "name": "KeysStatus",
-          "line": 518
-        },
-        {
-          "name": "fetchKeysStatus",
           "line": 528
         },
         {
+          "name": "fetchKeysStatus",
+          "line": 538
+        },
+        {
           "name": "saveKeys",
-          "line": 534
+          "line": 544
         },
         {
           "name": "parseError",
-          "line": 553
+          "line": 563
         },
         {
           "name": "resolveApiBase",
-          "line": 564
+          "line": 574
         },
         {
           "name": "WordTip",
-          "line": 580
+          "line": 590
         },
         {
           "name": "fetchWordTip",
-          "line": 588
+          "line": 598
         },
         {
           "name": "StoryTrack",
-          "line": 597
+          "line": 607
         },
         {
           "name": "StoryMapLevel",
-          "line": 599
+          "line": 609
         },
         {
           "name": "StoryMap",
-          "line": 605
+          "line": 615
         },
         {
           "name": "StoryPlay",
-          "line": 611
-        },
-        {
-          "name": "StoryWord",
-          "line": 616
-        },
-        {
-          "name": "StoryAttemptResult",
           "line": 621
         },
         {
+          "name": "StoryWord",
+          "line": 626
+        },
+        {
+          "name": "StoryAttemptResult",
+          "line": 631
+        },
+        {
           "name": "StoryTrackSummary",
-          "line": 628
+          "line": 639
         },
         {
           "name": "fetchStoryMap",
-          "line": 633
+          "line": 644
         },
         {
           "name": "fetchStorySummary",
-          "line": 641
+          "line": 652
         },
         {
           "name": "fetchStoryPlay",
-          "line": 647
+          "line": 658
         },
         {
           "name": "storyAnalyze",
-          "line": 653
+          "line": 664
         },
         {
           "name": "storyAnalyzeMock",
-          "line": 665
+          "line": 676
         },
         {
           "name": "fetchStoryFeedback",
-          "line": 675
+          "line": 686
         },
         {
           "name": "fetchV1Health",
-          "line": 682
+          "line": 693
         },
         {
           "name": "fetchStories",
-          "line": 688
+          "line": 699
         },
         {
           "name": "createSession",
-          "line": 697
+          "line": 708
         },
         {
           "name": "fetchV2Sessions",
-          "line": 709
+          "line": 720
         },
         {
           "name": "analyzeCheckpoint",
-          "line": 715
+          "line": 726
         },
         {
           "name": "fetchFeedback",
-          "line": 729
+          "line": 740
         },
         {
           "name": "fetchSessionDetail",
-          "line": 739
+          "line": 750
         },
         {
           "name": "fetchStudentDashboard",
-          "line": 745
+          "line": 756
         },
         {
           "name": "fetchClassroomOverview",
-          "line": 754
+          "line": 765
         },
         {
           "name": "triggerSync",
-          "line": 760
+          "line": 771
         },
         {
           "name": "fetchSyncStatus",
-          "line": 766
+          "line": 777
         },
         {
           "name": "fetchPlatformCapabilities",
-          "line": 774
+          "line": 785
         },
         {
           "name": "ReaderMode",
-          "line": 780
+          "line": 791
         },
         {
           "name": "ProfileAccessibility",
-          "line": 781
+          "line": 792
         },
         {
           "name": "ReaderProfile",
-          "line": 789
+          "line": 800
         },
         {
           "name": "ReaderProfileUpdate",
-          "line": 801
+          "line": 812
         },
         {
           "name": "apiRegisterAdult",
-          "line": 811
-        },
-        {
-          "name": "fetchReaderProfile",
           "line": 822
         },
         {
+          "name": "fetchReaderProfile",
+          "line": 833
+        },
+        {
           "name": "saveReaderProfile",
-          "line": 828
+          "line": 839
         }
       ]
     },
@@ -4186,8 +4429,8 @@
     },
     {
       "path": "frontend/lib/languages.ts",
-      "sha256": "6dc8f8e5b176bfec5e6670a43f5de9c0f5681ea1b034c8be3161feeedd419469",
-      "lines": 41,
+      "sha256": "26869028222cf95e1438b3f8e1851b4233c61fc8df40e0f902f60d97c6fee3c5",
+      "lines": 42,
       "symbols": [
         {
           "name": "LanguageDefinition",
@@ -4281,16 +4524,24 @@
     },
     {
       "path": "frontend/lib/speech.ts",
-      "sha256": "6e2b0c7dd8ce7156e52cc4fc6e4b8c1ffedcbbef1619df4aa1f4d13d38de7771",
-      "lines": 58,
+      "sha256": "5b9446bf3c9800c12261a1db707aef8917de933a9c76e60377feea3bb2e23549",
+      "lines": 42,
       "symbols": [
         {
-          "name": "refreshVoices",
-          "line": 12
+          "name": "PlaybackCapability",
+          "line": 4
         },
         {
           "name": "speechLangFor",
-          "line": 21
+          "line": 5
+        },
+        {
+          "name": "selection",
+          "line": 9
+        },
+        {
+          "name": "playbackCapability",
+          "line": 25
         },
         {
           "name": "hasVoiceFor",
@@ -4298,11 +4549,11 @@
         },
         {
           "name": "speak",
-          "line": 37
+          "line": 29
         },
         {
           "name": "stopSpeaking",
-          "line": 54
+          "line": 40
         }
       ]
     },
@@ -4320,7 +4571,7 @@
     },
     {
       "path": "tools/build_handoff.py",
-      "sha256": "a18db1adab0dce2199587267523b81e541badd1d11e39c9e28796ba97b5c2558",
+      "sha256": "b6661db2576ee47c1c2c98222566424370eb6468cd5c5bde7a7d4bc780a53eb6",
       "lines": 104,
       "symbols": [
         {
@@ -4386,6 +4637,12 @@
           "kind": "FunctionDef"
         }
       ]
+    },
+    {
+      "path": "tools/test_speech_playback.cjs",
+      "sha256": "6350474b4cadaa08799bfb8e53d9948d4ffe2a1ff9e71207c6dd83a4bb3d6f57",
+      "lines": 30,
+      "symbols": []
     }
   ]
 }

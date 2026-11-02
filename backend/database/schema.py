@@ -296,6 +296,8 @@ def init_db():
         cursor.execute('''INSERT OR IGNORE INTO user_profiles(user_id,reader_mode,profile_completed)
             SELECT id, CASE WHEN role='teacher' THEN 'teacher' ELSE 'child' END, 1 FROM users''')
         cursor.execute('INSERT OR IGNORE INTO schema_migrations(version) VALUES (3)')
+        cursor.execute("CREATE TABLE IF NOT EXISTS speech_evidence (record_kind TEXT NOT NULL, record_id TEXT NOT NULL, payload_json TEXT NOT NULL, PRIMARY KEY(record_kind,record_id))")
+        cursor.execute('INSERT OR IGNORE INTO schema_migrations(version) VALUES (4)')
 
         # Compatibility read models feed dynamic attempts into existing reports.
         cursor.execute("DROP VIEW IF EXISTS report_sessions")

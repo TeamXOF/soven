@@ -8,7 +8,7 @@ _PROVIDERS = [
      'availability': 'configuration_dependent', 'word_timing': 'optional', 'confidence': 'optional'},
     {'id': 'local_whisper', 'task': 'recognition', 'implementation': 'existing',
      'availability': 'requires_installed_dependencies_and_cached_weights',
-     'word_timing': 'word_or_explicitly_estimated', 'confidence': 'optional'},
+     'word_timing': 'word_or_unavailable', 'confidence': 'optional'},
     {'id': 'browser_speech_synthesis', 'task': 'speech_playback', 'implementation': 'existing',
      'availability': 'device_and_voice_dependent', 'offline_guaranteed': False},
     {'id': 'meta_reasoning', 'task': 'coaching', 'implementation': 'existing',

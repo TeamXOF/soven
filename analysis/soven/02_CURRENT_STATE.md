@@ -69,3 +69,9 @@ Default Google and opt-in Meta/compatible reasoning adapters pass 18 mocked cont
 ## Frozen speech evaluation foundation
 
 The frozen reference, preregistration and bounded offline runner now pass 52 focused tests. Five synthetic controls pass. Historical reproduction matches the old 29/110 acceptable-word flags; a predeclared beam-five variant yields 24/110 with the same 4/5 expert-error flags. This exposed-sample signal is insufficient for promotion. Production decoding is unchanged, and fresh recognition quality remains unvalidated. Read guides 17–18.
+
+## Explicit speech route and evidence boundary
+
+English and Urdu now use a shared explicit route inventory: Groq Whisper when configured and permitted, local Whisper fallback, and matching-language browser SpeechSynthesis when a device voice exists. No planned language is silently routed through English. A missing browser voice is visible and retryable; an unrelated voice is never substituted.
+
+New results identify their recognition source, engine and fallback and distinguish available, partial and unavailable word timing/confidence. Timing is kept only when the recognizer supplied valid word timing; it is not inferred from a segment duration. Confidence is model token probability, not pronunciation quality. Pause observations require complete ordered word timing. Legacy results retain null/unknown evidence rather than a manufactured origin. This is correctness/traceability work, not a child-speech, Urdu, TTS-device or acoustic-quality validation. See guide 19.

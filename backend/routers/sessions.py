@@ -52,11 +52,14 @@ def get_session_diagnosis(session_id: str):
         if not row:
             raise HTTPException(status_code=404, detail="Diagnosis not found")
             
+        from core.speech_capabilities import load_speech_evidence
+        evidence=load_speech_evidence(conn,'classic',session_id)
         import json
         
         # Parse the JSON strings back to objects for the API response
         return {
             "session_id": row["session_id"],
+            "speech_evidence":evidence,
             "phonetic_result": json.loads(row["phonetic_result"]) if row["phonetic_result"] else None,
             "difficulty_result": json.loads(row["difficulty_result"]) if row["difficulty_result"] else None,
             "engagement_result": json.loads(row["engagement_result"]) if row["engagement_result"] else None,

@@ -73,3 +73,9 @@ Run python backend/tests/test_speech_evaluation.py alongside the existing applic
 ## Offline runner checks and measured development
 
 The current backend total is 132: application 62, provider 18, freeze/preregistration 21 and runner/metric 31. Run all four test files. Five real cached-model synthetic controls passed, and 20 exposed historical clips reproduced the earlier failures. A frozen beam-five variant reduced acceptable-word flags to 24/110 while retaining 4/5 expert-error flags; this is not new ASR-WER or release validation. Detailed reports/ledger remain under .qa, with reviewed public aggregates in SPEECH_EXPLORATORY_COMPARISON.json. App/frontend code is unchanged; browser evidence remains dated, and remote CI checks the frontend. See guide 18 before running or moving the private ledger.
+
+## Speech capability selection checks
+
+Run `python backend/tests/test_speech_capabilities.py` with the application, provider, freeze and runner suites. The current combined local total is 158 backend cases: 62 application, 18 provider, 21 freeze/preregistration, 31 runner and 26 speech-capability contracts. Run `node tools/test_speech_playback.cjs` for mocked matching-voice/unavailable/retry/stop coverage and the isolated UI browser script for the connected reader flow. The completed stability run passed those 15 and 23 browser scenarios respectively, lint, standalone TypeScript and a production build.
+
+The five cached local-model controls are route/scoring mechanics only. They do not demonstrate child-speech quality, Urdu quality, physical-device voice coverage, word-time accuracy, confidence calibration, classroom load or a live hosted provider. See guide 19 and SPEECH_CAPABILITY_VALIDATION.json before changing a route or presenting evidence.

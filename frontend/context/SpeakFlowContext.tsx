@@ -404,7 +404,7 @@ export function SpeakFlowProvider({ children }: { children: ReactNode }) {
       if (response.overall_score != null) setOverallScore(response.overall_score);
       if (response.wpm != null) setWpm(response.wpm);
       if (response.accuracy != null) setAccuracy(response.accuracy);
-      if (response.pauses != null) setPauses(response.pauses);
+      setPauses(response.pauses ?? null);
       setSpokenWords(response.words_spoken || []);
       setScoredWords(response.words || []);
 

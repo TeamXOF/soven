@@ -15,6 +15,7 @@ from dataclasses import dataclass, field
 from functools import lru_cache
 
 from core.config import settings
+from core.speech_capabilities import speech_policy, has_word_timing, finite_number
 
 log = logging.getLogger("speakflow.stt")
 
@@ -58,6 +59,26 @@ class TranscriptResult:
     words: list = field(default_factory=list)  # [{word, start, end, probability}]
     source: str = "local_fallback"             # "groq" | "local_fallback"
     fallback_reason: str = ""
+    engine: str = "unknown"
+
+
+def _normalize_words(raw_words, text=""):
+    from services.acoustic import tokenize
+    words=[]
+    for raw in raw_words or []:
+        if not isinstance(raw,dict):continue
+        token=str(raw.get('word','')).strip()
+        if not tokenize(token):continue
+        row={'word':token,'start':None,'end':None,'probability':None,'timing_source':'unavailable'}
+        if has_word_timing(raw):
+            row.update(start=float(raw['start']),end=float(raw['end']),timing_source='word')
+        probability=raw.get('probability')
+        if finite_number(probability) and 0 <= probability <= 1:
+            row['probability']=float(probability)
+        words.append(row)
+    if not words:
+        words=[{'word':w,'start':None,'end':None,'probability':None,'timing_source':'unavailable'} for w in tokenize(text)]
+    return words
 
 
 @lru_cache(maxsize=1)
@@ -83,20 +104,13 @@ def _get_local_whisper():
                 for w in (seg.words or []):
                     words.append({
                         "word": str(w.word).strip(),
-                        "start": float(w.start),
-                        "end": float(w.end),
-                        "probability": float(w.probability),
+                        "start": w.start,
+                        "end": w.end,
+                        "probability": getattr(w,"probability",None),
                     })
                 if not (seg.words or []):
-                    # Synthesize even timing when word tokens are absent
-                    seg_words = str(seg.text).split()
-                    dur = max(seg.end - seg.start, 0.01) / max(len(seg_words), 1)
-                    for i, sw in enumerate(seg_words):
-                        words.append({"word": sw.strip(),
-                                      "start": seg.start + i * dur,
-                                      "end": seg.start + (i + 1) * dur,
-                                      "probability": None, "timing_source": "estimated"})
-            return {"text": " ".join(w["word"] for w in words).strip(), "words": words}
+                    words.extend(_normalize_words([], str(seg.text)))
+            return {"text": " ".join(w["word"] for w in words).strip(), "words": words, "engine":"faster_whisper"}
 
         log.info("Local STT: faster-whisper '%s' (INT8)", settings.WHISPER_MODEL)
         return _transcribe
@@ -118,14 +132,16 @@ def _get_local_whisper():
                 temperature=0.0, condition_on_previous_text=False)
             words = []
             for seg in result.get("segments", []):
+                if not seg.get('words'):
+                    words.extend(_normalize_words([],str(seg.get('text',''))))
                 for w in seg.get("words", []):
                     words.append({
                         "word": str(w["word"]).strip(),
-                        "start": float(w["start"]),
-                        "end": float(w["end"]),
+                        "start": w.get("start"),
+                        "end": w.get("end"),
                         "probability": w.get("probability"),
                     })
-            return {"text": result["text"].strip(), "words": words}
+            return {"text": result["text"].strip(), "words": _normalize_words(words,result["text"]), "engine":"openai_whisper"}
 
         log.info("Local STT: openai-whisper '%s'", settings.WHISPER_MODEL)
         return _transcribe
@@ -165,31 +181,14 @@ def groq_whisper(audio_path: str, language: str = "en") -> TranscriptResult:
     if not resp.ok:
         raise RuntimeError(f"Speech provider returned HTTP {resp.status_code}")
     data = resp.json()
-    words = []
-    for w in data.get("words") or []:
-        words.append({
-            "word": str(w.get("word", "")).strip(),
-            "start": float(w.get("start", 0.0)),
-            "end": float(w.get("end", 0.0)),
-            "probability": w.get("probability"),
-        })
-    if not words:
-        # Derive word timings from segments if word granularity was absent.
-        for seg in data.get("segments") or []:
-            duration = max(seg.get("end", 0) - seg.get("start", 0), 0.01)
-            seg_words = str(seg.get("text", "")).split()
-            if not seg_words:
-                continue
-            per = duration / len(seg_words)
-            for i, sw in enumerate(seg_words):
-                words.append({
-                    "word": sw.strip(),
-                    "start": seg["start"] + i * per,
-                    "end": seg["start"] + (i + 1) * per,
-                    # Segment timing is estimated; recognition confidence is unavailable.
-                    "probability": None, "timing_source": "estimated",
-                })
-    return TranscriptResult(text=str(data.get("text", "")).strip(), words=words, source="groq")
+    text=str(data.get("text", "")).strip()
+    raw_words=data.get('words') or []
+    if not raw_words:
+        # Preserve segment text without converting segment bounds to word bounds.
+        raw_words=[w for segment in data.get('segments') or []
+                   for w in _normalize_words([],str(segment.get('text','')))]
+    return TranscriptResult(text=text,words=_normalize_words(raw_words,text),source="groq",engine="groq_whisper")
+
 
 
 def local_whisper(audio_path: str, language: str = "en") -> TranscriptResult:
@@ -197,29 +196,32 @@ def local_whisper(audio_path: str, language: str = "en") -> TranscriptResult:
     Same return shape as the Groq path."""
     with _local_transcription_lock:
         result = _get_local_whisper()(audio_path, language)
-    return TranscriptResult(text=result["text"], words=result["words"],
-                            source="local_fallback")
+    return TranscriptResult(text=result["text"], words=_normalize_words(result["words"],result["text"]),
+                            source="local_fallback",engine=result.get('engine','unknown'))
 
 
 def get_transcript(audio_path: str, language: str = "en") -> TranscriptResult:
     """The single STT source decision point (roadmap Prompt 10).
     Honors the teacher's STT_MODE setting: auto (Groq when online+key),
     groq (prefer cloud, graceful local fallback), local (never call Groq)."""
+    language,policy=speech_policy(language)
     mode = "local" if os.getenv("OFFLINE_MODE") == "1" else settings.stt_mode
-    if mode != "local" and network_available() and settings.GROQ_API_KEY:
+    cloud_allowed='groq_whisper' in policy['recognition']
+    local_allowed='local_whisper' in policy['recognition']
+    online=network_available() if mode!='local' and cloud_allowed and settings.GROQ_API_KEY else False
+    if mode != "local" and cloud_allowed and online and settings.GROQ_API_KEY:
         try:
             return _require_speech(groq_whisper(audio_path, language))
         except NoSpeechError:
             raise
-        except Exception as e:
-            log.warning("groq_fallback: %s", e)
-            result = local_whisper(audio_path, language)
-            result.fallback_reason = f"groq: {type(e).__name__}"
+        except Exception as error:
+            log.warning("groq_fallback: %s", type(error).__name__)
+            if not local_allowed:raise RuntimeError('No permitted recognition fallback for this language') from None
+            result=local_whisper(audio_path,language)
+            result.fallback_reason=f"groq: {type(error).__name__}"
             return _require_speech(result)
-    if mode == "local":
-        reason = "forced_local"
-    else:
-        reason = "offline" if not network_available() else "no_groq_key"
-    result = local_whisper(audio_path, language)
-    result.fallback_reason = reason
+    if not local_allowed:raise RuntimeError('No local recognition route for this language')
+    reason='forced_local' if mode=='local' else 'language_route_unavailable' if not cloud_allowed else 'no_groq_key' if not settings.GROQ_API_KEY else 'offline'
+    result=local_whisper(audio_path,language)
+    result.fallback_reason=reason
     return _require_speech(result)

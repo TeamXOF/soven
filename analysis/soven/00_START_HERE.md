@@ -1,6 +1,6 @@
 # SOVEN project handoff
 
-SOVEN is the successor to SpeakFlow Mesh. This pack gives a new engineer the product context, current implementation, evidence, next milestones and unresolved decisions without requiring the original chat. Updated 1 November 2026, Asia/Karachi.
+SOVEN is the successor to SpeakFlow Mesh. This pack gives a new engineer the product context, current implementation, evidence, next milestones and unresolved decisions without requiring the original chat. Updated 2 November 2026, Asia/Karachi.
 
 ## Current milestone
 
@@ -35,3 +35,7 @@ The next engineering step is now implemented: read 16_REASONING_PROVIDER_INTEGRA
 M2.1 is now complete: read 17_SPEECH_EVALUATION_PROTOCOL.md, SPEECH_BASELINE_FREEZE.json and SPEECH_EVALUATION_VALIDATION.json. The next task is M2.2: build/run reproducible development evaluation and improve measured speech reliability. The old 40 speakers are exposed; no new holdout or recognition-quality result is claimed.
 
 M2.2a/b are complete: guide 18 and SPEECH_RUNNER_VALIDATION.json describe the offline runner, exposure ledger and measured baseline/beam-five development comparison. Read SPEECH_EXPLORATORY_COMPARISON.json for outcomes and limits. M2.2c still needs sufficient improvement and human-reviewed evaluation data; beam five is unpromoted and no fresh holdout ran.
+
+M2.4 is complete: guide 19 and SPEECH_CAPABILITY_VALIDATION.json describe explicit English/Urdu STT/TTS routing, truthful timing/confidence availability and the regression evidence. M2.2c and M2.3 remain open. M2.5 is next but has not started; do not claim support for a non-whitespace script without its own validated segmentation.
+
+For a concise transfer point after the M2.4 stability pass, read CHECKPOINT_2026-11-02.md before selecting another roadmap item.

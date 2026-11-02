@@ -1,58 +1,42 @@
 "use client";
+import policy from "../../shared/speech-capabilities.json";
 
-/**
- * Text-to-speech via the browser's built-in speechSynthesis; voices may use the network,
- * no API key. Used to model the target sentence and to let a child hear a
- * single word. Voice availability for a language varies by device (English is
- * everywhere; Urdu voices exist on Windows/Edge and many Android devices).
- */
-
-let voicesCache: SpeechSynthesisVoice[] = [];
-
-function refreshVoices() {
-  if (typeof window === "undefined" || !window.speechSynthesis) return;
-  voicesCache = window.speechSynthesis.getVoices();
+export type PlaybackCapability = { available: boolean; reason: "available" | "unsupported_language" | "api_unavailable" | "no_voice" | "offline_voice_unavailable"; locale: string | null; local: boolean | null };
+export function speechLangFor(lang: string): string | null {
+  const code=lang.trim().toLowerCase().replaceAll("_","-").split("-")[0];
+  return Object.prototype.hasOwnProperty.call(policy.languages,code) ? policy.languages[code as keyof typeof policy.languages].locale : null;
 }
-if (typeof window !== "undefined" && window.speechSynthesis) {
-  refreshVoices();
-  window.speechSynthesis.onvoiceschanged = refreshVoices;
+function selection(lang: string): {capability: PlaybackCapability; voice: SpeechSynthesisVoice | null} {
+  const locale=speechLangFor(lang);
+  const result=(reason: PlaybackCapability["reason"],voice: SpeechSynthesisVoice | null=null) => ({capability:{available:reason==="available",reason,locale,local:voice?.localService ?? null},voice});
+  if(!locale)return result("unsupported_language");
+  if(typeof window==="undefined" || !window.speechSynthesis)return result("api_unavailable");
+  // Always refresh: browser voices can arrive late or change after installation.
+  let voices: SpeechSynthesisVoice[];
+  try {voices=window.speechSynthesis.getVoices();}catch{return result("api_unavailable");}
+  const normalize=(value:string)=>value.toLowerCase().replaceAll("_","-");
+  const language=locale.split("-")[0].toLowerCase();
+  const matching=voices.filter(v=>normalize(v.lang).split("-")[0]===language);
+  const eligible=navigator.onLine===false ? matching.filter(v=>v.localService) : matching;
+  const voice=eligible.find(v=>normalize(v.lang)===normalize(locale)) ?? eligible[0] ?? null;
+  if(!voice)return result(matching.length ? "offline_voice_unavailable" : "no_voice");
+  return result("available",voice);
 }
+export function playbackCapability(lang:string): PlaybackCapability {return selection(lang).capability;}
+export function hasVoiceFor(lang:string):boolean {return playbackCapability(lang).available;}
 
-export function speechLangFor(lang: string): string {
-  return lang === "ur" ? "ur-PK" : "en-US";
-}
-
-/** True when a voice for the language exists on this device. */
-export function hasVoiceFor(lang: string): boolean {
-  if (typeof window === "undefined" || !window.speechSynthesis) return false;
-  if (!voicesCache.length) refreshVoices();
-  const prefix = speechLangFor(lang).slice(0, 2);
-  return voicesCache.some((v) => v.lang.toLowerCase().startsWith(prefix));
-}
-
-/**
- * Speak `text`. rate < 1 sounds clearer for early readers.
- * Returns false when the browser has no speech synthesis at all.
- */
-export function speak(text: string, lang = "en", rate = 0.92): boolean {
-  if (typeof window === "undefined" || !window.speechSynthesis || !text) return false;
-  window.speechSynthesis.cancel();
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = speechLangFor(lang);
-  utter.rate = rate;
-  if (!voicesCache.length) refreshVoices();
-  const prefix = utter.lang.slice(0, 2);
-  const voice =
-    voicesCache.find((v) => v.lang.toLowerCase().replace("_", "-").startsWith(utter.lang.toLowerCase())) ||
-    voicesCache.find((v) => v.lang.toLowerCase().startsWith(prefix));
-  if (!voice || (!navigator.onLine && !voice.localService)) return false;
-  utter.voice = voice;
-  window.speechSynthesis.speak(utter);
-  return true;
-}
-
-export function stopSpeaking() {
-  if (typeof window !== "undefined" && window.speechSynthesis) {
+/** True means the browser accepted a request, not that audible playback completed. */
+export function speak(text:string,lang="en",rate=.92):boolean {
+  const {capability,voice}=selection(lang);
+  if(!capability.available || !voice || !text.trim())return false;
+  try {
     window.speechSynthesis.cancel();
-  }
+    const utter=new SpeechSynthesisUtterance(text);
+    utter.lang=capability.locale!;utter.voice=voice;
+    utter.rate=Number.isFinite(rate) ? Math.min(2,Math.max(.5,rate)) : .92;
+    window.speechSynthesis.speak(utter);return true;
+  }catch{return false;}
+}
+export function stopSpeaking(){
+  if(typeof window!=="undefined" && window.speechSynthesis)window.speechSynthesis.cancel();
 }

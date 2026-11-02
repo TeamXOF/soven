@@ -325,7 +325,7 @@ export default function StoryPlayPage() {
                   </p>
                   <p className="flex justify-between text-text-secondary">
                     <span>{isUrdu ? "وقفے" : "Pauses"}</span>
-                    <span className="font-mono font-bold text-text-primary">{phase1Result.hesitations.length}</span>
+                    <span className="font-mono font-bold text-text-primary">{phase1Result.speech_evidence?.pause_assessment === "available" ? phase1Result.hesitations.length : isUrdu ? "دستیاب نہیں" : "Unavailable"}</span>
                   </p>
                 </div>
               </div>

@@ -37,5 +37,6 @@ export type PlatformCapabilities = {
   schema_version: number;
   language_catalog: typeof registry;
   providers: ProviderCapability[];
+  language_speech?: {schema_version:number; languages:Record<string,{locale:string;recognition:string[];playback:string}>; notice:string};
   notice: string;
 };

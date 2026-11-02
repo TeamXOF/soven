@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-02",
+  "milestone": "M2.4",
+  "scope": "Explicit English and Urdu STT/TTS route selection and truthful speech-evidence availability",
+  "completed": {
+    "shared_policy": "shared/speech-capabilities.json",
+    "enabled_reading_languages": [
+      "en",
+      "ur"
+    ],
+    "metadata": [
+      "source",
+      "engine",
+      "fallback_reason",
+      "word_timing",
+      "recognition_confidence",
+      "pause_assessment",
+      "quality_validated"
+    ],
+    "persistence": [
+      "classic session evidence table",
+      "checkpoint evidence table",
+      "dynamic attempt result JSON"
+    ]
+  },
+  "local_checks": {
+    "backend_total": 158,
+    "backend_suites": {
+      "application": 62,
+      "reasoning_provider": 18,
+      "speech_evaluation": 21,
+      "speech_runner": 31,
+      "speech_capabilities": 26
+    },
+    "browser_voice_contracts": 15,
+    "isolated_browser_scenarios": 23,
+    "frontend": [
+      "lint",
+      "typescript",
+      "production build"
+    ],
+    "real_cached_model_controls": 5
+  },
+  "controls_scope": "Existing synthetic Microsoft Zira recordings with cached local faster-whisper base INT8 and outbound access disabled. They check matching, insertion, omission, substitution and ending mechanics; they are not learner, Urdu, physical-device, timing-calibration or quality evidence.",
+  "not_claimed": [
+    "Child speech or pronunciation validity",
+    "Urdu speech quality",
+    "Browser voice coverage or offline playback",
+    "Word timestamp accuracy or confidence calibration",
+    "Live hosted provider availability",
+    "New language support"
+  ],
+  "remote_ci": "pending publication",
+  "next_unblocked_item": "M2.5 script-specific segmentation validation; not started"
+}

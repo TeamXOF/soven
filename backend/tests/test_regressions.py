@@ -366,7 +366,8 @@ class Regressions(unittest.TestCase):
         self.assertEqual(response.json()['diagnosis']['progress']['source'],'measured_history')
         sessions=self.client.get('/api/sessions/',headers=self.headers('student')).json()
         self.assertEqual(next(s for s in sessions if s['id']==response.json()['session_id'])['language'],'en')
-        self.assertIsInstance(response.json()['pauses'],int)
+        self.assertIsNone(response.json()['pauses'])
+        self.assertIsNone(response.json()['speech_evidence'])
         with get_db_connection() as conn:
             row=conn.execute('SELECT accuracy,words_json FROM sessions WHERE id=?',(response.json()['session_id'],)).fetchone()
             self.assertEqual(row['accuracy'],1)

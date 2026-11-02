@@ -120,7 +120,7 @@ async def main():
                    VALIDATION_TEACHER_PASSWORD=password, VALIDATION_ENROLLMENT_OUT=str(OUT))
         browser_script = os.getenv('VALIDATION_BROWSER_SCRIPT', 'validate_enrollment_ui.cjs')
         result = await asyncio.to_thread(subprocess.run,
-            [node, str(ROOT / 'backend/tests' / browser_script)], env=env, capture_output=True, text=True, timeout=300)
+            [node, str(ROOT / 'backend/tests' / browser_script)], env=env, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=300)
         if result.returncode:
             raise RuntimeError(result.stderr or result.stdout)
         print(result.stdout, flush=True)

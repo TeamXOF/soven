@@ -3,6 +3,7 @@ import os
 from services.model_client import generate_json, model_candidates
 from services.acoustic import align_words, score_word, tokenize, _norm
 from core.config import settings
+from core.speech_capabilities import has_word_timing
 from .difficulty_agent import DIFFICULTY_SYSTEM_PROMPT
 from .practice_agent import PRACTICE_SYSTEM_PROMPT
 
@@ -122,7 +123,8 @@ async def run_pipeline(signal_data: dict, session_history: list) -> dict:
                   'suggested_tone': 'encouraging', 'source': 'measured_alignment', 'status': 'available',
                   'teacher_note': f'ریکارڈنگ میں لمبے وقفے: {pause_count}۔' if ur else f'Long gaps detected in the recording: {pause_count}.'}
     timed_words = signal_data.get('words_spoken') or []
-    if not timed_words or any(w.get('timing_source') == 'estimated' for w in timed_words):
+    if (len(timed_words)<2 or any(not has_word_timing(w) for w in timed_words)
+            or signal_data.get('speech_evidence',{}).get('pause_assessment')=='unavailable'):
         engagement.update(status='unavailable', source='not_assessed',
                           teacher_note='اس ریکارڈنگ میں وقفوں کا قابل اعتماد موازنہ دستیاب نہیں ہے۔' if ur else
                               'Reliable word timing is unavailable, so pauses cannot be assessed for this recording.')

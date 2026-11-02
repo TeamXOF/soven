@@ -30,7 +30,7 @@ The current code uses the repaired reading baseline. The target is a worldwide p
 - [x] M2.2b Reproduce the 20 exposed historical clips and measure one predeclared beam-five candidate with unchanged scoring. Evidence: SPEECH_EXPLORATORY_COMPARISON.json; acceptable-word flags 29/110 to 24/110, expert-error flags remain 4/5. Candidate unpromoted.
 - [ ] M2.2c Establish sufficient recognition improvement on reviewed development data, then evaluate a preregistered untouched sample with verbatim references. Preserve failures and uncertainty; no release-quality result yet.
 - [ ] M2.3 Validate Urdu on representative speakers, devices and noise; establish reviewed Spanish evaluation/content fixtures.
-- [ ] M2.4 Implement explicit STT/TTS/timing capability selection and fallbacks per language. No timestamp or confidence fabrication.
+- [x] M2.4 Implement explicit STT/TTS/timing capability selection and fallbacks per language. No timestamp or confidence fabrication. Evidence: guide 19, shared speech inventory, 26 focused contracts, 15 browser-voice contracts and SPEECH_CAPABILITY_VALIDATION.json. This does not validate speech quality or device voice coverage.
 - [ ] M2.5 Validate script-specific segmentation beyond the current English/Urdu aligner, including non-whitespace scripts where offered.
 - [ ] M2.6 Publish the measured coverage matrix and enable each new language only after its end-to-end gate passes.
 

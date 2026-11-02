@@ -1,5 +1,6 @@
 from core.workload import run_audio
 from core.languages import require_reading_language
+from core.speech_capabilities import save_speech_evidence
 import json
 import uuid
 import base64
@@ -145,7 +146,7 @@ def _process_audio(audio_path: str, target_sentence: str, grade: int, language: 
     signal["latency_ms"]["scoring"] = round((time.perf_counter() - scoring_started) * 1000)
     signal["latency_ms"]["total_phase1"] = round((time.perf_counter() - started) * 1000)
     return {**signal, "words_spoken": stt.words, "word_results": signal["words"],
-            "pause_count": len(signal["hesitations"]), "pauses": signal["hesitations"],
+            "pause_count": len(signal["hesitations"]) if signal["speech_evidence"]["pause_assessment"]=="available" else None, "pauses": signal["hesitations"],
             "pause_durations": [p["pause_ms"] for p in signal["hesitations"]],
             "session_duration_seconds": acoustics["total_duration"], "pitch_series": [],
             "repetition_count": 0, "hesitation_count": len(signal["hesitations"]),
@@ -292,6 +293,7 @@ async def execute_pipeline(request: PipelineRunRequest):
                     json.dumps(results["progress"]),
                 ),
             )
+            save_speech_evidence(conn,'classic',session_id,signal_data.get('speech_evidence'))
             conn.commit()
             conn.execute("UPDATE sessions SET words_json=? WHERE id=?", (json.dumps(word_results, ensure_ascii=False), session_id))
             conn.commit()
@@ -308,7 +310,8 @@ async def execute_pipeline(request: PipelineRunRequest):
         "wpm":          signal_data.get("wpm", 0),
         "overall_score": overall_score,
         "accuracy":     accuracy_percentage,
-        "pauses":       len(signal_data.get("pauses") or []),
+        "pauses":       len(signal_data.get("pauses") or []) if signal_data.get('speech_evidence',{}).get('pause_assessment')=='available' else None,
+        "speech_evidence": signal_data.get('speech_evidence'),
         "latency_ms":   signal_data.get("latency_ms", {}),
         "stt_source":   signal_data.get("stt_source", "local_fallback"),
         "language":     getattr(request, "language", "en") or "en",

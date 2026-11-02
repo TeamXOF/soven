@@ -30,6 +30,7 @@ from fastapi import APIRouter, HTTPException, UploadFile, File, Form, WebSocket,
 from datetime import datetime
 
 from core.config import settings
+from core.speech_capabilities import save_speech_evidence
 from services.stt import get_transcript, network_available
 from services import acoustic
 from services.reasoning import generate_feedback, judge_hesitation
@@ -457,6 +458,7 @@ def _persist_phase1(session: dict, checkpoint_id: str, target_text: str,
                     signal: dict):
     result_id = f"cpr_{uuid.uuid4().hex[:10]}"
     with get_db_connection() as conn:
+        conn.execute("DELETE FROM speech_evidence WHERE record_kind='checkpoint' AND record_id IN (SELECT id FROM checkpoint_results WHERE session_id=? AND checkpoint_id=?)",(session['id'],checkpoint_id))
         conn.execute(
             """
             INSERT OR REPLACE INTO checkpoint_results
@@ -472,6 +474,7 @@ def _persist_phase1(session: dict, checkpoint_id: str, target_text: str,
              json.dumps(signal["hesitations"]),
              signal["engagement_state"], signal["stt_source"],
              json.dumps(signal["latency_ms"])))
+        save_speech_evidence(conn,'checkpoint',result_id,signal.get('speech_evidence'))
         conn.execute("UPDATE story_sessions SET synced=0 WHERE id=?", (session["id"],))
         # Mark session complete once every checkpoint has been attempted
         story = STORIES[session["story_id"]]
@@ -501,6 +504,7 @@ def _phase1_response(session_id: str, checkpoint_id: str, signal: dict) -> dict:
         "stars": signal["stars"],
         "hesitations": signal["hesitations"],
         "stt_source": signal["stt_source"],
+        "speech_evidence":signal.get("speech_evidence"),
         "latency_ms": signal["latency_ms"],
         "warnings": _warning_for(signal["stt_source"],
                                  signal.get("stt_fallback_reason", "")),
@@ -646,6 +650,7 @@ def get_session(session_id: str):
             "feedback_source": feedback.get("feedback_source"), "feedback_text": feedback.get("feedback_text"),
             "comprehension_question": feedback.get("comprehension_question"),
             "practice_recommendation": feedback.get("practice_recommendation"),
+            "speech_evidence":evidence.get("speech_evidence"),
             "hesitations": evidence.get("hesitations", []), "words": evidence.get("words", [])}
         return {"session_id": row["id"], "student_id": row["student_id"], "student_name": row["name"],
             "story_id": f"level-{row['level']}", "story_title": row["sentence"], "story_emoji": "📖",
@@ -662,6 +667,8 @@ def get_session(session_id: str):
         rows = conn.execute(
             "SELECT * FROM checkpoint_results WHERE session_id = ? ORDER BY created_at",
             (session_id,)).fetchall()
+        evidence_rows=conn.execute("SELECT record_id,payload_json FROM speech_evidence WHERE record_kind='checkpoint' AND record_id IN (SELECT id FROM checkpoint_results WHERE session_id=?)",(session_id,)).fetchall()
+    evidence_by_result={row['record_id']:json.loads(row['payload_json']) for row in evidence_rows}
     results = {r["checkpoint_id"]: dict(r) for r in rows}
 
     out_checkpoints = []
@@ -669,7 +676,9 @@ def get_session(session_id: str):
     accs = []
     for cp in checkpoints:
         r = results.get(cp["checkpoint_id"])
+        speech_evidence=evidence_by_result.get(r["id"]) if r else None
         entry = {
+            "speech_evidence":speech_evidence,
             "checkpoint_id": cp["checkpoint_id"],
             "target_text": cp["target_text"],
             "status": "attempted" if r else "pending",

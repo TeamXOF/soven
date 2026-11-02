@@ -15,7 +15,8 @@ SOURCE_PATHS = ['backend/services/stt.py', 'backend/services/acoustic.py',
                 'backend/core/speech_evaluation.py', 'backend/core/config.py',
                 'tools/freeze_speech_evaluation.py', 'backend/requirements.txt',
                 'backend/core/speech_metrics.py', 'backend/core/speech_runner.py',
-                'backend/data/speech_runner_protocol.json', 'tools/evaluate_speech.py']
+                'backend/data/speech_runner_protocol.json', 'tools/evaluate_speech.py',
+                'backend/core/speech_capabilities.py', 'shared/speech-capabilities.json']
 
 
 def canonical(value):

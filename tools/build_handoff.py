@@ -16,7 +16,7 @@ parser=argparse.ArgumentParser();parser.add_argument('--root',type=Path,default=
 ROOT=args.root;PACK=ROOT/'analysis/soven';OUT=PACK/'documents';OUT.mkdir(parents=True,exist_ok=True)
 groups=[
  ('01_SOVEN_Project_Context_and_Current_State.docx','SOVEN project context and current state',['01_PROJECT_CONTEXT.md','02_CURRENT_STATE.md']),
- ('02_SOVEN_Architecture_and_Engineering_Handoff.docx','SOVEN architecture and engineering handoff',['03_ARCHITECTURE.md','17_SPEECH_EVALUATION_PROTOCOL.md','18_SPEECH_RUNNER_AND_FINDINGS.md']),
+ ('02_SOVEN_Architecture_and_Engineering_Handoff.docx','SOVEN architecture and engineering handoff',['03_ARCHITECTURE.md','17_SPEECH_EVALUATION_PROTOCOL.md','18_SPEECH_RUNNER_AND_FINDINGS.md','19_SPEECH_CAPABILITY_SELECTION.md']),
  ('03_SOVEN_Product_Requirements_and_Source_Review.docx','SOVEN product requirements and source review',['04_PRODUCT_REQUIREMENTS.md','05_SOURCE_REVIEW.md']),
  ('04_SOVEN_Meta_Integration_and_Privacy.docx','SOVEN Meta integration and privacy',['06_META_PROVIDER_PLAN.md','16_REASONING_PROVIDER_INTEGRATION.md']),
  ('05_SOVEN_Roadmap_and_Decisions.docx','SOVEN implementation roadmap and decisions',['07_IMPLEMENTATION_ROADMAP.md','10_DECISIONS_AND_HANDOFF.md','11_PRODUCT_DEFAULTS.md']),
@@ -70,7 +70,7 @@ for filename,title,sources in groups:
     h=sec.header.paragraphs[0];h.text='SOVEN   |   Project and engineering handoff';h.style=doc.styles['Normal']
     for r in h.runs:r.font.size=Pt(9);r.font.color.rgb=RGBColor(0,0,0)
     footer=sec.footer.paragraphs[0];footer.alignment=WD_ALIGN_PARAGRAPH.RIGHT
-    footer.add_run('SOVEN   |   1 November 2026   |   ')
+    footer.add_run('SOVEN   |   2 November 2026   |   ')
     field=OxmlElement('w:fldSimple');field.set(qn('w:instr'),'PAGE');footer._p.append(field)
     for r in footer.runs:r.font.size=Pt(9)
     doc.add_paragraph(title,style='Title')
@@ -84,7 +84,7 @@ for filename,title,sources in groups:
                 paragraph.paragraph_format.page_break_before=True
     # An exact delivery record is appended when available, without altering source assertions.
     if filename.startswith('06_'):
-        for record_name in ['VALIDATION_RESULTS.json','DELIVERY_STATUS.json','FOUNDATION_VALIDATION.json','ACCOUNT_PROFILE_VALIDATION.json','UI_REDESIGN_VALIDATION.json']:
+        for record_name in ['VALIDATION_RESULTS.json','DELIVERY_STATUS.json','FOUNDATION_VALIDATION.json','ACCOUNT_PROFILE_VALIDATION.json','UI_REDESIGN_VALIDATION.json','SPEECH_CAPABILITY_VALIDATION.json']:
             if (PACK/record_name).exists():
                 record=json.loads((PACK/record_name).read_text(encoding='utf-8'))
                 doc.add_heading(record_name.replace('_',' ').replace('.json',''),level=1)
@@ -92,13 +92,13 @@ for filename,title,sources in groups:
                     p=doc.add_paragraph();p.add_run(key.replace('_',' ') + ': ').bold=True
                     p.add_run(json.dumps(value,ensure_ascii=False) if isinstance(value,(dict,list)) else str(value))
     doc.core_properties.title=title;doc.core_properties.author='SOVEN project team';doc.core_properties.subject='Project handoff and engineering status'
-    doc.core_properties.created=datetime(2026,11,1,tzinfo=timezone.utc);doc.core_properties.modified=datetime(2026,11,1,tzinfo=timezone.utc)
+    doc.core_properties.created=datetime(2026,11,2,tzinfo=timezone.utc);doc.core_properties.modified=datetime(2026,11,2,tzinfo=timezone.utc)
     # Word's bundled default Title style can contain a blue paragraph rule.
     # Remove paragraph borders in styles and content, not just direct run color.
     for root in [doc.styles.element,doc.element]:
         for border in list(root.iter(qn('w:pBdr'))):border.getparent().remove(border)
     doc.save(OUT/filename)
-    manifest.append({'document':'documents/'+filename,'title':title,'sources':[{'path':s,'sha256':hashlib.sha256((PACK/s).read_bytes().replace(b'\r\n',b'\n')).hexdigest()} for s in (sources + ([n for n in ['VALIDATION_RESULTS.json','DELIVERY_STATUS.json','FOUNDATION_VALIDATION.json','ACCOUNT_PROFILE_VALIDATION.json','UI_REDESIGN_VALIDATION.json'] if (PACK/n).exists()] if filename.startswith('06_') else []))],
+    manifest.append({'document':'documents/'+filename,'title':title,'sources':[{'path':s,'sha256':hashlib.sha256((PACK/s).read_bytes().replace(b'\r\n',b'\n')).hexdigest()} for s in (sources + ([n for n in ['VALIDATION_RESULTS.json','DELIVERY_STATUS.json','FOUNDATION_VALIDATION.json','ACCOUNT_PROFILE_VALIDATION.json','UI_REDESIGN_VALIDATION.json','SPEECH_CAPABILITY_VALIDATION.json'] if (PACK/n).exists()] if filename.startswith('06_') else []))],
                      'sha256':hashlib.sha256((OUT/filename).read_bytes()).hexdigest(),'render_review':'see DOCUMENT_QA.json'})
-(PACK/'DOCUMENT_MANIFEST.json').write_text(json.dumps({'text_hash_format':'UTF-8 with CRLF normalized to LF; DOCX hashes use exact bytes','maintained_format':'Markdown','generated_format':'DOCX','source_date':'2026-11-01','documents':manifest},indent=2),encoding='utf-8')
+(PACK/'DOCUMENT_MANIFEST.json').write_text(json.dumps({'text_hash_format':'UTF-8 with CRLF normalized to LF; DOCX hashes use exact bytes','maintained_format':'Markdown','generated_format':'DOCX','source_date':'2026-11-02','documents':manifest},indent=2),encoding='utf-8')
 print(json.dumps({'generated_documents':len(manifest),'output':str(OUT)}))

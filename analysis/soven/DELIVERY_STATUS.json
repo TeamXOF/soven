@@ -8,15 +8,15 @@
   "original_source_documents": "kept local; not uploaded",
   "git_history": "clean import; prior source history not carried",
   "brand": "Owner-selected concept C; white primary logo with symbol and SOVEN only; no tagline or feature list",
-  "handoff": "19 numbered maintained guides and six DOCX companions, including offline runner and measured development findings",
+  "handoff": "20 numbered maintained guides and six DOCX companions, including offline runner findings and speech-capability selection",
   "no_new_product_features": "Illustrated journey and mock-tested reasoning adapters implemented; anonymous AI sample, conversation, 70+ runtime languages, live permitted Meta use and public deployment remain pending",
-  "updated_at_utc": "2026-11-01T18:44:32.642943+00:00",
+  "updated_at_utc": "2026-11-02T00:35:00+00:00",
   "language_goal": "70+ planned; English and Urdu currently implemented; Spanish is one future addition",
   "foundation": "89-candidate registry; en/ur enabled; shared generated types; read-only capabilities; explicit language gates",
   "transfer_receipt": "TRANSFER_RECEIPT.json",
-  "next_task": "M2.2c sufficient recognition improvement and human-reviewed evaluation data; candidate remains unpromoted",
+  "next_task": "M2.5 script-specific segmentation validation; M2.2c and M2.3 quality/evaluation gates remain open",
   "accounts": "Independent adult personal scopes; versioned owner profile API; four-language preferences; additive v3 migration",
   "ui": "Owner reference boards implemented with real account/profile/books APIs, browser-local sample and guarded checkpoint reader",
   "reasoning": "Google default; opt-in Meta/compatible adapters mock-tested; no live new-provider invocation",
-  "speech": "Frozen offline runner/exposure ledger and real control/historical comparison complete; fresh quality and language rollout unvalidated"
+  "speech": "Frozen offline runner/exposure ledger and real control/historical comparison complete; explicit English/Urdu speech routes and evidence availability implemented; fresh quality and language rollout unvalidated"
 }

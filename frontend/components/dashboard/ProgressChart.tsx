@@ -53,7 +53,7 @@ export default function ProgressChart() {
             <ChartIcon className="w-5 h-5 mr-2 text-text-muted" />
             {ur ? "پچھلی ریکارڈنگز" : "Recent Readings"}
           </h2>
-          <p className="text-sm text-text-secondary">{ur ? "اردو کی آخری سات ریکارڈنگز" : "Last seven English readings"} · {activeStudent?.name}</p>
+          <p className="text-sm text-text-secondary">{ur ? "اردو کی آخری سات ریکارڈنگز" : language === "es" ? "Last seven Spanish readings" : "Last seven English readings"} · {activeStudent?.name}</p>
         </div>
         <div className="flex items-center space-x-4">
           <div className="flex items-center">

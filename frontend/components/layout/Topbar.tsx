@@ -140,6 +140,12 @@ export default function Topbar() {
           >
             اردو
           </button>
+          <button
+            aria-label="Read in Spanish" disabled={controlsLocked || readingActivity.busy} onClick={() => setLanguage("es")}
+            className={`px-2.5 py-1 rounded-full text-xs font-bold transition-colors ${language === "es" ? "bg-accent-primary-dark text-white" : "text-text-secondary hover:text-text-primary"}`}
+          >
+            ES
+          </button>
         </div>
 
         {/* Settings — teachers get the system console, students their own page */}

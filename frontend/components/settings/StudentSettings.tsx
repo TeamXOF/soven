@@ -15,6 +15,7 @@ import { useAuth } from "@/components/auth/AuthProvider";
 import { useSpeakFlow } from "@/context/SpeakFlowContext";
 import { changePassword,fetchStudentDashboard,StudentDashboard } from "@/lib/api";
 import { loadPrefs,savePrefs,StudentPrefs } from "@/lib/prefs";
+import type { ReadingLanguage } from "@/lib/languages";
 import {
 Check,
 KeyRound,
@@ -188,11 +189,12 @@ export default function StudentSettings() {
               </div>
               <select
                 value={prefs.storyLanguage}
-                onChange={(e) => update({ storyLanguage: e.target.value as "en" | "ur" })}
+                onChange={(e) => update({ storyLanguage: e.target.value as ReadingLanguage })}
                 className="w-56 px-3 py-2 border border-gray-200 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-accent-primary"
               >
                 <option value="en">English</option>
                 <option value="ur">اردو (Urdu)</option>
+                <option value="es">Español (Spanish)</option>
               </select>
             </div>
 

@@ -2,9 +2,11 @@ import sqlite3
 import os
 from contextlib import contextmanager, closing
 from pathlib import Path
-from dotenv import load_dotenv
-
-load_dotenv(Path(__file__).resolve().parents[1] / ".env")
+try:
+    from dotenv import load_dotenv
+    load_dotenv(Path(__file__).resolve().parents[1] / ".env")
+except ImportError:
+    pass
 
 # Always resolve to absolute path from the backend directory
 _BACKEND_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -282,7 +284,7 @@ def init_db():
             cursor.execute('ALTER TABLE classrooms ADD COLUMN owner_user_id TEXT')
         cursor.execute('''CREATE TABLE IF NOT EXISTS user_profiles (
             user_id TEXT PRIMARY KEY REFERENCES users(id),
-            reader_mode TEXT NOT NULL CHECK(reader_mode IN ('child','adult','teacher')),
+            reader_mode TEXT NOT NULL CHECK(reader_mode IN ('child','adult','teacher','dyslexia')),
             reading_language TEXT NOT NULL DEFAULT 'en',
             interface_language TEXT NOT NULL DEFAULT 'en',
             native_language TEXT,

@@ -141,11 +141,25 @@ if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0" if args.local_host else os.getenv("HOST", "127.0.0.1"),
                 port=int(os.getenv("PORT", "8000")), reload=os.getenv("RELOAD", "0") == "1")
 
+@app.get("/")
+def root():
+    return {
+        "service": "SOVEN API",
+        "version": "2.0",
+        "status": "running",
+        "provider": "meta",
+        "reasoning_model": settings.REASONING_MODEL,
+        "stt_model": settings.META_STT_MODEL
+    }
+
 @app.get("/health")
 def health_check():
-    api_keys_str = os.getenv("GOOGLE_API_KEYS", os.getenv("GOOGLE_API_KEY", ""))
-    api_keys = [k.strip() for k in api_keys_str.split(",") if k.strip()]
-    return {"status": "ok", "api_key_count": len(api_keys)}
+    return {
+        "status": "ok",
+        "service": "SOVEN API",
+        "provider": settings.REASONING_PROVIDER,
+        "reasoning_model": settings.REASONING_MODEL
+    }
 
 @app.get("/debug-ffmpeg")
 def debug_ffmpeg():

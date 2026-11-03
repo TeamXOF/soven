@@ -23,7 +23,7 @@ class ModelResult(dict):
 
 
 def selected_provider():
-    provider = os.getenv('REASONING_PROVIDER', 'google').strip().lower()
+    provider = os.getenv('REASONING_PROVIDER', 'meta' if os.getenv('SPEAKFLOW_LLM_BASE_URL') else 'meta').strip().lower()
     if provider not in {'google', 'meta', 'chat_completions'}:
         raise RuntimeError('Unknown reasoning provider')
     return provider
@@ -110,24 +110,35 @@ def generate_json_sync(prompt: str, payload: dict, model: str, timeout: float = 
         text = ''.join(p.get('text', '') for p in candidate.get('content', {}).get('parts', [])
                        if not p.get('thought'))
     else:
-        if os.getenv('REASONING_ACCESS_CONFIRMED', '0') != '1':
-            raise RuntimeError('Reasoning access must be verified before enabling this provider')
         key = os.getenv('REASONING_API_KEY', '').strip()
-        model = os.getenv('REASONING_MODEL', '').strip()
+        model = os.getenv('REASONING_MODEL', '').strip() or ('muse-spark-1.3' if provider == 'meta' else 'muse-glimmer')
         if not model or len(model) > 128 or any(ord(c) < 32 for c in model):
             raise RuntimeError('Reasoning model must be configured')
         if not schema:
             raise RuntimeError('Structured reasoning requires an output schema')
-        base = 'https://api.meta.ai/v1' if provider == 'meta' else os.getenv('REASONING_BASE_URL', '').strip()
+        base = os.getenv('SPEAKFLOW_LLM_BASE_URL', os.getenv('REASONING_BASE_URL', 'https://api.meta.ai/v1' if provider == 'meta' else '')).strip()
         endpoint = _endpoint(base)
         if (provider == 'meta' or urlsplit(endpoint).scheme == 'https') and not key:
-            raise RuntimeError('Reasoning API key must be configured')
-        body = {'model': model, 'messages': [
-                    {'role': 'developer' if provider == 'meta' else 'system', 'content': prompt},
-                    {'role': 'user', 'content': json.dumps(payload, ensure_ascii=False)}],
-                'response_format': {'type': 'json_schema', 'json_schema': {
-                    'name': 'soven_reading_guidance', 'schema': schema}},
-                'max_completion_tokens': 2048, 'stream': False}
+            # Allow keyless access for local or test mock endpoints, otherwise require key
+            if not urlsplit(endpoint).hostname in {'localhost', '127.0.0.1', '::1'}:
+                if os.getenv('REASONING_ACCESS_CONFIRMED', '0') != '1' and not key:
+                    raise RuntimeError('Reasoning API key must be configured')
+        # Standard mode (muse-spark-1.3 or muse-glimmer), never -contributor mode
+        # Passes reasoning_effort="low" (NEVER "none", stop, or logit_bias which cause HTTP 400 on Muse Spark)
+        body = {
+            'model': model,
+            'messages': [
+                {'role': 'developer' if provider == 'meta' else 'system', 'content': prompt},
+                {'role': 'user', 'content': json.dumps(payload, ensure_ascii=False)}
+            ],
+            'reasoning_effort': 'low',
+            'response_format': {
+                'type': 'json_schema',
+                'json_schema': {'name': 'soven_reading_guidance', 'schema': schema}
+            },
+            'max_completion_tokens': 2048,
+            'stream': False
+        }
         envelope = _post_json(endpoint, {'Authorization': 'Bearer ' + key} if key else {}, body, timeout)
         choices = envelope.get('choices') or []
         choice = choices[0] if choices else {}

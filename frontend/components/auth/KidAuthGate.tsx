@@ -11,7 +11,13 @@ export default function KidAuthGate({ children }: { children: React.ReactNode })
   const router = useRouter();
 
   useEffect(() => {
-    if (!loading && !user) router.replace("/login?next=/read");
+    if (!loading) {
+      if (!user) {
+        router.replace("/login?next=/read");
+      } else if (user.profile_completed === false) {
+        router.replace("/onboarding/profile");
+      }
+    }
   }, [user, loading, router]);
 
   if (loading || !user) {

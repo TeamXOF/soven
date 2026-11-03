@@ -24,6 +24,8 @@ class ProfileUpdate(BaseModel):
     translation_language: LanguageCode | None = None
     accessibility: AccessibilitySettings | None = None
     complete_profile: bool = False
+    reader_mode: Literal['child', 'adult', 'teacher', 'dyslexia'] | None = None
+    persona_type: Literal['child', 'adult', 'teacher', 'dyslexia'] | None = None
 
 
 def create_profile(conn, user_id: str, mode: str, completed: bool = False):
@@ -47,4 +49,5 @@ def read_profile(conn, user: dict) -> dict:
         accessibility = AccessibilitySettings()
     data['accessibility'] = accessibility.model_dump()
     data['profile_completed'] = bool(data['profile_completed'])
+    data['persona_type'] = data.get('reader_mode', 'child')
     return data

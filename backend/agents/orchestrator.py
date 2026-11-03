@@ -7,8 +7,8 @@ from core.speech_capabilities import has_word_timing
 from .difficulty_agent import DIFFICULTY_SYSTEM_PROMPT
 from .practice_agent import PRACTICE_SYSTEM_PROMPT
 
-_FLASH = 'gemini-3.5-flash-lite'
-MODEL_FALLBACK = 'gemini-flash-lite-latest'
+_FLASH = 'muse-spark-1.3'
+MODEL_FALLBACK = 'muse-glimmer'
 DIFFICULTY_SCHEMA = {'type': 'object', 'properties': {
     'category': {'type': 'string', 'enum': ['WORD_READING', 'PACING', 'MIXED', 'NO_OBVIOUS_ERROR']},
     'primary_issue': {'type': 'string'}, 'secondary_issue': {'type': ['string', 'null']},

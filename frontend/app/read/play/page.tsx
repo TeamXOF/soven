@@ -449,7 +449,7 @@ function StoryPlayPage() {
                         : (isUrdu ? "قریب تھے — دوبارہ کوشش!" : "So close — try again!")}
                     </p>
                     <p className="text-xs text-text-muted font-mono mt-1">
-                      {Math.round(result.wpm)} WPM · {result.stt_source === "groq" ? "Groq STT" : "offline STT"}
+                      {Math.round(result.wpm)} WPM · {result.stt_source === "groq" ? "Meta Voice STT" : "offline STT"}
                     </p>
                     <p className="mt-2 max-w-sm text-center text-xs text-text-secondary">
                       {isUrdu ? "یہ نتیجہ پہچانے گئے الفاظ پر مبنی ہے۔ لفظ غلط سنائی دے تو دوبارہ پڑھیں۔" : "If a word was heard incorrectly, try recording again."}

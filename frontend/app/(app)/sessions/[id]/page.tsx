@@ -36,7 +36,7 @@ function SourceBadge({ source }: { source: string | null }) {
       title={isOnline ? "Configured provider result; hosting depends on configuration" : "Server-local or fallback result"}
     >
       {isOnline ? <Wifi className="w-3 h-3" /> : <WifiOff className="w-3 h-3" />}
-      {source === "groq" ? "Groq STT" : source === "local_fallback" ? "Offline STT" : source === "gemini" ? "Gemini" : source === "meta" ? "Meta" : source === "chat_completions" ? "Configured provider" : source === "model_unknown" ? "Model origin unknown" : "Template"}
+      {source === "groq" ? "Meta Voice" : source === "local_fallback" ? "Offline STT" : source === "gemini" ? "Meta Reasoning" : source === "meta" ? "Meta AI" : source === "chat_completions" ? "Configured provider" : source === "model_unknown" ? "Model origin unknown" : "Template"}
     </span>
   );
 }

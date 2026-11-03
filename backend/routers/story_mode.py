@@ -6,14 +6,14 @@ Dynamic Story Mode — endless dual-track (English / اردو) level engine.
 Design goals (roadmap: "not capped at 15 levels"):
 - Levels are GENERATED content: every (track, level) maps to one sentence with a
   theme and a difficulty that ramps with the level number. Levels are generated
-  once by the Gemini Flash-Lite agent, cached in `story_levels`, and shared by
+  once by the Meta Muse reasoning agent, cached in `story_levels`, and shared by
   every student — so progression is consistent and teacher-friendly.
 - Every 5th level is a BOSS level (tongue-twister challenge).
 - Stars are the currency: 3★ ≥95 accuracy, 2★ ≥80, 1★ ≥70 (passed), 0 below.
   Best stars/accuracy per (student, track, level) persist in `story_progress`.
 - Level N+1 unlocks when level N is passed.
-- Reuses the exact measurement core as the other engines (Groq→local STT,
-  librosa acoustics, alignment + morphology scoring, Gemini feedback).
+- Reuses the exact measurement core as the other engines (Meta Voice / STT,
+  librosa acoustics, alignment + morphology scoring, Meta Muse coaching).
 """
 import os
 import json
@@ -293,7 +293,7 @@ def _audio_ext(data: bytes) -> str:
 
 
 def _run_phase2(attempt_id: str, sentence: str, track: str, signal: dict):
-    """Background Gemini coaching, persisted for polling."""
+    """Background Meta Muse coaching, persisted for polling."""
     try:
         import asyncio as _asyncio
         hint = {"target_text": sentence, "language": track, "comprehension_hint": ""}
@@ -316,8 +316,8 @@ async def story_analyze(request: Request, background_tasks: BackgroundTasks,
                         audio: UploadFile = File(...), track: str = Form("en"),
                         level: int = Form(...)):
     """One recorded attempt at one level. Same measurement core as the other
-    engines: Groq→local STT, librosa acoustics, alignment + morphology scoring,
-    extra-word penalty, Gemini coaching in the background."""
+    engines: Meta Voice / local STT, librosa acoustics, alignment + morphology scoring,
+    extra-word penalty, Meta Muse coaching in the background."""
     user = get_current_user(request)
     if not user:
         raise ApiError("VALIDATION_ERROR", "Please log in.", 401)

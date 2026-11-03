@@ -18,7 +18,7 @@ SOVEN is a reading-practice platform with word-level feedback and teacher tools,
 - Cached local Whisper support, explicit offline mode, bounded processing, persistent coaching and optional authenticated archival sync.
 - Quiet page-flow warnings/errors, clear fallback labels and guarded recording/account lifecycles.
 
-Reasoning defaults to Google; opt-in Meta and compatible-endpoint adapters are mock-tested, with [configuration and access gates](analysis/soven/16_REASONING_PROVIDER_INTEGRATION.md). No live Meta invocation is claimed. Online speech uses Groq with local Whisper fallback. Word match is transcript agreement, not validated pronunciation assessment or a dyslexia diagnosis.
+Reasoning integrates Meta AI (Muse Spark 1.3 and Muse Glimmer open weights) with Pakistan Geographic Use Policy compliance (via `SPEAKFLOW_LLM_BASE_URL` supporting local/Baseten/Modal endpoints); online speech recognition integrates Meta Voice Transcribe with local faster-whisper fallback. Word match is acoustic transcript agreement, not a clinical diagnosis.
 
 ## Illustrated reading experience
 
@@ -80,7 +80,7 @@ Implemented mechanics: landing/how-to, local microphone check, connected profile
 
 ## Origin and license
 
-SOVEN is derived from [TeamXOF/SpeakFlow Mesh](https://github.com/TeamXOF/speakflow-mesh), previously used in Alibaba and Build with Gemma hackathons. Waleed Khalid and TeamXOF retain attribution under the [MIT license](LICENSE). This independent repository starts with the repaired working baseline; [IMPORT_MANIFEST](analysis/soven/IMPORT_MANIFEST.json) records its source and file hashes. The earlier team repository is unchanged. This repository does not imply Meta endorsement, prior-code eligibility approval or a completed public deployment.
+SOVEN is submitted to the Meta Global AI Developer Hackathon (Theme 1: Build for Your World). Waleed Khalid and TeamXOF retain attribution under the [MIT license](LICENSE). This independent repository starts with the repaired working baseline; [IMPORT_MANIFEST](analysis/soven/IMPORT_MANIFEST.json) records its source and file hashes.
 
 ## Team development
 

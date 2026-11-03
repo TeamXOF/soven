@@ -218,9 +218,24 @@ def extract_word_acoustics(audio_path: str, spoken_words: list) -> dict:
             "pitch_std": float(np.std(f0_seg)) if f0_seg.size else 0.0,
             **_formants(seg, sr),
         }
+    pitch_contour = []
+    if f0 is not None:
+        step = max(1, len(f0) // 40)
+        pitch_contour = [round(float(v), 1) if not np.isnan(v) else None for v in f0[::step]]
+
+    loudness_series = []
+    try:
+        full_rms = librosa.feature.rms(y=y, frame_length=1024, hop_length=512)[0]
+        step = max(1, len(full_rms) // 40)
+        loudness_series = [round(float(20 * np.log10(max(float(r), 1e-5))), 1) for r in full_rms[::step]]
+    except Exception:
+        pass
+
     return {
         "word_features": feats,
         "pitch_variance": pitch_variance,
+        "pitch_contour": pitch_contour,
+        "loudness_series": loudness_series,
         "total_duration": total_dur,
         "sample_rate": sr,
         "pitch_method": settings.PITCH_ESTIMATOR,
@@ -325,11 +340,28 @@ def build_signal(target_text: str, transcript_result, acoustics: dict, language:
         if finite_number(dur) and dur > 0:
             wpm = round(sum(bool(_norm(w['word'])) for w in transcript_result.words) / dur * 60, 1)
 
+    acc_ratio = max(0.0, min(1.0, accuracy / 100.0))
+    pause_penalty = min(20.0, len(pauses) * 1.5)
+    wcpm = max(0.0, round((wpm * acc_ratio) - pause_penalty, 1))
+
+    probs = [w.get("probability") for w in transcript_result.words if isinstance(w, dict) and w.get("probability") is not None]
+    confidence = round(float(sum(probs) / len(probs)), 2) if probs else (0.90 if accuracy >= 80 else 0.75)
+
+    pause_timeline = [
+        {"start": p.get("start"), "end": p.get("end"), "duration_s": round(p.get("duration_ms", 0) / 1000.0, 2)}
+        for p in pauses
+    ]
+
     return {
         "speech_evidence":evidence,
         "transcript": transcript_result.text,
         "words": words_scored,
         "wpm": wpm,
+        "wcpm": wcpm,
+        "confidence": confidence,
+        "pitch_contour": acoustics.get("pitch_contour", []),
+        "loudness_series": acoustics.get("loudness_series", []),
+        "pause_timeline": pause_timeline,
         "accuracy": accuracy,
         "passed": accuracy >= settings.CHECKPOINT_PASS_THRESHOLD,
         "stars": stars_for(accuracy),

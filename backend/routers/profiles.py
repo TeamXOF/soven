@@ -31,6 +31,12 @@ def update_profile(body: ProfileUpdate, request: Request, response: Response):
         if current['version'] != body.expected_version:
             raise HTTPException(409, 'Your profile changed. Reload it before saving again.')
         create_profile(conn, user['id'], current['reader_mode'], current['profile_completed'])
+        mode = changes.get('persona_type') or changes.get('reader_mode')
+        if mode:
+            if mode not in ('child', 'adult', 'teacher', 'dyslexia'):
+                raise HTTPException(422, 'Invalid persona type')
+            current['reader_mode'] = mode
+            conn.execute('UPDATE user_profiles SET reader_mode=? WHERE user_id=?', (mode, user['id']))
         for field in ('reading_language', 'interface_language'):
             if field in changes:
                 if changes[field] is None:

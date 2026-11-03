@@ -287,14 +287,14 @@ export default function SettingsPage() {
                           ? "bg-green-50 border-green-200 text-green-700"
                           : "bg-gray-100 border-gray-200 text-gray-500"
                       }`}>
-                        Groq {keysStatus?.groq_configured ? "configured" : "not set"}
+                        Meta Voice / STT {keysStatus?.groq_configured ? "configured" : "not set"}
                       </span>
                       <span className={`px-3 py-1 rounded-full text-xs font-mono font-bold border ${
                         keysStatus?.google_configured
                           ? "bg-green-50 border-green-200 text-green-700"
                           : "bg-gray-100 border-gray-200 text-gray-500"
                       }`}>
-                        Google ({keysStatus?.google_key_count ?? 0}) {keysStatus?.google_configured ? "configured" : "not set"}
+                        Meta Muse ({keysStatus?.google_key_count ?? 0}) {keysStatus?.google_configured ? "configured" : "not set"}
                       </span>
                       {keysStatus?.env === "demo" && (
                         <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-violet-100 border border-violet-200 text-violet-700">
@@ -305,20 +305,20 @@ export default function SettingsPage() {
 
                     <div>
                       <label className="block text-xs font-mono font-bold uppercase tracking-wider text-text-muted mb-1.5">
-                        Groq API key (online speech-to-text)
+                        Meta Voice Transcribe / STT API Key
                       </label>
                       <input
                         type="password"
                         value={groqInput}
                         onChange={(e) => setGroqInput(e.target.value)}
-                        placeholder={keysStatus?.groq_configured ? "•••••••• (configured — paste to replace)" : "gsk_..."}
+                        placeholder={keysStatus?.groq_configured ? "•••••••• (configured — paste to replace)" : "meta_stt_..."}
                         className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm font-mono bg-white focus:outline-none focus:ring-2 focus:ring-accent-primary"
                       />
                     </div>
 
                     <div>
                       <label className="block text-xs font-mono font-bold uppercase tracking-wider text-text-muted mb-1.5">
-                        Google AI Studio keys (Gemma pipeline + Gemini feedback — comma-separated for rotation)
+                        Meta AI Reasoning Keys (Muse Spark 1.3 / Glimmer)
                       </label>
                       <input
                         type="password"
@@ -362,31 +362,31 @@ export default function SettingsPage() {
                           onChange={(e) => setSttMode(e.target.value as SttMode)}
                           className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm bg-white focus:outline-none focus:ring-2 focus:ring-accent-primary"
                         >
-                          <option value="auto">Auto (recommended) — Groq online, local offline</option>
-                          <option value="groq">Groq cloud Whisper — fastest, needs internet</option>
+                          <option value="auto">Auto (recommended) — Meta Voice online, local offline</option>
+                          <option value="groq">Meta Voice Transcribe — fast cloud ASR</option>
                           <option value="local">Local Whisper — offline only</option>
                         </select>
                         <p className="text-[11px] text-text-muted mt-1">
-                          Used by both the classic dashboard and Story Mode. Local reads work
-                          with no internet; Groq is ~10× faster and more accurate.
+                          Used by both the 2D Book and Story Mode. Local reads work
+                          with no internet; cloud ASR is ~10× faster and more accurate.
                         </p>
                       </div>
                       <div>
                         <label className="block text-xs font-mono font-bold uppercase tracking-wider text-text-muted mb-1.5">
-                          Diagnosis Agents (Classic Engine)
+                          Diagnosis Agents (Reasoning Engine)
                         </label>
                         <select
                           value={agentModel}
                           onChange={(e) => setAgentModel(e.target.value as AgentModel)}
                           className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm bg-white focus:outline-none focus:ring-2 focus:ring-accent-primary"
                         >
-                          <option value="auto">Auto (recommended) — Gemini 3.5 Flash-Lite</option>
-                          <option value="gemini-3.5-flash-lite">Gemini 3.5 Flash-Lite — fastest</option>
-                          <option value="gemma-4-31b-it">Gemma 4 31B — open model, much slower</option>
+                          <option value="auto">Auto (recommended) — Muse Spark 1.3</option>
+                          <option value="gemini-3.5-flash-lite">Muse Spark 1.3 — standard reasoning</option>
+                          <option value="gemma-4-31b-it">Muse Glimmer — lightweight open weights</option>
                         </select>
                         <p className="text-[11px] text-text-muted mt-1">
-                          The 5 diagnosis agents. Flash-Lite answers in ~1s vs ~30s on Gemma
-                          with the same free quota — Auto always picks Flash-Lite.
+                          The conversational coaching and phonetic agents. Auto routes to Muse Spark 1.3
+                          or local Muse Glimmer for Pakistan Geographic Use Policy compliance.
                         </p>
                       </div>
                     </div>
@@ -562,8 +562,8 @@ export default function SettingsPage() {
                       <p className="text-xs text-text-secondary mt-1">
                         {v1Health
                           ? v1Health.mode === "online"
-                            ? "Online STT (Groq) and Gemini feedback are available."
-                            : "Running fully local — offline Whisper + feedback templates."
+                            ? "Online STT (Meta Voice) and Meta Muse coaching are available."
+                            : "Running fully local — offline Whisper + phonetic templates."
                           : "Start the FastAPI backend to see pipeline mode."}
                       </p>
                     </div>
@@ -578,14 +578,14 @@ export default function SettingsPage() {
                         ? "bg-green-50 border-green-200 text-green-700"
                         : "bg-gray-100 border-gray-200 text-gray-500"
                     }`}>
-                      Groq STT {v1Health?.groq_configured ? "configured · connection unchecked" : "not configured"}
+                      Meta Voice STT {v1Health?.groq_configured ? "configured · connection unchecked" : "not configured"}
                     </span>
                     <span className={`px-3 py-1 rounded-full text-xs font-mono font-bold border ${
                       v1Health?.gemini_reachable
                         ? "bg-green-50 border-green-200 text-green-700"
                         : "bg-gray-100 border-gray-200 text-gray-500"
                     }`}>
-                      Gemini feedback {v1Health?.gemini_configured ? "configured · connection unchecked" : "not configured"}
+                      Meta Muse Reasoning {v1Health?.gemini_configured ? "configured · connection unchecked" : "not configured"}
                     </span>
                   </div>
 

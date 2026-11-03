@@ -4,53 +4,48 @@ All v2 tunables live here; nothing else reads os.environ directly (roadmap Promp
 Gen-1 modules keep their own env reads — untouched by design.
 """
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 _BACKEND_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(_BACKEND_DIR, "data")
 
 
 class Settings:
-    # ── Reasoning layer (roadmap Feature 3: Gemini feedback + hesitation) ─────
-    # Primary model per the locked roadmap; the -latest alias is tried once if
-    # the exact model ID is not available on this key's free tier.
-    FEEDBACK_MODEL = os.getenv("FEEDBACK_MODEL", "gemini-3.5-flash-lite")
-    FEEDBACK_MODEL_FALLBACK = os.getenv("FEEDBACK_MODEL_FALLBACK", "gemini-flash-lite-latest")
-    # Phase 2 is async and never blocks the child, so the soft timeout is longer
-    # than the roadmap's synchronous 1.5s sketch — the child sees Phase 1 immediately.
+    # ── Meta AI reasoning layer (Meta Spark / Muse Glimmer open weights) ────
+    SPEAKFLOW_LLM_BASE_URL = os.getenv("SPEAKFLOW_LLM_BASE_URL", os.getenv("REASONING_BASE_URL", "https://api.meta.ai/v1"))
+    FEEDBACK_MODEL = os.getenv("REASONING_MODEL", os.getenv("FEEDBACK_MODEL", "muse-spark-1.3"))
+    FEEDBACK_MODEL_FALLBACK = os.getenv("FEEDBACK_MODEL_FALLBACK", "muse-glimmer")
     FEEDBACK_TIMEOUT_S = float(os.getenv("FEEDBACK_TIMEOUT_S", "10"))
     JUDGE_HESITATION_ENABLED = os.getenv("JUDGE_HESITATION_ENABLED", "0") == "1"
     HESITATION_TIMEOUT_S = float(os.getenv("HESITATION_TIMEOUT_S", "8"))
 
-    # ── Demo-day key isolation (roadmap Phase E.4 / K.3) ──────────────────────
-    # ENV=dev uses GOOGLE_API_KEYS; ENV=demo switches to GEMINI_API_KEY_DEMO so
-    # demo-day traffic never shares quota with development testing.
+    # ── Key configuration & demo isolation ──────────────────────────────────
     ENV = os.getenv("ENV", "dev")
+    META_API_KEY = os.getenv("META_API_KEY", os.getenv("REASONING_API_KEY", os.getenv("GROQ_API_KEY", "")))
     GEMINI_API_KEY_DEMO = os.getenv("GEMINI_API_KEY_DEMO", "")
 
     @property
     def active_gemini_key(self) -> str:
-        if self.ENV == "demo" and self.GEMINI_API_KEY_DEMO:
-            return self.GEMINI_API_KEY_DEMO
-        return os.getenv("GOOGLE_API_KEYS", os.getenv("GOOGLE_API_KEY", ""))
+        # Compatibility property for reasoning adapters
+        return self.META_API_KEY or os.getenv("GOOGLE_API_KEYS", os.getenv("GOOGLE_API_KEY", ""))
 
-    # ── STT (roadmap: Groq online, local quantized Whisper fallback) ──────────
-    GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
-    GROQ_STT_MODEL = os.getenv("GROQ_STT_MODEL", "whisper-large-v3")
-    GROQ_STT_URL = os.getenv("GROQ_STT_URL", "https://api.groq.com/openai/v1/audio/transcriptions")
-    # The roadmap's 600ms Phase-1 STT budget is the ideal; 3s keeps the online
-    # path usable in practice while still guaranteeing the local fallback fires.
+    # ── STT (Meta Voice Transcribe 1.0 online, local quantized Whisper fallback) ─
+    META_STT_URL = os.getenv("META_STT_URL", os.getenv("GROQ_STT_URL", "https://api.meta.ai/v1/asr/transcribe"))
+    META_STT_MODEL = os.getenv("META_STT_MODEL", os.getenv("GROQ_STT_MODEL", "muse-voice-transcribe-1.0"))
+    GROQ_API_KEY = META_API_KEY
+    GROQ_STT_MODEL = META_STT_MODEL
+    GROQ_STT_URL = META_STT_URL
     STT_TIMEOUT_S = float(os.getenv("STT_TIMEOUT_S", "3"))
 
-    # STT engine choice (Settings → live-editable): "auto" = Groq when online
-    # with a key, local otherwise; "groq" = prefer cloud, gracefully fall back
-    # to local when offline; "local" = never call Groq.
+    # STT engine choice: "auto" = Meta Voice Transcribe when online with key, local otherwise
     @property
     def stt_mode(self) -> str:
         mode = (os.getenv("STT_MODE", "auto") or "auto").strip().lower()
-        return mode if mode in ("auto", "groq", "local") else "auto"
+        return mode if mode in ("auto", "online", "local", "groq") else "auto"
 
     # Classic-engine agent model (Settings → live-editable): "auto" resolves to
     # Flash-Lite; explicit names pin that model.

@@ -166,7 +166,13 @@ export type Phase2Response = {
   latency_ms?: { gemini_feedback?: number; gemini_hesitation?: number };
 };
 
-export type StoryCheckpoint = { checkpoint_id: string; target_text: string };
+export type StoryCheckpoint = {
+  checkpoint_id: string;
+  target_text: string;
+  text_en?: string;
+  text_ur?: string;
+  text_es?: string;
+};
 
 export type StorySummary = {
   id: string;

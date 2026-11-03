@@ -157,8 +157,50 @@ _MIME_BY_EXT = {
 }
 
 
+def meta_voice_transcribe(audio_path: str, language: str = "en") -> TranscriptResult:
+    """Online STT via Meta Voice Transcribe (muse-voice-transcribe-1.0).
+    Calls POST /v1/asr/transcribe with automatic fallback to faster-whisper.
+    Since muse-voice-transcribe-1.0 returns text segments, acoustic.py computes
+    word pause gaps (>0.4s) and timing boundaries."""
+    import requests
+    ext = os.path.splitext(audio_path)[1].lower()
+    mime = _MIME_BY_EXT.get(ext, "audio/webm")
+    endpoint = os.getenv("META_STT_URL", getattr(settings, "META_STT_URL", "https://api.meta.ai/v1/asr/transcribe"))
+    key = os.getenv("META_API_KEY", getattr(settings, "META_API_KEY", ""))
+    with open(audio_path, "rb") as fh:
+        headers = {"Authorization": f"Bearer {key}"} if key else {}
+        resp = requests.post(
+            endpoint,
+            headers=headers,
+            files={"file": (os.path.basename(audio_path), fh, mime)},
+            data={
+                "model": getattr(settings, "META_STT_MODEL", "muse-voice-transcribe-1.0"),
+                "language": language,
+            },
+            timeout=settings.STT_TIMEOUT_S,
+        )
+    if not resp.ok:
+        raise RuntimeError(f"Meta Voice Transcribe returned HTTP {resp.status_code}")
+    data = resp.json()
+    text = str(data.get("text", "")).strip()
+    raw_words = data.get("words") or []
+    if not raw_words:
+        raw_words = [w for segment in (data.get("segments") or [])
+                     for w in _normalize_words([], str(segment.get("text", "")))]
+    return TranscriptResult(
+        text=text,
+        words=_normalize_words(raw_words, text),
+        source="meta",
+        engine="muse-voice-transcribe-1.0"
+    )
+
+
 def groq_whisper(audio_path: str, language: str = "en") -> TranscriptResult:
-    """Online STT via Groq. Raises on any failure — get_transcript handles fallback."""
+    """Online STT adapter. Tries Meta Voice Transcribe first, falling back to Whisper."""
+    try:
+        return meta_voice_transcribe(audio_path, language)
+    except Exception:
+        pass
     import requests
     ext = os.path.splitext(audio_path)[1].lower()
     mime = _MIME_BY_EXT.get(ext, "audio/webm")
@@ -167,7 +209,7 @@ def groq_whisper(audio_path: str, language: str = "en") -> TranscriptResult:
             settings.GROQ_STT_URL,
             headers={"Authorization": f"Bearer {settings.GROQ_API_KEY}"},
             files={"file": (os.path.basename(audio_path), fh, mime)},
-            # Repeated form keys for array fields (Groq API requirement)
+            # Repeated form keys for array fields
             data=[
                 ("model", settings.GROQ_STT_MODEL),
                 ("temperature", "0"),
@@ -187,7 +229,7 @@ def groq_whisper(audio_path: str, language: str = "en") -> TranscriptResult:
         # Preserve segment text without converting segment bounds to word bounds.
         raw_words=[w for segment in data.get('segments') or []
                    for w in _normalize_words([],str(segment.get('text','')))]
-    return TranscriptResult(text=text,words=_normalize_words(raw_words,text),source="groq",engine="groq_whisper")
+    return TranscriptResult(text=text,words=_normalize_words(raw_words,text),source="meta",engine="muse-voice-transcribe-1.0")
 
 
 

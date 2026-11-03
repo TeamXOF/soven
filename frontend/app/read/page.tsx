@@ -60,6 +60,17 @@ const NODE_POS = [
 
 export default function StoryMapPage() {
   const router = useRouter();
+
+  // Directly navigate into the 2D Open Book reader unless ?view=map is specified
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("view") !== "map") {
+        router.replace("/book/story_forest_01");
+      }
+    }
+  }, [router]);
+
   const [track, setTrack] = useState<StoryTrack>("en");
   const [world, setWorld] = useState(0);
   const [map, setMap] = useState<StoryMap | null>(null);

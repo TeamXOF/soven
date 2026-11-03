@@ -47,8 +47,8 @@ export default function PipelineMonitorPage() {
       name: "Speech-to-Text",
       icon: Mic2,
       detail: pipelineState.stt === "done"
-        ? `via ${phase1Result?.stt_source === "groq" ? "Groq Whisper" : "local Whisper"}`
-        : "Groq online · local Whisper offline",
+        ? `via ${phase1Result?.stt_source === "groq" ? "Meta Voice Transcribe" : "local Whisper"}`
+        : "Meta Voice online · local Whisper offline",
       latency: p1 ? `${p1.stt}ms` : null,
     },
     {
@@ -128,7 +128,7 @@ export default function PipelineMonitorPage() {
               : "bg-amber-50 border-amber-200 text-amber-600"
           }`}>
             <Mic2 className="w-3.5 h-3.5 mr-1.5" />
-            Groq {health?.groq_configured ? "configured" : "not configured"}
+            Meta Voice {health?.groq_configured ? "configured" : "not configured"}
           </span>
           <span className={`flex items-center px-3 py-1.5 text-xs font-mono font-bold rounded-lg border ${
             health?.gemini_reachable

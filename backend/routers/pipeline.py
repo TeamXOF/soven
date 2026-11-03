@@ -142,7 +142,7 @@ async def generate_sentences(difficulty: str = "medium", count: int = 5, languag
         sentences = [s.strip() for s in raw_sentences
                      if isinstance(s, str) and 5 <= len(s.strip()) <= 500][:count]
         if len(sentences) >= 3:
-            return {"sentences": sentences, "difficulty": difficulty, "source": "gemini"}
+            return {"sentences": sentences, "difficulty": difficulty, "source": "meta"}
     except Exception as e:
         print(f"[SENTENCES] generation failed, using bank: {e}")
     bank = (SENTENCE_BANKS_UR if language == "ur" else SENTENCE_BANKS_ES if language == "es" else SENTENCE_BANKS)[difficulty][:]
@@ -271,13 +271,50 @@ async def execute_pipeline(request: PipelineRunRequest):
                                  "phoneme_mismatch": "extra word", "spoken": word, "extra": True}
                                 for word in entry.get("extra_words", []))
     extras = sum(bool(word.get("extra")) for word in word_results)
-    accuracy_percentage = round(100 * sum(bool(word["correct"]) for word in word_results) /
-                                max(1, len(tokenize(request.target_sentence)) + extras))
-    overall_score = accuracy_percentage
+    correct_words = sum(bool(word["correct"]) for word in word_results)
+    total_words = max(1, len(tokenize(request.target_sentence)) + extras)
+    accuracy_percentage = round(100 * correct_words / total_words)
+    accuracy_ratio = correct_words / total_words
+
+    # Resolve reader persona (accommodates dyslexia by waiving speed and pause penalties)
+    persona_type = "child"
+    if request.student_id:
+        try:
+            with get_db_connection() as conn:
+                urow = conn.execute(
+                    "SELECT up.reader_mode FROM user_profiles up JOIN users u ON u.id=up.user_id WHERE u.student_id=?",
+                    (request.student_id,)
+                ).fetchone()
+                if urow and urow["reader_mode"]:
+                    persona_type = urow["reader_mode"]
+        except Exception:
+            pass
+
+    raw_wpm = float(signal_data.get("wpm", 0.0))
+    raw_pauses = signal_data.get("pauses") or []
+    pause_count = len(raw_pauses)
+
+    # Words Correct Per Minute (WCPM) calculation
+    # Waive raw speed and pause deductions for dyslexic readers so slow accurate reading is rewarded
+    if persona_type == "dyslexia":
+        wcpm = round(raw_wpm * accuracy_ratio, 1)
+        overall_score = accuracy_percentage
+    else:
+        pause_penalty = min(20.0, pause_count * 1.5)
+        wcpm = max(0.0, round((raw_wpm * accuracy_ratio) - pause_penalty, 1))
+        overall_score = max(0, min(100, round((accuracy_percentage * 0.7) + (min(100, wcpm) * 0.3))))
 
     # Coaching and UI use exactly the same observations and current score.
-    signal_data.update(word_results=word_results, accuracy=accuracy_percentage,
-                       target_sentence=request.target_sentence, language=request.language)
+    signal_data.update(
+        word_results=word_results,
+        accuracy=accuracy_percentage,
+        wpm=raw_wpm,
+        wcpm=wcpm,
+        overall_score=overall_score,
+        persona_type=persona_type,
+        target_sentence=request.target_sentence,
+        language=request.language,
+    )
     results = await run_pipeline(signal_data, session_history)
 
     # ── 5. Persist to database ─────────────────────────────────────────────────
@@ -336,6 +373,7 @@ async def execute_pipeline(request: PipelineRunRequest):
         "session_id":   session_id,
         "transcript":   transcript,
         "wpm":          signal_data.get("wpm", 0),
+        "wcpm":         signal_data.get("wcpm", 0.0),
         "overall_score": overall_score,
         "accuracy":     accuracy_percentage,
         "pauses":       len(signal_data.get("pauses") or []) if signal_data.get('speech_evidence',{}).get('pause_assessment')=='available' else None,

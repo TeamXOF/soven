@@ -64,5 +64,38 @@
       "teacher_note": "بار بار رکاوٹ؛ حوصلہ افزائی کی جائے۔"
     },
     "practice_word_fmt": "لفظ '{word}' کی مشق کریں۔"
+  },
+  "es": {
+    "all_correct": {
+      "feedback_text": "¡Increíble! Leíste cada palabra a la perfección. ¡Eres un lector estrella!",
+      "comprehension_question": null,
+      "practice_recommendation": "Hora del desafío: intenta decir este trabalenguas tres veces rápido: 'Tres tristes tigres tragaban trigo en un trigal.'",
+      "teacher_note": "Lectura impecable. Listo para un pasaje más avanzado."
+    },
+    "strong": {
+      "feedback_text": "¡Gran trabajo! Leíste casi todo con mucha claridad. Solo una palabra difícil: intentemos '{word}' otra vez, con calma y orgullo.",
+      "comprehension_question": null,
+      "practice_recommendation": "Practica la palabra '{word}': dila en dos partes y luego completa.",
+      "teacher_note": "Lectura sólida; una palabra requiere reintento."
+    },
+    "phoneme": {
+      "feedback_text": "¡Buen intento! Ese sonido puede ser complicado. Haz el sonido con la boca primero, luego di '{word}' otra vez. ¡Tú puedes!",
+      "comprehension_question": null,
+      "practice_recommendation": "Practica el sonido '{phoneme}' dentro de la palabra '{word}'.",
+      "teacher_note": "Dificultad fonética en '{phoneme}'; se sugiere práctica breve."
+    },
+    "fluency": {
+      "feedback_text": "¡Conocías cada palabra! Ahora hagamos que las palabras fluyan como un río: respira hondo y lee un poquito más rápido.",
+      "comprehension_question": null,
+      "practice_recommendation": "Lee la oración dos veces, un poquito más rápido cada vez.",
+      "teacher_note": "Precisión adecuada; el ritmo es el objetivo."
+    },
+    "hesitant": {
+      "feedback_text": "Está bien detenerse a pensar, ¡todos los grandes lectores lo hacen! Respira hondo y lee desde el principio. Lo estás haciendo genial.",
+      "comprehension_question": null,
+      "practice_recommendation": "Lee la oración una vez con un adulto y luego una vez a solas.",
+      "teacher_note": "Pausas frecuentes; se recomienda lectura para ganar confianza."
+    },
+    "practice_word_fmt": "Practica la palabra '{word}'."
   }
 }

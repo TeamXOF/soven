@@ -154,11 +154,11 @@ def _story_checkpoints(session: dict) -> list:
     if not story:
         raise ApiError("INTERNAL_ERROR", "Story definition missing", 500)
     lang = session.get("language", "en")
-    key = "text_ur" if lang == "ur" else "text_en"
-    comp_key = "comprehension_ur" if lang == "ur" else "comprehension_en"
+    key = "text_ur" if lang == "ur" else "text_es" if lang == "es" else "text_en"
+    comp_key = "comprehension_ur" if lang == "ur" else "comprehension_es" if lang == "es" else "comprehension_en"
     return [{
         "checkpoint_id": cp["id"],
-        "target_text": cp[key],
+        "target_text": cp.get(key, cp.get("text_en", "")),
         "comprehension_hint": story.get(comp_key, ""),
     } for cp in story["checkpoints"]]
 
@@ -261,7 +261,7 @@ def list_stories(student_id: Optional[str] = None, language: Optional[str] = Non
             else:
                 status = "available"
             out.append({
-                "id": story["id"], "title": story["title"], "title_ur": story["title_ur"],
+                "id": story["id"], "title": story["title"], "title_ur": story["title_ur"], "title_es": story.get("title_es", story["title"]),
                 "emoji": story["emoji"], "color": story["color"],
                 "total_checkpoints": total, "passed_checkpoints": passed,
                 "status": status,

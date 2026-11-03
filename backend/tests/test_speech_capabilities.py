@@ -30,10 +30,10 @@ class Contracts(unittest.TestCase):
     def test_language_routes_are_canonical_and_isolated(self):
         code,policy=capabilities.speech_policy('UR_pk');self.assertEqual(code,'ur');self.assertEqual(policy['locale'],'ur-PK')
         policy['recognition'].clear();self.assertTrue(capabilities.speech_policy('ur')[1]['recognition'])
-        self.assertEqual(set(capabilities.language_speech_inventory()['languages']),{'en','ur'})
+        self.assertEqual(set(capabilities.language_speech_inventory()['languages']),{'en','ur','es'})
     def test_planned_language_rejected_before_any_provider_or_probe(self):
         with patch.object(stt,'network_available') as net,patch.object(stt,'groq_whisper') as cloud,patch.object(stt,'local_whisper') as local:
-            for lang in ['es','ar','../en']:
+            for lang in ['fr','ar','../en']:
                 with self.assertRaises(HTTPException):stt.get_transcript(self.audio.name,lang)
             net.assert_not_called();cloud.assert_not_called();local.assert_not_called()
     def test_forced_local_never_probes_or_calls_cloud(self):
@@ -136,7 +136,7 @@ class HttpContracts(unittest.TestCase):
     def features(self):return {'word_features':{},'total_duration':2,'pitch_variance':None}
     def test_public_inventory_contains_routes_without_private_configuration(self):
         response=self.client.get('/api/v1/capabilities');self.assertEqual(response.status_code,200)
-        self.assertEqual(set(response.json()['language_speech']['languages']),{'en','ur'})
+        self.assertEqual(set(response.json()['language_speech']['languages']),{'en','ur','es'})
         self.assertNotIn('synthetic_adapter',response.text)
     def test_additive_evidence_migration_is_idempotent(self):
         fixtures.init_db();fixtures.init_db()

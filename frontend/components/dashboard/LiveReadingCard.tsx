@@ -4,6 +4,7 @@ import { useDeferredEffect } from "@/hooks/useDeferredEffect";
 import type { ScoredWord,SpokenWord } from "@/context/SpeakFlowContext";
 import { useSpeakFlow } from "@/context/SpeakFlowContext";
 import { API_ROOT,WordTip,fetchWordTip } from "@/lib/api";
+import type { ReadingLanguage } from "@/lib/languages";
 import { prettyPhoneme } from "@/lib/phonemes";
 import { popoverPosition } from "@/lib/popover";
 import { speak } from "@/lib/speech";
@@ -152,7 +153,7 @@ export default function LiveReadingCard() {
   const sentenceRequest = useRef(0);
   const invalidateSentenceRequest = useCallback(() => { sentenceRequest.current++; }, []);
 
-  const loadSentences = async (diff: "easy" | "medium" | "hard", lang: "en" | "ur" = language) => {
+  const loadSentences = async (diff: "easy" | "medium" | "hard", lang: ReadingLanguage = language) => {
     const requestId = ++sentenceRequest.current;
     setLoadingSentences(true);
     try {

@@ -10,10 +10,11 @@ The three reading flows preserve this evidence: classic sessions, fixed checkpoi
 
 ## Verified before this checkpoint
 
-- 158 backend tests passed locally: 62 application, 18 reasoning-provider, 21 speech-evaluation, 31 speech-runner and 26 speech-capability contracts.
+- 159 backend tests passed locally: 63 application (including book reader pause evidence regression), 18 reasoning-provider, 21 speech-evaluation, 31 speech-runner and 26 speech-capability contracts.
 - 15 mocked browser speech-playback contracts passed.
 - The isolated browser journey passed 23 scenarios with zero reported browser runtime errors.
 - Frontend lint, standalone TypeScript and production build passed.
+- Real-runtime QA audit verified clean instance startup, adult journey, tenant isolation, and live Groq STT (100% accuracy, available word timing) and Google Gemini reasoning (generated coaching feedback) on synthetic controls without classroom or child audio transmission. See REAL_RUNTIME_VALIDATION_2026-11-02.md and REAL_RUNTIME_VALIDATION_2026-11-02.json.
 - Five existing synthetic offline local-model controls passed with no transcript edits against their scripts. They cover matching, insertion, omission, substitution and ending scoring.
 - The current source/environment receipt verifies without inference: SPEECH_RUNTIME_CAPABILITY_FREEZE.json.
 

@@ -50,8 +50,8 @@ class Regressions(unittest.TestCase):
         rows = data['language_catalog']['languages']
         self.assertGreaterEqual(len(rows), 70)
         self.assertEqual(len(rows), len({row['code'] for row in rows}))
-        self.assertEqual({row['code'] for row in rows if row['enabled_for_reading']}, {'en', 'ur'})
-        self.assertFalse(next(row for row in rows if row['code'] == 'es')['enabled_for_reading'])
+        self.assertEqual({row['code'] for row in rows if row['enabled_for_reading']}, {'en', 'ur', 'es'})
+        self.assertFalse(next(row for row in rows if row['code'] == 'fr')['enabled_for_reading'])
         self.assertTrue(all(row['assessment_validation'] == 'not_validated' for row in rows))
         voice = next(provider for provider in data['providers'] if provider['id'] == 'meta_voice')
         self.assertEqual(voice['implementation'], 'planned')
@@ -62,19 +62,19 @@ class Regressions(unittest.TestCase):
         headers = self.headers('student')
         from agents import orchestrator
         with patch.object(orchestrator, 'call_agent') as model:
-            for path in ['/pipeline/sentences?language=es', '/api/v1/story/map?track=es',
-                         '/api/v1/story/play?level=1&track=es', '/api/v1/story/summary?track=es',
-                         '/api/v1/words/tip?word=hola&lang=es']:
+            for path in ['/pipeline/sentences?language=fr', '/api/v1/story/map?track=fr',
+                         '/api/v1/story/play?level=1&track=fr', '/api/v1/story/summary?track=fr',
+                         '/api/v1/words/tip?word=bonjour&lang=fr']:
                 response = self.client.get(path, headers=headers)
                 self.assertEqual(response.status_code, 422, (path, response.text))
             response = self.client.post('/pipeline/run', headers=headers,
-                json={'student_id': 's-a', 'target_sentence': 'Hola.', 'language': 'es', 'audio_base64': 'unused'})
+                json={'student_id': 's-a', 'target_sentence': 'Bonjour.', 'language': 'fr', 'audio_base64': 'unused'})
             self.assertEqual(response.status_code, 422, response.text)
             response = self.client.post('/api/v1/sessions', headers=headers,
-                json={'student_id': 's-a', 'story_id': 'unused', 'language': 'es'})
+                json={'student_id': 's-a', 'story_id': 'unused', 'language': 'fr'})
             self.assertEqual(response.status_code, 422, response.text)
             response = self.client.post('/api/v1/story/analyze', headers=headers,
-                data={'level': '1', 'track': 'es'}, files={'audio': ('clip.webm', b'x' * 1200, 'audio/webm')})
+                data={'level': '1', 'track': 'fr'}, files={'audio': ('clip.webm', b'x' * 1200, 'audio/webm')})
             self.assertEqual(response.status_code, 422, response.text)
             model.assert_not_called()
 
@@ -85,7 +85,8 @@ class Regressions(unittest.TestCase):
         self.assertEqual(canonical_language('iw-IL'), 'he')
         self.assertEqual(canonical_language('tl'), 'fil')
         self.assertEqual(require_reading_language('ur-PK'), 'ur')
-        for value in ['es', 'unknown', '../en', '', None]:
+        self.assertEqual(require_reading_language('es-ES'), 'es')
+        for value in ['fr', 'unknown', '../en', '', None]:
             with self.assertRaises(HTTPException) as result:
                 require_reading_language(value)
             self.assertEqual(result.exception.status_code, 422)
@@ -711,7 +712,7 @@ class AccountProfileRegressions(unittest.TestCase):
 
     def test_invalid_profile_updates_are_atomic_and_do_not_echo_inputs(self):
         _, headers = self.adult()
-        for fields in [{'reading_language':'es'}, {'interface_language':'fr'}, {'native_language':'not-a-language'},
+        for fields in [{'reading_language':'fr'}, {'interface_language':'fr'}, {'native_language':'not-a-language'},
                        {'reading_language':None}, {'accessibility':None}, {'accessibility':{'larger_text':'yes'}},
                        {'profile_completed':True}, {'accessibility':{'medical_diagnosis':'private-sentinel'}}]:
             response = self.client.patch('/api/auth/profile', headers=headers, json={'expected_version':1, **fields})
@@ -887,8 +888,14 @@ class AccountProfileRegressions(unittest.TestCase):
         self.assertFalse(english.json()[1]['locked'])
         self.assertEqual(urdu.json()[0]['passed_checkpoints'], 0)
         self.assertTrue(urdu.json()[1]['locked'])
-        self.assertEqual(self.client.get('/api/v1/stories',headers=headers,params={'language':'es'}).status_code,422)
+        self.assertEqual(self.client.get('/api/v1/stories',headers=headers,params={'language':'fr'}).status_code,422)
         self.assertEqual(self.client.get('/api/v1/stories',headers=headers,params={'student_id':self.child,'language':'en'}).status_code,403)
+
+
+    def test_book_reader_component_renders_speech_evidence_pauses(self):
+        page_tsx = (Path(__file__).resolve().parents[2] / "frontend/app/(app)/book/[storyId]/page.tsx").read_text(encoding="utf-8")
+        self.assertIn('result.speech_evidence?.pause_assessment === "available"', page_tsx)
+        self.assertIn("Unavailable", page_tsx)
 
 
 if __name__=='__main__':

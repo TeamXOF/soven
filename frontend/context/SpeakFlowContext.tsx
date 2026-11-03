@@ -6,6 +6,7 @@ import type { AgentResult } from "@/lib/agentTypes";
 import { getStoredUser, runPipeline } from "@/lib/api";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { loadPrefs,savePrefs } from "@/lib/prefs";
+import type { ReadingLanguage } from "@/lib/languages";
 import React,{ createContext,ReactNode,useContext,useState,useCallback } from "react";
 
 // Types for the global state
@@ -67,8 +68,8 @@ interface SpeakFlowState {
   addAvailableSentence: (sentence: string) => void;
 
   // Reading language for this dashboard ("en" | "ur") — persisted to prefs
-  language: "en" | "ur";
-  setLanguage: (lang: "en" | "ur") => void;
+  language: ReadingLanguage;
+  setLanguage: (lang: ReadingLanguage) => void;
   replaceSentences: (sentences: string[]) => void;
 
   // Real-time Text & Audio
@@ -107,6 +108,7 @@ const defaultAgents: AgentStatus[] = [
 const SpeakFlowContext = createContext<SpeakFlowState | undefined>(undefined);
 const EN_SENTENCES = ["The cat sat on the mat.", "The little fox woke up early in the morning."];
 const UR_SENTENCES = ["وہ یہاں تھا۔", "میں کتاب پڑھتا ہوں۔"];
+const ES_SENTENCES = ["El gato se sentó en la alfombra.", "El pequeño zorro se despertó temprano en la mañana."];
 
 export function SpeakFlowProvider({ children }: { children: ReactNode }) {
   const { user } = useAuth();
@@ -115,10 +117,10 @@ export function SpeakFlowProvider({ children }: { children: ReactNode }) {
   const [starting, setStarting] = useState(false);
   const controlsLocked = starting || sessionState === "listening" || sessionState === "processing";
 
-  const [availableSentences, setAvailableSentences] = useState<string[]>(() => loadPrefs().storyLanguage === "ur" ? UR_SENTENCES : EN_SENTENCES);
+  const [availableSentences, setAvailableSentences] = useState<string[]>(() => loadPrefs().storyLanguage === "ur" ? UR_SENTENCES : loadPrefs().storyLanguage === "es" ? ES_SENTENCES : EN_SENTENCES);
 
   const [targetSentence, setTargetSentenceState] = useState<string>(availableSentences[0]);
-  const [language, setLanguageState] = useState<"en" | "ur">(() => loadPrefs().storyLanguage);
+  const [language, setLanguageState] = useState<ReadingLanguage>(() => loadPrefs().storyLanguage);
 
   const [spokenWords, setSpokenWords] = useState<SpokenWord[]>([]);
   const [scoredWords, setScoredWords] = useState<ScoredWord[]>([]);
@@ -162,7 +164,7 @@ export function SpeakFlowProvider({ children }: { children: ReactNode }) {
   const animationFrameRef = React.useRef<number | null>(null);
   const phaseRef = React.useRef<"starting" | "recording" | "processing" | null>(null);
   const versionRef = React.useRef(0);
-  const attemptRef = React.useRef<{ studentId: string; name: string; target: string; language: "en" | "ur"; ownerId: string; version: number } | null>(null);
+  const attemptRef = React.useRef<{ studentId: string; name: string; target: string; language: ReadingLanguage; ownerId: string; version: number } | null>(null);
 
   const cleanupAudio = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
@@ -225,11 +227,11 @@ export function SpeakFlowProvider({ children }: { children: ReactNode }) {
 
   // Reading language — initialized from the student's saved preference
 
-  const setLanguage = (lang: "en" | "ur") => {
+  const setLanguage = (lang: ReadingLanguage) => {
     if (phaseRef.current || lang === language) return;
     resetSession();
     setLanguageState(lang);
-    const pool = lang === "ur" ? UR_SENTENCES : EN_SENTENCES;
+    const pool = lang === "ur" ? UR_SENTENCES : lang === "es" ? ES_SENTENCES : EN_SENTENCES;
     setAvailableSentences(pool);
     setTargetSentenceState(pool[0]);
     savePrefs({ storyLanguage: lang });

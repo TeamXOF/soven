@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-02",
+  "audit_type": "Real Runtime QA Audit",
+  "checkpoint": {
+    "commit": "bcc66c8b4a1e787a7ce6e044dda54a891fe46aea",
+    "branch": "main",
+    "repository": "https://github.com/TeamXOF/soven"
+  },
+  "environment_booleans": {
+    "backend_env_google_configured": false,
+    "backend_env_groq_configured": false,
+    "uploaded_env_google_configured": true,
+    "uploaded_env_groq_configured": true,
+    "meta_access_permitted": false,
+    "offline_mode_active": false,
+    "mock_analysis_active": false
+  },
+  "verification_suites": {
+    "backend": {
+      "test_regressions": { "passed": 63, "failed": 0 },
+      "test_reasoning_providers": { "passed": 18, "failed": 0 },
+      "test_speech_evaluation": { "passed": 21, "failed": 0 },
+      "test_speech_runner": { "passed": 31, "failed": 0 },
+      "test_speech_capabilities": { "passed": 26, "failed": 0 },
+      "total_backend_tests": 159
+    },
+    "frontend": {
+      "speech_playback_contracts": { "passed": 15, "failed": 0 },
+      "lint": { "status": "passed", "errors": 0 },
+      "typescript": { "status": "passed", "errors": 0 },
+      "production_build": { "status": "passed", "errors": 0 }
+    },
+    "isolated_browser_journey": {
+      "scenarios_passed": 23,
+      "scenarios_failed": 0,
+      "page_runtime_errors": 0,
+      "analysis_submissions": 4
+    }
+  },
+  "clean_instance_verification": {
+    "temporary_database": "qa_audit_runtime.db (ignored under .qa/, removed after run)",
+    "touched_production_or_classroom_db": false,
+    "sync_disabled": true,
+    "localhost_only": true,
+    "health_endpoint": {
+      "http_status": 200,
+      "status": "ok"
+    },
+    "capabilities_endpoint": {
+      "http_status": 200,
+      "schema_version": 1,
+      "providers_count": 7,
+      "enabled_reading_languages": ["en", "ur"],
+      "notice_present": true
+    }
+  },
+  "adult_http_journey": {
+    "register_adult": {
+      "http_status": 201,
+      "status": "approved",
+      "profile_required": true
+    },
+    "login": {
+      "http_status": 200,
+      "role": "student",
+      "reader_mode": "adult",
+      "profile_completed": false
+    },
+    "profile_initial": {
+      "http_status": 200,
+      "version": 1,
+      "profile_completed": false
+    },
+    "profile_update": {
+      "http_status": 200,
+      "version": 2,
+      "profile_completed": true,
+      "native_language": "en",
+      "accessibility_larger_text": true
+    },
+    "catalogue_english": {
+      "http_status": 200,
+      "count": 3,
+      "first_story": "story_forest_01"
+    },
+    "catalogue_urdu": {
+      "http_status": 200,
+      "count": 3
+    },
+    "session_created": {
+      "http_status": 201,
+      "story_id": "story_forest_01",
+      "checkpoints_count": 5
+    },
+    "security_isolation": {
+      "cross_user_access_blocked": true,
+      "cross_user_http_status": 403,
+      "session_leak_in_list": false,
+      "unauthorized_no_token_status": 401,
+      "unauthorized_bad_token_status": 401
+    }
+  },
+  "live_configured_service_outcome": {
+    "fixture": ".qa/speech-evaluation/runner-v1/controls/correct.wav",
+    "fixture_nature": "Synthetic Microsoft Zira functional control; zero child learner data",
+    "analyze_endpoint": "POST /api/v1/sessions/{session_id}/analyze",
+    "http_status": 200,
+    "latency_ms": 4512.3,
+    "stt_source": "groq",
+    "accuracy_score": 100,
+    "wpm": 166.7,
+    "passed": true,
+    "speech_evidence": {
+      "origin": "recognizer",
+      "language": "en",
+      "provider": "groq",
+      "engine": "groq_whisper",
+      "fallback_reason": null,
+      "word_timing": "available",
+      "recognition_confidence": "unavailable",
+      "confidence_basis": "model_token_probability_not_pronunciation",
+      "pause_assessment": "available",
+      "quality_validated": false
+    },
+    "phase_two_coaching": {
+      "endpoint": "GET /api/v1/sessions/{session_id}/feedback/cp_1",
+      "feedback_received": true,
+      "polls_taken": 3,
+      "feedback_source": "gemini",
+      "has_feedback_text": true,
+      "has_comprehension_question": true,
+      "has_practice_recommendation": true,
+      "teacher_note_present": true
+    }
+  },
+  "bugs_discovered_and_resolved": [
+    {
+      "id": "BUG-QA-01",
+      "component": "frontend/app/(app)/book/[storyId]/page.tsx",
+      "symptom": "validate_soven_ui.cjs line 47 timed out waiting for 'Unavailable' text after recording in the book reader UI.",
+      "cause": "Pause assessment and speech evidence metadata display was added to the classic reader (frontend/app/read/[sessionId]/page.tsx) and tested in validate_soven_ui.cjs in commit bcc66c8, but the pause observation JSX was omitted from the new illustrated book reader (frontend/app/(app)/book/[storyId]/page.tsx).",
+      "fix": "Added pause evidence indicator to frontend/app/(app)/book/[storyId]/page.tsx displaying pause count when available or 'Unavailable' ('دستیاب نہیں' in Urdu) when unavailable.",
+      "regression_test": "test_book_reader_component_renders_speech_evidence_pauses in backend/tests/test_regressions.py",
+      "verification": "All 23 isolated browser journey checks passed; 63/63 regression tests passed; frontend rebuilt and verified."
+    }
+  ],
+  "unverified_and_out_of_scope": [
+    "No child speech or pronunciation validity claimed",
+    "No Urdu recognition quality claimed",
+    "No physical microphone hardware or browser voice coverage claimed",
+    "No Meta provider calls executed (prohibited from Pakistan environment)",
+    "No 70+ language runtime claimed (catalogued as planned only)"
+  ],
+  "verdict": "stable for the verified scope"
+}

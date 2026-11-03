@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-11-02T13:56:44.313817+00:00",
+  "generated_at_utc": "2026-11-03T17:58:45.688722+00:00",
   "scope": "Active source and supported tooling; no runtime/private files",
   "text_hash_format": "UTF-8 with CRLF normalized to LF",
   "files": [
@@ -29,8 +29,8 @@
     },
     {
       "path": "backend/agents/orchestrator.py",
-      "sha256": "749cbcdc044d3ad07b632ad4b172401f163448822a6d3d4424536c5570923075",
-      "lines": 162,
+      "sha256": "93eb55145674a695290c0b61626e4c3526fd4e5bc3138df829a53417a6ef324f",
+      "lines": 167,
       "symbols": [
         {
           "name": "_resolve_model",
@@ -49,22 +49,22 @@
         },
         {
           "name": "_sentence_key",
-          "line": 49,
+          "line": 54,
           "kind": "FunctionDef"
         },
         {
           "name": "progress_comparison",
-          "line": 53,
+          "line": 58,
           "kind": "FunctionDef"
         },
         {
           "name": "_fallback_sentences",
-          "line": 79,
+          "line": 84,
           "kind": "FunctionDef"
         },
         {
           "name": "run_pipeline",
-          "line": 90,
+          "line": 95,
           "kind": "AsyncFunctionDef"
         }
       ]
@@ -144,7 +144,7 @@
     },
     {
       "path": "backend/core/language_types.py",
-      "sha256": "e5e073314fabeb01398f49fb1dfaf721afc0f8ff74659fa88fc1549daac6ab1a",
+      "sha256": "6312b84af69c9daf6366d785fa4282e5414a2521b0a6beda4c3ebdf51689b69b",
       "lines": 5,
       "symbols": []
     },
@@ -575,7 +575,7 @@
     },
     {
       "path": "backend/main.py",
-      "sha256": "d15fda6147324b2737dacf26ed4bf0d8aa07df51b90542dd2d5979f4edd344b5",
+      "sha256": "3e3b63f4ec4c4118eca3f0f9c668ca881e6cccddb12379691c31434e32ff3cc7",
       "lines": 157,
       "symbols": [
         {
@@ -732,8 +732,8 @@
     },
     {
       "path": "backend/routers/pipeline.py",
-      "sha256": "d1d8025e57ba4444ca4465f5176dc9a02e02b304b59936d4a4b078df2c84bde2",
-      "lines": 321,
+      "sha256": "62c927526a8f607373cfc2d4fe1a2e4e428ddc9da958a8fc4849fd0909975ad1",
+      "lines": 349,
       "symbols": [
         {
           "name": "_SimulationOnly",
@@ -742,17 +742,17 @@
         },
         {
           "name": "generate_sentences",
-          "line": 95,
+          "line": 123,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "_process_audio",
-          "line": 126,
+          "line": 154,
           "kind": "FunctionDef"
         },
         {
           "name": "execute_pipeline",
-          "line": 157,
+          "line": 185,
           "kind": "AsyncFunctionDef"
         }
       ]
@@ -1021,7 +1021,7 @@
     },
     {
       "path": "backend/routers/v1.py",
-      "sha256": "59456118d8848ccee1d1bf6178f97ba60b32e256d638057101a6e16bab53225e",
+      "sha256": "38fd26d9dff4e848bfb7167153b2a978615311a577f3771834bf44be7375a9e3",
       "lines": 823,
       "symbols": [
         {
@@ -1502,8 +1502,8 @@
     },
     {
       "path": "backend/services/reasoning.py",
-      "sha256": "12937c1143b575c28d963069df3a9a41e7b0af3e3b06c226c02a14fa292ce907",
-      "lines": 240,
+      "sha256": "d47f7150fb3409c3350e7d33d29fdb3c3a0a2b34146928a6b8d5494fb990562b",
+      "lines": 242,
       "symbols": [
         {
           "name": "CoachingFeedback",
@@ -1527,42 +1527,42 @@
         },
         {
           "name": "_configure_key",
-          "line": 118,
+          "line": 120,
           "kind": "FunctionDef"
         },
         {
           "name": "_extract_json",
-          "line": 123,
+          "line": 125,
           "kind": "FunctionDef"
         },
         {
           "name": "_closed_schema",
-          "line": 132,
+          "line": 134,
           "kind": "FunctionDef"
         },
         {
           "name": "_call_gemini_json",
-          "line": 146,
+          "line": 148,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "_pick_template",
-          "line": 159,
+          "line": 161,
           "kind": "FunctionDef"
         },
         {
           "name": "classify_category",
-          "line": 173,
+          "line": 175,
           "kind": "FunctionDef"
         },
         {
           "name": "generate_feedback",
-          "line": 187,
+          "line": 189,
           "kind": "AsyncFunctionDef"
         },
         {
           "name": "judge_hesitation",
-          "line": 238,
+          "line": 240,
           "kind": "AsyncFunctionDef"
         }
       ]
@@ -1854,8 +1854,8 @@
     },
     {
       "path": "backend/tests/test_regressions.py",
-      "sha256": "107c9f1017e2ae59014f39d0383120c1baa5d6aa417d56398adfb974888b5da8",
-      "lines": 895,
+      "sha256": "320de1e76c01c79ce9e8bb88317b26d37b10654cd71fd39461992e506a82593a",
+      "lines": 902,
       "symbols": [
         {
           "name": "Regressions",
@@ -1864,17 +1864,17 @@
         },
         {
           "name": "DashboardFeedbackRegressions",
-          "line": 397,
+          "line": 398,
           "kind": "ClassDef"
         },
         {
           "name": "EnrollmentRegressions",
-          "line": 504,
+          "line": 505,
           "kind": "ClassDef"
         },
         {
           "name": "AccountProfileRegressions",
-          "line": 616,
+          "line": 617,
           "kind": "ClassDef"
         },
         {
@@ -1904,374 +1904,379 @@
         },
         {
           "name": "test_language_inventory_isolation_and_public_get_only",
-          "line": 93,
+          "line": 94,
           "kind": "FunctionDef"
         },
         {
           "name": "test_shared_language_types_are_current",
-          "line": 102,
+          "line": 103,
           "kind": "FunctionDef"
         },
         {
           "name": "test_alignment_insertion_positions",
-          "line": 109,
+          "line": 110,
           "kind": "FunctionDef"
         },
         {
           "name": "test_missing_confidence_stays_unknown",
-          "line": 116,
+          "line": 117,
           "kind": "FunctionDef"
         },
         {
           "name": "test_asr_doubt_and_pitch_do_not_become_reading_errors",
-          "line": 122,
+          "line": 123,
           "kind": "FunctionDef"
         },
         {
           "name": "test_fresh_dashboard",
-          "line": 130,
+          "line": 131,
           "kind": "FunctionDef"
         },
         {
           "name": "test_authentication_required",
-          "line": 135,
+          "line": 136,
           "kind": "FunctionDef"
         },
         {
           "name": "test_teacher_isolation_and_student_ownership",
-          "line": 139,
+          "line": 140,
           "kind": "FunctionDef"
         },
         {
           "name": "test_dynamic_attempt_enters_teacher_reports",
-          "line": 145,
+          "line": 146,
           "kind": "FunctionDef"
         },
         {
           "name": "test_mock_disabled",
-          "line": 158,
+          "line": 159,
           "kind": "FunctionDef"
         },
         {
           "name": "test_registration_requires_class_code",
-          "line": 162,
+          "line": 163,
           "kind": "FunctionDef"
         },
         {
           "name": "test_token_expiry",
-          "line": 168,
+          "line": 169,
           "kind": "FunctionDef"
         },
         {
           "name": "test_migrations_repeat_without_loss",
-          "line": 174,
+          "line": 175,
           "kind": "FunctionDef"
         },
         {
           "name": "test_startup_check_and_backup_connections_are_closed",
-          "line": 179,
+          "line": 180,
           "kind": "FunctionDef"
         },
         {
           "name": "test_dynamic_detail_link",
-          "line": 203,
+          "line": 204,
           "kind": "FunctionDef"
         },
         {
           "name": "test_mock_enabled_does_not_persist_progress",
-          "line": 211,
+          "line": 212,
           "kind": "FunctionDef"
         },
         {
           "name": "test_non_admin_cannot_change_server_keys",
-          "line": 221,
+          "line": 222,
           "kind": "FunctionDef"
         },
         {
           "name": "test_invalid_auth_input_is_validation_error",
-          "line": 225,
+          "line": 226,
           "kind": "FunctionDef"
         },
         {
           "name": "test_actual_dynamic_request_saves_and_reports",
-          "line": 229,
+          "line": 230,
           "kind": "FunctionDef"
         },
         {
           "name": "test_archive_keeps_history",
-          "line": 244,
+          "line": 245,
           "kind": "FunctionDef"
         },
         {
           "name": "test_sync_requires_ack_and_persists_retry",
-          "line": 254,
+          "line": 255,
           "kind": "FunctionDef"
         },
         {
           "name": "test_sync_receiver_is_authenticated_and_idempotent",
-          "line": 268,
+          "line": 269,
           "kind": "FunctionDef"
         },
         {
           "name": "test_cloud_reasoning_has_a_local_fallback",
-          "line": 282,
+          "line": 283,
           "kind": "FunctionDef"
         },
         {
           "name": "test_real_acoustic_extraction_on_synthetic_wav",
-          "line": 291,
+          "line": 292,
           "kind": "FunctionDef"
         },
         {
           "name": "test_whisper_decoder_api_is_compatible",
-          "line": 304,
+          "line": 305,
           "kind": "FunctionDef"
         },
         {
           "name": "test_unheard_recording_is_not_saved_as_failure",
-          "line": 316,
+          "line": 317,
           "kind": "FunctionDef"
         },
         {
           "name": "test_persistent_coaching_job_recovers",
-          "line": 327,
+          "line": 328,
           "kind": "FunctionDef"
         },
         {
           "name": "test_socket_requires_auth_and_ownership",
-          "line": 341,
+          "line": 342,
           "kind": "FunctionDef"
         },
         {
           "name": "test_classic_recording_uses_word_accuracy",
-          "line": 355,
+          "line": 356,
           "kind": "FunctionDef"
         },
         {
           "name": "test_checkpoint_reread_generates_fresh_coaching",
-          "line": 376,
+          "line": 377,
           "kind": "FunctionDef"
         },
         {
           "name": "signal",
-          "line": 398,
+          "line": 399,
           "kind": "FunctionDef"
         },
         {
           "name": "run_feedback",
-          "line": 405,
+          "line": 406,
           "kind": "FunctionDef"
         },
         {
           "name": "test_urdu_punctuation_never_changes_word_match",
-          "line": 412,
+          "line": 413,
           "kind": "FunctionDef"
         },
         {
           "name": "test_unicode_words_preserve_letters_and_marks",
-          "line": 420,
+          "line": 421,
           "kind": "FunctionDef"
         },
         {
           "name": "test_flagged_words_and_current_score_share_observations",
-          "line": 426,
+          "line": 427,
           "kind": "FunctionDef"
         },
         {
           "name": "test_current_low_score_overrides_strong_history",
-          "line": 434,
+          "line": 435,
           "kind": "FunctionDef"
         },
         {
           "name": "test_practice_difficulty_boundaries",
-          "line": 442,
+          "line": 443,
           "kind": "FunctionDef"
         },
         {
           "name": "test_generated_exercises_require_word_language_and_tier",
-          "line": 450,
+          "line": 451,
           "kind": "FunctionDef"
         },
         {
           "name": "test_all_fallback_results_have_explicit_availability",
-          "line": 467,
+          "line": 468,
           "kind": "FunctionDef"
         },
         {
           "name": "test_estimated_timing_does_not_claim_zero_observed_pauses",
-          "line": 477,
+          "line": 478,
           "kind": "FunctionDef"
         },
         {
           "name": "test_progress_uses_latest_same_sentence_and_language",
-          "line": 484,
+          "line": 485,
           "kind": "FunctionDef"
         },
         {
           "name": "setUpClass",
-          "line": 506,
+          "line": 507,
           "kind": "FunctionDef"
         },
         {
           "name": "setUp",
-          "line": 510,
+          "line": 511,
           "kind": "FunctionDef"
         },
         {
           "name": "signup",
-          "line": 522,
+          "line": 523,
           "kind": "FunctionDef"
         },
         {
           "name": "profile",
-          "line": 531,
+          "line": 532,
           "kind": "FunctionDef"
         },
         {
           "name": "test_child_first_approval_creates_one_linked_profile",
-          "line": 536,
+          "line": 537,
           "kind": "FunctionDef"
         },
         {
           "name": "test_existing_profile_is_linked_without_losing_history",
-          "line": 556,
+          "line": 557,
           "kind": "FunctionDef"
         },
         {
           "name": "test_linking_rejects_occupied_archived_and_foreign_profiles",
-          "line": 572,
+          "line": 573,
           "kind": "FunctionDef"
         },
         {
           "name": "test_two_signups_cannot_claim_one_profile_concurrently",
-          "line": 593,
+          "line": 594,
           "kind": "FunctionDef"
         },
         {
           "name": "test_approved_account_cannot_be_reassigned",
-          "line": 605,
+          "line": 606,
           "kind": "FunctionDef"
         },
         {
           "name": "setUpClass",
-          "line": 618,
+          "line": 619,
           "kind": "FunctionDef"
         },
         {
           "name": "setUp",
-          "line": 622,
+          "line": 623,
           "kind": "FunctionDef"
         },
         {
           "name": "adult",
-          "line": 640,
+          "line": 641,
           "kind": "FunctionDef"
         },
         {
           "name": "profile",
-          "line": 651,
+          "line": 652,
           "kind": "FunctionDef"
         },
         {
           "name": "test_adult_registration_creates_one_private_reader",
-          "line": 656,
+          "line": 657,
           "kind": "FunctionDef"
         },
         {
           "name": "test_adult_school_and_other_adult_isolation",
-          "line": 675,
+          "line": 676,
           "kind": "FunctionDef"
         },
         {
           "name": "test_profile_languages_persist_without_rewriting_history",
-          "line": 691,
+          "line": 692,
           "kind": "FunctionDef"
         },
         {
           "name": "test_invalid_profile_updates_are_atomic_and_do_not_echo_inputs",
-          "line": 712,
+          "line": 713,
           "kind": "FunctionDef"
         },
         {
           "name": "test_profile_version_prevents_stale_and_concurrent_overwrites",
-          "line": 726,
+          "line": 727,
           "kind": "FunctionDef"
         },
         {
           "name": "test_completion_rollout_gate_allows_account_recovery",
-          "line": 743,
+          "line": 744,
           "kind": "FunctionDef"
         },
         {
           "name": "test_personal_join_code_cannot_enroll_a_classroom_child",
-          "line": 766,
+          "line": 767,
           "kind": "FunctionDef"
         },
         {
           "name": "test_existing_pending_child_cannot_switch_into_adult_approval",
-          "line": 774,
+          "line": 775,
           "kind": "FunctionDef"
         },
         {
           "name": "test_adult_duplicate_registration_does_not_leave_orphan_scopes",
-          "line": 784,
+          "line": 785,
           "kind": "FunctionDef"
         },
         {
           "name": "test_profile_migration_backups_and_preserves_version_two_records",
-          "line": 799,
+          "line": 800,
           "kind": "FunctionDef"
         },
         {
           "name": "test_teacher_cannot_manage_a_personal_adult_account",
-          "line": 829,
+          "line": 830,
           "kind": "FunctionDef"
         },
         {
           "name": "test_profile_endpoints_require_identity_and_registration_limit_is_shared",
-          "line": 838,
+          "line": 839,
           "kind": "FunctionDef"
         },
         {
           "name": "test_personal_scope_owner_binding_is_checked_on_every_request",
-          "line": 849,
+          "line": 850,
           "kind": "FunctionDef"
         },
         {
           "name": "test_accessibility_merges_without_diagnosis_or_cross_account_updates",
-          "line": 857,
+          "line": 858,
           "kind": "FunctionDef"
         },
         {
           "name": "test_book_catalogue_progress_is_language_specific_and_scoped",
-          "line": 874,
+          "line": 875,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "test_book_reader_component_renders_speech_evidence_pauses",
+          "line": 895,
           "kind": "FunctionDef"
         },
         {
           "name": "approve",
-          "line": 597,
+          "line": 598,
           "kind": "FunctionDef"
         },
         {
           "name": "save",
-          "line": 729,
+          "line": 730,
           "kind": "FunctionDef"
         },
         {
           "name": "register",
-          "line": 789,
+          "line": 790,
           "kind": "FunctionDef"
         },
         {
           "name": "track_connection",
-          "line": 190,
+          "line": 191,
           "kind": "FunctionDef"
         }
       ]
     },
     {
       "path": "backend/tests/test_speech_capabilities.py",
-      "sha256": "b2c4f88fa460f2935abddf65f0e9490fa24a9ee580d738e8c803c49f2c12cb6d",
+      "sha256": "4beea97dde0a1eb1f428661d49da081907e173e0673d732881a487d82ab32704",
       "lines": 182,
       "symbols": [
         {
@@ -2971,8 +2976,8 @@
     },
     {
       "path": "frontend/app/(app)/book/[storyId]/page.tsx",
-      "sha256": "dcbccefadc3a9b2b009d0d0d13ed4c2bd27a309632652d8b9c48be53237896a4",
-      "lines": 230,
+      "sha256": "fbca6ba0a4195a55ade086e27da56436d0e01c08a07b75db830310a76cc5822f",
+      "lines": 231,
       "symbols": [
         {
           "name": "WordTip",
@@ -3000,30 +3005,30 @@
         },
         {
           "name": "startBook",
-          "line": 110
+          "line": 111
         },
         {
           "name": "startReading",
-          "line": 136
+          "line": 137
         },
         {
           "name": "play",
-          "line": 205
+          "line": 206
         },
         {
           "name": "reset",
-          "line": 210
+          "line": 211
         },
         {
           "name": "next",
-          "line": 211
+          "line": 212
         }
       ]
     },
     {
       "path": "frontend/app/(app)/books/page.tsx",
-      "sha256": "efdf75169fa17f178006c466940f73b9dccd2d07286cad8abbddb3a2c9e648df",
-      "lines": 43,
+      "sha256": "8e608259217c4b8f5316302c43cb1ee8e83e68b9a7676f6c1f718c593b91967b",
+      "lines": 67,
       "symbols": [
         {
           "name": "StorySummary",
@@ -3031,7 +3036,7 @@
         },
         {
           "name": "Books",
-          "line": 11
+          "line": 12
         }
       ]
     },
@@ -3341,7 +3346,7 @@
     },
     {
       "path": "frontend/app/page.tsx",
-      "sha256": "704d392619c18c7abf6fe5f0ae7f939d02f6356b554602c545ea8f5f05b7be7f",
+      "sha256": "2adfcc7520a96e9f1c685653d743f7cc37d9dca184aba131c3ee3a9316e6cb57",
       "lines": 29,
       "symbols": [
         {
@@ -3428,7 +3433,7 @@
     },
     {
       "path": "frontend/app/read/page.tsx",
-      "sha256": "2e2183abbf9bb1f6e678d6e869014f3b926751e3e7ecb60c3d0bfa54c4ee09c9",
+      "sha256": "3a0e6aa8d15249947fc2b791ade2fb11379941fe85b20de611bb465024dea17a",
       "lines": 328,
       "symbols": [
         {
@@ -3625,20 +3630,20 @@
     },
     {
       "path": "frontend/components/dashboard/LiveReadingCard.tsx",
-      "sha256": "f327b5cba514722ff05ad1cbe6b35407ddac645d76601f3f3689e480055c2ffb",
-      "lines": 438,
+      "sha256": "32e891a2e46b16a512be57d39b9f5fb8248fbad0e49b9b172e6b68f2bff64c4a",
+      "lines": 439,
       "symbols": [
         {
           "name": "DisplayItem",
-          "line": 17
+          "line": 18
         },
         {
           "name": "TranscriptWord",
-          "line": 27
+          "line": 28
         },
         {
           "name": "LiveReadingCard",
-          "line": 145
+          "line": 146
         }
       ]
     },
@@ -3794,8 +3799,8 @@
     },
     {
       "path": "frontend/components/soven/BookCard.tsx",
-      "sha256": "c94c06dc3ccb604b8e41c67bc7bbbc2b3349ef78c209c6e169314a077f314faa",
-      "lines": 27,
+      "sha256": "1a7c6d79bdca35fc69acbd4ec6f1fae7b79430cf511f16f1ace8afdf9906ebf8",
+      "lines": 31,
       "symbols": [
         {
           "name": "BookCard",
@@ -3876,44 +3881,44 @@
     },
     {
       "path": "frontend/context/SpeakFlowContext.tsx",
-      "sha256": "55c2b3d0ed9315c7dfcc42f26c663eb2f680b22ecf8903cd861bbcef22dc8ff1",
-      "lines": 479,
+      "sha256": "72de882119e4a6afc8864cfaa5cb866d8f22ae361d49720dd53abf935b7420a9",
+      "lines": 481,
       "symbols": [
         {
           "name": "SessionState",
-          "line": 12
+          "line": 13
         },
         {
           "name": "AgentStatus",
-          "line": 14
+          "line": 15
         },
         {
           "name": "Student",
-          "line": 21
+          "line": 22
         },
         {
           "name": "AppNotification",
-          "line": 28
+          "line": 29
         },
         {
           "name": "SpokenWord",
-          "line": 38
+          "line": 39
         },
         {
           "name": "ScoredWord",
-          "line": 43
+          "line": 44
         },
         {
           "name": "SpeakFlowState",
-          "line": 51
+          "line": 52
         },
         {
           "name": "SpeakFlowProvider",
-          "line": 111
+          "line": 113
         },
         {
           "name": "useSpeakFlow",
-          "line": 473
+          "line": 475
         }
       ]
     },
@@ -4001,8 +4006,8 @@
     },
     {
       "path": "frontend/lib/api.ts",
-      "sha256": "af039f7d062c1f549f8a426ff59892189f91b930bb3ba069f35811c6e050db67",
-      "lines": 845,
+      "sha256": "4dab716257dde7ed7c741e9ddc31b52cd959185f79626ef0ce990d31877ac39b",
+      "lines": 846,
       "symbols": [
         {
           "name": "apiFetch",
@@ -4086,318 +4091,318 @@
         },
         {
           "name": "CreatedSession",
-          "line": 183
+          "line": 184
         },
         {
           "name": "SessionCheckpointDetail",
-          "line": 193
+          "line": 194
         },
         {
           "name": "SessionDetail",
-          "line": 211
+          "line": 212
         },
         {
           "name": "StudentDashboard",
-          "line": 234
+          "line": 235
         },
         {
           "name": "ClassroomOverview",
-          "line": 257
+          "line": 258
         },
         {
           "name": "V1Health",
-          "line": 275
+          "line": 276
         },
         {
           "name": "RecordedActivity",
-          "line": 284
+          "line": 285
         },
         {
           "name": "fetchRecordedActivity",
-          "line": 289
+          "line": 290
         },
         {
           "name": "SyncStatus",
-          "line": 295
+          "line": 296
         },
         {
           "name": "V2SessionListItem",
-          "line": 297
+          "line": 298
         },
         {
           "name": "Role",
-          "line": 316
-        },
-        {
-          "name": "AuthUser",
           "line": 317
         },
         {
+          "name": "AuthUser",
+          "line": 318
+        },
+        {
           "name": "getStoredToken",
-          "line": 337
+          "line": 338
         },
         {
           "name": "getStoredUser",
-          "line": 342
+          "line": 343
         },
         {
           "name": "storeSession",
-          "line": 352
+          "line": 353
         },
         {
           "name": "clearSession",
-          "line": 357
+          "line": 358
         },
         {
           "name": "authHeaders",
-          "line": 362
+          "line": 363
         },
         {
           "name": "apiLogin",
-          "line": 367
+          "line": 368
         },
         {
           "name": "apiRegister",
-          "line": 377
+          "line": 378
         },
         {
           "name": "apiLogout",
-          "line": 387
+          "line": 388
         },
         {
           "name": "ManagedUser",
-          "line": 397
+          "line": 398
         },
         {
           "name": "fetchUsers",
-          "line": 399
+          "line": 400
         },
         {
           "name": "approveUser",
-          "line": 405
+          "line": 406
         },
         {
           "name": "rejectUser",
-          "line": 414
+          "line": 415
         },
         {
           "name": "deleteUserAccount",
-          "line": 421
+          "line": 422
         },
         {
           "name": "RosterEntry",
-          "line": 430
+          "line": 431
         },
         {
           "name": "fetchRoster",
-          "line": 445
+          "line": 446
         },
         {
           "name": "toggleParentUpdates",
-          "line": 451
+          "line": 452
         },
         {
           "name": "ParentUpdate",
-          "line": 460
+          "line": 461
         },
         {
           "name": "fetchParentMessage",
-          "line": 462
+          "line": 463
         },
         {
           "name": "StudentReport",
-          "line": 470
+          "line": 471
         },
         {
           "name": "fetchReports",
-          "line": 486
+          "line": 487
         },
         {
           "name": "PracticeLibrary",
-          "line": 492
+          "line": 493
         },
         {
           "name": "fetchPracticeLibrary",
-          "line": 509
+          "line": 510
         },
         {
           "name": "changePassword",
-          "line": 515
+          "line": 516
         },
         {
           "name": "SttMode",
-          "line": 525
-        },
-        {
-          "name": "AgentModel",
           "line": 526
         },
         {
+          "name": "AgentModel",
+          "line": 527
+        },
+        {
           "name": "KeysStatus",
-          "line": 528
+          "line": 529
         },
         {
           "name": "fetchKeysStatus",
-          "line": 538
+          "line": 539
         },
         {
           "name": "saveKeys",
-          "line": 544
+          "line": 545
         },
         {
           "name": "parseError",
-          "line": 563
+          "line": 564
         },
         {
           "name": "resolveApiBase",
-          "line": 574
+          "line": 575
         },
         {
           "name": "WordTip",
-          "line": 590
+          "line": 591
         },
         {
           "name": "fetchWordTip",
-          "line": 598
+          "line": 599
         },
         {
           "name": "StoryTrack",
-          "line": 607
+          "line": 608
         },
         {
           "name": "StoryMapLevel",
-          "line": 609
+          "line": 610
         },
         {
           "name": "StoryMap",
-          "line": 615
+          "line": 616
         },
         {
           "name": "StoryPlay",
-          "line": 621
+          "line": 622
         },
         {
           "name": "StoryWord",
-          "line": 626
+          "line": 627
         },
         {
           "name": "StoryAttemptResult",
-          "line": 631
+          "line": 632
         },
         {
           "name": "StoryTrackSummary",
-          "line": 639
+          "line": 640
         },
         {
           "name": "fetchStoryMap",
-          "line": 644
+          "line": 645
         },
         {
           "name": "fetchStorySummary",
-          "line": 652
+          "line": 653
         },
         {
           "name": "fetchStoryPlay",
-          "line": 658
+          "line": 659
         },
         {
           "name": "storyAnalyze",
-          "line": 664
+          "line": 665
         },
         {
           "name": "storyAnalyzeMock",
-          "line": 676
+          "line": 677
         },
         {
           "name": "fetchStoryFeedback",
-          "line": 686
+          "line": 687
         },
         {
           "name": "fetchV1Health",
-          "line": 693
+          "line": 694
         },
         {
           "name": "fetchStories",
-          "line": 699
+          "line": 700
         },
         {
           "name": "createSession",
-          "line": 708
+          "line": 709
         },
         {
           "name": "fetchV2Sessions",
-          "line": 720
+          "line": 721
         },
         {
           "name": "analyzeCheckpoint",
-          "line": 726
+          "line": 727
         },
         {
           "name": "fetchFeedback",
-          "line": 740
+          "line": 741
         },
         {
           "name": "fetchSessionDetail",
-          "line": 750
+          "line": 751
         },
         {
           "name": "fetchStudentDashboard",
-          "line": 756
+          "line": 757
         },
         {
           "name": "fetchClassroomOverview",
-          "line": 765
+          "line": 766
         },
         {
           "name": "triggerSync",
-          "line": 771
+          "line": 772
         },
         {
           "name": "fetchSyncStatus",
-          "line": 777
+          "line": 778
         },
         {
           "name": "fetchPlatformCapabilities",
-          "line": 785
+          "line": 786
         },
         {
           "name": "ReaderMode",
-          "line": 791
-        },
-        {
-          "name": "ProfileAccessibility",
           "line": 792
         },
         {
+          "name": "ProfileAccessibility",
+          "line": 793
+        },
+        {
           "name": "ReaderProfile",
-          "line": 800
+          "line": 801
         },
         {
           "name": "ReaderProfileUpdate",
-          "line": 812
+          "line": 813
         },
         {
           "name": "apiRegisterAdult",
-          "line": 822
+          "line": 823
         },
         {
           "name": "fetchReaderProfile",
-          "line": 833
+          "line": 834
         },
         {
           "name": "saveReaderProfile",
-          "line": 839
+          "line": 840
         }
       ]
     },
     {
       "path": "frontend/lib/book-art.ts",
-      "sha256": "f58486a5ab59c505e8b2e555484e806f449c9d33416912754a29b861fabfae7d",
-      "lines": 10,
+      "sha256": "64b03fa3619a2cb02e26716ef0a5434559d3e3911a7cfabdab0c63e7781e2389",
+      "lines": 11,
       "symbols": [
         {
           "name": "bookArt",
-          "line": 10
+          "line": 11
         }
       ]
     },
@@ -4414,7 +4419,7 @@
     },
     {
       "path": "frontend/lib/language-types.ts",
-      "sha256": "e1c92cf4805447e25e29032ffef7de9d149a07d0c9ae6e8e9b94fa06b31b0277",
+      "sha256": "2957f358d6c971763e5db45bf18f9dc4a4671276dad505028fddbd1ed68456d4",
       "lines": 4,
       "symbols": [
         {
@@ -4639,8 +4644,37 @@
       ]
     },
     {
+      "path": "tools/live_browser_e2e.cjs",
+      "sha256": "8c1a3f2609bbbd9dbdc1d2610ebc8d590b6d00fcf77d86b806e059e8842908f3",
+      "lines": 89,
+      "symbols": []
+    },
+    {
+      "path": "tools/real_runtime_qa_pass.py",
+      "sha256": "5e256c77007fbc6950fa64335c4a2c9807f7907a184bb77366c933d4592ba6b9",
+      "lines": 341,
+      "symbols": [
+        {
+          "name": "load_memory_env",
+          "line": 23,
+          "kind": "FunctionDef"
+        },
+        {
+          "name": "run_audit",
+          "line": 51,
+          "kind": "FunctionDef"
+        }
+      ]
+    },
+    {
+      "path": "tools/test_spanish_live.py",
+      "sha256": "9653bb937c5a2e293116451cbdcfd1c1feb12a565e94dd9ae41c147caa270350",
+      "lines": 99,
+      "symbols": []
+    },
+    {
       "path": "tools/test_speech_playback.cjs",
-      "sha256": "6350474b4cadaa08799bfb8e53d9948d4ffe2a1ff9e71207c6dd83a4bb3d6f57",
+      "sha256": "6b687eceb2283a65fd128011f59f0f69180a0e0324a8245a71f45777379fe0ac",
       "lines": 30,
       "symbols": []
     }

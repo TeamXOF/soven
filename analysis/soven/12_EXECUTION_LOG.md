@@ -85,3 +85,28 @@ M2.2a/b publication verified on 2 November 2026: code commit 162150408cd26b19fb6
 Added a shared English/Urdu speech route inventory, explicit local/cloud selection and matching-language browser playback. New results preserve source, engine, fallback and availability metadata; valid recognizer word timing is preserved but segment timing is never distributed across words. Missing, partial, overlapping and simulated timing stays unavailable. Token probability is labelled as such, not pronunciation quality. New evidence is additive and legacy results remain unknown rather than rewritten.
 
 Verification: 26 focused capability contracts, 15 mocked browser-voice contracts, 23 isolated browser scenarios, 158 total backend tests, lint, TypeScript and production build passed locally. Five existing cached local-model synthetic controls exercised exact matching, insertion, omission, substitution and ending scoring with no script edits while outbound access was disabled. These are mechanics controls, not learner, Urdu, device, timestamp-calibration or quality evidence. Guide 19 and SPEECH_CAPABILITY_VALIDATION.json contain the exact scope. M2.2c/M2.3 remain open; M2.5 is the next unblocked engineering item but has not started.
+
+## Real-runtime QA audit completed 2 November 2026
+
+Conducted an end-to-end real runtime QA audit against commit bcc66c8b4a1e787a7ce6e044dda54a891fe46aea using process-memory environment overlay without writing secret keys to disk.
+
+- Preflight verified git tree clean on branch main; environment keys verified as booleans only.
+- Ran all existing suites: 159 backend tests passed (63 regressions, 18 reasoning, 21 speech evaluation, 31 speech runner, 26 speech capabilities).
+- Discovered and fixed BUG-QA-01: book reader page (frontend/app/(app)/book/[storyId]/page.tsx) was missing pause evidence display, causing validate_soven_ui.cjs line 47 to timeout. Added the pause indicator matching read/[sessionId], added backend regression test test_book_reader_component_renders_speech_evidence_pauses, rebuilt frontend production bundle, and verified all 23 isolated browser scenarios pass with zero page errors.
+- Verified clean temporary instance on localhost:8000 using isolated .qa/qa_audit_runtime.db; confirmed zero touch of production or classroom databases, sync disabled, and HTTP 200 on /health and /api/v1/capabilities.
+- Exercised full adult product journey: registration, login, profile read/update, English/Urdu catalogue retrieval, session creation, and cross-user security isolation (User B blocked with HTTP 403, zero session leak in list).
+- Live configured-service invocation on synthetic Microsoft Zira fixture (.qa/speech-evaluation/runner-v1/controls/correct.wav): Groq Whisper online STT succeeded (100% accuracy, 166.7 WPM, available word timing, unavailable confidence label, available pause assessment), followed by live Google Gemini phase-two coaching (feedback_source: gemini, structured text, question, recommendation, teacher note). Zero child/learner audio transmitted. Meta was not called.
+- Full evidence and receipts recorded in REAL_RUNTIME_VALIDATION_2026-11-02.md and REAL_RUNTIME_VALIDATION_2026-11-02.json. Verdict: stable for the verified scope. Next roadmap milestone (M2.5) remains not started awaiting owner review.
+
+
+## Spanish (es) Verified Reading Language Implementation
+
+Completed full end-to-end implementation and validation of Spanish (`es`) as the third production reading language alongside English and Urdu:
+- **Registry & Capabilities**: `shared/languages.json` (`enabled_for_reading: true`) and `shared/speech-capabilities.json` (`es-ES` route with `groq_whisper` and `local_whisper`). Regenerated Python/TypeScript types with `python tools/build_language_types.py --check`.
+- **Storybooks & Checkpoints**: `backend/data/stories.json` updated with full Spanish text, titles (`El zorrito valiente`, `El pequeño cohete`, `La ballena cantante`), and 15 checkpoint targets.
+- **Reasoning & Dynamic Word Tips**: `backend/services/reasoning.py` updated with Spanish prompt instructions and fallback tips; live generation validated via Meta Llama 3.3 70B (`zo-rro` syllable analysis and pronunciation tip).
+- **Offline Template Bank**: `backend/data/feedback_templates.json` updated with complete `"es"` template categories (`all_correct`, `hesitant`, `fluency`, `phoneme`, `strong`).
+- **Warm-Up Sentence Generation**: `backend/routers/pipeline.py` updated with `SENTENCE_BANKS_ES` (easy, medium, hard) and Spanish output parameter.
+- **5-Agent Pipeline**: `backend/agents/orchestrator.py` updated with Spanish character set support (`áéíóúüñ`) and language targets.
+- **Frontend UI & Speech**: `frontend/app/(app)/books/page.tsx`, `frontend/components/soven/BookCard.tsx`, `frontend/lib/book-art.ts`, `frontend/app/(app)/book/[storyId]/page.tsx`, and `frontend/app/page.tsx` updated with Spanish reading switcher, book covers, and reader views.
+- **Validation**: All 5 backend test suites (159 tests) passed cleanly (`test_regressions.py`, `test_reasoning_providers.py`, `test_speech_evaluation.py`, `test_speech_runner.py`, `test_speech_capabilities.py`). `tools/test_speech_playback.cjs` (15/15 checks) passed. Frontend ESLint (0 errors), `npx tsc --noEmit` (0 errors), and `npm run build -- --webpack` (28/28 pages) compiled successfully. Live end-to-end integration verified via `tools/test_spanish_live.py`.

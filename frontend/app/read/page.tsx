@@ -30,7 +30,7 @@ Star,
 import { useRouter } from "next/navigation";
 import { useCallback,useState } from "react";
 
-const TRACK_LABEL = { en: "English", ur: "اردو" } as const;
+const TRACK_LABEL = { en: "English", ur: "اردو", es: "Español" } as const;
 
 function trackGradient(track: StoryTrack, world: number) {
   const en = [

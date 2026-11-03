@@ -42,7 +42,12 @@ def _in_language(text, language):
     if not isinstance(text, str) or not 1 <= len(text.strip()) <= 1000:
         return False
     letters = [c for c in text if c.isalpha()]
-    count = sum('\u0600' <= c <= '\u06ff' for c in letters) if language == 'ur' else sum(c.isascii() for c in letters)
+    if language == 'ur':
+        count = sum('\u0600' <= c <= '\u06ff' for c in letters)
+    elif language == 'es':
+        count = sum(c.isascii() or c in 'áéíóúüñÁÉÍÓÚÜÑ' for c in letters)
+    else:
+        count = sum(c.isascii() for c in letters)
     return bool(letters) and count / len(letters) >= .6
 
 
@@ -107,7 +112,7 @@ async def run_pipeline(signal_data: dict, session_history: list) -> dict:
                 'reasoning': 'یہ نتیجہ جملے اور پہچانے گئے الفاظ کا موازنہ ہے۔' if ur else
                     'These observations compare the sentence with the recognized words.'}
     difficulty = await call_agent(DIFFICULTY_SYSTEM_PROMPT, {
-        **signal_data, 'phonetic_result': phonetic, 'output_language': 'Urdu (اردو)' if ur else 'English'})
+        **signal_data, 'phonetic_result': phonetic, 'output_language': 'Urdu (اردو)' if ur else 'Spanish (Español)' if language == 'es' else 'English'})
     if (difficulty.get('category') not in {'WORD_READING', 'PACING', 'MIXED', 'NO_OBVIOUS_ERROR'}
             or not _in_language(difficulty.get('primary_issue'), language)):
         difficulty = {'category': 'WORD_READING' if bad else 'NO_OBVIOUS_ERROR',
@@ -131,7 +136,7 @@ async def run_pipeline(signal_data: dict, session_history: list) -> dict:
     tier = 'easy' if accuracy < 70 else 'medium' if accuracy < 90 else 'hard'
     practice = await call_agent(PRACTICE_SYSTEM_PROMPT, {
         'struggling_words': bad, 'current_accuracy': accuracy, 'required_difficulty': tier,
-        'grade': signal_data.get('grade', 3), 'output_language': 'Urdu (اردو)' if ur else 'English',
+        'grade': signal_data.get('grade', 3), 'output_language': 'Urdu (اردو)' if ur else 'Spanish (Español)' if language == 'es' else 'English',
         'target_sentence': signal_data.get('target_sentence', ''), 'recent_sessions': session_history[:3]})
     candidates = practice.get('sentences')
     valid = isinstance(candidates, list) and 1 <= len(candidates) <= 5

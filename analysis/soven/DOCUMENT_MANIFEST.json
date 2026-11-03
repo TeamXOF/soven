@@ -17,7 +17,7 @@
           "sha256": "a20e8f34e6ff5f3e02ac36db714cd6a746cd0094e75ae8cc5d6a95133022173c"
         }
       ],
-      "sha256": "8e0e707164adddfa7f8686d273658c724bd0ad618b2ab44a4fdc2406dfc51ac3",
+      "sha256": "344af98d305ea5aabe50d68af4bfdee49d0260fe760c0981001c71e0f917afbb",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -41,7 +41,7 @@
           "sha256": "63233257e35cbc0e3278b74351b09d28d780f7028e5c0d50d33141cada23cbdd"
         }
       ],
-      "sha256": "f2fc940406363e091be493a8a07051ea98bd533ffe557f8f15a5c5eccc7d440c",
+      "sha256": "324d7a841d1f10bce6db957196dd936b014da9776167c66b82ad583bc703d155",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -57,7 +57,7 @@
           "sha256": "c39beb6148f3f06cbec39cf5332b4899012686cabfbbff07b4bb4d457664ff8e"
         }
       ],
-      "sha256": "364ecd1f8e20a081e2fb9ad326af6ab1a8411e0f80cd6ff6aaa1788bf7d3faed",
+      "sha256": "9a52106ae6af10285bef6fa4ba680fda550e7e057c901ec6895210387f8ae77c",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -73,7 +73,7 @@
           "sha256": "a85940cfc71bfac896cb65784c2a435ea757982cfd4ce624e795fd19252b866b"
         }
       ],
-      "sha256": "ec3453416f03fe3937feb47c54cd0543d3fa10975a0a9d3b4f1601f66f62b688",
+      "sha256": "d0b94a08e5a2ac56d2727e4337077b77a1535381e559db344bce443686ddf25b",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -93,7 +93,7 @@
           "sha256": "4a629b7f82f9bf67392c73ce8909501f05dddfd899214f327b7c9c6b521b978a"
         }
       ],
-      "sha256": "d9b45a83f163f80395581a2ade2d0aec17ea82dc96f6532472fc9742e41f06f8",
+      "sha256": "01670d3afd3840ae872dcd14cb1177d078fa7b000342db0fd4a2a9e988ea00c3",
       "render_review": "see DOCUMENT_QA.json"
     },
     {
@@ -133,7 +133,7 @@
           "sha256": "cb275ab509929873f34847ede7b7649c81e655e50e5bf1a171be929488c9d34e"
         }
       ],
-      "sha256": "e75a985d5f81430b36307aeadc77c5aeb0ba73aa202e67d3f2fec0723a386fcc",
+      "sha256": "92951de8765eb108d7f355f9a9831fcd0676621256f7df7c04437d9c11d333f6",
       "render_review": "see DOCUMENT_QA.json"
     }
   ]

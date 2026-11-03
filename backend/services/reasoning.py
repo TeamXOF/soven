@@ -94,7 +94,7 @@ async def generate_word_tip(word: str, language: str = "en",
     except Exception as e:
         log.warning("word_tip_fallback: %s", type(e).__name__)
 
-    syllables = split_syllables(word) if language == "en" else [word]
+    syllables = split_syllables(word) if language in ("en", "es") else [word]
     if mismatch and "_vs_" in mismatch:
         a, b = mismatch.split("_vs_", 1)
         tip = f'Say it slow: {" – ".join(syllables)}. Watch the “{a}” sound — it can sneak in like “{b}”.'
@@ -102,6 +102,8 @@ async def generate_word_tip(word: str, language: str = "en",
         tip = f'Say it slow, piece by piece: {" – ".join(syllables)}.'
     if language == "ur":
         tip = f'لفظ «{word}» آہستہ پڑھیں، پھر پورا لفظ دوبارہ پڑھیں۔'
+    elif language == "es":
+        tip = f'Di la palabra despacio: {" – ".join(syllables)}. Presta atención al sonido de cada letra.'
     return {"tip": tip, "syllables": syllables, "source": "template"}
 
 _MIME_BY_EXT = {
@@ -109,7 +111,7 @@ _MIME_BY_EXT = {
     ".m4a": "audio/mp4", ".ogg": "audio/ogg", ".mp3": "audio/mpeg",
 }
 
-_LANGUAGE_NAMES = {"en": "English", "ur": "Urdu (اردو)"}
+_LANGUAGE_NAMES = {"en": "English", "ur": "Urdu (اردو)", "es": "Spanish (Español)"}
 
 _MODEL_NOT_FOUND_MARKERS = ("not found", "is not supported", "unsupported",
                             "does not exist", "not available")

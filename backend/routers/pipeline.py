@@ -63,6 +63,34 @@ SENTENCE_BANKS = {
 }
 
 
+
+SENTENCE_BANKS_ES = {
+    "easy": [
+        "El gato toma leche.",
+        "El sol brilla en el cielo.",
+        "La manzana es roja y dulce.",
+        "Los pájaros cantan en el árbol.",
+        "Yo leo un libro bonito.",
+        "El perro corre en el parque.",
+    ],
+    "medium": [
+        "El pequeño zorro se despertó temprano.",
+        "Los amigos caminaron hacia el pueblo verde.",
+        "Después de la lluvia el jardín olía fresco.",
+        "Una ardilla saltó alegre sobre la rama alta.",
+        "Los niños juegan felices después de la escuela.",
+        "Esta parte del cuento es muy divertida.",
+    ],
+    "hard": [
+        "El río cristalino desciende rápido por la montaña rocosa.",
+        "Las estrellas iluminan el sendero misterioso del bosque.",
+        "El valiente explorador descubrió un antiguo tesoro escondido.",
+        "El viento fresco soplaba entre los pinos gigantes de la colina.",
+        "La pequeña lechuza observaba en silencio desde la torre.",
+        "Los pájaros cantores dieron la bienvenida al nuevo amanecer.",
+    ],
+}
+
 SENTENCE_BANKS_UR = {
     "easy": [
         "علی اسکول جاتا ہے۔",
@@ -105,7 +133,7 @@ async def generate_sentences(difficulty: str = "medium", count: int = 5, languag
         data = await asyncio.wait_for(
             call_agent(SENTENCE_PROMPT, {
                 "difficulty": difficulty, "grade": 3, "count": count,
-                "output_language": "Urdu (اردو)" if language == "ur" else "English",
+                "output_language": "Urdu (اردو)" if language == "ur" else "Spanish (Español)" if language == "es" else "English",
             }),
             timeout=12)
         raw_sentences = data.get("sentences")
@@ -117,7 +145,7 @@ async def generate_sentences(difficulty: str = "medium", count: int = 5, languag
             return {"sentences": sentences, "difficulty": difficulty, "source": "gemini"}
     except Exception as e:
         print(f"[SENTENCES] generation failed, using bank: {e}")
-    bank = (SENTENCE_BANKS_UR if language == "ur" else SENTENCE_BANKS)[difficulty][:]
+    bank = (SENTENCE_BANKS_UR if language == "ur" else SENTENCE_BANKS_ES if language == "es" else SENTENCE_BANKS)[difficulty][:]
     random.shuffle(bank)
     return {"sentences": bank[:count], "difficulty": difficulty,
             "language": language, "source": "fallback"}

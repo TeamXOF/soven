@@ -16,6 +16,14 @@
         "local_whisper"
       ],
       "playback": "browser_speech_synthesis"
+    },
+    "es": {
+      "locale": "es-ES",
+      "recognition": [
+        "groq_whisper",
+        "local_whisper"
+      ],
+      "playback": "browser_speech_synthesis"
     }
   },
   "notice": "Configured routes, not validated language quality. Missing word timing or confidence stays unavailable. Browser voices depend on the device."

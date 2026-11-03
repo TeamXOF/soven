@@ -12,7 +12,7 @@ const context={exports:{},require:id=>{assert.equal(id,'../../shared/speech-capa
 vm.runInNewContext(code,context);const speech=context.exports;let checks=0;
 const check=(name,fn)=>{fn();checks++;};
 const voice=(lang,localService=true)=>({lang,localService,name:'Synthetic '+lang});
-check('unknown and planned languages do not default to English',()=>{assert.equal(speech.speechLangFor('es'),null);assert.equal(speech.speak('hola','es'),false);assert.equal(queued.length,0);});
+check('unknown and planned languages do not default to English',()=>{assert.equal(speech.speechLangFor('fr'),null);assert.equal(speech.speak('bonjour','fr'),false);assert.equal(queued.length,0);});
 check('empty voices are unavailable',()=>assert.equal(speech.playbackCapability('en').reason,'no_voice'));
 check('late voices are reloaded without replacing global event handlers',()=>{voices=[voice('en-GB')];assert.equal(speech.hasVoiceFor('en'),true);assert.equal(speech.speak('cat','en'),true);assert.equal(queued.at(-1).voice,voices[0]);});
 check('exact locale is preferred',()=>{voices=[voice('en-GB'),voice('en-US')];speech.speak('cat');assert.equal(queued.at(-1).voice,voices[1]);});

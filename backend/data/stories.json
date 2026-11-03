@@ -4,48 +4,129 @@
       "id": "story_forest_01",
       "title": "The Brave Little Fox",
       "title_ur": "بہادر چھوٹا لومڑ",
+      "title_es": "El zorrito valiente",
       "emoji": "🦊",
       "color": "green",
       "comprehension_en": "What animal was the story about?",
       "comprehension_ur": "کہانی کس جانور کے بارے میں تھی؟",
+      "comprehension_es": "¿De qué animal se trataba la historia?",
       "checkpoints": [
-        { "id": "cp_1", "text_en": "The little fox woke up early in the morning.", "text_ur": "چھوٹا لومڑ صبح جلدی اٹھا۔" },
-        { "id": "cp_2", "text_en": "He wanted to find the biggest apple tree.", "text_ur": "وہ سب سے بڑا سیب کا درخت تلاش کرنا چاہتا تھا۔" },
-        { "id": "cp_3", "text_en": "The brave fox crossed the cold mountain stream.", "text_ur": "بہادر لومڑ نے ٹھنڈا پہاڑی چشمہ پار کیا۔" },
-        { "id": "cp_4", "text_en": "A friendly squirrel showed him the way home.", "text_ur": "ایک دوست گلہری نے اسے گھر کا راستہ دکھایا۔" },
-        { "id": "cp_5", "text_en": "The little fox slept happily under the stars.", "text_ur": "چھوٹے لومڑ نے ستاروں کے نیچے خوشی سے آنکھیں بند کیں۔" }
+        {
+          "id": "cp_1",
+          "text_en": "The little fox woke up early in the morning.",
+          "text_ur": "چھوٹا لومڑ صبح جلدی اٹھا۔",
+          "text_es": "El pequeño zorro se despertó temprano en la mañana."
+        },
+        {
+          "id": "cp_2",
+          "text_en": "He wanted to find the biggest apple tree.",
+          "text_ur": "وہ سب سے بڑا سیب کا درخت تلاش کرنا چاہتا تھا۔",
+          "text_es": "Quería encontrar el manzano más grande."
+        },
+        {
+          "id": "cp_3",
+          "text_en": "The brave fox crossed the cold mountain stream.",
+          "text_ur": "بہادر لومڑ نے ٹھنڈا پہاڑی چشمہ پار کیا۔",
+          "text_es": "El valiente zorro cruzó el frío arroyo de la montaña."
+        },
+        {
+          "id": "cp_4",
+          "text_en": "A friendly squirrel showed him the way home.",
+          "text_ur": "ایک دوست گلہری نے اسے گھر کا راستہ دکھایا۔",
+          "text_es": "Una ardilla amistosa le mostró el camino a casa."
+        },
+        {
+          "id": "cp_5",
+          "text_en": "The little fox slept happily under the stars.",
+          "text_ur": "چھوٹے لومڑ نے ستاروں کے نیچے خوشی سے آنکھیں بند کیں۔",
+          "text_es": "El pequeño zorro durmió feliz bajo las estrellas."
+        }
       ]
     },
     {
       "id": "story_space_02",
       "title": "The Little Rocket",
       "title_ur": "چھوٹا راکٹ",
+      "title_es": "El pequeño cohete",
       "emoji": "🚀",
       "color": "purple",
       "comprehension_en": "Where did the rocket travel to?",
       "comprehension_ur": "راکٹ کہاں گیا تھا؟",
+      "comprehension_es": "¿A dónde viajó el cohete?",
       "checkpoints": [
-        { "id": "cp_1", "text_en": "The little rocket counted down from ten.", "text_ur": "چھوٹے راکٹ نے دس سے گنتی شروع کی۔" },
-        { "id": "cp_2", "text_en": "Silver clouds rushed past the small window.", "text_ur": "چاندی کے بادل چھوٹی کھڑکی کے پاس سے گزرے۔" },
-        { "id": "cp_3", "text_en": "The moon waved hello from far away.", "text_ur": "چاند نے دور سے ہاتھ ہلا کر سلام کیا۔" },
-        { "id": "cp_4", "text_en": "Stars danced around the brave little ship.", "text_ur": "ستارے بہادر چھوٹے جہاز کے گرد ناچے۔" },
-        { "id": "cp_5", "text_en": "The rocket came home before breakfast time.", "text_ur": "راکٹ ناشتے سے پہلے گھر واپس آیا۔" }
+        {
+          "id": "cp_1",
+          "text_en": "The little rocket counted down from ten.",
+          "text_ur": "چھوٹے راکٹ نے دس سے گنتی شروع کی۔",
+          "text_es": "El pequeño cohete contó hacia atrás desde diez."
+        },
+        {
+          "id": "cp_2",
+          "text_en": "Silver clouds rushed past the small window.",
+          "text_ur": "چاندی کے بادل چھوٹی کھڑکی کے پاس سے گزرے۔",
+          "text_es": "Nubes plateadas pasaron veloces por la pequeña ventana."
+        },
+        {
+          "id": "cp_3",
+          "text_en": "The moon waved hello from far away.",
+          "text_ur": "چاند نے دور سے ہاتھ ہلا کر سلام کیا۔",
+          "text_es": "La luna saludó desde muy lejos."
+        },
+        {
+          "id": "cp_4",
+          "text_en": "Stars danced around the brave little ship.",
+          "text_ur": "ستارے بہادر چھوٹے جہاز کے گرد ناچے۔",
+          "text_es": "Las estrellas bailaron alrededor de la valiente nave."
+        },
+        {
+          "id": "cp_5",
+          "text_en": "The rocket came home before breakfast time.",
+          "text_ur": "راکٹ ناشتے سے پہلے گھر واپس آیا۔",
+          "text_es": "El cohete regresó a casa antes de la hora del desayuno."
+        }
       ]
     },
     {
       "id": "story_ocean_03",
       "title": "The Singing Whale",
       "title_ur": "گانے والی وہیل",
+      "title_es": "La ballena cantante",
       "emoji": "🐳",
       "color": "blue",
       "comprehension_en": "What did the whale love to do?",
       "comprehension_ur": "وہیل کو کیا کرنا پسند تھا؟",
+      "comprehension_es": "¿Qué le encantaba hacer a la ballena?",
       "checkpoints": [
-        { "id": "cp_1", "text_en": "The blue whale loved to sing all day.", "text_ur": "نیلی وہیل کو سارا دن گانا گانا پسند تھا۔" },
-        { "id": "cp_2", "text_en": "Tiny fish gathered to hear the big song.", "text_ur": "ننھی مچھلیاں بڑا گانا سننے کو جمع ہوئیں۔" },
-        { "id": "cp_3", "text_en": "The whale sang louder than the storm.", "text_ur": "وہیل طوفان سے بھی زور سے گاتی تھی۔" },
-        { "id": "cp_4", "text_en": "Coral castles glowed under the deep water.", "text_ur": "گہرے پانی کے نیچے مرجانی محل چمکے۔" },
-        { "id": "cp_5", "text_en": "Every night the ocean hummed along with her.", "text_ur": "ہر رات سمندر اس کے ساتھ گنگناتا رہا۔" }
+        {
+          "id": "cp_1",
+          "text_en": "The blue whale loved to sing all day.",
+          "text_ur": "نیلی وہیل کو سارا دن گانا گانا پسند تھا۔",
+          "text_es": "A la ballena azul le encantaba cantar todo el día."
+        },
+        {
+          "id": "cp_2",
+          "text_en": "Tiny fish gathered to hear the big song.",
+          "text_ur": "ننھی مچھلیاں بڑا گانا سننے کو جمع ہوئیں۔",
+          "text_es": "Pequeños peces se reunieron para escuchar la gran canción."
+        },
+        {
+          "id": "cp_3",
+          "text_en": "The whale sang louder than the storm.",
+          "text_ur": "وہیل طوفان سے بھی زور سے گاتی تھی۔",
+          "text_es": "La ballena cantó más fuerte que la tormenta."
+        },
+        {
+          "id": "cp_4",
+          "text_en": "Coral castles glowed under the deep water.",
+          "text_ur": "گہرے پانی کے نیچے مرجانی محل چمکے۔",
+          "text_es": "Castillos de coral brillaban bajo el agua profunda."
+        },
+        {
+          "id": "cp_5",
+          "text_en": "Every night the ocean hummed along with her.",
+          "text_ur": "ہر رات سمندر اس کے ساتھ گنگناتا رہا۔",
+          "text_es": "Cada noche el océano tarareaba junto con ella."
+        }
       ]
     }
   ]

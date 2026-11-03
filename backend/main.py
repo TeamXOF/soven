@@ -1,8 +1,8 @@
 import os
-
-# Prefer configured/system ffmpeg, then the optional bundled executable.
+import sys
 import shutil
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from dotenv import load_dotenv
 load_dotenv(Path(__file__).resolve().parent / ".env")
 ffmpeg_dir = os.getenv("FFMPEG_DIR", "")

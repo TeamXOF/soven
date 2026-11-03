@@ -172,6 +172,7 @@ export type StorySummary = {
   id: string;
   title: string;
   title_ur: string;
+  title_es?: string;
   emoji: string;
   color: string;
   total_checkpoints: number;

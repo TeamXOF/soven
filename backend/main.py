@@ -78,6 +78,41 @@ app.include_router(story_mode_router)
 app.include_router(sync_ingest_router)
 app.include_router(ws_router)
 
+# Aliases for Hackathon harnesses & API specifications
+app.include_router(pipeline.router, prefix="/api")
+
+from routers.sync_ingest import ingest as _sync_ingest
+@app.post("/api/sync/ingest")
+def api_sync_ingest(body: dict):
+    return _sync_ingest(body)
+
+from routers.v1 import pre_signup_diagnostic
+from fastapi import File, Form, UploadFile, Response
+@app.post("/api/diagnostic-test")
+async def api_diagnostic_test(
+    audio: UploadFile = File(None),
+    language: str = Form("en"),
+    target_sentence: str = Form(""),
+    mock_data: str = Form(None)
+):
+    return await pre_signup_diagnostic(audio, language, target_sentence, mock_data)
+
+from routers.profiles import profile as _get_profile, update_profile as _update_profile
+from core.reader_profiles import ProfileUpdate
+@app.get("/api/profiles/me")
+def api_profiles_me_get(request: Request, response: Response):
+    return _get_profile(request, response)
+
+@app.put("/api/profiles/me")
+@app.patch("/api/profiles/me")
+def api_profiles_me_update(body: ProfileUpdate, request: Request, response: Response):
+    return _update_profile(body, request, response)
+
+from routers.auth import register_adult as _register_adult, AdultRegistration
+@app.post("/api/auth/signup", status_code=201)
+async def api_auth_signup(body: AdultRegistration):
+    return await _register_adult(body)
+
 
 @app.on_event("shutdown")
 async def shutdown_event():

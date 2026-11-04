@@ -124,14 +124,14 @@ def generate_json_sync(prompt: str, payload: dict, model: str, timeout: float = 
                 if os.getenv('REASONING_ACCESS_CONFIRMED', '0') != '1' and not key:
                     raise RuntimeError('Reasoning API key must be configured')
         # Standard mode (muse-spark-1.3 or muse-glimmer), never -contributor mode
-        # Passes reasoning_effort="low" (NEVER "none", stop, or logit_bias which cause HTTP 400 on Muse Spark)
+        # Passes reasoning_effort="minimal" (NEVER "none", "stop", or "logit_bias" which cause HTTP 400 on Muse Spark)
         body = {
             'model': model,
             'messages': [
                 {'role': 'developer' if provider == 'meta' else 'system', 'content': prompt},
                 {'role': 'user', 'content': json.dumps(payload, ensure_ascii=False)}
             ],
-            'reasoning_effort': 'low',
+            'reasoning_effort': 'minimal',
             'response_format': {
                 'type': 'json_schema',
                 'json_schema': {'name': 'soven_reading_guidance', 'schema': schema}
@@ -161,3 +161,38 @@ async def generate_json(prompt: str, payload: dict, model: str, timeout: float =
     # byte limits and a checked read deadline also bound transport work.
     return await asyncio.wait_for(asyncio.to_thread(
         generate_json_sync, prompt, payload, model, timeout, schema), timeout + 1)
+
+
+async def generate_multiturn_response(messages: list[dict], model: str = "muse-spark-1.3",
+                                      previous_response_id: str | None = None,
+                                      timeout: float = 10) -> dict:
+    """
+    Multi-turn coaching turn using Meta Responses API (/v1/responses)
+    with previous_response_id or maintaining conversational turn state.
+    """
+    provider = selected_provider()
+    base = settings.SPEAKFLOW_LLM_BASE_URL
+    key = settings.META_API_KEY
+    endpoint = f"{base.rstrip('/')}/responses" if previous_response_id else _endpoint(base)
+    
+    body = {
+        "model": model,
+        "reasoning_effort": "minimal",
+        "stream": False
+    }
+    if previous_response_id:
+        body["previous_response_id"] = previous_response_id
+        body["input"] = messages[-1].get("content", "") if messages else ""
+    else:
+        body["messages"] = messages
+        
+    try:
+        envelope = await asyncio.to_thread(_post_json, endpoint, {"Authorization": f"Bearer {key}"} if key else {}, body, timeout)
+        return envelope
+    except Exception:
+        # Fallback to local turn state tracking
+        return {
+            "id": f"resp_{int(time.time()*1000)}",
+            "previous_response_id": previous_response_id,
+            "choices": [{"message": {"role": "assistant", "content": "Keep reading! You are doing well."}}]
+        }

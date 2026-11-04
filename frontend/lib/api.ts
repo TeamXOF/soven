@@ -795,7 +795,7 @@ export async function fetchPlatformCapabilities(signal?: AbortSignal): Promise<P
   return response.json();
 }
 
-export type ReaderMode = "child" | "adult" | "teacher";
+export type ReaderMode = "child" | "adult" | "teacher" | "dyslexia";
 export type ProfileAccessibility = {
   larger_text: boolean;
   word_tips: boolean;
@@ -823,6 +823,8 @@ export type ReaderProfileUpdate = {
   native_language?: import("./language-types").LanguageCode | null;
   translation_language?: import("./language-types").LanguageCode | null;
   accessibility?: Partial<ProfileAccessibility>;
+  reader_mode?: ReaderMode;
+  persona_type?: ReaderMode;
   complete_profile?: boolean;
 };
 

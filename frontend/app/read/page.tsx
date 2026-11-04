@@ -28,7 +28,7 @@ Sparkles,
 Star,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useCallback,useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const TRACK_LABEL = { en: "English", ur: "اردو", es: "Español" } as const;
 

@@ -15,31 +15,134 @@
           "id": "cp_1",
           "text_en": "The little fox woke up early in the morning.",
           "text_ur": "چھوٹا لومڑ صبح جلدی اٹھا۔",
-          "text_es": "El pequeño zorro se despertó temprano en la mañana."
+          "text_es": "El pequeño zorro se despertó temprano en la mañana.",
+          "syllables": "The lit-tle fox woke up ear-ly in the morn-ing.",
+          "translations": {
+            "little": {
+              "ur": "چھوٹا",
+              "es": "pequeño"
+            },
+            "fox": {
+              "ur": "لومڑ",
+              "es": "zorro"
+            },
+            "early": {
+              "ur": "جلدی",
+              "es": "temprano"
+            },
+            "morning": {
+              "ur": "صبح",
+              "es": "mañana"
+            }
+          }
         },
         {
           "id": "cp_2",
           "text_en": "He wanted to find the biggest apple tree.",
           "text_ur": "وہ سب سے بڑا سیب کا درخت تلاش کرنا چاہتا تھا۔",
-          "text_es": "Quería encontrar el manzano más grande."
+          "text_es": "Quería encontrar el manzano más grande.",
+          "syllables": "He want-ed to find the big-gest ap-ple tree.",
+          "translations": {
+            "wanted": {
+              "ur": "چاہا",
+              "es": "quería"
+            },
+            "find": {
+              "ur": "تلاش",
+              "es": "encontrar"
+            },
+            "biggest": {
+              "ur": "سب سے بڑا",
+              "es": "más grande"
+            },
+            "apple": {
+              "ur": "سیب",
+              "es": "manzana"
+            },
+            "tree": {
+              "ur": "درخت",
+              "es": "árbol"
+            }
+          }
         },
         {
           "id": "cp_3",
           "text_en": "The brave fox crossed the cold mountain stream.",
           "text_ur": "بہادر لومڑ نے ٹھنڈا پہاڑی چشمہ پار کیا۔",
-          "text_es": "El valiente zorro cruzó el frío arroyo de la montaña."
+          "text_es": "El valiente zorro cruzó el frío arroyo de la montaña.",
+          "syllables": "The brave fox crossed the cold moun-tain stream.",
+          "translations": {
+            "brave": {
+              "ur": "بہادر",
+              "es": "valiente"
+            },
+            "crossed": {
+              "ur": "پار کیا",
+              "es": "cruzó"
+            },
+            "cold": {
+              "ur": "ٹھنڈا",
+              "es": "frío"
+            },
+            "mountain": {
+              "ur": "پہاڑ",
+              "es": "montaña"
+            },
+            "stream": {
+              "ur": "چشمہ",
+              "es": "arroyo"
+            }
+          }
         },
         {
           "id": "cp_4",
           "text_en": "A friendly squirrel showed him the way home.",
           "text_ur": "ایک دوست گلہری نے اسے گھر کا راستہ دکھایا۔",
-          "text_es": "Una ardilla amistosa le mostró el camino a casa."
+          "text_es": "Una ardilla amistosa le mostró el camino a casa.",
+          "syllables": "A friend-ly squir-rel showed him the way home.",
+          "translations": {
+            "friendly": {
+              "ur": "دوستانہ",
+              "es": "amistoso"
+            },
+            "squirrel": {
+              "ur": "گلہری",
+              "es": "ardilla"
+            },
+            "showed": {
+              "ur": "دکھایا",
+              "es": "mostró"
+            },
+            "home": {
+              "ur": "گھر",
+              "es": "casa"
+            }
+          }
         },
         {
           "id": "cp_5",
           "text_en": "The little fox slept happily under the stars.",
           "text_ur": "چھوٹے لومڑ نے ستاروں کے نیچے خوشی سے آنکھیں بند کیں۔",
-          "text_es": "El pequeño zorro durmió feliz bajo las estrellas."
+          "text_es": "El pequeño zorro durmió feliz bajo las estrellas.",
+          "syllables": "The lit-tle fox slept hap-pi-ly un-der the stars.",
+          "translations": {
+            "slept": {
+              "ur": "سو گیا",
+              "es": "durmió"
+            },
+            "happily": {
+              "ur": "خوشی سے",
+              "es": "felizmente"
+            },
+            "under": {
+              "ur": "نیچے",
+              "es": "bajo"
+            },
+            "stars": {
+              "ur": "ستارے",
+              "es": "estrellas"
+            }
+          }
         }
       ]
     },
@@ -58,31 +161,106 @@
           "id": "cp_1",
           "text_en": "The little rocket counted down from ten.",
           "text_ur": "چھوٹے راکٹ نے دس سے گنتی شروع کی۔",
-          "text_es": "El pequeño cohete contó hacia atrás desde diez."
+          "text_es": "El pequeño cohete contó hacia atrás desde diez.",
+          "syllables": "The lit-tle rock-et count-ed down from ten.",
+          "translations": {
+            "rocket": {
+              "ur": "راکٹ",
+              "es": "cohete"
+            },
+            "counted": {
+              "ur": "گنا",
+              "es": "contó"
+            },
+            "ten": {
+              "ur": "دس",
+              "es": "diez"
+            }
+          }
         },
         {
           "id": "cp_2",
           "text_en": "Silver clouds rushed past the small window.",
           "text_ur": "چاندی کے بادل چھوٹی کھڑکی کے پاس سے گزرے۔",
-          "text_es": "Nubes plateadas pasaron veloces por la pequeña ventana."
+          "text_es": "Nubes plateadas pasaron veloces por la pequeña ventana.",
+          "syllables": "Sil-ver clouds rushed past the small win-dow.",
+          "translations": {
+            "silver": {
+              "ur": "چاندی",
+              "es": "plateado"
+            },
+            "clouds": {
+              "ur": "بادل",
+              "es": "nubes"
+            },
+            "window": {
+              "ur": "کھڑکی",
+              "es": "ventana"
+            }
+          }
         },
         {
           "id": "cp_3",
           "text_en": "The moon waved hello from far away.",
           "text_ur": "چاند نے دور سے ہاتھ ہلا کر سلام کیا۔",
-          "text_es": "La luna saludó desde muy lejos."
+          "text_es": "La luna saludó desde muy lejos.",
+          "syllables": "The moon waved hel-lo from far a-way.",
+          "translations": {
+            "moon": {
+              "ur": "چاند",
+              "es": "luna"
+            },
+            "waved": {
+              "ur": "ہاتھ ہلایا",
+              "es": "saludó"
+            },
+            "hello": {
+              "ur": "سلام",
+              "es": "hola"
+            }
+          }
         },
         {
           "id": "cp_4",
           "text_en": "Stars danced around the brave little ship.",
           "text_ur": "ستارے بہادر چھوٹے جہاز کے گرد ناچے۔",
-          "text_es": "Las estrellas bailaron alrededor de la valiente nave."
+          "text_es": "Las estrellas bailaron alrededor de la valiente nave.",
+          "syllables": "Stars danced a-round the brave lit-tle ship.",
+          "translations": {
+            "danced": {
+              "ur": "ناچے",
+              "es": "bailaron"
+            },
+            "around": {
+              "ur": "ارد گرد",
+              "es": "alrededor"
+            },
+            "ship": {
+              "ur": "جہاز",
+              "es": "nave"
+            }
+          }
         },
         {
           "id": "cp_5",
           "text_en": "The rocket came home before breakfast time.",
           "text_ur": "راکٹ ناشتے سے پہلے گھر واپس آیا۔",
-          "text_es": "El cohete regresó a casa antes de la hora del desayuno."
+          "text_es": "El cohete regresó a casa antes de la hora del desayuno.",
+          "syllables": "The rock-et came home be-fore break-fast time.",
+          "translations": {
+            "came": {
+              "ur": "آیا",
+              "es": "vino"
+            },
+            "breakfast": {
+              "ur": "ناشتہ",
+              "es": "desayuno"
+            },
+            "time": {
+              "ur": "وقت",
+              "es": "hora"
+            }
+          }
         }
       ]
     },
@@ -101,31 +279,106 @@
           "id": "cp_1",
           "text_en": "The blue whale loved to sing all day.",
           "text_ur": "نیلی وہیل کو سارا دن گانا گانا پسند تھا۔",
-          "text_es": "A la ballena azul le encantaba cantar todo el día."
+          "text_es": "A la ballena azul le encantaba cantar todo el día.",
+          "syllables": "The blue whale loved to sing all day.",
+          "translations": {
+            "whale": {
+              "ur": "وہیل",
+              "es": "ballena"
+            },
+            "sing": {
+              "ur": "گانا",
+              "es": "cantar"
+            },
+            "day": {
+              "ur": "دن",
+              "es": "día"
+            }
+          }
         },
         {
           "id": "cp_2",
           "text_en": "Tiny fish gathered to hear the big song.",
           "text_ur": "ننھی مچھلیاں بڑا گانا سننے کو جمع ہوئیں۔",
-          "text_es": "Pequeños peces se reunieron para escuchar la gran canción."
+          "text_es": "Pequeños peces se reunieron para escuchar la gran canción.",
+          "syllables": "Ti-ny fish gath-ered to hear the big song.",
+          "translations": {
+            "tiny": {
+              "ur": "ننھا",
+              "es": "diminuto"
+            },
+            "fish": {
+              "ur": "مچھلی",
+              "es": "pez"
+            },
+            "song": {
+              "ur": "گیت",
+              "es": "canción"
+            }
+          }
         },
         {
           "id": "cp_3",
           "text_en": "The whale sang louder than the storm.",
           "text_ur": "وہیل طوفان سے بھی زور سے گاتی تھی۔",
-          "text_es": "La ballena cantó más fuerte que la tormenta."
+          "text_es": "La ballena cantó más fuerte que la tormenta.",
+          "syllables": "The whale sang loud-er than the storm.",
+          "translations": {
+            "sang": {
+              "ur": "گایا",
+              "es": "cantó"
+            },
+            "louder": {
+              "ur": "بلند آواز",
+              "es": "más fuerte"
+            },
+            "storm": {
+              "ur": "طوفان",
+              "es": "tormenta"
+            }
+          }
         },
         {
           "id": "cp_4",
           "text_en": "Coral castles glowed under the deep water.",
           "text_ur": "گہرے پانی کے نیچے مرجانی محل چمکے۔",
-          "text_es": "Castillos de coral brillaban bajo el agua profunda."
+          "text_es": "Castillos de coral brillaban bajo el agua profunda.",
+          "syllables": "Cor-al cas-tles glowed un-der the deep wa-ter.",
+          "translations": {
+            "coral": {
+              "ur": "مرجان",
+              "es": "coral"
+            },
+            "castles": {
+              "ur": "محل",
+              "es": "castillos"
+            },
+            "water": {
+              "ur": "پانی",
+              "es": "agua"
+            }
+          }
         },
         {
           "id": "cp_5",
           "text_en": "Every night the ocean hummed along with her.",
           "text_ur": "ہر رات سمندر اس کے ساتھ گنگناتا رہا۔",
-          "text_es": "Cada noche el océano tarareaba junto con ella."
+          "text_es": "Cada noche el océano tarareaba junto con ella.",
+          "syllables": "Ev-ery night the o-cean hummed a-long with her.",
+          "translations": {
+            "night": {
+              "ur": "رات",
+              "es": "noche"
+            },
+            "ocean": {
+              "ur": "سمندر",
+              "es": "océano"
+            },
+            "hummed": {
+              "ur": "گنگنایا",
+              "es": "tarareó"
+            }
+          }
         }
       ]
     }

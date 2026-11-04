@@ -1,0 +1,50 @@
+[
+  {
+    "endpoint": "GET /",
+    "status": 200,
+    "latency_ms": 189.1,
+    "outcome": "online=True, provider=meta"
+  },
+  {
+    "endpoint": "GET /health",
+    "status": 200,
+    "latency_ms": 13.4,
+    "outcome": "status=ok"
+  },
+  {
+    "endpoint": "POST /api/auth/signup",
+    "status": 201,
+    "latency_ms": 492.8,
+    "outcome": "created user=qa_test_8a66fc81"
+  },
+  {
+    "endpoint": "POST /api/auth/login",
+    "status": 200,
+    "latency_ms": 592.7,
+    "outcome": "token generated successfully"
+  },
+  {
+    "endpoint": "GET /api/profiles/me",
+    "status": 200,
+    "latency_ms": 64.6,
+    "outcome": "reader_mode=adult, completed=False"
+  },
+  {
+    "endpoint": "PUT /api/profiles/me",
+    "status": 200,
+    "latency_ms": 59.6,
+    "outcome": "updated persona_type=dyslexia, profile_completed=True"
+  },
+  {
+    "endpoint": "POST /api/diagnostic-test",
+    "status": 200,
+    "latency_ms": 22.9,
+    "outcome": "WCPM=74.0, Level=Level 3, unauthenticated=True"
+  },
+  {
+    "endpoint": "POST /api/sync/ingest",
+    "status": 200,
+    "latency_ms": 34.5,
+    "outcome": "ingested record_id=sess_7ffdea4552d3, verified SHA-256"
+  }
+]

@@ -34,7 +34,13 @@
               "ur": "صبح",
               "es": "mañana"
             }
-          }
+          },
+          "intro_en": "The morning mist floated softly over the tall green pine trees.",
+          "intro_ur": "صبح کی ٹھنڈی دھند گھنے سبز درختوں پر چھائی ہوئی تھی۔",
+          "intro_es": "La niebla matutina flotaba suavemente sobre los altos pinos verdes.",
+          "outro_en": "He stretched his fluffy paws and looked out across the sunny clearing.",
+          "outro_ur": "اس نے اپنے نرم پنجے پھیلائے اور روشن وادی میں مسکرا کر دیکھا۔",
+          "outro_es": "Estiró sus patitas esponjosas y miró a través del claro soleado."
         },
         {
           "id": "cp_2",
@@ -63,7 +69,13 @@
               "ur": "درخت",
               "es": "árbol"
             }
-          }
+          },
+          "intro_en": "His tummy rumbled with hunger as he stepped onto the mossy path.",
+          "intro_ur": "کائی دار پگڈنڈی پر قدم رکھتے ہی اسے بھوک کا احساس ہوا۔",
+          "intro_es": "Su barriguita rugió de hambre mientras pisaba el sendero de musgo.",
+          "outro_en": "Sweet red apples were his favorite treat in the entire forest.",
+          "outro_ur": "رس بھرے سرخ سیب پورے جنگل میں اس کا سب سے پسندیدہ کھانا تھے۔",
+          "outro_es": "Las dulces manzanas rojas eran su delicia favorita en todo el bosque."
         },
         {
           "id": "cp_3",
@@ -92,7 +104,13 @@
               "ur": "چشمہ",
               "es": "arroyo"
             }
-          }
+          },
+          "intro_en": "Ahead lay a rushing water channel flowing from the snowy peaks.",
+          "intro_ur": "سامنے برفانی چوٹیوں سے بہتا ہوا ایک ٹھنڈا پہاڑی چشمہ تھا۔",
+          "intro_es": "Más adelante corría un canal de agua fresca que bajaba de las cumbres.",
+          "outro_en": "He leaped carefully from one smooth grey stone to the next.",
+          "outro_ur": "وہ احتیاط سے ایک ہموار پتھر سے دوسرے پتھر پر چھلانگ لگا گیا۔",
+          "outro_es": "Saltó con cuidado de una roca lisa a la siguiente."
         },
         {
           "id": "cp_4",
@@ -117,7 +135,13 @@
               "ur": "گھر",
               "es": "casa"
             }
-          }
+          },
+          "intro_en": "High up in the oak branches, a bushy tail rustled in the breeze.",
+          "intro_ur": "شاہ بلوط کے اونچے درخت کی شاخوں میں ایک گھنی دم نظر آئی۔",
+          "intro_es": "En lo alto de las ramas de roble, una colita esponjosa se movió con la brisa.",
+          "outro_en": "She chattered happily and pointed toward the orchard hill.",
+          "outro_ur": "اس نے خوشی سے چہچہاتے ہوئے سیب کے باغ کی طرف اشارہ کیا۔",
+          "outro_es": "Chirrió con entusiasmo y señaló hacia la colina del huerto."
         },
         {
           "id": "cp_5",
@@ -142,7 +166,13 @@
               "ur": "ستارے",
               "es": "estrellas"
             }
-          }
+          },
+          "intro_en": "The evening air was peaceful and the night sky sparkled with light.",
+          "intro_ur": "شام کی ہوا پرسکون ہو گئی اور رات کا آسمان چمک اٹھا۔",
+          "intro_es": "El aire de la tarde era sereno y el cielo nocturno brillaba de luz.",
+          "outro_en": "He curled up safely and dreamed of tomorrow's new journeys.",
+          "outro_ur": "اس نے اپنے بل میں سکون پایا اور کل کے نئے سفر کے خواب دیکھے۔",
+          "outro_es": "Se acurrucó felizmente y soñó con las aventuras de mañana."
         }
       ]
     },
@@ -176,7 +206,13 @@
               "ur": "دس",
               "es": "diez"
             }
-          }
+          },
+          "intro_en": "Bright warning lights flickered on the shiny metal launchpad.",
+          "intro_ur": "چمچماتے ہوئے لانچ پیڈ پر روشنیاں جھلملانے لگیں۔",
+          "intro_es": "Las luces brillantes parpadeaban en la plataforma de lanzamiento.",
+          "outro_en": "Engines hummed with mighty energy as the adventure began.",
+          "outro_ur": "انجن پوری طاقت سے گونجے اور حیرت انگیز سفر شروع ہو گیا۔",
+          "outro_es": "Los motores rugieron con gran potencia mientras comenzaba la aventura."
         },
         {
           "id": "cp_2",
@@ -197,7 +233,13 @@
               "ur": "کھڑکی",
               "es": "ventana"
             }
-          }
+          },
+          "intro_en": "The ground disappeared beneath a blanket of pure white fog.",
+          "intro_ur": "زمین سفید بادلوں کی چادر کے نیچے اوجھل ہو گئی۔",
+          "intro_es": "El suelo desapareció bajo un manto de niebla pura y blanca.",
+          "outro_en": "The blue sky quickly turned into deep midnight velvet.",
+          "outro_ur": "نیلا آسمان پلک جھپکتے ہی گہرے سیاہ مخمل میں بدل گیا۔",
+          "outro_es": "El cielo azul pronto se transformó en un manto de terciopelo oscuro."
         },
         {
           "id": "cp_3",
@@ -218,7 +260,13 @@
               "ur": "سلام",
               "es": "hola"
             }
-          }
+          },
+          "intro_en": "Weightlessness lifted everything gently inside the cozy cabin.",
+          "intro_ur": "بے وزنی کی حالت میں کیبن کی ہر چیز ہوا میں تیرنے لگی۔",
+          "intro_es": "La ingravidez elevó suavemente todo dentro de la cabina.",
+          "outro_en": "Golden rings of dust circled in a dazzling cosmic dance.",
+          "outro_ur": "سنہری غبار کے دائرے کہکشاں میں دلفریب رقص کر رہے تھے۔",
+          "outro_es": "Anillos dorados de polvo giraban en una deslumbrante danza cósmica."
         },
         {
           "id": "cp_4",
@@ -239,7 +287,13 @@
               "ur": "جہاز",
               "es": "nave"
             }
-          }
+          },
+          "intro_en": "A friendly radio voice crackled across the speaker from Earth.",
+          "intro_ur": "زمین سے کنٹرول روم کی پرجوش آواز اسپیکر پر سنائی دی۔",
+          "intro_es": "Una voz amigable de radio sonó a través del altavoz desde la Tierra.",
+          "outro_en": "Instruments confirmed the flight trajectory was completely safe.",
+          "outro_ur": "آلات نے تصدیق کی کہ پرواز کا راستہ بالکل محفوظ ہے۔",
+          "outro_es": "Los instrumentos confirmaron que la trayectoria de vuelo era totalmente segura."
         },
         {
           "id": "cp_5",
@@ -260,7 +314,13 @@
               "ur": "وقت",
               "es": "hora"
             }
-          }
+          },
+          "intro_en": "The smooth landing gear touched down on the crater rim.",
+          "intro_ur": "لینڈنگ گیئر نے چاند کے گڑھے کے کنارے کو نرمی سے چھوا۔",
+          "intro_es": "El tren de aterrizaje tocó suavemente el borde del cráter.",
+          "outro_en": "The little rocket planted a bright flag for all dreamers.",
+          "outro_ur": "چھوٹے راکٹ نے تمام خواب دیکھنے والوں کے نام کا پرچم لہرا دیا۔",
+          "outro_es": "El pequeño cohete plantó una brillante bandera para todos los soñadores."
         }
       ]
     },
@@ -294,7 +354,13 @@
               "ur": "دن",
               "es": "día"
             }
-          }
+          },
+          "intro_en": "Sunbeams danced through the clear turquoise waters of the coral reef.",
+          "intro_ur": "مرجانی چٹانوں کے فیروزی پانی پر سورج کی سنہری کرنیں رقص کر رہی تھیں۔",
+          "intro_es": "Los rayos del sol bailaban a través de las aguas turquesas del arrecife.",
+          "outro_en": "The peaceful melody traveled miles through the deep ocean.",
+          "outro_ur": "پرامن راگ گہرے سمندر میں میلوں دور تک پھیلتا چلا گیا۔",
+          "outro_es": "La melodía pacífica viajó kilómetros a través del océano profundo."
         },
         {
           "id": "cp_2",
@@ -315,7 +381,13 @@
               "ur": "گیت",
               "es": "canción"
             }
-          }
+          },
+          "intro_en": "Tiny colorful fish gathered around in cheerful schools.",
+          "intro_ur": "رنگ برنگی چھوٹی مچھلیاں خوشی سے آس پاس جمع ہو گئیں۔",
+          "intro_es": "Pequeños peces de colores se reunieron en alegres bancos.",
+          "outro_en": "They swayed in rhythm with the gentle ocean currents.",
+          "outro_ur": "وہ سمندر کی پرسکون لہروں کی تال پر جھومنے لگیں۔",
+          "outro_es": "Se mecieron al ritmo de las suaves corrientes oceánicas."
         },
         {
           "id": "cp_3",
@@ -336,7 +408,13 @@
               "ur": "طوفان",
               "es": "tormenta"
             }
-          }
+          },
+          "intro_en": "Deep in the kelp forest, a lost sea turtle looked for guidance.",
+          "intro_ur": "سمندری گھاس کے گھنے جنگل میں ایک بھٹکا ہوا کچھوا راستہ تلاش کر رہا تھا۔",
+          "intro_es": "En lo profundo del bosque de algas, una tortuga marina perdida buscaba guía.",
+          "outro_en": "The whale guided him safely toward the open sea.",
+          "outro_ur": "وہیل نے اسے کھلے سمندر کا محفوظ راستہ دکھایا۔",
+          "outro_es": "La ballena la guió con seguridad hacia el mar abierto."
         },
         {
           "id": "cp_4",
@@ -357,7 +435,13 @@
               "ur": "پانی",
               "es": "agua"
             }
-          }
+          },
+          "intro_en": "Dolphins leaped through the waves in playful arcs above.",
+          "intro_ur": "اوپر لہروں کے درمیان ڈولفن مچھلیاں خوشی سے چھلانگیں لگا رہی تھیں۔",
+          "intro_es": "Los delfines saltaban a través de las olas en arcos juguetones.",
+          "outro_en": "Splashes of sea foam sparkled like pearls in the sunlight.",
+          "outro_ur": "سمندری جھاگ کے قطرے موتیوں کی طرح چمک رہے تھے۔",
+          "outro_es": "Las salpicaduras de espuma brillaban como perlas bajo la luz del sol."
         },
         {
           "id": "cp_5",
@@ -378,7 +462,13 @@
               "ur": "گنگنایا",
               "es": "tarareó"
             }
-          }
+          },
+          "intro_en": "As twilight fell, the vast ocean calmed under the silver moon.",
+          "intro_ur": "شام ڈھلتے ہی چاندنی رات میں وسیع سمندر پرسکون ہو گیا۔",
+          "intro_es": "Al caer el crepúsculo, el vasto océano se calmó bajo la luna plateada.",
+          "outro_en": "The gentle giant drifted into sweet aquatic dreams.",
+          "outro_ur": "عظیم دوست وہیل میٹھے خوابوں میں کھو گئی۔",
+          "outro_es": "El amable gigante se sumergió en dulces sueños acuáticos."
         }
       ]
     }

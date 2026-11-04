@@ -60,9 +60,13 @@ class AccessMiddleware(BaseHTTPMiddleware):
                 if size > MAX_BODY_BYTES:
                     return error(413, "Recording or request is too large (maximum 16 MB)")
                 chunks.append(chunk)
-            request._body = b"".join(chunks)
-        public = {"/health", "/api/v1/health", "/api/auth/login", "/api/auth/register", "/api/auth/signup", "/api/auth/register-adult", "/api/auth/logout", "/api/v1/sync/ingest", "/api/sync/ingest", "/api/v1/diagnostic", "/api/diagnostic", "/api/diagnostic-test", "/api/v1/tts"}
-        if request.method == "GET" and path in {"/api/v1/capabilities", "/api/v1/tts"}:
+            body_bytes = b"".join(chunks)
+            request._body = body_bytes
+            async def receive():
+                return {"type": "http.request", "body": body_bytes, "more_body": False}
+            request._receive = receive
+        public = {"/health", "/api/v1/health", "/api/auth/login", "/api/auth/register", "/api/auth/signup", "/api/auth/register-adult", "/api/auth/logout", "/api/v1/sync/ingest", "/api/sync/ingest", "/api/v1/diagnostic", "/api/diagnostic", "/api/diagnostic-test", "/api/v1/tts", "/api/tts"}
+        if request.method == "GET" and path in {"/api/v1/capabilities", "/api/v1/tts", "/api/tts"}:
             public.add(path)
         protected = path.startswith(("/api/", "/pipeline")) or path == "/debug-ffmpeg"
         if path in {"/api/auth/login", "/api/auth/register", "/api/auth/register-adult"}:

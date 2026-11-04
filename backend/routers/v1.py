@@ -162,6 +162,10 @@ def _story_checkpoints(session: dict) -> list:
         "text_en": cp.get("text_en", ""),
         "text_ur": cp.get("text_ur", ""),
         "text_es": cp.get("text_es", ""),
+        "syllables": cp.get("syllables", ""),
+        "translations": cp.get("translations", {}),
+        "scene_intro": cp.get(f"intro_{lang}", cp.get("intro_en", "")),
+        "scene_outro": cp.get(f"outro_{lang}", cp.get("outro_en", "")),
         "comprehension_hint": story.get(comp_key, ""),
     } for cp in story["checkpoints"]]
 
@@ -377,7 +381,12 @@ def create_session(body: dict, request: Request = None):
                          "target_text": c["target_text"],
                          "text_en": c.get("text_en", ""),
                          "text_ur": c.get("text_ur", ""),
-                         "text_es": c.get("text_es", "")}
+                         "text_es": c.get("text_es", ""),
+                         "syllables": c.get("syllables", ""),
+                         "translations": c.get("translations", {}),
+                         "scene_intro": c.get("scene_intro", ""),
+                         "scene_outro": c.get("scene_outro", ""),
+                         "comprehension_hint": c.get("comprehension_hint", "")}
                         for c in _story_checkpoints({"story_id": story_id,
                                                      "language": language})],
     }
@@ -691,6 +700,14 @@ def get_session(session_id: str):
             "speech_evidence":speech_evidence,
             "checkpoint_id": cp["checkpoint_id"],
             "target_text": cp["target_text"],
+            "text_en": cp.get("text_en", ""),
+            "text_ur": cp.get("text_ur", ""),
+            "text_es": cp.get("text_es", ""),
+            "syllables": cp.get("syllables", ""),
+            "translations": cp.get("translations", {}),
+            "scene_intro": cp.get("scene_intro", ""),
+            "scene_outro": cp.get("scene_outro", ""),
+            "comprehension_hint": cp.get("comprehension_hint", ""),
             "status": "attempted" if r else "pending",
             "passed": bool(r["passed"]) if r else False,
             "accuracy": r["accuracy"] if r else None,
@@ -955,8 +972,7 @@ async def get_tts(text: str, language: str = "en"):
     if audio_file and audio_file.exists():
         return FileResponse(str(audio_file), media_type="audio/mpeg")
 
-    # If backend synthesis is unavailable, return JSON instruction to use browser speech synthesis
-    return {"status": "fallback", "text": text, "language": language, "use_speech_synthesis": True}
+    raise HTTPException(503, "Audio synthesis unavailable for this text")
 
 
 # ── WebSocket channel ────────────────────────────────────────────────────────

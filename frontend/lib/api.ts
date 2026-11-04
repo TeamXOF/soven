@@ -172,6 +172,10 @@ export type StoryCheckpoint = {
   text_en?: string;
   text_ur?: string;
   text_es?: string;
+  scene_intro?: string;
+  scene_outro?: string;
+  syllables?: string;
+  translations?: Record<string, any>;
 };
 
 export type StorySummary = {

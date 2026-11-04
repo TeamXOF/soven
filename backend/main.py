@@ -86,7 +86,7 @@ from routers.sync_ingest import ingest as _sync_ingest
 def api_sync_ingest(body: dict):
     return _sync_ingest(body)
 
-from routers.v1 import pre_signup_diagnostic
+from routers.v1 import pre_signup_diagnostic, get_tts as _get_tts
 from fastapi import File, Form, UploadFile, Response
 @app.post("/api/diagnostic")
 @app.post("/api/diagnostic-test")
@@ -97,6 +97,10 @@ async def api_diagnostic_test(
     mock_data: str = Form(None)
 ):
     return await pre_signup_diagnostic(audio, language, target_sentence, mock_data)
+
+@app.get("/api/tts")
+async def api_tts(text: str, language: str = "en"):
+    return await _get_tts(text, language)
 
 from routers.profiles import profile as _get_profile, update_profile as _update_profile
 from core.reader_profiles import ProfileUpdate

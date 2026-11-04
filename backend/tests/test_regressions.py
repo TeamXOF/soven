@@ -303,7 +303,10 @@ class Regressions(unittest.TestCase):
         self.assertTrue(math.isfinite(result['pitch_variance']))
 
     def test_whisper_decoder_api_is_compatible(self):
-        import av
+        try:
+            import av
+        except ImportError:
+            raise unittest.SkipTest("av is not installed on this environment")
         import io
         import wave
         buffer=io.BytesIO()

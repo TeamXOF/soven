@@ -306,11 +306,11 @@ async def execute_pipeline(request: PipelineRunRequest):
     # Waive raw speed and pause deductions for dyslexic readers so slow accurate reading is rewarded
     if persona_type == "dyslexia":
         wcpm = round(raw_wpm * accuracy_ratio, 1)
-        overall_score = accuracy_percentage
     else:
         pause_penalty = min(20.0, pause_count * 1.5)
         wcpm = max(0.0, round((raw_wpm * accuracy_ratio) - pause_penalty, 1))
-        overall_score = max(0, min(100, round((accuracy_percentage * 0.7) + (min(100, wcpm) * 0.3))))
+
+    overall_score = accuracy_percentage
 
     # Coaching and UI use exactly the same observations and current score.
     signal_data.update(

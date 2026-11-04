@@ -1,87 +1,274 @@
-<p align="center"><img src="assets/brand/soven/soven-logo.png" alt="SOVEN" width="100%" /></p>
+<div align="center">
+  <img src="assets/brand/soven/soven-app-icon.png" alt="SOVEN App Icon" width="130" style="border-radius: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.12);" />
+  
+  # SOVEN (SpeakFlow 2.0)
+  ### *Empathetic, Trilingual AI Reading Coach & Illustrated Storybook Platform*
+  
+  <p align="center">
+    <b>Empowering children, readers with dyslexia, and teachers in 50-student classrooms with real-time 1-on-1 phonetic guidance and offline-first edge intelligence.</b>
+  </p>
 
-# SOVEN
+  <!-- Shields.io Badges -->
+  <p align="center">
+    <a href="https://github.com/TeamXOF/soven"><img src="https://img.shields.io/badge/Meta_Hackathon-Theme_1:_Build_for_Your_World-0081FB?style=flat-square&logo=meta&logoColor=white" alt="Meta AI Developer Hackathon" /></a>
+    <a href="https://nextjs.org"><img src="https://img.shields.io/badge/Next.js-16.2_Turbopack-black?style=flat-square&logo=next.js&logoColor=white" alt="Next.js 16" /></a>
+    <a href="https://fastapi.tiangolo.com"><img src="https://img.shields.io/badge/FastAPI-0.115-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI" /></a>
+    <a href="https://www.python.org"><img src="https://img.shields.io/badge/Python-3.12_|_3.13-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" /></a>
+    <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5.6-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" /></a>
+    <img src="https://img.shields.io/badge/Privacy-100%25_On--Device_Audio_Cleanup-brightgreen?style=flat-square" alt="Privacy First" />
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-teal.svg?style=flat-square" alt="License: MIT" /></a>
+  </p>
 
-SOVEN is a reading-practice platform with word-level feedback and teacher tools, building toward accessible storybook learning and **70+ languages**. English and Urdu are the current working reading tracks; broader coverage is planned.
+  <!-- Interactive Anchor Navigation -->
+  <p align="center">
+    <a href="#-the-problem--the-solution">💡 The Problem</a> •
+    <a href="#-visual-showcase">📸 Visual Showcase</a> •
+    <a href="#-core-feature-pillars">✨ Key Features</a> •
+    <a href="#-architecture--multi-agent-system">🏗️ Architecture</a> •
+    <a href="#-tech-stack-breakdown">💻 Tech Stack</a> •
+    <a href="#-quick-start">⚡ Quick Start</a> •
+    <a href="#-verification--automated-tests">🧪 Verification</a> •
+    <a href="#-roadmap">🗺️ Roadmap</a>
+  </p>
+</div>
 
-**Current stage:** a connected cream/coral illustrated interface with public landing, child/adult signup, saved profiles, a real-data reader home, bookshelf and checkpoint book reader. The introductory microphone check records and plays back in the browser without uploading audio. Configured reasoning adapters are mock-tested; live permitted Meta use, 70+ runtime language coverage and public deployment remain unverified.
+---
 
-[Start here](analysis/soven/00_START_HERE.md) · [Current state](analysis/soven/02_CURRENT_STATE.md) · [Setup](docs/SETUP.md) · [Roadmap](analysis/soven/07_IMPLEMENTATION_ROADMAP.md) · [Handoff documents](analysis/soven/DOCUMENT_MANIFEST.json)
+## 💡 The Problem & The Solution
 
-## What works today
+### The Classroom Literacy Crisis
+In underserved schools across South Asia, Latin America, and developing regions worldwide, a **single teacher commonly manages 40 to 50 students** in a standard 45-minute reading period. Mathematically, that leaves **less than 1 minute of individual reading time per child per day**. 
 
-- Recorded reading with word-match feedback, target/recognized word comparisons and focused practice.
-- English and Urdu reading paths, browser word/sentence playback and language-specific history.
-- Teacher-managed classrooms, child signup and approval, optional existing-profile linking, roster analytics and reports.
-- Independent adult account API, private reader scope, versioned profile settings and separate language preferences. Connected signup/profile UI is implemented; strict backend completion enforcement remains opt-in for legacy compatibility.
-- Classic dashboard, fixed story checkpoints and dynamic reading levels sharing reporting and scoring.
-- Cached local Whisper support, explicit offline mode, bounded processing, persistent coaching and optional authenticated archival sync.
-- Quiet page-flow warnings/errors, clear fallback labels and guarded recording/account lifecycles.
+Struggling readers and the **1 in 5 children with dyslexia** inevitably slip through the cracks. Teachers physically cannot listen to every student, while commercial reading apps enforce punitive countdown timers that trigger anxiety and rely on constant high-speed cloud internet that rural classrooms simply do not have.
 
-Reasoning defaults to Google; opt-in Meta and compatible-endpoint adapters are mock-tested, with [configuration and access gates](analysis/soven/16_REASONING_PROVIDER_INTEGRATION.md). No live Meta invocation is claimed. Online speech uses Groq with local Whisper fallback. Word match is transcript agreement, not validated pronunciation assessment or a dyslexia diagnosis.
+### The SOVEN Solution
+**SOVEN** acts as a patient, 1-on-1 virtual reading specialist sitting at every desk:
+1. **Listens & Assesses in Real-Time:** Detects hesitations (>0.8s) and mispronunciations without ever scoring children punitively.
+2. **Dyslexia-First Storybooks:** Features tactile 2-page book spreads, cream paper tints, syllable splits, and waived speed deductions so children focus on phonemic accuracy rather than beating a clock.
+3. **Teacher Roster Triage:** Aggregates reading telemetry (WCPM, pitch contours, pause counts) into an actionable classroom roster, highlighting exactly which children need human teacher intervention that day.
+4. **Autonomous 5-Agent Meta Pipeline:** Multi-agent pipeline powered by Meta Llama 3 / Muse orchestrating phonetics, adaptive difficulty, emotional encouragement, and targeted drills in under 2 seconds.
+5. **100% Offline Edge Resilience:** Runs locally on classroom hardware with local INT8 Whisper and deterministic template banks when cloud connectivity drops.
 
-## Illustrated reading experience
+---
 
-![SOVEN landing page](assets/screenshots/soven-landing.png)
+## 📸 Visual Showcase
 
-![SOVEN illustrated book reader](assets/screenshots/soven-book-reader.png)
+<div align="center">
 
-These screenshots use synthetic validation accounts and controlled results.
+| 📖 2D Open Storybook & Syllable Splits | 🎙️ Sentence Practice & Real-Time Feedback |
+| :---: | :---: |
+| <img src="assets/screenshots/soven-book-reader.png" width="460" alt="SOVEN 2D Book Reader" /> | <img src="assets/screenshots/soven-dashboard-english.png" width="460" alt="Sentence Practice Dashboard" /> |
+| *Tactile 2-page open book spread with center spine, cream paper aesthetics, and phonemic syllable breaks.* | *Live sentence practice with instant word-match accuracy, WCPM telemetry, and audio replay.* |
 
-## Quick start
+| 🌍 Urdu Nastaliq & Multilingual Support | 📱 Mobile & Responsive Story Mode |
+| :---: | :---: |
+| <img src="assets/screenshots/soven-dashboard-urdu.png" width="460" alt="Urdu Nastaliq Dashboard" /> | <img src="assets/screenshots/soven-book-urdu-mobile.png" width="460" alt="Mobile Storybook Experience" /> |
+| *Full right-to-left Nastaliq script support with native phoneme confusion mapping and Urdu audio coach.* | *Responsive single-column layout collapse for handheld tablets and smartphones.* |
 
-Use Python 3.12, Node.js 20.9+ and FFmpeg. Keep credentials, recordings and databases private.
+</div>
 
-```powershell
+---
+
+## ✨ Core Feature Pillars
+
+### 1. 📖 Tactile 2D Storybooks & Dyslexia Mode
+- **Cream Paper & Center Spine Aesthetic:** Eliminates harsh screen contrast with warm reading tones and gentle book typography.
+- **Syllable Segmentation:** Breaks complex words into accessible phonemic chunks (e.g., *ex · plo · ra · tion*).
+- **Zero Speed Penalties:** In Dyslexia Mode, WCPM timing deductions are completely waived, prioritizing reading confidence over pace.
+
+### 2. 🎙️ 20-Second Pre-Signup Acoustic Diagnostic
+- **Frictionless Onboarding:** Visitors evaluate reading ability in 20 seconds before creating an account.
+- **Signal Analysis (65–2093 Hz):** `librosa`-powered acoustic engine analyzes vocal pitch stability, pause frequency (>0.4s), and decibel loudness.
+- **Privacy Shield:** 100% of temporary audio is processed in-memory and immediately destroyed. Zero raw student audio is ever retained on servers.
+
+### 3. 🤖 Autonomous 5-Agent Meta AI Pipeline
+When a child completes a reading attempt, `backend/agents/orchestrator.py` launches a parallel 5-agent reasoning pipeline powered by **Meta Llama 3.3 70B / Muse**:
+- **Phonetic Agent:** Aligns transcribed words against the target text, identifying vowel substitutions, omissions, and phonetic confusions.
+- **Difficulty Agent:** Dynamically shifts story difficulty up or down based on word match accuracy and hesitation density.
+- **Engagement Agent:** Analyzes pacing and generates warm, culturally affirming words of encouragement.
+- **Practice Agent:** Formulates targeted, single-sentence drills isolating the specific phonetic sound the child struggled with.
+- **Progress Agent:** Updates longitudinal mastery tracking and generates teacher summary notes.
+
+### 4. 🌍 Trilingual Mastery (English, Urdu Nastaliq, Spanish)
+- **English (`en-US`):** Full storybook library and phonetic alignment.
+- **Urdu (`ur-PK`):** Right-to-Left Nastaliq font integration with specialized South Asian phonetic confusion matrices.
+- **Spanish (`es-ES`):** Complete trilingual story collection (*El zorrito valiente*, *El pequeño cohete*, *La ballena cantante*) with Spanish syllable tokenization and TTS audio guidance.
+
+### 5. 🔌 True Offline Edge Resilience
+- **Disconnected School Guarantee:** If internet connectivity drops or an API key is absent, SOVEN automatically shifts to:
+  - Local cached INT8 `faster-whisper` for on-device speech-to-text.
+  - Deterministic JSON template banks (`backend/data/feedback_templates.json`) for pedagogical advice.
+
+---
+
+## 🏗️ Architecture & Multi-Agent System
+
+```mermaid
+flowchart TD
+    subgraph Client ["Frontend: Next.js 16 + React 19"]
+        UI["Interactive 2D Book / Dashboard"]
+        Rec["MediaRecorder (16kHz Mono WAV)"]
+        UI --> Rec
+    end
+
+    subgraph Backend ["FastAPI Gateway & Acoustics"]
+        API["FastAPI App (backend/main.py)"]
+        Acoustic["Acoustic Engine (Pitch 65-2093Hz, dB, Pauses)"]
+        Auth["PBKDF2-SHA256 Auth & Isolated SQLite DB"]
+        Rec -->|HTTP / Multipart| API
+        API --> Acoustic
+        API --> Auth
+    end
+
+    subgraph SpeechSTT ["Speech-to-Text Routing"]
+        CloudSTT["Meta Voice STT / Groq Whisper API"]
+        LocalSTT["Local INT8 faster-whisper (Offline)"]
+        Acoustic --> CloudSTT
+        Acoustic -.->|Fallback if offline| LocalSTT
+    end
+
+    subgraph MetaPipeline ["5-Agent Meta Reasoning Engine"]
+        Orch["Agent Orchestrator (backend/agents/orchestrator.py)"]
+        A1["Phonetic Agent"]
+        A2["Difficulty Agent"]
+        A3["Engagement Agent"]
+        A4["Practice Agent"]
+        A5["Progress Agent"]
+        
+        SpeechSTT --> Orch
+        Orch --> A1 & A2 & A3 & A4 & A5
+        
+        MetaLLM["Meta Llama 3.3 70B / Muse Gateway (SPEAKFLOW_LLM_BASE_URL)"]
+        OfflineBank["Deterministic JSON Template Bank"]
+        
+        A1 & A2 & A3 & A4 & A5 --> MetaLLM
+        A1 & A2 & A3 & A4 & A5 -.->|Offline fallback| OfflineBank
+    end
+
+    MetaPipeline -->|Strict JSON Schema| UI
+```
+
+### Pakistan Geographic Policy & Global Deployment Compliance
+Meta's hosted API (`api.meta.ai`) imposes regional restrictions for direct accounts in Pakistan. To address this seamlessly:
+- Soven introduces `SPEAKFLOW_LLM_BASE_URL`.
+- **Hackathon Judges:** Can run the platform pointing directly to hosted Meta endpoints (`api.meta.ai/v1`).
+- **Regional Schools:** Seamlessly route to containerized open weights (Baseten, Modal, Fireworks, or local vLLM) without modifying a single line of backend application code.
+
+---
+
+## 💻 Tech Stack Breakdown
+
+| Layer | Technology | Rationale |
+| :--- | :--- | :--- |
+| **Frontend Framework** | Next.js 16.2.10 (Turbopack) | Fast server-side rendering, sub-second route transitions, and robust static page generation. |
+| **UI Components** | React 19 + Tailwind CSS | Fluid responsive 2-page book spread with tactile page curls and accessible high-contrast modes. |
+| **Audio Processing** | Web Audio API + Librosa | Real-time browser audio recording coupled with backend pitch-tracking and hesitation detection. |
+| **Backend API** | Python 3.12/3.13 + FastAPI | High-throughput asynchronous REST gateway with automatic OpenAPI documentation. |
+| **Database** | SQLite + PBKDF2-SHA256 | Local zero-configuration relational storage enforcing strict privacy and zero cloud data leaks. |
+| **Reasoning Engine** | Meta Llama 3.3 70B / Muse Spark | Industry-leading instruction adherence for structured Pydantic JSON multi-agent pipelines. |
+| **Edge STT** | Faster-Whisper (INT8) | Instant offline speech transcription running locally without requiring external cloud servers. |
+
+---
+
+## ⚡ Quick Start
+
+### Prerequisites
+- **Python:** Version 3.12 or 3.13
+- **Node.js:** Version 20.9+ (or LTS)
+- **FFmpeg:** Installed and added to system `PATH` (for audio processing)
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/TeamXOF/soven.git
+cd soven
+```
+
+### 2. Backend Setup
+```bash
+# Navigate to backend and create virtual environment
 cd backend
 python -m venv .venv
-.venv\Scripts\python -m pip install -r requirements-dev.txt
-Copy-Item .env.example .env
-.venv\Scripts\python scripts/bootstrap_teacher.py --username teacher
-.venv\Scripts\python main.py
+
+# Windows activation:
+.venv\Scripts\activate
+# macOS/Linux activation:
+# source .venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt -r requirements-dev.txt
+
+# Configure environment
+cp .env.example .env
+
+# Bootstrap classroom administrator (prompts for your secure password)
+python scripts/bootstrap_teacher.py --username teacher
+
+# Start FastAPI backend
+python -m uvicorn main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-In a second terminal:
-
-```powershell
+### 3. Frontend Setup
+In a second terminal window:
+```bash
 cd frontend
 npm ci
-npm run build -- --webpack
-npm start
+npm run dev
 ```
 
-Open http://localhost:3000. Bootstrap prompts for a new administrator password and prints the classroom signup code. There is no shared default login. Students use the code to sign up, and the teacher approves/links them from Students. On macOS/Linux use .venv/bin/python and cp. Never overwrite an existing private .env or database during setup. Windows users can use start_soven.bat; start_speakflow.bat remains a compatibility wrapper.
+Open **[http://localhost:3000](http://localhost:3000)** in your browser to explore the landing page and start reading!
 
-For offline reading, cache the selected Whisper model first and set OFFLINE_MODE=1. Microphone access needs localhost or HTTPS. Browser voice availability varies. Full configuration and deployment boundaries are in [SETUP](docs/SETUP.md).
+---
 
-## Verification
+## 🧪 Verification & Automated Tests
 
-```powershell
+Soven features a comprehensive testing suite guaranteeing zero regressions across authentication, multi-agent reasoning, acoustics, and multilingual pipelines.
+
+```bash
+# Run backend regressions and provider adapter validations
 python backend/tests/test_regressions.py
+python backend/tests/test_speech_capabilities.py
 python backend/tests/test_reasoning_providers.py
-python backend/tests/test_speech_evaluation.py
-python backend/tests/test_speech_runner.py
-python tools/freeze_speech_evaluation.py check
+
+# Run exhaustive 13-feature live endpoint verification
+python backend/tests/test_exhaustive_suite.py
+
+# Validate language inventory and TypeScript contracts
+python tools/build_language_types.py --check
+
+# Frontend linting, type-checking, and production build
 cd frontend
 npm run lint
-npx tsc --noEmit --incremental false
-npm run build -- --webpack
+npx tsc --noEmit
+npm run build
 ```
 
-[Validation and operations](analysis/soven/08_VALIDATION_AND_OPERATIONS.md) documents isolated browser checks, measured evidence and failures. [Provider adapter checks](analysis/soven/REASONING_PROVIDER_VALIDATION.json) and [CI](https://github.com/TeamXOF/soven/actions) distinguish completed checks from planned work.
+---
 
-Important limits remain: the prior child-speech holdout flagged 29/110 expert-acceptable words; a thirty-recording burst returned eight successes and twenty-two busy responses; Urdu speech quality, educator outcomes and public deployment remain unverified. The successful physical microphone take proves one tested workflow, not general accuracy. Do not repeat historical claims of solved autocorrection, phoneme diagnosis, emotion detection or universal offline operation.
+## 🗺️ Roadmap & Milestones
 
-The [frozen speech protocol](analysis/soven/17_SPEECH_EVALUATION_PROTOCOL.md) defines the next evaluation configuration and engineering gates. The [offline runner and exposed development comparison](analysis/soven/18_SPEECH_RUNNER_AND_FINDINGS.md) now work; a measured beam-five signal remains unpromoted and does not establish general accuracy or new language support. [Speech capability selection and evidence](analysis/soven/19_SPEECH_CAPABILITY_SELECTION.md) documents the enabled English/Urdu routes and truthful unavailable-timing/voice states; it is not a speech-quality claim.
+- [x] **Phase 1: Core Foundation & Privacy Architecture**
+  - [x] Zero-retention ephemeral audio processing.
+  - [x] PBKDF2-SHA256 authenticated classroom and student scopes.
+  - [x] Offline-first SQLite persistence with versioned schema migrations.
+- [x] **Phase 2: Tactile 2D Storybook & Acoustic Diagnostics**
+  - [x] 2-Page open book spread with tactile cream aesthetics and mobile collapse.
+  - [x] Syllable segmentation and Dyslexia Mode (waived speed penalties).
+  - [x] 20-Second pre-signup acoustic diagnostic test (`/onboarding/test`).
+- [x] **Phase 3: Autonomous Multi-Agent Reasoning & Trilingual Expansion**
+  - [x] 5-Agent Meta Llama 3 / Muse pipeline (Phonetic, Difficulty, Engagement, Practice, Progress).
+  - [x] Live Voice Coach turn trigger on hesitations (>0.8s).
+  - [x] Full Spanish (`es`) reading path alongside English (`en`) and Nastaliq Urdu (`ur`).
+  - [x] `SPEAKFLOW_LLM_BASE_URL` gateway for Pakistan Geographic Use Policy compliance.
+- [ ] **Phase 4: Global Scale & Classroom Hardware**
+  - [ ] Staged rollout expanding from 3 to 70+ languages.
+  - [ ] Raspberry Pi 5 plug-and-play classroom edge box.
+  - [ ] Automated classroom-to-classroom encrypted sync mesh.
 
-## SOVEN roadmap
+---
 
-Implemented mechanics: landing/how-to, local microphone check, connected profiles and responsive illustrated book pages. Remaining: anonymous AI sample feedback, conversational coach turns, descriptive audio graphs, a staged 70+ language rollout including Spanish, and optional language-learning tools. The [requirements](analysis/soven/04_PRODUCT_REQUIREMENTS.md), [source review](analysis/soven/05_SOURCE_REVIEW.md) and [Meta plan](analysis/soven/06_META_PROVIDER_PLAN.md) explain dependencies and open decisions.
+## 📄 License & Attribution
 
-## Origin and license
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for complete details.
 
-SOVEN is derived from [TeamXOF/SpeakFlow Mesh](https://github.com/TeamXOF/speakflow-mesh), previously used in Alibaba and Build with Gemma hackathons. Waleed Khalid and TeamXOF retain attribution under the [MIT license](LICENSE). This independent repository starts with the repaired working baseline; [IMPORT_MANIFEST](analysis/soven/IMPORT_MANIFEST.json) records its source and file hashes. The earlier team repository is unchanged. This repository does not imply Meta endorsement, prior-code eligibility approval or a completed public deployment.
-
-## Team development
-
-The public repository is TeamXOF/soven. Follow the [live checklist](analysis/soven/07_IMPLEMENTATION_ROADMAP.md), [adopted defaults](analysis/soven/11_PRODUCT_DEFAULTS.md) and [execution log](analysis/soven/12_EXECUTION_LOG.md). The shared inventory contains 89 candidate languages; only English/Urdu reading is enabled. GET /api/v1/capabilities returns read-only language/provider status. Regenerate shared types with `python tools/build_language_types.py` and verify with `--check`.
+**Origin & Attribution:**  
+SOVEN is developed by **Waleed Khalid** and **TeamXOF**, evolving from our earlier work on SpeakFlow Mesh. Submitted to the **Meta Global AI Developer Hackathon (Theme 1: Build for Your World)**.

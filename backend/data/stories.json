@@ -13,10 +13,10 @@
       "checkpoints": [
         {
           "id": "cp_1",
-          "text_en": "The little fox woke up early in the morning.",
-          "text_ur": "چھوٹا لومڑ صبح جلدی اٹھا۔",
-          "text_es": "El pequeño zorro se despertó temprano en la mañana.",
-          "syllables": "The lit-tle fox woke up ear-ly in the morn-ing.",
+          "text_en": "The morning mist floated softly over the tall green pine trees. The little fox woke up early in the morning. He stretched his fluffy paws and looked out across the sunny clearing.",
+          "text_ur": "صبح کی ٹھنڈی دھند گھنے سبز درختوں پر چھائی ہوئی تھی۔ چھوٹا لومڑ صبح جلدی اٹھا۔ اس نے اپنے نرم پنجے پھیلائے اور روشن وادی میں مسکرا کر دیکھا۔",
+          "text_es": "La niebla matutina flotaba suavemente sobre los altos pinos verdes. El pequeño zorro se despertó temprano en la mañana. Estiró sus patitas esponjosas y miró a través del claro soleado.",
+          "syllables": "The mor-ning mist floa-ted soft-ly o-ver the tall green pi-ne trees. The litt-le fox wo-ke up ear-ly in the mor-ning. He stretc-hed his fluf-fy paws and loo-ked out ac-ross the sun-ny clea-ring.",
           "translations": {
             "little": {
               "ur": "چھوٹا",
@@ -44,10 +44,10 @@
         },
         {
           "id": "cp_2",
-          "text_en": "He wanted to find the biggest apple tree.",
-          "text_ur": "وہ سب سے بڑا سیب کا درخت تلاش کرنا چاہتا تھا۔",
-          "text_es": "Quería encontrar el manzano más grande.",
-          "syllables": "He want-ed to find the big-gest ap-ple tree.",
+          "text_en": "His tummy rumbled with hunger as he stepped onto the mossy path. He wanted to find the biggest apple tree. Sweet red apples were his favorite treat in the entire forest.",
+          "text_ur": "کائی دار پگڈنڈی پر قدم رکھتے ہی اسے بھوک کا احساس ہوا۔ وہ سب سے بڑا سیب کا درخت تلاش کرنا چاہتا تھا۔ رس بھرے سرخ سیب پورے جنگل میں اس کا سب سے پسندیدہ کھانا تھے۔",
+          "text_es": "Su barriguita rugió de hambre mientras pisaba el sendero de musgo. Quería encontrar el manzano más grande. Las dulces manzanas rojas eran su delicia favorita en todo el bosque.",
+          "syllables": "His tum-my rumb-led with hun-ger as he step-ped on-to the mos-sy path. He wan-ted to find the big-gest app-le tree. Sweet red app-les we-re his fa-vo-ri-te treat in the en-ti-re fo-rest.",
           "translations": {
             "wanted": {
               "ur": "چاہا",
@@ -79,10 +79,10 @@
         },
         {
           "id": "cp_3",
-          "text_en": "The brave fox crossed the cold mountain stream.",
-          "text_ur": "بہادر لومڑ نے ٹھنڈا پہاڑی چشمہ پار کیا۔",
-          "text_es": "El valiente zorro cruzó el frío arroyo de la montaña.",
-          "syllables": "The brave fox crossed the cold moun-tain stream.",
+          "text_en": "Ahead lay a rushing water channel flowing from the snowy peaks. The brave fox crossed the cold mountain stream. He leaped carefully from one smooth grey stone to the next.",
+          "text_ur": "سامنے برفانی چوٹیوں سے بہتا ہوا ایک ٹھنڈا پہاڑی چشمہ تھا۔ بہادر لومڑ نے ٹھنڈا پہاڑی چشمہ پار کیا۔ وہ احتیاط سے ایک ہموار پتھر سے دوسرے پتھر پر چھلانگ لگا گیا۔",
+          "text_es": "Más adelante corría un canal de agua fresca que bajaba de las cumbres. El valiente zorro cruzó el frío arroyo de la montaña. Saltó con cuidado de una roca lisa a la siguiente.",
+          "syllables": "A-head lay a rus-hing wa-ter chan-nel flo-wing from the sno-wy peaks. The bra-ve fox cros-sed the cold moun-tain stream. He lea-ped ca-re-ful-ly from one smooth grey sto-ne to the next.",
           "translations": {
             "brave": {
               "ur": "بہادر",
@@ -114,10 +114,10 @@
         },
         {
           "id": "cp_4",
-          "text_en": "A friendly squirrel showed him the way home.",
-          "text_ur": "ایک دوست گلہری نے اسے گھر کا راستہ دکھایا۔",
-          "text_es": "Una ardilla amistosa le mostró el camino a casa.",
-          "syllables": "A friend-ly squir-rel showed him the way home.",
+          "text_en": "High up in the oak branches, a bushy tail rustled in the breeze. A friendly squirrel showed him the way home. She chattered happily and pointed toward the orchard hill.",
+          "text_ur": "شاہ بلوط کے اونچے درخت کی شاخوں میں ایک گھنی دم نظر آئی۔ ایک دوست گلہری نے اسے گھر کا راستہ دکھایا۔ اس نے خوشی سے چہچہاتے ہوئے سیب کے باغ کی طرف اشارہ کیا۔",
+          "text_es": "En lo alto de las ramas de roble, una colita esponjosa se movió con la brisa. Una ardilla amistosa le mostró el camino a casa. Chirrió con entusiasmo y señaló hacia la colina del huerto.",
+          "syllables": "High up in the oak branc-hes, a bus-hy tail rust-led in the bree-ze. A friend-ly squir-rel sho-wed him the way ho-me. She chat-te-red hap-pi-ly and poin-ted to-ward the orc-hard hill.",
           "translations": {
             "friendly": {
               "ur": "دوستانہ",
@@ -145,10 +145,10 @@
         },
         {
           "id": "cp_5",
-          "text_en": "The little fox slept happily under the stars.",
-          "text_ur": "چھوٹے لومڑ نے ستاروں کے نیچے خوشی سے آنکھیں بند کیں۔",
-          "text_es": "El pequeño zorro durmió feliz bajo las estrellas.",
-          "syllables": "The lit-tle fox slept hap-pi-ly un-der the stars.",
+          "text_en": "The evening air was peaceful and the night sky sparkled with light. The little fox slept happily under the stars. He curled up safely and dreamed of tomorrow's new journeys.",
+          "text_ur": "شام کی ہوا پرسکون ہو گئی اور رات کا آسمان چمک اٹھا۔ چھوٹے لومڑ نے ستاروں کے نیچے خوشی سے آنکھیں بند کیں۔ اس نے اپنے بل میں سکون پایا اور کل کے نئے سفر کے خواب دیکھے۔",
+          "text_es": "El aire de la tarde era sereno y el cielo nocturno brillaba de luz. El pequeño zorro durmió feliz bajo las estrellas. Se acurrucó felizmente y soñó con las aventuras de mañana.",
+          "syllables": "The e-ve-ning air was pea-ce-ful and the night sky spark-led with light. The litt-le fox slept hap-pi-ly un-der the stars. He cur-led up sa-fe-ly and drea-med of to-mor-rows new jour-neys.",
           "translations": {
             "slept": {
               "ur": "سو گیا",
@@ -189,10 +189,10 @@
       "checkpoints": [
         {
           "id": "cp_1",
-          "text_en": "The little rocket counted down from ten.",
-          "text_ur": "چھوٹے راکٹ نے دس سے گنتی شروع کی۔",
-          "text_es": "El pequeño cohete contó hacia atrás desde diez.",
-          "syllables": "The lit-tle rock-et count-ed down from ten.",
+          "text_en": "Bright warning lights flickered on the shiny metal launchpad. The little rocket counted down from ten. Engines hummed with mighty energy as the adventure began.",
+          "text_ur": "چمچماتے ہوئے لانچ پیڈ پر روشنیاں جھلملانے لگیں۔ چھوٹے راکٹ نے دس سے گنتی شروع کی۔ انجن پوری طاقت سے گونجے اور حیرت انگیز سفر شروع ہو گیا۔",
+          "text_es": "Las luces brillantes parpadeaban en la plataforma de lanzamiento. El pequeño cohete contó hacia atrás desde diez. Los motores rugieron con gran potencia mientras comenzaba la aventura.",
+          "syllables": "Bright war-ning lights flic-ke-red on the shi-ny me-tal launch-pad. The litt-le roc-ket coun-ted down from ten. En-gi-nes hum-med with migh-ty e-ner-gy as the ad-ven-tu-re be-gan.",
           "translations": {
             "rocket": {
               "ur": "راکٹ",
@@ -216,10 +216,10 @@
         },
         {
           "id": "cp_2",
-          "text_en": "Silver clouds rushed past the small window.",
-          "text_ur": "چاندی کے بادل چھوٹی کھڑکی کے پاس سے گزرے۔",
-          "text_es": "Nubes plateadas pasaron veloces por la pequeña ventana.",
-          "syllables": "Sil-ver clouds rushed past the small win-dow.",
+          "text_en": "The ground disappeared beneath a blanket of pure white fog. Silver clouds rushed past the small window. The blue sky quickly turned into deep midnight velvet.",
+          "text_ur": "زمین سفید بادلوں کی چادر کے نیچے اوجھل ہو گئی۔ چاندی کے بادل چھوٹی کھڑکی کے پاس سے گزرے۔ نیلا آسمان پلک جھپکتے ہی گہرے سیاہ مخمل میں بدل گیا۔",
+          "text_es": "El suelo desapareció bajo un manto de niebla pura y blanca. Nubes plateadas pasaron veloces por la pequeña ventana. El cielo azul pronto se transformó en un manto de terciopelo oscuro.",
+          "syllables": "The ground di-sap-pea-red be-neath a blan-ket of pu-re whi-te fog. Sil-ver clouds rus-hed past the small win-dow. The blue sky quick-ly tur-ned in-to deep mid-night vel-vet.",
           "translations": {
             "silver": {
               "ur": "چاندی",
@@ -243,10 +243,10 @@
         },
         {
           "id": "cp_3",
-          "text_en": "The moon waved hello from far away.",
-          "text_ur": "چاند نے دور سے ہاتھ ہلا کر سلام کیا۔",
-          "text_es": "La luna saludó desde muy lejos.",
-          "syllables": "The moon waved hel-lo from far a-way.",
+          "text_en": "Weightlessness lifted everything gently inside the cozy cabin. The moon waved hello from far away. Golden rings of dust circled in a dazzling cosmic dance.",
+          "text_ur": "بے وزنی کی حالت میں کیبن کی ہر چیز ہوا میں تیرنے لگی۔ چاند نے دور سے ہاتھ ہلا کر سلام کیا۔ سنہری غبار کے دائرے کہکشاں میں دلفریب رقص کر رہے تھے۔",
+          "text_es": "La ingravidez elevó suavemente todo dentro de la cabina. La luna saludó desde muy lejos. Anillos dorados de polvo giraban en una deslumbrante danza cósmica.",
+          "syllables": "Weight-less-ness lif-ted e-ve-ryt-hing gent-ly in-si-de the co-zy ca-bin. The moon wa-ved hel-lo from far a-way. Gol-den rings of dust circ-led in a dazz-ling cos-mic dan-ce.",
           "translations": {
             "moon": {
               "ur": "چاند",
@@ -270,10 +270,10 @@
         },
         {
           "id": "cp_4",
-          "text_en": "Stars danced around the brave little ship.",
-          "text_ur": "ستارے بہادر چھوٹے جہاز کے گرد ناچے۔",
-          "text_es": "Las estrellas bailaron alrededor de la valiente nave.",
-          "syllables": "Stars danced a-round the brave lit-tle ship.",
+          "text_en": "A friendly radio voice crackled across the speaker from Earth. Stars danced around the brave little ship. Instruments confirmed the flight trajectory was completely safe.",
+          "text_ur": "زمین سے کنٹرول روم کی پرجوش آواز اسپیکر پر سنائی دی۔ ستارے بہادر چھوٹے جہاز کے گرد ناچے۔ آلات نے تصدیق کی کہ پرواز کا راستہ بالکل محفوظ ہے۔",
+          "text_es": "Una voz amigable de radio sonó a través del altavoz desde la Tierra. Las estrellas bailaron alrededor de la valiente nave. Los instrumentos confirmaron que la trayectoria de vuelo era totalmente segura.",
+          "syllables": "A friend-ly ra-dio voi-ce crack-led ac-ross the spea-ker from Earth. Stars dan-ced a-round the bra-ve litt-le ship. Inst-ru-ments con-fir-med the flight tra-jec-to-ry was comp-le-te-ly sa-fe.",
           "translations": {
             "danced": {
               "ur": "ناچے",
@@ -297,10 +297,10 @@
         },
         {
           "id": "cp_5",
-          "text_en": "The rocket came home before breakfast time.",
-          "text_ur": "راکٹ ناشتے سے پہلے گھر واپس آیا۔",
-          "text_es": "El cohete regresó a casa antes de la hora del desayuno.",
-          "syllables": "The rock-et came home be-fore break-fast time.",
+          "text_en": "The smooth landing gear touched down on the crater rim. The rocket came home before breakfast time. The little rocket planted a bright flag for all dreamers.",
+          "text_ur": "لینڈنگ گیئر نے چاند کے گڑھے کے کنارے کو نرمی سے چھوا۔ راکٹ ناشتے سے پہلے گھر واپس آیا۔ چھوٹے راکٹ نے تمام خواب دیکھنے والوں کے نام کا پرچم لہرا دیا۔",
+          "text_es": "El tren de aterrizaje tocó suavemente el borde del cráter. El cohete regresó a casa antes de la hora del desayuno. El pequeño cohete plantó una brillante bandera para todos los soñadores.",
+          "syllables": "The smooth lan-ding gear touc-hed down on the cra-ter rim. The roc-ket ca-me ho-me be-fo-re break-fast ti-me. The litt-le roc-ket plan-ted a bright flag for all drea-mers.",
           "translations": {
             "came": {
               "ur": "آیا",
@@ -337,10 +337,10 @@
       "checkpoints": [
         {
           "id": "cp_1",
-          "text_en": "The blue whale loved to sing all day.",
-          "text_ur": "نیلی وہیل کو سارا دن گانا گانا پسند تھا۔",
-          "text_es": "A la ballena azul le encantaba cantar todo el día.",
-          "syllables": "The blue whale loved to sing all day.",
+          "text_en": "Sunbeams danced through the clear turquoise waters of the coral reef. The blue whale loved to sing all day. The peaceful melody traveled miles through the deep ocean.",
+          "text_ur": "مرجانی چٹانوں کے فیروزی پانی پر سورج کی سنہری کرنیں رقص کر رہی تھیں۔ نیلی وہیل کو سارا دن گانا گانا پسند تھا۔ پرامن راگ گہرے سمندر میں میلوں دور تک پھیلتا چلا گیا۔",
+          "text_es": "Los rayos del sol bailaban a través de las aguas turquesas del arrecife. A la ballena azul le encantaba cantar todo el día. La melodía pacífica viajó kilómetros a través del océano profundo.",
+          "syllables": "Sun-beams dan-ced through the clear tur-quoi-se wa-ters of the co-ral reef. The blue wha-le lo-ved to sing all day. The pea-ce-ful me-lo-dy tra-ve-led mi-les through the deep o-cean.",
           "translations": {
             "whale": {
               "ur": "وہیل",
@@ -364,10 +364,10 @@
         },
         {
           "id": "cp_2",
-          "text_en": "Tiny fish gathered to hear the big song.",
-          "text_ur": "ننھی مچھلیاں بڑا گانا سننے کو جمع ہوئیں۔",
-          "text_es": "Pequeños peces se reunieron para escuchar la gran canción.",
-          "syllables": "Ti-ny fish gath-ered to hear the big song.",
+          "text_en": "Tiny colorful fish gathered around in cheerful schools. Tiny fish gathered to hear the big song. They swayed in rhythm with the gentle ocean currents.",
+          "text_ur": "رنگ برنگی چھوٹی مچھلیاں خوشی سے آس پاس جمع ہو گئیں۔ ننھی مچھلیاں بڑا گانا سننے کو جمع ہوئیں۔ وہ سمندر کی پرسکون لہروں کی تال پر جھومنے لگیں۔",
+          "text_es": "Pequeños peces de colores se reunieron en alegres bancos. Pequeños peces se reunieron para escuchar la gran canción. Se mecieron al ritmo de las suaves corrientes oceánicas.",
+          "syllables": "Ti-ny co-lor-ful fish gat-he-red a-round in cheer-ful schools. Ti-ny fish gat-he-red to hear the big song. They swayed in rhythm with the gent-le o-cean cur-rents.",
           "translations": {
             "tiny": {
               "ur": "ننھا",
@@ -391,10 +391,10 @@
         },
         {
           "id": "cp_3",
-          "text_en": "The whale sang louder than the storm.",
-          "text_ur": "وہیل طوفان سے بھی زور سے گاتی تھی۔",
-          "text_es": "La ballena cantó más fuerte que la tormenta.",
-          "syllables": "The whale sang loud-er than the storm.",
+          "text_en": "Deep in the kelp forest, a lost sea turtle looked for guidance. The whale sang louder than the storm. The whale guided him safely toward the open sea.",
+          "text_ur": "سمندری گھاس کے گھنے جنگل میں ایک بھٹکا ہوا کچھوا راستہ تلاش کر رہا تھا۔ وہیل طوفان سے بھی زور سے گاتی تھی۔ وہیل نے اسے کھلے سمندر کا محفوظ راستہ دکھایا۔",
+          "text_es": "En lo profundo del bosque de algas, una tortuga marina perdida buscaba guía. La ballena cantó más fuerte que la tormenta. La ballena la guió con seguridad hacia el mar abierto.",
+          "syllables": "Deep in the kelp fo-rest, a lost sea turt-le loo-ked for gui-dan-ce. The wha-le sang lou-der than the storm. The wha-le gui-ded him sa-fe-ly to-ward the o-pen sea.",
           "translations": {
             "sang": {
               "ur": "گایا",
@@ -418,10 +418,10 @@
         },
         {
           "id": "cp_4",
-          "text_en": "Coral castles glowed under the deep water.",
-          "text_ur": "گہرے پانی کے نیچے مرجانی محل چمکے۔",
-          "text_es": "Castillos de coral brillaban bajo el agua profunda.",
-          "syllables": "Cor-al cas-tles glowed un-der the deep wa-ter.",
+          "text_en": "Dolphins leaped through the waves in playful arcs above. Coral castles glowed under the deep water. Splashes of sea foam sparkled like pearls in the sunlight.",
+          "text_ur": "اوپر لہروں کے درمیان ڈولفن مچھلیاں خوشی سے چھلانگیں لگا رہی تھیں۔ گہرے پانی کے نیچے مرجانی محل چمکے۔ سمندری جھاگ کے قطرے موتیوں کی طرح چمک رہے تھے۔",
+          "text_es": "Los delfines saltaban a través de las olas en arcos juguetones. Castillos de coral brillaban bajo el agua profunda. Las salpicaduras de espuma brillaban como perlas bajo la luz del sol.",
+          "syllables": "Dolp-hins lea-ped through the wa-ves in play-ful arcs a-bo-ve. Co-ral cast-les glo-wed un-der the deep wa-ter. Splas-hes of sea foam spark-led li-ke pearls in the sun-light.",
           "translations": {
             "coral": {
               "ur": "مرجان",
@@ -445,10 +445,10 @@
         },
         {
           "id": "cp_5",
-          "text_en": "Every night the ocean hummed along with her.",
-          "text_ur": "ہر رات سمندر اس کے ساتھ گنگناتا رہا۔",
-          "text_es": "Cada noche el océano tarareaba junto con ella.",
-          "syllables": "Ev-ery night the o-cean hummed a-long with her.",
+          "text_en": "As twilight fell, the vast ocean calmed under the silver moon. Every night the ocean hummed along with her. The gentle giant drifted into sweet aquatic dreams.",
+          "text_ur": "شام ڈھلتے ہی چاندنی رات میں وسیع سمندر پرسکون ہو گیا۔ ہر رات سمندر اس کے ساتھ گنگناتا رہا۔ عظیم دوست وہیل میٹھے خوابوں میں کھو گئی۔",
+          "text_es": "Al caer el crepúsculo, el vasto océano se calmó bajo la luna plateada. Cada noche el océano tarareaba junto con ella. El amable gigante se sumergió en dulces sueños acuáticos.",
+          "syllables": "As twi-light fell, the vast o-cean cal-med un-der the sil-ver moon. E-ve-ry night the o-cean hum-med a-long with her. The gent-le giant drif-ted in-to sweet a-qua-tic dreams.",
           "translations": {
             "night": {
               "ur": "رات",

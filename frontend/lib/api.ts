@@ -34,7 +34,7 @@ export async function fetchStudents() {
   return res.json();
 }
 
-export async function createStudent(data: {name: string, grade: number, level: string}) {
+export async function createStudent(data: { name: string, grade: number, level: string }) {
   const res = await apiFetch(`${API_BASE_URL}/students`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -44,7 +44,7 @@ export async function createStudent(data: {name: string, grade: number, level: s
   return res.json();
 }
 
-export async function updateStudent(id: string, data: {name: string, grade: number, level: string}) {
+export async function updateStudent(id: string, data: { name: string, grade: number, level: string }) {
   const res = await apiFetch(`${API_BASE_URL}/students/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },

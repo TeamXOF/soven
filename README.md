@@ -2,10 +2,10 @@
   <img src="assets/brand/soven/soven-app-icon.png" alt="SOVEN App Icon" width="130" style="border-radius: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.12);" />
   
   # SOVEN (SpeakFlow 2.0)
-  ### *Empathetic, Trilingual AI Reading Coach & Illustrated Storybook Platform*
+  ### *Empathetic, Multilingual AI Reading Coach & Illustrated Storybook Platform*
   
   <p align="center">
-    <b>Empowering children, readers with dyslexia, and teachers in 50-student classrooms with real-time 1-on-1 phonetic guidance and offline-first edge intelligence.</b>
+    <b>Empowering children, readers with dyslexia, and teachers in 50-student classrooms with real-time 1-on-1 phonetic guidance, active English, Urdu, & Spanish reading tracks, and an edge architecture scaling to 70+ languages.</b>
   </p>
 
   <!-- Shields.io Badges -->
@@ -15,6 +15,7 @@
     <a href="https://fastapi.tiangolo.com"><img src="https://img.shields.io/badge/FastAPI-0.115-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI" /></a>
     <a href="https://www.python.org"><img src="https://img.shields.io/badge/Python-3.12_|_3.13-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" /></a>
     <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5.6-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" /></a>
+    <img src="https://img.shields.io/badge/Languages-EN_|_UR_|_ES_(70+_Roadmap)-coral?style=flat-square" alt="Multilingual" />
     <img src="https://img.shields.io/badge/Privacy-100%25_On--Device_Audio_Cleanup-brightgreen?style=flat-square" alt="Privacy First" />
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-teal.svg?style=flat-square" alt="License: MIT" /></a>
   </p>
@@ -24,6 +25,7 @@
     <a href="#-the-problem--the-solution">💡 The Problem</a> •
     <a href="#-visual-showcase">📸 Visual Showcase</a> •
     <a href="#-core-feature-pillars">✨ Key Features</a> •
+    <a href="#-road-to-70-languages-the-multilingual-engine">🌍 70+ Languages Engine</a> •
     <a href="#-architecture--multi-agent-system">🏗️ Architecture</a> •
     <a href="#-tech-stack-breakdown">💻 Tech Stack</a> •
     <a href="#-quick-start">⚡ Quick Start</a> •
@@ -36,18 +38,19 @@
 
 ## 💡 The Problem & The Solution
 
-### The Classroom Literacy Crisis
-In underserved schools across South Asia, Latin America, and developing regions worldwide, a **single teacher commonly manages 40 to 50 students** in a standard 45-minute reading period. Mathematically, that leaves **less than 1 minute of individual reading time per child per day**. 
+### The 50-Student Classroom Literacy Crisis
+In underserved schools across South Asia, Latin America, and developing regions worldwide, a **single teacher commonly manages 40 to 50 students** in a 45-minute reading period. That leaves **less than 1 minute of individual reading evaluation per child per day**. 
 
-Struggling readers and the **1 in 5 children with dyslexia** inevitably slip through the cracks. Teachers physically cannot listen to every student, while commercial reading apps enforce punitive countdown timers that trigger anxiety and rely on constant high-speed cloud internet that rural classrooms simply do not have.
+Struggling readers and the **1 in 5 children with dyslexia** inevitably slip through the cracks unnoticed. Teachers physically cannot listen to every child read aloud, while existing commercial software relies on rigid countdown timers that provoke anxiety and demands constant cloud connectivity that disconnected classrooms cannot sustain.
 
 ### The SOVEN Solution
-**SOVEN** acts as a patient, 1-on-1 virtual reading specialist sitting at every desk:
-1. **Listens & Assesses in Real-Time:** Detects hesitations (>0.8s) and mispronunciations without ever scoring children punitively.
-2. **Dyslexia-First Storybooks:** Features tactile 2-page book spreads, cream paper tints, syllable splits, and waived speed deductions so children focus on phonemic accuracy rather than beating a clock.
-3. **Teacher Roster Triage:** Aggregates reading telemetry (WCPM, pitch contours, pause counts) into an actionable classroom roster, highlighting exactly which children need human teacher intervention that day.
-4. **Autonomous 5-Agent Meta Pipeline:** Multi-agent pipeline powered by Meta Llama 3 / Muse orchestrating phonetics, adaptive difficulty, emotional encouragement, and targeted drills in under 2 seconds.
-5. **100% Offline Edge Resilience:** Runs locally on classroom hardware with local INT8 Whisper and deterministic template banks when cloud connectivity drops.
+**SOVEN** acts as a patient, 1-on-1 virtual reading specialist sitting at every student's desk:
+1. **Listens & Assesses in Real-Time:** Detects hesitations (>0.8s) and phonetic substitutions without ever grading children punitively.
+2. **Dyslexia-First Storybooks:** Features tactile 2-page book spreads, cream paper tints, syllable splits, and waived speed deductions so readers focus on phonemic accuracy rather than beating a clock.
+3. **Active Trilingual Production (English, Urdu, Spanish):** Children switch between English, Right-to-Left Urdu Nastaliq, and Spanish with native sentence banks, phoneme confusion models, and neural audio guidance.
+4. **Teacher Roster Triage:** Aggregates reading telemetry (WCPM, pitch stability, pause frequency) into an actionable classroom roster, highlighting exactly which children need human teacher intervention that day.
+5. **Autonomous 5-Agent Meta Pipeline:** Powered by Meta Llama 3.3 70B / Muse across Phonetic, Difficulty, Engagement, Practice, and Progress agents to generate structured feedback in under 2 seconds.
+6. **100% Offline Edge Resilience:** Runs locally on classroom laptops with local INT8 Whisper and deterministic template banks when cloud connectivity drops.
 
 ---
 
@@ -55,15 +58,20 @@ Struggling readers and the **1 in 5 children with dyslexia** inevitably slip thr
 
 <div align="center">
 
-| 📖 2D Open Storybook & Syllable Splits | 🎙️ Sentence Practice & Real-Time Feedback |
+| 🇪🇸 Spanish Illustrated Bookshelf (*Mis Libros*) | 🇪🇸 Spanish Sentence Practice & Live Telemetry |
 | :---: | :---: |
-| <img src="assets/screenshots/soven-book-reader.png" width="460" alt="SOVEN 2D Book Reader" /> | <img src="assets/screenshots/soven-dashboard-english.png" width="460" alt="Sentence Practice Dashboard" /> |
-| *Tactile 2-page open book spread with center spine, cream paper aesthetics, and phonemic syllable breaks.* | *Live sentence practice with instant word-match accuracy, WCPM telemetry, and audio replay.* |
+| <img src="assets/screenshots/soven-spanish-books.png" width="460" alt="Spanish Bookshelf in SOVEN" /> | <img src="assets/screenshots/soven-spanish-practice.png" width="460" alt="Spanish Sentence Practice Dashboard" /> |
+| *Full Spanish bookshelf (*El zorrito valiente*, *El pequeño cohete*, *La ballena cantante*) with instant language filter.* | *Live Spanish sentence practice (*Una ardilla saltó alegre sobre la rama alta*) with word match, WPM, and acoustic feedback.* |
 
-| 🌍 Urdu Nastaliq & Multilingual Support | 📱 Mobile & Responsive Story Mode |
+| 📈 Spanish Reader Progress & Word Review | 📖 2D Open Storybook & Syllable Splits |
 | :---: | :---: |
-| <img src="assets/screenshots/soven-dashboard-urdu.png" width="460" alt="Urdu Nastaliq Dashboard" /> | <img src="assets/screenshots/soven-book-urdu-mobile.png" width="460" alt="Mobile Storybook Experience" /> |
-| *Full right-to-left Nastaliq script support with native phoneme confusion mapping and Urdu audio coach.* | *Responsive single-column layout collapse for handheld tablets and smartphones.* |
+| <img src="assets/screenshots/soven-spanish-home.png" width="460" alt="Spanish Progress Tracking" /> | <img src="assets/screenshots/soven-book-reader.png" width="460" alt="2D Storybook Reader" /> |
+| *Longitudinal Spanish accuracy chart with flagged vocabulary review chips (*pequeño*, *zorro*, *despertó*).* | *Tactile 2-page open book spread with center spine, cream paper aesthetic, and accessible syllable splits.* |
+
+| 🇵🇰 Urdu Nastaliq & RTL Multilingual Support | 📱 Mobile & Responsive Story Mode |
+| :---: | :---: |
+| <img src="assets/screenshots/soven-dashboard-urdu.png" width="460" alt="Urdu Nastaliq Dashboard" /> | <img src="assets/screenshots/soven-book-urdu-mobile.png" width="460" alt="Mobile Storybook View" /> |
+| *Right-to-left Nastaliq script support with native phoneme confusion mapping and Urdu neural audio coach.* | *Responsive single-column layout collapse designed for handheld tablets and smartphones.* |
 
 </div>
 
@@ -71,33 +79,61 @@ Struggling readers and the **1 in 5 children with dyslexia** inevitably slip thr
 
 ## ✨ Core Feature Pillars
 
-### 1. 📖 Tactile 2D Storybooks & Dyslexia Mode
-- **Cream Paper & Center Spine Aesthetic:** Eliminates harsh screen contrast with warm reading tones and gentle book typography.
-- **Syllable Segmentation:** Breaks complex words into accessible phonemic chunks (e.g., *ex · plo · ra · tion*).
+### 1. 🇪🇸 🇵🇰 🇬🇧 Trilingual Production (Spanish, Urdu Nastaliq, English)
+- **Spanish (`es-ES`):** Native storybook collection (*El zorrito valiente*, *El pequeño cohete*, *La ballena cantante*), 15 checkpoint assessments, Spanish syllable breaking, and full sentence practice banks across Easy, Medium, and Hard tiers.
+- **Urdu (`ur-PK`):** Right-to-Left Nastaliq font integration with South Asian phonetic confusion matrices and native Urdu audio coaching.
+- **English (`en-US`):** Full phoneme alignment, phonological awareness drills, and storybook paths.
+- **Global Topbar Switcher:** Instantly toggle between `[ EN | اردو | ES ]` from anywhere in the app to switch stories, sentence drills, speech recognition, and synthesized speech.
+
+### 2. 📖 Tactile 2D Storybooks & Dyslexia Mode
+- **Cream Paper & Center Spine Aesthetic:** Eliminates harsh screen glare with warm reading tones and gentle book typography.
+- **Syllable Segmentation:** Breaks complex words into accessible phonemic chunks (e.g., *ex · plo · ra · ción*, *a · ven · tu · ra*).
 - **Zero Speed Penalties:** In Dyslexia Mode, WCPM timing deductions are completely waived, prioritizing reading confidence over pace.
 
-### 2. 🎙️ 20-Second Pre-Signup Acoustic Diagnostic
+### 3. 🎙️ 20-Second Pre-Signup Acoustic Diagnostic
 - **Frictionless Onboarding:** Visitors evaluate reading ability in 20 seconds before creating an account.
 - **Signal Analysis (65–2093 Hz):** `librosa`-powered acoustic engine analyzes vocal pitch stability, pause frequency (>0.4s), and decibel loudness.
 - **Privacy Shield:** 100% of temporary audio is processed in-memory and immediately destroyed. Zero raw student audio is ever retained on servers.
 
-### 3. 🤖 Autonomous 5-Agent Meta AI Pipeline
+### 4. 🤖 Autonomous 5-Agent Meta AI Pipeline
 When a child completes a reading attempt, `backend/agents/orchestrator.py` launches a parallel 5-agent reasoning pipeline powered by **Meta Llama 3.3 70B / Muse**:
-- **Phonetic Agent:** Aligns transcribed words against the target text, identifying vowel substitutions, omissions, and phonetic confusions.
+- **Phonetic Agent:** Aligns transcribed words against the target text, identifying vowel substitutions, omissions, and phonetic confusions across languages.
 - **Difficulty Agent:** Dynamically shifts story difficulty up or down based on word match accuracy and hesitation density.
 - **Engagement Agent:** Analyzes pacing and generates warm, culturally affirming words of encouragement.
 - **Practice Agent:** Formulates targeted, single-sentence drills isolating the specific phonetic sound the child struggled with.
 - **Progress Agent:** Updates longitudinal mastery tracking and generates teacher summary notes.
 
-### 4. 🌍 Trilingual Mastery (English, Urdu Nastaliq, Spanish)
-- **English (`en-US`):** Full storybook library and phonetic alignment.
-- **Urdu (`ur-PK`):** Right-to-Left Nastaliq font integration with specialized South Asian phonetic confusion matrices.
-- **Spanish (`es-ES`):** Complete trilingual story collection (*El zorrito valiente*, *El pequeño cohete*, *La ballena cantante*) with Spanish syllable tokenization and TTS audio guidance.
-
 ### 5. 🔌 True Offline Edge Resilience
 - **Disconnected School Guarantee:** If internet connectivity drops or an API key is absent, SOVEN automatically shifts to:
   - Local cached INT8 `faster-whisper` for on-device speech-to-text.
-  - Deterministic JSON template banks (`backend/data/feedback_templates.json`) for pedagogical advice.
+  - Deterministic JSON template banks (`backend/data/feedback_templates.json`) in English, Urdu, and Spanish for pedagogical advice.
+
+---
+
+## 🌍 Road to 70+ Languages: The Multilingual Engine
+
+SOVEN was architected from inception not as a hardcoded three-language app, but as a **scalable global literacy platform targeting 70+ languages**. 
+
+Our shared language registry (`shared/languages.json`) currently inventories **89 distinct languages** with script directions (LTR vs. RTL), default orthographies (Latin, Arabic/Nastaliq, Devanagari, Cyrillic, Hanzi, etc.), and strict gatekeeper contracts.
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│               SOVEN 5-Gate Language Promotion Protocol                 │
+├───────────────────┬────────────────────────────────────────────────────┤
+│ 1. Content Gate   │ Storybooks & tiered sentence banks authored        │
+│ 2. Speech Gate    │ STT route validated (Cloud Whisper or local edge)  │
+│ 3. Alignment Gate │ Script-aware segmentation & syllable tokenization  │
+│ 4. Coaching Gate  │ Multilingual LLM prompts & offline template banks  │
+│ 5. Interface Gate │ Native typography, bidirectional layout & TTS voice│
+└───────────────────┴────────────────────────────────────────────────────┘
+```
+
+### Automated Cross-Language Type Synchronization
+To prevent runtime type drift across the Python backend and TypeScript frontend, SOVEN includes an automated contract generator:
+```bash
+python tools/build_language_types.py --check
+```
+This guarantees that `backend/core/language_types.py` (Pydantic models) and `frontend/lib/language-types.ts` (TypeScript union types) remain in 100% lockstep whenever a new language passes its acceptance gates.
 
 ---
 
@@ -107,7 +143,9 @@ When a child completes a reading attempt, `backend/agents/orchestrator.py` launc
 flowchart TD
     subgraph Client ["Frontend: Next.js 16 + React 19"]
         UI["Interactive 2D Book / Dashboard"]
+        LangSwitch["Global Language Switcher [ EN | اردو | ES ]"]
         Rec["MediaRecorder (16kHz Mono WAV)"]
+        UI --> LangSwitch
         UI --> Rec
     end
 
@@ -121,8 +159,8 @@ flowchart TD
     end
 
     subgraph SpeechSTT ["Speech-to-Text Routing"]
-        CloudSTT["Meta Voice STT / Groq Whisper API"]
-        LocalSTT["Local INT8 faster-whisper (Offline)"]
+        CloudSTT["Meta Voice STT / Groq Whisper API (en, ur, es)"]
+        LocalSTT["Local INT8 faster-whisper (Offline Fallback)"]
         Acoustic --> CloudSTT
         Acoustic -.->|Fallback if offline| LocalSTT
     end
@@ -139,7 +177,7 @@ flowchart TD
         Orch --> A1 & A2 & A3 & A4 & A5
         
         MetaLLM["Meta Llama 3.3 70B / Muse Gateway (SPEAKFLOW_LLM_BASE_URL)"]
-        OfflineBank["Deterministic JSON Template Bank"]
+        OfflineBank["Deterministic JSON Template Banks (EN / UR / ES)"]
         
         A1 & A2 & A3 & A4 & A5 --> MetaLLM
         A1 & A2 & A3 & A4 & A5 -.->|Offline fallback| OfflineBank
@@ -166,7 +204,7 @@ Meta's hosted API (`api.meta.ai`) imposes regional restrictions for direct accou
 | **Backend API** | Python 3.12/3.13 + FastAPI | High-throughput asynchronous REST gateway with automatic OpenAPI documentation. |
 | **Database** | SQLite + PBKDF2-SHA256 | Local zero-configuration relational storage enforcing strict privacy and zero cloud data leaks. |
 | **Reasoning Engine** | Meta Llama 3.3 70B / Muse Spark | Industry-leading instruction adherence for structured Pydantic JSON multi-agent pipelines. |
-| **Edge STT** | Faster-Whisper (INT8) | Instant offline speech transcription running locally without requiring external cloud servers. |
+| **Speech-to-Text** | Whisper Large v3 + INT8 Edge | Sub-1.5s cloud transcription with instant fallback to on-device edge transcription. |
 
 ---
 
@@ -215,7 +253,7 @@ npm ci
 npm run dev
 ```
 
-Open **[http://localhost:3000](http://localhost:3000)** in your browser to explore the landing page and start reading!
+Open **[http://localhost:3000](http://localhost:3000)** in your browser to explore the landing page, pick your language (`EN`, `UR`, `ES`), and start reading!
 
 ---
 
@@ -260,7 +298,7 @@ npm run build
   - [x] Full Spanish (`es`) reading path alongside English (`en`) and Nastaliq Urdu (`ur`).
   - [x] `SPEAKFLOW_LLM_BASE_URL` gateway for Pakistan Geographic Use Policy compliance.
 - [ ] **Phase 4: Global Scale & Classroom Hardware**
-  - [ ] Staged rollout expanding from 3 to 70+ languages.
+  - [ ] Staged rollout expanding from active 3 to **70+ languages** using the 89-language inventory.
   - [ ] Raspberry Pi 5 plug-and-play classroom edge box.
   - [ ] Automated classroom-to-classroom encrypted sync mesh.
 

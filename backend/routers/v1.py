@@ -182,7 +182,7 @@ def v1_health():
         "provider": settings.REASONING_PROVIDER,
         "reasoning_model": settings.REASONING_MODEL,
         "stt_model": settings.META_STT_MODEL,
-        "meta_configured": bool(settings.META_API_KEY or settings.REASONING_API_KEY),
+        "meta_configured": bool(getattr(settings, "META_API_KEY", "") or getattr(settings, "REASONING_API_KEY", "")),
         "groq_reachable": None,
         "groq_configured": bool(settings.GROQ_API_KEY),
         "gemini_reachable": None,

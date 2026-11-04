@@ -25,6 +25,7 @@ from routers.teacher import router as teacher_router
 from routers.v1 import api as v1_api, ws_router, ws_manager, ApiError
 from routers.story_mode import router as story_mode_router
 from routers.sync_ingest import router as sync_ingest_router
+from core.config import settings
 
 # Ensure .env is loaded if available
 try:

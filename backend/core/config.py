@@ -17,7 +17,9 @@ DATA_DIR = os.path.join(_BACKEND_DIR, "data")
 class Settings:
     # ── Meta AI reasoning layer (Meta Spark / Muse Glimmer open weights) ────
     SPEAKFLOW_LLM_BASE_URL = os.getenv("SPEAKFLOW_LLM_BASE_URL", os.getenv("REASONING_BASE_URL", "https://api.meta.ai/v1"))
-    FEEDBACK_MODEL = os.getenv("REASONING_MODEL", os.getenv("FEEDBACK_MODEL", "muse-spark-1.3"))
+    REASONING_PROVIDER = os.getenv("REASONING_PROVIDER", "meta")
+    REASONING_MODEL = os.getenv("REASONING_MODEL", os.getenv("FEEDBACK_MODEL", "muse-spark-1.3"))
+    FEEDBACK_MODEL = REASONING_MODEL
     FEEDBACK_MODEL_FALLBACK = os.getenv("FEEDBACK_MODEL_FALLBACK", "muse-glimmer")
     FEEDBACK_TIMEOUT_S = float(os.getenv("FEEDBACK_TIMEOUT_S", "10"))
     JUDGE_HESITATION_ENABLED = os.getenv("JUDGE_HESITATION_ENABLED", "0") == "1"
@@ -26,6 +28,7 @@ class Settings:
     # ── Key configuration & demo isolation ──────────────────────────────────
     ENV = os.getenv("ENV", "dev")
     META_API_KEY = os.getenv("META_API_KEY", os.getenv("REASONING_API_KEY", os.getenv("GROQ_API_KEY", "")))
+    REASONING_API_KEY = META_API_KEY
     GEMINI_API_KEY_DEMO = os.getenv("GEMINI_API_KEY_DEMO", "")
 
     @property

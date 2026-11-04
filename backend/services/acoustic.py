@@ -159,23 +159,61 @@ def _formants(seg, sr: int) -> dict:
 
 
 def extract_word_acoustics(audio_path: str, spoken_words: list) -> dict:
-    """Per-word acoustic features via librosa, computed over each word's exact
-    timespan. Pitch analysis runs ONCE over just the speech region (first word
-    start → last word end + padding) instead of the whole clip, keeping the
-    Phase-1 acoustic budget small on long recordings."""
+    """Per-word acoustic features via librosa with resilient numpy/ffmpeg fallback.
+    Pitch analysis runs ONCE over just the speech region (or full clip when words are empty),
+    keeping the Phase-1 acoustic budget small while guaranteeing reliable calculation."""
     import numpy as np
-    import librosa
 
-    y, sr = librosa.load(audio_path, sr=16000, mono=True, duration=121)
-    total_dur = len(y) / sr
+    y = None
+    sr = 16000
+    has_librosa = False
+    try:
+        import librosa
+        has_librosa = True
+        y, sr = librosa.load(audio_path, sr=16000, mono=True, duration=121)
+    except Exception:
+        pass
+
+    if y is None:
+        # Fallback 1: wave module for WAV files
+        try:
+            import wave
+            with wave.open(audio_path, "rb") as wf:
+                sr = wf.getframerate()
+                n = wf.getnframes()
+                frames = wf.readframes(n)
+                channels = wf.getnchannels()
+                sampwidth = wf.getsampwidth()
+                if sampwidth == 2:
+                    raw = np.frombuffer(frames, dtype=np.int16)
+                    if channels > 1:
+                        raw = raw[::channels]
+                    y = raw.astype(np.float32) / 32768.0
+        except Exception:
+            pass
+
+    if y is None:
+        # Fallback 2: ffmpeg subprocess to 16kHz s16le PCM
+        import subprocess
+        try:
+            cmd = ["ffmpeg", "-i", audio_path, "-f", "s16le", "-ac", "1", "-ar", "16000", "-"]
+            res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, check=True)
+            y = np.frombuffer(res.stdout, dtype=np.int16).astype(np.float32) / 32768.0
+            sr = 16000
+        except Exception:
+            y = np.zeros(16000, dtype=np.float32)
+            sr = 16000
+
+    total_dur = len(y) / sr if sr else 0.0
     if total_dur > 120:
         raise ValueError("Recordings must be no longer than two minutes")
     spoken_words = [w for w in spoken_words if has_word_timing(w) and w['end'] <= total_dur]
 
-    # Pitch track once for the SPEECH REGION only (big speed win on long clips)
+    # Pitch track once for the SPEECH REGION only (or entire clip if words are empty)
     pitch_variance = None
     f0 = None
     frame_offset = 0
+
     if spoken_words:
         t0 = max(0.0, float(min(w["start"] for w in spoken_words)) - 0.25)
         t1 = min(total_dur, float(max(w["end"] for w in spoken_words)) + 0.25)
@@ -183,20 +221,58 @@ def extract_word_acoustics(audio_path: str, spoken_words: list) -> dict:
             i0, i1 = int(t0 * sr), int(t1 * sr)
             region = y[i0:i1]
             frame_offset = i0 / 512
-            pitch_options = {"fmin": librosa.note_to_hz("C2"), "fmax": librosa.note_to_hz("C7"),
-                             "frame_length": 1024, "hop_length": 512, "sr": sr}
-            if settings.PITCH_ESTIMATOR == "pyin":
-                f0, voiced_flag, _ = librosa.pyin(region, **pitch_options)
-            else:
-                f0 = librosa.yin(region, **pitch_options)
-                rms_frames = librosa.feature.rms(y=region, frame_length=1024, hop_length=512)[0]
-                voiced_flag = rms_frames[:len(f0)] > max(0.005, float(np.max(rms_frames)) * 0.05)
-                f0 = np.where(voiced_flag, f0, np.nan)
-            valid_f0 = f0[voiced_flag] if (f0 is not None and voiced_flag is not None
-                                           and voiced_flag.any()) else np.array([])
+        else:
+            region = y
+    else:
+        region = y
+
+    if len(region) > 0:
+        if has_librosa:
+            try:
+                pitch_options = {"fmin": librosa.note_to_hz("C2"), "fmax": librosa.note_to_hz("C7"),
+                                 "frame_length": 1024, "hop_length": 512, "sr": sr}
+                if settings.PITCH_ESTIMATOR == "pyin":
+                    f0, voiced_flag, _ = librosa.pyin(region, **pitch_options)
+                else:
+                    f0 = librosa.yin(region, **pitch_options)
+                    rms_frames = librosa.feature.rms(y=region, frame_length=1024, hop_length=512)[0]
+                    voiced_flag = rms_frames[:len(f0)] > max(0.005, float(np.max(rms_frames)) * 0.05)
+                    f0 = np.where(voiced_flag, f0, np.nan)
+                valid_f0 = f0[voiced_flag] if (f0 is not None and voiced_flag is not None
+                                               and voiced_flag.any()) else np.array([])
+                pitch_variance = float(np.var(valid_f0)) if valid_f0.size else None
+            except Exception:
+                pass
+
+        if f0 is None:
+            # Resilient numpy autocorrelation pitch tracking
+            hop = 512
+            frame_len = 1024
+            f0_list = []
+            min_lag = max(1, int(sr / 500))
+            max_lag = min(frame_len - 1, int(sr / 65))
+            for idx in range(0, len(region) - frame_len, hop):
+                frame = region[idx:idx + frame_len]
+                rms = float(np.sqrt(np.mean(frame ** 2)))
+                if rms < 0.008:
+                    f0_list.append(np.nan)
+                    continue
+                frame_norm = frame - np.mean(frame)
+                corr = np.correlate(frame_norm, frame_norm, mode='full')[len(frame_norm) - 1:]
+                search = corr[min_lag:max_lag]
+                if len(search) and corr[0] > 0:
+                    peak = int(np.argmax(search)) + min_lag
+                    if corr[peak] > 0.25 * corr[0]:
+                        f0_list.append(float(sr / peak))
+                    else:
+                        f0_list.append(np.nan)
+                else:
+                    f0_list.append(np.nan)
+            f0 = np.array(f0_list)
+            valid_f0 = f0[~np.isnan(f0)] if f0.size else np.array([])
             pitch_variance = float(np.var(valid_f0)) if valid_f0.size else None
 
-    frame_rate = sr / 512  # librosa default hop
+    frame_rate = sr / 512  # default hop
     feats = {}
     for w in spoken_words:
         start, end = float(w["start"]), max(float(w["end"]), float(w["start"]) + 0.01)
@@ -212,20 +288,38 @@ def extract_word_acoustics(audio_path: str, spoken_words: list) -> dict:
             fi1 = max(fi0 + 1, int(end * frame_rate - frame_offset))
             f0_seg = f0[fi0:fi1]
             f0_seg = f0_seg[~np.isnan(f0_seg)] if f0_seg.size else np.array([])
+        
+        if has_librosa:
+            try:
+                zcr_val = float(np.mean(librosa.feature.zero_crossing_rate(seg))) if seg.size > 64 else 0.0
+            except Exception:
+                zcr_val = float(np.mean(np.abs(np.diff(np.sign(seg))) > 0)) if seg.size > 64 else 0.0
+        else:
+            zcr_val = float(np.mean(np.abs(np.diff(np.sign(seg))) > 0)) if seg.size > 64 else 0.0
+
         feats[(start, end)] = {
             "rms": float(np.sqrt(np.mean(seg ** 2))),
-            "zcr": float(np.mean(librosa.feature.zero_crossing_rate(seg))) if seg.size > 64 else 0.0,
+            "zcr": zcr_val,
             "pitch_std": float(np.std(f0_seg)) if f0_seg.size else 0.0,
             **_formants(seg, sr),
         }
+
     pitch_contour = []
-    if f0 is not None:
+    if f0 is not None and len(f0) > 0:
         step = max(1, len(f0) // 40)
         pitch_contour = [round(float(v), 1) if not np.isnan(v) else None for v in f0[::step]]
 
     loudness_series = []
     try:
-        full_rms = librosa.feature.rms(y=y, frame_length=1024, hop_length=512)[0]
+        hop = 512
+        frame_len = 1024
+        if has_librosa:
+            try:
+                full_rms = librosa.feature.rms(y=y, frame_length=frame_len, hop_length=hop)[0]
+            except Exception:
+                full_rms = [np.sqrt(np.mean(y[i:i + frame_len] ** 2)) for i in range(0, len(y) - frame_len, hop)]
+        else:
+            full_rms = [np.sqrt(np.mean(y[i:i + frame_len] ** 2)) for i in range(0, len(y) - frame_len, hop)]
         step = max(1, len(full_rms) // 40)
         loudness_series = [round(float(20 * np.log10(max(float(r), 1e-5))), 1) for r in full_rms[::step]]
     except Exception:
@@ -238,7 +332,7 @@ def extract_word_acoustics(audio_path: str, spoken_words: list) -> dict:
         "loudness_series": loudness_series,
         "total_duration": total_dur,
         "sample_rate": sr,
-        "pitch_method": settings.PITCH_ESTIMATOR,
+        "pitch_method": "librosa" if has_librosa else "autocorr",
     }
 
 

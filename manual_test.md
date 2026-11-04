@@ -278,3 +278,4 @@ Use this quick checklist during your video recording:
 - [ ] **1:05 - 1:40**: Open the **2D AI Book** on [`/book/story_forest_01`](http://localhost:3000/book/story_forest_01). Show the 3D center spine, cream paper aesthetic, and syllable splits. Intentionally pause or mispronounce a word to trigger the **Live Voice Coach** ("Hear Coach" + "Repeat Now").
 - [ ] **1:40 - 1:55**: Toggle **"Learn a Language"** to show instant Urdu/Spanish translation and neural TTS audio.
 - [ ] **1:55 - 2:00**: Switch to the **Voice Stats** dashboard on [`/stats`](http://localhost:3000/stats) showing Recharts Pitch Contour and Loudness envelopes. Highlight the **Online · Synced** status badge and conclude on Pakistan Geographic Use Policy compliance via `SPEAKFLOW_LLM_BASE_URL`.
+

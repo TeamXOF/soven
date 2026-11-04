@@ -88,6 +88,7 @@ def api_sync_ingest(body: dict):
 
 from routers.v1 import pre_signup_diagnostic
 from fastapi import File, Form, UploadFile, Response
+@app.post("/api/diagnostic")
 @app.post("/api/diagnostic-test")
 async def api_diagnostic_test(
     audio: UploadFile = File(None),

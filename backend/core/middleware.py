@@ -61,7 +61,7 @@ class AccessMiddleware(BaseHTTPMiddleware):
                     return error(413, "Recording or request is too large (maximum 16 MB)")
                 chunks.append(chunk)
             request._body = b"".join(chunks)
-        public = {"/health", "/api/v1/health", "/api/auth/login", "/api/auth/register", "/api/auth/signup", "/api/auth/register-adult", "/api/auth/logout", "/api/v1/sync/ingest", "/api/sync/ingest", "/api/v1/diagnostic", "/api/diagnostic-test", "/api/v1/tts"}
+        public = {"/health", "/api/v1/health", "/api/auth/login", "/api/auth/register", "/api/auth/signup", "/api/auth/register-adult", "/api/auth/logout", "/api/v1/sync/ingest", "/api/sync/ingest", "/api/v1/diagnostic", "/api/diagnostic", "/api/diagnostic-test", "/api/v1/tts"}
         if request.method == "GET" and path in {"/api/v1/capabilities", "/api/v1/tts"}:
             public.add(path)
         protected = path.startswith(("/api/", "/pipeline")) or path == "/debug-ffmpeg"

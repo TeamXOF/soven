@@ -11,6 +11,9 @@ export type PlaybackCapability = {
 let currentAudio: HTMLAudioElement | null = null;
 let currentUtterance: SpeechSynthesisUtterance | null = null;
 
+// In-memory cache of audio Blob URLs for instant replay
+const blobCache = new Map<string, string>();
+
 export function speechLangFor(lang: string): string | null {
   const code = lang.trim().toLowerCase().replaceAll("_", "-").split("-")[0];
   return Object.prototype.hasOwnProperty.call(policy.languages, code)
@@ -54,7 +57,8 @@ export function hasVoiceFor(lang: string): boolean {
 /**
  * High-fidelity AI speech player:
  * 1. Queries backend neural TTS (/api/v1/tts) for natural Microsoft Neural voices
- * 2. Falls back seamlessly to browser SpeechSynthesis if offline or network unavailable
+ * 2. Caches audio as client blob for instant re-play without network stalls
+ * 3. Falls back smoothly to browser SpeechSynthesis if offline or network unavailable
  */
 export async function playCoachAudio(text: string, lang = "en"): Promise<boolean> {
   const clean = text?.trim();
@@ -62,48 +66,68 @@ export async function playCoachAudio(text: string, lang = "en"): Promise<boolean
 
   stopSpeaking();
 
-  // 1. Try server Neural TTS first
+  const cacheKey = `${lang.toLowerCase()}:${clean}`;
+
+  // 1. Try server Neural TTS first (or cached blob)
   try {
-    const root = typeof window !== "undefined"
-      ? (process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ||
-         (window.location.protocol === "http:" ? `${window.location.protocol}//${window.location.hostname}:8000` : window.location.origin))
-      : "http://127.0.0.1:8000";
+    let blobUrl = blobCache.get(cacheKey);
 
-    const url = `${root}/api/v1/tts?text=${encodeURIComponent(clean)}&language=${encodeURIComponent(lang)}`;
-    const audio = new Audio(url);
-    currentAudio = audio;
+    if (!blobUrl) {
+      const root = typeof window !== "undefined"
+        ? (process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ||
+           (window.location.protocol === "http:" ? `${window.location.protocol}//${window.location.hostname}:8000` : window.location.origin))
+        : "http://127.0.0.1:8000";
 
-    const playSuccess = await new Promise<boolean>((resolve) => {
-      let resolved = false;
-      audio.onplay = () => {
-        if (!resolved) {
-          resolved = true;
-          resolve(true);
+      const url = `${root}/api/v1/tts?text=${encodeURIComponent(clean)}&language=${encodeURIComponent(lang)}`;
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 4500);
+
+      try {
+        const res = await fetch(url, { signal: controller.signal });
+        clearTimeout(timer);
+        if (res.ok) {
+          const blob = await res.blob();
+          if (blob && blob.size > 0) {
+            blobUrl = URL.createObjectURL(blob);
+            blobCache.set(cacheKey, blobUrl);
+          }
         }
-      };
-      audio.onerror = () => {
-        if (!resolved) {
-          resolved = true;
-          resolve(false);
-        }
-      };
-      audio.play().catch(() => {
-        if (!resolved) {
-          resolved = true;
-          resolve(false);
-        }
+      } catch (fetchErr) {
+        clearTimeout(timer);
+      }
+    }
+
+    if (blobUrl) {
+      const audio = new Audio(blobUrl);
+      currentAudio = audio;
+      audio.volume = 1.0;
+
+      const played = await new Promise<boolean>((resolve) => {
+        let done = false;
+        audio.onended = () => {
+          if (!done) {
+            done = true;
+            if (currentAudio === audio) currentAudio = null;
+            resolve(true);
+          }
+        };
+        audio.onerror = () => {
+          if (!done) {
+            done = true;
+            if (currentAudio === audio) currentAudio = null;
+            resolve(false);
+          }
+        };
+        audio.play().catch(() => {
+          if (!done) {
+            done = true;
+            if (currentAudio === audio) currentAudio = null;
+            resolve(false);
+          }
+        });
       });
-      // Safety timeout: if server TTS is unresponsive, fall back quickly
-      setTimeout(() => {
-        if (!resolved) {
-          resolved = true;
-          resolve(false);
-        }
-      }, 2500);
-    });
 
-    if (playSuccess) {
-      return true;
+      if (played) return true;
     }
   } catch (err) {
     console.info("Server neural TTS playback fallback:", err);
@@ -113,39 +137,73 @@ export async function playCoachAudio(text: string, lang = "en"): Promise<boolean
   return speak(clean, lang);
 }
 
-/** Synchronous SpeechSynthesis trigger with Chrome resume and non-blocking voice assignment */
-export function speak(text: string, lang = "en", rate = 0.92): boolean {
-  if (typeof window === "undefined" || !window.speechSynthesis) return false;
-  const clean = text?.trim();
-  if (!clean) return false;
+/** Robust SpeechSynthesis trigger with Chrome unfreeze, voice resolution and completion promise */
+export function speak(text: string, lang = "en", rate = 0.92): Promise<boolean> {
+  return new Promise((resolve) => {
+    if (typeof window === "undefined" || !window.speechSynthesis) {
+      resolve(false);
+      return;
+    }
+    const clean = text?.trim();
+    if (!clean) {
+      resolve(false);
+      return;
+    }
 
-  try {
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.resume();
-
-    const utter = new SpeechSynthesisUtterance(clean);
-    const locale = speechLangFor(lang) || (lang === "ur" ? "ur-PK" : lang === "es" ? "es-ES" : "en-US");
-    utter.lang = locale;
-
-    // Attach voice if found
     try {
-      const voices = window.speechSynthesis.getVoices() || [];
-      if (voices.length > 0) {
-        const norm = (v: string) => v.toLowerCase().replaceAll("_", "-");
-        const match = voices.find(v => norm(v.lang) === norm(locale)) ||
-                      voices.find(v => norm(v.lang).startsWith(lang.toLowerCase()));
-        if (match) utter.voice = match;
+      if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
+        window.speechSynthesis.cancel();
       }
-    } catch {}
 
-    utter.rate = Number.isFinite(rate) ? Math.min(2, Math.max(0.5, rate)) : 0.92;
-    currentUtterance = utter;
-    window.speechSynthesis.speak(utter);
-    return true;
-  } catch (err) {
-    console.warn("speechSynthesis error:", err);
-    return false;
-  }
+      const utter = new SpeechSynthesisUtterance(clean);
+      const locale = speechLangFor(lang) || (lang === "ur" ? "ur-PK" : lang === "es" ? "es-ES" : "en-US");
+      utter.lang = locale;
+
+      // Voice assignment
+      try {
+        const voices = window.speechSynthesis.getVoices() || [];
+        if (voices.length > 0) {
+          const norm = (v: string) => v.toLowerCase().replaceAll("_", "-");
+          const match = voices.find(v => norm(v.lang) === norm(locale)) ||
+                        voices.find(v => norm(v.lang).startsWith(lang.toLowerCase())) ||
+                        voices[0];
+          if (match) utter.voice = match;
+        }
+      } catch {}
+
+      utter.rate = Number.isFinite(rate) ? Math.min(2, Math.max(0.5, rate)) : 0.92;
+      currentUtterance = utter;
+
+      let finished = false;
+      utter.onend = () => {
+        if (!finished) {
+          finished = true;
+          currentUtterance = null;
+          resolve(true);
+        }
+      };
+      utter.onerror = (e) => {
+        if (!finished) {
+          finished = true;
+          currentUtterance = null;
+          resolve(false);
+        }
+      };
+
+      // Slight tick to prevent Chrome's async queue purge after cancel()
+      setTimeout(() => {
+        try {
+          window.speechSynthesis.resume();
+          window.speechSynthesis.speak(utter);
+        } catch {
+          resolve(false);
+        }
+      }, 35);
+    } catch (err) {
+      console.warn("speechSynthesis error:", err);
+      resolve(false);
+    }
+  });
 }
 
 export function stopSpeaking() {

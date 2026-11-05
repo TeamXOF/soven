@@ -145,8 +145,8 @@ def _closed_schema(schema):
     return schema
 
 
-async def _call_gemini_json(system_prompt: str, payload: dict, timeout_s: float, schema=None) -> dict:
-    """Compatibility name for configured JSON reasoning with a template fallback."""
+async def _call_reasoning_json(system_prompt: str, payload: dict, timeout_s: float, schema=None) -> dict:
+    """Configured Meta AI / provider JSON reasoning with a template fallback."""
     last_error = RuntimeError("Reasoning unavailable")
     for model in model_candidates(settings.FEEDBACK_MODEL, settings.FEEDBACK_MODEL_FALLBACK):
         try:
@@ -156,6 +156,10 @@ async def _call_gemini_json(system_prompt: str, payload: dict, timeout_s: float,
             if not settings.active_gemini_key or os.getenv("OFFLINE_MODE") == "1":
                 break
     raise last_error
+
+
+# Legacy alias
+_call_gemini_json = _call_reasoning_json
 
 
 def _pick_template(category: str, language: str, word: str = "", phoneme: str = "") -> dict:

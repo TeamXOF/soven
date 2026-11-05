@@ -201,7 +201,7 @@ def v1_health():
 async def word_tip(word: str, lang: str = "en", mismatch: str = "",
                    spoken: str = "", request: Request = None):
     """Pronunciation help for one word (kid taps a word in the results screen).
-    Local letter/syllable breakdown is instant; the coach tip comes from Gemini
+    Local letter/syllable breakdown is instant; the coach tip comes from Meta AI
     with a template fallback, and every generated tip is cached in `word_tips`
     so each word costs one API call ever."""
     user = get_current_user(request)
@@ -593,6 +593,18 @@ async def _analyze_flow(session: dict, checkpoint_id: str,
                          [session["id"], checkpoint_id, signal, hint, None, ".webm", result_id])
         background_tasks.add_task(run_job, job_id)
 
+        # Pre-warm TTS for flagged misread words in background
+        flagged_words = [w["word"] for w in signal["words"] if not w.get("correct")][:3]
+        if flagged_words:
+            async def _prewarm_flagged(words, lang):
+                from services.tts import synthesize_speech
+                for word in words:
+                    try:
+                        await synthesize_speech(word, lang)
+                    except Exception:
+                        pass
+            background_tasks.add_task(_prewarm_flagged, flagged_words, language)
+
     return _phase1_response(session["id"], checkpoint_id, signal)
 
 
@@ -964,13 +976,21 @@ async def get_tts(text: str, language: str = "en"):
     if not text:
         raise HTTPException(400, "Text is required")
 
+    cors_headers = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, OPTIONS",
+        "Access-Control-Allow-Headers": "*",
+        "Accept-Ranges": "bytes",
+        "Cache-Control": "public, max-age=86400",
+    }
+
     cached = get_cached_audio(text, language)
     if cached and cached.exists():
-        return FileResponse(str(cached), media_type="audio/mpeg")
+        return FileResponse(str(cached), media_type="audio/mpeg", headers=cors_headers)
 
     audio_file = await synthesize_speech(text, language)
     if audio_file and audio_file.exists():
-        return FileResponse(str(audio_file), media_type="audio/mpeg")
+        return FileResponse(str(audio_file), media_type="audio/mpeg", headers=cors_headers)
 
     raise HTTPException(503, "Audio synthesis unavailable for this text")
 
